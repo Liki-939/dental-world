@@ -1,19 +1,10 @@
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import BeforeAfterSection from '@/components/BeforeAfterSection';
-
 export const metadata: Metadata = {
   title: 'Smile Gallery | Before & After Transformations | Dental World',
   description: 'View our gallery of successful dental treatments including implants, veneers, and full mouth rehabilitations.',
 };
-
-const galleryCases = [
-  { beforeImg: "https://images.unsplash.com/photo-1598256989800-fea5ce5146f2?auto=format&fit=crop&w=600&q=80", afterImg: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", description: "Full Mouth Dental Implants" },
-  { beforeImg: "https://images.unsplash.com/photo-1598256989800-fea5ce5146f2?auto=format&fit=crop&w=600&q=80", afterImg: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", description: "Porcelain Veneers (Smile Makeover)" },
-  { beforeImg: "https://images.unsplash.com/photo-1598256989800-fea5ce5146f2?auto=format&fit=crop&w=600&q=80", afterImg: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", description: "Invisalign Treatment (8 Months)" },
-  { beforeImg: "https://images.unsplash.com/photo-1598256989800-fea5ce5146f2?auto=format&fit=crop&w=600&q=80", afterImg: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", description: "Zirconia Crowns Restoration" }
-];
 
 export default function GalleryPage() {
   return (
@@ -33,10 +24,17 @@ export default function GalleryPage() {
         <section className="py-20">
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="mb-12 text-center">
-              <p className="text-slate-600">Drag the slider or view the before and after images of our recent successful cases.</p>
+              <p className="text-slate-600">Explore our recent successful cases and see the quality of our work.</p>
             </div>
             
-            <BeforeAfterSection cases={galleryCases} />
+            <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
+              {/* Using a standard img tag because the filename contains spaces and we want it to render responsively */}
+              <img 
+                src="/ChatGPT%20Image%20May%2026%2C%202026%2C%2010_16_04%20PM.png" 
+                alt="Smile Gallery Cases" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
             
             <div className="mt-20 text-center">
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Ready for your own transformation?</h3>
