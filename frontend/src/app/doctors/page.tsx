@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { UserCircle, Award, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Our Doctors | Dental World',
