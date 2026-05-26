@@ -44,7 +44,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { id: 1, patient_name: "Ramesh Kumar", text: "Got my treatment done here. The doctors are very professional and the clinic is extremely hygienic. Highly recommended!", rating: 5, treatment_name: "Root Canal" }
     ],
     cases: [
-      { beforeImg: "https://images.unsplash.com/photo-1598256989800-fea5ce5146f2?auto=format&fit=crop&w=400&q=80", afterImg: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=400&q=80", description: "Tooth Preservation" }
+      { beforeImg: "/images/cases/root_canal_before.png", afterImg: "/images/cases/root_canal_after.png", description: "Severe decay treated with root canal and porcelain crown." }
     ]
   },
   'dental-implants': {
@@ -69,13 +69,15 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { title: "All-on-4 (Full Arch)", price: "2,50,000", features: ["Comprehensive Planning", "4 Implants", "Fixed Prosthesis", "Lifetime Support"] }
     ],
     faqs: [
-      { question: "Are implants safe?", answer: "Yes, dental implants have a success rate of over 95% and are considered the standard of care for missing teeth." }
+      { question: "Are implants safe?", answer: "Yes, dental implants have a success rate of over 95% and are considered the standard of care for missing teeth." },
+      { question: "How long do implants last?", answer: "With proper care and good oral hygiene, dental implants can last a lifetime." }
     ],
     testimonials: [
-      { id: 1, patient_name: "Sunitha Rao", text: "Painless experience and great care. Worth every penny for the confidence it gave me back.", rating: 5, treatment_name: "Implants" }
+      { id: 1, patient_name: "Sunitha Rao", text: "Painless experience and great care. Worth every penny for the confidence it gave me back.", rating: 5, treatment_name: "Implants" },
+      { id: 2, patient_name: "Vikram S.", text: "The team made the implant process so smooth. My new tooth feels completely natural.", rating: 5, treatment_name: "Implants" }
     ],
     cases: [
-      { beforeImg: "https://images.unsplash.com/photo-1598256989800-fea5ce5146f2?auto=format&fit=crop&w=400&q=80", afterImg: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=400&q=80", description: "Front Tooth Replacement" }
+      { beforeImg: "/images/cases/implants_before.png", afterImg: "/images/cases/implants_after.png", description: "Missing tooth replaced perfectly with a dental implant." }
     ]
   },
   'braces': {
@@ -100,13 +102,15 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { title: "Self-Ligating", price: "70,000", features: ["Advanced Technology", "Faster Results", "Fewer Appointments"] }
     ],
     faqs: [
-      { question: "Do braces hurt?", answer: "You may experience mild discomfort for a few days after adjustments, but it is manageable and temporary." }
+      { question: "Do braces hurt?", answer: "You may experience mild discomfort for a few days after adjustments, but it is manageable and temporary." },
+      { question: "Can adults get braces?", answer: "Absolutely! We offer various aesthetic options like ceramic braces that are perfect for adults." }
     ],
     testimonials: [
-      { id: 1, patient_name: "Rahul M", text: "Dr. Nithin is amazing. My teeth are perfectly straight now!", rating: 5, treatment_name: "Braces" }
+      { id: 1, patient_name: "Rahul M", text: "Dr. Nithin is amazing. My teeth are perfectly straight now!", rating: 5, treatment_name: "Braces" },
+      { id: 2, patient_name: "Anjali K.", text: "I opted for ceramic braces and nobody even noticed I had them on most of the time.", rating: 5, treatment_name: "Braces" }
     ],
     cases: [
-      { beforeImg: "https://images.unsplash.com/photo-1598256989800-fea5ce5146f2?auto=format&fit=crop&w=400&q=80", afterImg: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=400&q=80", description: "Bite Correction" }
+      { beforeImg: "/images/cases/braces_before.png", afterImg: "/images/cases/braces_after.png", description: "Crowding corrected and teeth perfectly aligned." }
     ]
   },
   'invisalign-treatment': {
@@ -127,9 +131,16 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { title: "Basic", price: "1,50,000", features: ["Digital Scan", "Up to 14 Aligners", "Retainers included"] },
       { title: "Comprehensive", price: "2,50,000", features: ["Unlimited Aligners", "Complex bite correction", "Refinements included"], isPopular: true }
     ],
-    faqs: [],
-    testimonials: [],
-    cases: []
+    faqs: [
+      { question: "How many hours a day do I need to wear aligners?", answer: "For optimal results, aligners should be worn for 20-22 hours a day, removing them only for eating and cleaning." },
+      { question: "Are they really invisible?", answer: "Yes, the aligners are made of clear, medical-grade plastic and are virtually invisible to others." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Meghana P.", text: "Invisalign was the best decision! It was so convenient and discreet.", rating: 5, treatment_name: "Invisalign" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/invisalign_before.png", afterImg: "/images/cases/invisalign_after.png", description: "Mild crowding resolved completely with clear aligners." }
+    ]
   },
   'pediatric-dentistry': {
     title: 'Pediatric Dentistry',
@@ -149,9 +160,16 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { title: "Consultation", price: "500", features: ["Check-up", "Brushing Guidance"] },
       { title: "Preventive", price: "2,500", features: ["Cleaning", "Fluoride Application", "Dental Sealants"], isPopular: true }
     ],
-    faqs: [],
-    testimonials: [],
-    cases: []
+    faqs: [
+      { question: "When should my child first visit the dentist?", answer: "The first dental visit should be when the first tooth appears, or no later than their first birthday." },
+      { question: "How often should kids have dental checkups?", answer: "We recommend regular checkups every 6 months to monitor growth and prevent cavities." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Priya V. (Mother of Aarav)", text: "The doctors are so gentle. My son actually looks forward to his dental visits now!", rating: 5, treatment_name: "Pediatric Dentistry" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/pediatric_before.png", afterImg: "/images/cases/pediatric_after.png", description: "Childhood cavity painlessly cleaned and filled." }
+    ]
   },
   'smile-designing': {
     title: 'Smile Designing',
@@ -171,9 +189,16 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { title: "Basic Makeover", price: "40,000", features: ["Teeth Whitening", "Minor Contouring", "Basic Veneers"] },
       { title: "Hollywood Smile", price: "1,50,000", features: ["Digital Smile Design", "Premium E-max Veneers", "Gum Contouring"], isPopular: true }
     ],
-    faqs: [],
-    testimonials: [],
-    cases: []
+    faqs: [
+      { question: "Will my new smile look natural?", answer: "Yes, we customize the color, shape, and size to perfectly complement your facial features for a natural look." },
+      { question: "Does it take a long time?", answer: "Depending on the complexity, a full smile makeover can often be completed in just 2-3 visits." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Karan D.", text: "I can't stop smiling! The veneers look incredibly natural. Best investment in myself.", rating: 5, treatment_name: "Smile Designing" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/smile_design_before.png", afterImg: "/images/cases/smile_design_after.png", description: "Complete smile transformation with premium porcelain veneers." }
+    ]
   },
   'full-mouth-rehabilitation': {
     title: 'Full Mouth Rehabilitation',
@@ -193,8 +218,15 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { title: "Consultation", price: "2,000", features: ["3D Scan", "Detailed Treatment Plan", "Specialist Consultation"] },
       { title: "Rehabilitation", price: "Custom", features: ["Implants", "Crowns/Bridges", "Bite Correction", "Lifetime Support"], isPopular: true }
     ],
-    faqs: [],
-    testimonials: [],
-    cases: []
+    faqs: [
+      { question: "Is full mouth rehabilitation painful?", answer: "We ensure you are completely comfortable throughout the process using advanced anesthesia and sedation options if necessary." },
+      { question: "How long does the whole process take?", answer: "Because it is comprehensive, it is done in phases over several weeks or months to ensure proper healing and perfect results." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Rajendra Reddy", text: "After years of suffering, I can finally eat normally and smile with confidence again. The team changed my life.", rating: 5, treatment_name: "Full Mouth Rehab" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/fmr_before.png", afterImg: "/images/cases/fmr_after.png", description: "Severe wear and missing teeth restored entirely." }
+    ]
   }
 };

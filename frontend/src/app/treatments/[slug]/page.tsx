@@ -7,6 +7,7 @@ import FAQAccordion from '@/components/FAQAccordion';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import TreatmentCostCards from '@/components/TreatmentCostCards';
 import BeforeAfterSection from '@/components/BeforeAfterSection';
+import AnimatedSection from '@/components/AnimatedSection';
 import { Calendar, Phone, Shield, Star, CheckCircle2, Award, Clock, Stethoscope } from 'lucide-react';
 import { treatmentsData } from '@/data/treatments';
 
@@ -71,7 +72,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
 
       {/* 3. About the Treatment */}
       <section className="py-20">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <AnimatedSection className="container mx-auto px-4 max-w-4xl">
           <div className="mb-12">
             <h2 className="text-3xl font-heading font-bold text-slate-900 mb-6 border-b-2 border-brand pb-2 inline-block">About the Treatment</h2>
             <p className="text-slate-600 leading-relaxed text-lg">{data.aboutText}</p>
@@ -116,65 +117,65 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
               <p className="text-slate-700 text-sm leading-relaxed">{data.procedure}</p>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* 4. Cost Section */}
       <section className="py-20 bg-surface-muted border-t border-slate-200">
-        <div className="container mx-auto px-4">
+        <AnimatedSection className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-heading font-bold text-slate-900 mb-4">{data.title} Cost Breakdown</h2>
             <p className="text-slate-600">Transparent pricing with no hidden charges. We customize the best treatment plan for you after a detailed consultation.</p>
           </div>
           <TreatmentCostCards plans={data.pricing} />
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* 5. Before/After Section (Optional based on data) */}
       {data.cases.length > 0 && (
         <section className="py-20">
-          <div className="container mx-auto px-4 text-center">
+          <AnimatedSection className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-heading font-bold text-slate-900 mb-4">Real Transformations. Real Smiles.</h2>
             <p className="text-slate-600 mb-12 max-w-2xl mx-auto">See the dramatic difference our advanced treatments can make.</p>
             <BeforeAfterSection cases={data.cases} />
-          </div>
+          </AnimatedSection>
         </section>
       )}
 
       {/* 6. Testimonials */}
       {data.testimonials.length > 0 && (
         <section className="py-24 bg-brand text-white overflow-hidden">
-          <div className="container mx-auto px-4">
+          <AnimatedSection className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-heading font-bold mb-4">Happy Patients Love Us!</h2>
               <p className="text-brand-light opacity-90">Don&apos;t just take our word for it.</p>
             </div>
             <TestimonialsCarousel testimonials={data.testimonials} />
-          </div>
+          </AnimatedSection>
         </section>
       )}
 
       {/* 7. FAQ Section */}
       {data.faqs.length > 0 && (
         <section className="py-20 bg-surface-muted">
-          <div className="container mx-auto px-4">
+          <AnimatedSection className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-heading font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
             </div>
             <FAQAccordion faqs={data.faqs} />
-          </div>
+          </AnimatedSection>
         </section>
       )}
 
       {/* 8. Sticky Booking CTA / Bottom CTA */}
       <section className="py-16 bg-slate-900 text-white text-center">
-        <div className="container mx-auto px-4">
+        <AnimatedSection className="container mx-auto px-4">
           <h2 className="text-3xl font-heading font-bold mb-6">Know Your Exact Cost with a Personalized Consultation</h2>
           <p className="text-slate-400 mb-8 max-w-2xl mx-auto">Meet our specialists and get a customized treatment plan designed for your needs and budget.</p>
           <Link href="/book-appointment" className="inline-flex items-center bg-brand hover:bg-brand-light hover:text-brand text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-lg">
             <Calendar className="w-6 h-6 mr-3" /> Book Consultation Now
           </Link>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* Mobile Sticky CTA */}
