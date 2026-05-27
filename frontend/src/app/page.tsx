@@ -158,7 +158,7 @@ export default function Home() {
           Call Now
         </a>
         <Link href="/book-appointment" className="flex-1 bg-gradient-to-r from-brand to-brand-dark text-white font-bold py-3.5 rounded-xl flex items-center justify-center text-sm shadow-md">
-          Book Appt
+          Book Appointment
         </Link>
       </div>
 
