@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 export const metadata: Metadata = {
@@ -27,12 +28,12 @@ export default function GalleryPage() {
               <p className="text-slate-600">Explore our recent successful cases and see the quality of our work.</p>
             </div>
             
-            <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
-              {/* Using a standard img tag because the filename contains spaces and we want it to render responsively */}
-              <img 
+            <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-100 relative w-full" style={{ aspectRatio: '16/9' }}>
+              <Image 
                 src="/ChatGPT%20Image%20May%2026%2C%202026%2C%2010_16_04%20PM.png" 
                 alt="Smile Gallery Cases" 
-                className="w-full h-auto object-cover"
+                fill
+                className="object-cover"
               />
             </div>
             

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
@@ -114,7 +115,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                   <Calendar className="w-4 h-4 mr-2" /> Get Personalized Cost Estimate
                 </Link>
                 <a href="https://wa.me/918247478663" className="w-full sm:w-auto bg-white hover:bg-green-50 text-green-600 px-8 py-3.5 rounded-full font-bold text-base transition shadow-sm border border-slate-200 flex items-center justify-center">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="w-5 h-5 mr-2" /> WhatsApp Us Now
+                  <Image src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width={20} height={20} className="mr-2" /> WhatsApp Us Now
                 </a>
               </div>
             </div>
@@ -122,11 +123,13 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
             {/* Right Image */}
             <div className="lg:w-1/2 relative flex justify-center lg:justify-end">
 
-              <div className="relative w-full max-w-[500px] aspect-square rounded-[3rem] overflow-hidden border-8 border-white/50 shadow-2xl">
-                <img 
+              <div className="relative w-full max-w-[500px] aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden border-4 md:border-8 border-white/50 shadow-2xl">
+                <Image 
                   src={data.infographic || '/smilemakeover.png'} 
                   alt={`${data.title} Patient`} 
-                  className="w-full h-full object-cover object-center"
+                  fill
+                  priority
+                  className="object-cover object-center"
                 />
               </div>
             </div>
@@ -251,7 +254,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                 </ul>
               </div>
               <div className="absolute right-0 bottom-0 h-[80%] sm:h-[110%] w-[45%] sm:w-[50%]">
-                <img src="/couple.png" alt="Happy Couple" className="h-full w-full object-cover object-bottom" />
+                <Image src="/couple.png" alt="Happy Couple" fill className="object-cover object-bottom" />
               </div>
             </div>
 
@@ -313,12 +316,12 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
               <div className="flex-1 flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
                 {data.cases.map((caseItem, idx) => (
                   <div key={idx} className="min-w-[300px] bg-white p-2 rounded-3xl shadow-sm border border-slate-100 relative group flex gap-1">
-                    <div className="w-1/2 relative">
-                      <img src={caseItem.beforeImg} alt="Before" className="w-full h-[180px] object-cover rounded-l-2xl rounded-r-sm" />
+                    <div className="w-1/2 relative h-[180px]">
+                      <Image src={caseItem.beforeImg} alt="Before" fill className="object-cover rounded-l-2xl rounded-r-sm" />
                       <div className="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded">Before</div>
                     </div>
-                    <div className="w-1/2 relative">
-                      <img src={caseItem.afterImg} alt="After" className="w-full h-[180px] object-cover rounded-r-2xl rounded-l-sm" />
+                    <div className="w-1/2 relative h-[180px]">
+                      <Image src={caseItem.afterImg} alt="After" fill className="object-cover rounded-r-2xl rounded-l-sm" />
                       <div className="absolute bottom-2 right-2 bg-brand/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">After</div>
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center z-10">
@@ -432,7 +435,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                     <Calendar className="w-5 h-5 mr-2" /> Book Appointment
                   </Link>
                   <a href="https://wa.me/918247478663" className="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-xl font-bold flex items-center justify-center transition shadow-md">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="w-5 h-5 mr-2 brightness-0 invert" /> WhatsApp Us
+                    <Image src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width={20} height={20} className="mr-2 brightness-0 invert" /> WhatsApp Us
                   </a>
                 </div>
               </div>
@@ -451,7 +454,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
             <span className="lg:hidden">Call Now</span>
           </a>
           <a href="https://wa.me/918247478663" className="flex-1 lg:flex-none lg:w-1/3 bg-green-500 text-white font-bold py-3.5 lg:py-4 rounded-xl lg:rounded-full flex items-center justify-center text-sm lg:text-base hover:bg-green-600 transition">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="w-4 h-4 lg:w-5 lg:h-5 mr-2 brightness-0 invert" />
+            <Image src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width={20} height={20} className="mr-2 brightness-0 invert lg:w-5 lg:h-5" />
             <span className="hidden lg:inline">WhatsApp Us (Instant Reply)</span>
             <span className="lg:hidden">WhatsApp</span>
           </a>
