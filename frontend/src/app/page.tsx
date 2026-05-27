@@ -54,7 +54,7 @@ export default function Home() {
               </div>
               
               {/* Floating Badge */}
-              <div className="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-premium flex items-center space-x-4 border border-white animate-float">
+              <div className="absolute -bottom-4 left-4 md:-bottom-6 md:-left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-premium flex items-center space-x-4 border border-white animate-float z-20">
                 <div className="bg-gradient-to-br from-brand-light to-white p-3 rounded-xl text-brand shadow-sm">
                   <Shield className="w-6 h-6" />
                 </div>

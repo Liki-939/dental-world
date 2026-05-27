@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="w-full bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-white/20">
+    <header className="w-full bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-[60] border-b border-white/20">
       {/* Top Bar */}
       <div className="bg-brand-dark text-white text-sm py-2">
         <div className="container mx-auto px-4 flex justify-between items-center">
@@ -88,8 +88,8 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl transition-all duration-300 ease-in-out overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+        className={`md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl transition-all duration-300 ease-in-out overflow-y-auto ${
+          isMobileMenuOpen ? 'max-h-[calc(100vh-80px)] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="flex flex-col py-4 px-4 space-y-4 font-medium text-slate-700 bg-white">
