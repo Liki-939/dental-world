@@ -12,6 +12,16 @@ export interface TreatmentData {
   testimonials: { id: number; patient_name: string; text: string; rating: number; treatment_name: string }[];
   cases: { beforeImg: string; afterImg: string; description: string }[];
   infographic?: string;
+  infographicData?: {
+    beforeImage?: string;
+    afterImage?: string;
+    title: string;
+    description: string;
+    benefits: { text: string; icon: string }[];
+    howItWorks: { step: number; title: string; description: string }[];
+    keyDetails: { title: string; text: string; icon: string }[];
+    aftercare: { text: string; icon: string }[];
+  };
 }
 
 export const treatmentsData: Record<string, TreatmentData> = {
@@ -47,7 +57,37 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/root_canal_before.png", afterImg: "/images/cases/root_canal_after.png", description: "Severe decay treated with root canal and porcelain crown." }
     ],
-    infographic: '/zirconia.png'
+    infographic: '/zirconia.png',
+    infographicData: {
+      title: "ROOT CANAL TREATMENT",
+      description: "Root canal therapy saves a severely infected or decayed tooth by removing the damaged nerve and pulp, cleaning the inside, and sealing it to prevent further infection.",
+      benefits: [
+        { text: "Provides immediate pain relief", icon: "Smile" },
+        { text: "Preserves your natural tooth", icon: "ShieldCheck" },
+        { text: "Prevents infection from spreading", icon: "Shield" },
+        { text: "Restores normal chewing function", icon: "Activity" }
+      ],
+      howItWorks: [
+        { step: 1, title: "DIAGNOSIS & ANESTHESIA", description: "X-rays are taken to assess the infection. Local anesthesia is applied to ensure a painless experience." },
+        { step: 2, title: "CLEANING & SHAPING", description: "The infected pulp is removed, and the root canals are thoroughly cleaned and disinfected." },
+        { step: 3, title: "SEALING & RESTORATION", description: "The canals are filled with a rubber-like material, and a crown is usually placed to protect the tooth." }
+      ],
+      keyDetails: [
+        { title: "Treatment Time", text: "1-2 visits (approx. 60 mins each)", icon: "Clock" },
+        { title: "Material", text: "Biocompatible gutta-percha filling", icon: "Package" },
+        { title: "Restoration", text: "Requires a dental crown afterward", icon: "Shield" },
+        { title: "Anesthesia", text: "Local anesthesia (completely painless)", icon: "Bed" },
+        { title: "Success Rate", text: "Over 95% with proper crown placement", icon: "Sparkles" },
+        { title: "Lifespan", text: "Can last a lifetime with good oral hygiene", icon: "Droplet" }
+      ],
+      aftercare: [
+        { text: "Brush and floss normally", icon: "Activity" },
+        { text: "Avoid chewing on hard foods initially", icon: "Apple" },
+        { text: "Take prescribed medications if any", icon: "Syringe" },
+        { text: "Attend follow-up for crown placement", icon: "Wrench" },
+        { text: "Maintain regular check-ups", icon: "Smile" }
+      ]
+    }
   },
   'dental-implants': {
     title: 'Dental Implants',
@@ -81,7 +121,37 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/implants_before.png", afterImg: "/images/cases/implants_after.png", description: "Missing tooth replaced perfectly with a dental implant." }
     ],
-    infographic: '/fullmouth.png'
+    infographic: '/fullmouth.png',
+    infographicData: {
+      title: "FULL MOUTH DENTAL IMPLANTS",
+      description: "Full mouth dental implants replace all missing or failing teeth in the upper and/or lower jaw using strategically placed dental implants and a fixed set of prosthetic teeth.",
+      benefits: [
+        { text: "Restores full function and aesthetics", icon: "Smile" },
+        { text: "Improves chewing and speech", icon: "MessageSquare" },
+        { text: "Prevents bone loss", icon: "Shield" },
+        { text: "Long-lasting, durable solution", icon: "ShieldCheck" }
+      ],
+      howItWorks: [
+        { step: 1, title: "IMPLANT PLACEMENT", description: "Titanium implants are surgically placed into the jawbone. Typically 4-6 implants per arch." },
+        { step: 2, title: "HEALING & OSSEOINTEGRATION", description: "Implants fuse with the bone over 3-6 months, creating a strong and stable foundation." },
+        { step: 3, title: "FINAL RESTORATION", description: "A custom-made, fixed set of teeth is securely attached to the implants." }
+      ],
+      keyDetails: [
+        { title: "Treatment Time", text: "3-9 months total (varies per patient)", icon: "Clock" },
+        { title: "Implant Material", text: "Medical-grade titanium", icon: "Syringe" },
+        { title: "Restoration", text: "Fixed full-arch implant bridge (non-removable)", icon: "Package" },
+        { title: "Anesthesia", text: "Local anesthesia with sedation options", icon: "Bed" },
+        { title: "Success Rate", text: "95-98%+ with proper care", icon: "Sparkles" },
+        { title: "Lifespan", text: "20+ years with good oral hygiene and regular check-ups", icon: "Droplet" }
+      ],
+      aftercare: [
+        { text: "Brush and floss daily around implants", icon: "Activity" },
+        { text: "Use an antimicrobial mouthwash", icon: "Beaker" },
+        { text: "Attend regular dental check-ups", icon: "Wrench" },
+        { text: "Avoid smoking and excessive alcohol", icon: "CigaretteOff" },
+        { text: "Maintain a healthy diet", icon: "Apple" }
+      ]
+    }
   },
   'braces': {
     title: 'Braces',
@@ -115,7 +185,37 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/braces_before.png", afterImg: "/images/cases/braces_after.png", description: "Crowding corrected and teeth perfectly aligned." }
     ],
-    infographic: "/braces.png"
+    infographic: "/braces.png",
+    infographicData: {
+      title: "ORTHODONTIC BRACES",
+      description: "Traditional and ceramic braces are a proven, effective way to straighten teeth, correct bite issues, and create a perfectly aligned, healthy smile.",
+      benefits: [
+        { text: "Corrects complex bite issues", icon: "ShieldCheck" },
+        { text: "Aligns crowded or crooked teeth", icon: "Smile" },
+        { text: "Improves overall oral hygiene", icon: "Activity" },
+        { text: "Provides a permanent, straight smile", icon: "Sparkles" }
+      ],
+      howItWorks: [
+        { step: 1, title: "CONSULTATION & SCANS", description: "Digital scans and X-rays are taken to create a personalized, precise orthodontic treatment plan." },
+        { step: 2, title: "BRACKET PLACEMENT", description: "Brackets are bonded to the teeth and connected with a wire that gently pulls them into place." },
+        { step: 3, title: "REGULAR ADJUSTMENTS", description: "You visit the clinic every 4-6 weeks to have the wires tightened and adjusted as teeth move." }
+      ],
+      keyDetails: [
+        { title: "Treatment Time", text: "12-24 months on average", icon: "Clock" },
+        { title: "Options", text: "Metal, Ceramic (Clear), or Self-Ligating", icon: "Package" },
+        { title: "Discomfort", text: "Mild pressure for 2-3 days after adjustments", icon: "Bed" },
+        { title: "Maintenance", text: "Requires special brushing techniques", icon: "Syringe" },
+        { title: "Success Rate", text: "Extremely high and predictable", icon: "Sparkles" },
+        { title: "Retention", text: "Requires retainers after removal", icon: "Shield" }
+      ],
+      aftercare: [
+        { text: "Brush after every single meal", icon: "Activity" },
+        { text: "Use orthodontic floss or water flosser", icon: "Beaker" },
+        { text: "Avoid sticky or very hard foods", icon: "Apple" },
+        { text: "Attend all scheduled adjustments", icon: "Wrench" },
+        { text: "Wear rubber bands as instructed", icon: "Smile" }
+      ]
+    }
   },
   'invisalign-treatment': {
     title: 'Invisalign Treatment',
@@ -145,7 +245,37 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/invisalign_before.png", afterImg: "/images/cases/invisalign_after.png", description: "Mild crowding resolved completely with clear aligners." }
     ],
-    infographic: '/invisalign.png'
+    infographic: '/invisalign.png',
+    infographicData: {
+      title: "INVISALIGN CLEAR ALIGNERS",
+      description: "Invisalign uses a series of custom-made, virtually invisible clear plastic aligners to gently and gradually shift your teeth into perfect alignment.",
+      benefits: [
+        { text: "Virtually invisible to others", icon: "Smile" },
+        { text: "Completely removable for eating", icon: "Apple" },
+        { text: "Easier brushing and flossing", icon: "Activity" },
+        { text: "More comfortable than metal braces", icon: "ShieldCheck" }
+      ],
+      howItWorks: [
+        { step: 1, title: "3D DIGITAL SCAN", description: "A highly accurate 3D model of your teeth is created using an advanced intraoral scanner." },
+        { step: 2, title: "CUSTOM ALIGNERS", description: "A series of custom clear aligners are manufactured based on your specific treatment plan." },
+        { step: 3, title: "PROGRESSIVE SHIFTING", description: "You wear a new set of aligners every 1-2 weeks, gradually moving your teeth into place." }
+      ],
+      keyDetails: [
+        { title: "Treatment Time", text: "6-18 months typically", icon: "Clock" },
+        { title: "Material", text: "SmartTrack® clear medical-grade plastic", icon: "Package" },
+        { title: "Wear Time", text: "Must wear 20-22 hours per day", icon: "Bed" },
+        { title: "Diet Restrictions", text: "None! Just remove them to eat", icon: "Apple" },
+        { title: "Success Rate", text: "Highly effective for mild to moderate cases", icon: "Sparkles" },
+        { title: "Retention", text: "Vivera retainers required afterward", icon: "Shield" }
+      ],
+      aftercare: [
+        { text: "Wear aligners 22 hours a day", icon: "Clock" },
+        { text: "Remove aligners before eating or drinking", icon: "Apple" },
+        { text: "Brush teeth before putting aligners back", icon: "Activity" },
+        { text: "Clean aligners daily with soft brush", icon: "Beaker" },
+        { text: "Keep them in the case when not worn", icon: "Package" }
+      ]
+    }
   },
   'pediatric-dentistry': {
     title: 'Pediatric Dentistry',
@@ -175,7 +305,37 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/pediatric_before.png", afterImg: "/images/cases/pediatric_after.png", description: "Childhood cavity painlessly cleaned and filled." }
     ],
-    infographic: "/pediatric.png"
+    infographic: "/pediatric.png",
+    infographicData: {
+      title: "PEDIATRIC DENTAL CARE",
+      description: "Specialized, gentle dental care designed exclusively for children, focusing on prevention, education, and creating a positive, fear-free experience.",
+      benefits: [
+        { text: "Builds positive dental habits early", icon: "Smile" },
+        { text: "Prevents cavities and tooth decay", icon: "Shield" },
+        { text: "Monitors proper jaw development", icon: "Activity" },
+        { text: "Fear-free, comfortable environment", icon: "Bed" }
+      ],
+      howItWorks: [
+        { step: 1, title: "GENTLE INTRODUCTION", description: "We use 'tell-show-do' techniques to introduce dental tools in a fun, non-threatening way." },
+        { step: 2, title: "PREVENTIVE CARE", description: "Thorough cleaning, fluoride applications, and protective sealants are applied to teeth." },
+        { step: 3, title: "PARENT EDUCATION", description: "We educate both parent and child on proper brushing techniques and tooth-friendly diets." }
+      ],
+      keyDetails: [
+        { title: "First Visit", text: "By age 1 or when first tooth appears", icon: "Clock" },
+        { title: "Focus", text: "Prevention and education", icon: "Package" },
+        { title: "Environment", text: "Child-friendly, colorful, and engaging", icon: "Smile" },
+        { title: "Anesthesia", text: "Nitrous oxide (laughing gas) available", icon: "Bed" },
+        { title: "Success Rate", text: "Highly effective cavity prevention", icon: "Sparkles" },
+        { title: "Check-ups", text: "Recommended every 6 months", icon: "Activity" }
+      ],
+      aftercare: [
+        { text: "Supervise brushing until age 7-8", icon: "Activity" },
+        { text: "Use a pea-sized amount of fluoride toothpaste", icon: "Beaker" },
+        { text: "Limit sugary snacks and drinks", icon: "Apple" },
+        { text: "Maintain regular 6-month visits", icon: "Wrench" },
+        { text: "Encourage drinking plenty of water", icon: "Droplet" }
+      ]
+    }
   },
   'smile-designing': {
     title: 'Smile Designing',
@@ -205,7 +365,37 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/smile_design_before.png", afterImg: "/images/cases/smile_design_after.png", description: "Complete smile transformation with premium porcelain veneers." }
     ],
-    infographic: '/smilemakeover.png'
+    infographic: '/smilemakeover.png',
+    infographicData: {
+      title: "DIGITAL SMILE DESIGN",
+      description: "A comprehensive cosmetic makeover that utilizes advanced digital imaging and porcelain veneers to completely transform the shape, color, and alignment of your smile.",
+      benefits: [
+        { text: "Creates a perfectly symmetrical smile", icon: "Sparkles" },
+        { text: "Corrects stains, chips, and gaps", icon: "ShieldCheck" },
+        { text: "Boosts self-confidence immensely", icon: "Smile" },
+        { text: "Highly durable and stain-resistant", icon: "Shield" }
+      ],
+      howItWorks: [
+        { step: 1, title: "DIGITAL ANALYSIS", description: "Photos and 3D scans are taken. We digitally design your new smile to match your facial features." },
+        { step: 2, title: "TRIAL SMILE (MOCK-UP)", description: "A temporary mock-up is placed over your teeth so you can 'test drive' your new smile before committing." },
+        { step: 3, title: "FINAL VENEERS", description: "Custom ultra-thin porcelain veneers are permanently bonded to your natural teeth." }
+      ],
+      keyDetails: [
+        { title: "Treatment Time", text: "2-3 visits over a few weeks", icon: "Clock" },
+        { title: "Material", text: "Premium E-max Porcelain Veneers", icon: "Package" },
+        { title: "Customization", text: "100% personalized shape and shade", icon: "Smile" },
+        { title: "Anesthesia", text: "Local anesthesia for preparation phase", icon: "Bed" },
+        { title: "Success Rate", text: "Extremely high patient satisfaction", icon: "Sparkles" },
+        { title: "Lifespan", text: "10-15+ years with proper care", icon: "Droplet" }
+      ],
+      aftercare: [
+        { text: "Brush and floss daily", icon: "Activity" },
+        { text: "Use a non-abrasive toothpaste", icon: "Beaker" },
+        { text: "Avoid biting very hard objects (e.g., ice, pens)", icon: "Apple" },
+        { text: "Wear a nightguard if you grind your teeth", icon: "Bed" },
+        { text: "Attend regular cleanings", icon: "Wrench" }
+      ]
+    }
   },
   'full-mouth-rehabilitation': {
     title: 'Full Mouth Rehabilitation',
@@ -235,6 +425,36 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/fmr_before.png", afterImg: "/images/cases/fmr_after.png", description: "Severe wear and missing teeth restored entirely." }
     ],
-    infographic: "/fullmouthrehabilitation.png"
+    infographic: "/fullmouthrehabilitation.png",
+    infographicData: {
+      title: "FULL MOUTH REHABILITATION",
+      description: "An extensive, phased treatment plan that completely rebuilds and restores all teeth in the mouth, combining implants, crowns, and bite correction.",
+      benefits: [
+        { text: "Completely restores chewing ability", icon: "Apple" },
+        { text: "Relieves chronic jaw and TMJ pain", icon: "Smile" },
+        { text: "Rebuilds worn down or broken teeth", icon: "ShieldCheck" },
+        { text: "Delivers a stunning aesthetic makeover", icon: "Sparkles" }
+      ],
+      howItWorks: [
+        { step: 1, title: "COMPREHENSIVE DIAGNOSIS", description: "Extensive 3D imaging, bite analysis, and joint health assessments to create a master blueprint." },
+        { step: 2, title: "FOUNDATION PHASE", description: "Addressing gum health, extracting hopeless teeth, and placing implants where necessary." },
+        { step: 3, title: "FINAL RECONSTRUCTION", description: "Placing custom crowns, bridges, and implant prosthetics to restore the bite and aesthetics." }
+      ],
+      keyDetails: [
+        { title: "Treatment Time", text: "Several months to a year (phased)", icon: "Clock" },
+        { title: "Materials", text: "Zirconia, Titanium Implants, E-max", icon: "Package" },
+        { title: "Scope", text: "Involves every tooth in the mouth", icon: "Syringe" },
+        { title: "Anesthesia", text: "Local, conscious sedation, or general", icon: "Bed" },
+        { title: "Success Rate", text: "Life-changing functional improvement", icon: "Sparkles" },
+        { title: "Lifespan", text: "Long-term solution (20+ years)", icon: "Shield" }
+      ],
+      aftercare: [
+        { text: "Strict daily oral hygiene routine", icon: "Activity" },
+        { text: "Use a water flosser around implants", icon: "Beaker" },
+        { text: "Wear a protective nightguard", icon: "Bed" },
+        { text: "Attend frequent maintenance visits", icon: "Wrench" },
+        { text: "Avoid extremely hard or sticky foods", icon: "Apple" }
+      ]
+    }
   }
 };

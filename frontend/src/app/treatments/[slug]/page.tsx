@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import FAQAccordion from '@/components/FAQAccordion';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import TreatmentCostCards from '@/components/TreatmentCostCards';
+import TreatmentInfographic from '@/components/TreatmentInfographic';
 import AnimatedSection from '@/components/AnimatedSection';
 import { Calendar, Phone, Shield, Star, CheckCircle2, Award, Clock, Stethoscope } from 'lucide-react';
 import { treatmentsData } from '@/data/treatments';
@@ -137,20 +138,25 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
       </section>
 
       {/* 5. Treatment Guide Section */}
-      {data.infographic && (
+      {(data.infographicData || data.infographic) && (
         <section className="py-20 bg-white">
           <AnimatedSection className="container mx-auto px-4 text-center">
             <div className="mb-16">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">Complete Treatment Guide</h2>
               <p className="text-slate-600 mb-10 max-w-2xl mx-auto">Everything you need to know about {data.title}, from how it works to the final results.</p>
-              <div className="relative w-full rounded-3xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border border-slate-100 bg-white">
-                <img 
-                  src={data.infographic} 
-                  alt={`${data.title} Complete Guide`} 
-                  className="w-full h-auto block"
-                  loading="lazy"
-                />
-              </div>
+              
+              {data.infographicData ? (
+                <TreatmentInfographic data={data.infographicData} />
+              ) : (
+                <div className="relative w-full rounded-3xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border border-slate-100 bg-white">
+                  <img 
+                    src={data.infographic} 
+                    alt={`${data.title} Complete Guide`} 
+                    className="w-full h-auto block"
+                    loading="lazy"
+                  />
+                </div>
+              )}
             </div>
           </AnimatedSection>
         </section>
