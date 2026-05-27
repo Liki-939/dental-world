@@ -17,7 +17,7 @@ export default function TreatmentCostCards({ plans }: { plans: PricingPlan[] }) 
           key={index} 
           className={`relative bg-white rounded-3xl p-8 flex flex-col h-full border ${
             plan.isPopular 
-              ? 'border-brand/50 shadow-glow scale-105 z-10' 
+              ? 'border-brand/50 shadow-glow md:scale-105 z-10' 
               : 'border-slate-100 shadow-soft hover:shadow-premium hover:-translate-y-1 transition-all'
           }`}
         >

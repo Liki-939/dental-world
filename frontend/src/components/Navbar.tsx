@@ -1,7 +1,20 @@
+"use client";
+
 import Link from 'next/link';
-import { Phone, Calendar, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
+import { Phone, Calendar, ChevronDown, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header className="w-full bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-white/20">
       {/* Top Bar */}
@@ -18,8 +31,8 @@ export default function Navbar() {
       </div>
 
       {/* Main Navigation */}
-      <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center space-x-2">
+      <nav className="container mx-auto px-4 py-4 flex justify-between items-center relative">
+        <Link href="/" className="flex items-center space-x-2" onClick={closeMobileMenu}>
           <div className="bg-brand text-white p-2 rounded-lg">
             {/* Simple Logo Placeholder */}
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -56,14 +69,53 @@ export default function Navbar() {
           <Link href="/contact" className="hover:text-brand transition">Contact</Link>
         </div>
 
-        {/* CTA Button */}
-        <div className="hidden md:block">
-          <Link href="/book-appointment" className="bg-gradient-to-r from-brand to-brand-dark hover:from-brand-dark hover:to-brand text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center shadow-md hover:shadow-glow hover:-translate-y-0.5">
+        {/* CTA Button & Mobile Toggle */}
+        <div className="flex items-center space-x-4">
+          <Link href="/book-appointment" className="hidden md:flex bg-gradient-to-r from-brand to-brand-dark hover:from-brand-dark hover:to-brand text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 items-center shadow-md hover:shadow-glow hover:-translate-y-0.5">
             <Calendar className="w-5 h-5 mr-2" />
             Book Appointment
           </Link>
+          
+          <button 
+            className="md:hidden p-2 text-slate-700 hover:text-brand transition-colors"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+          </button>
         </div>
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      <div 
+        className={`md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl transition-all duration-300 ease-in-out overflow-hidden ${
+          isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="flex flex-col py-4 px-4 space-y-4 font-medium text-slate-700 bg-white">
+          <Link href="/" className="px-2 hover:text-brand transition" onClick={closeMobileMenu}>Home</Link>
+          <Link href="/about" className="px-2 hover:text-brand transition" onClick={closeMobileMenu}>About Us</Link>
+          <Link href="/doctors" className="px-2 hover:text-brand transition" onClick={closeMobileMenu}>Our Doctors</Link>
+          
+          <div className="flex flex-col space-y-2 border-l-2 border-slate-100 ml-2 pl-4 py-1">
+            <div className="font-semibold text-slate-900 mb-1">Treatments</div>
+            <Link href="/treatments/root-canal-treatment" className="text-sm hover:text-brand transition" onClick={closeMobileMenu}>Root Canal Treatment</Link>
+            <Link href="/treatments/dental-implants" className="text-sm hover:text-brand transition" onClick={closeMobileMenu}>Dental Implants</Link>
+            <Link href="/treatments/braces" className="text-sm hover:text-brand transition" onClick={closeMobileMenu}>Braces</Link>
+            <Link href="/treatments/invisalign-treatment" className="text-sm hover:text-brand transition" onClick={closeMobileMenu}>Invisalign Treatment</Link>
+            <Link href="/treatments/smile-designing" className="text-sm hover:text-brand transition" onClick={closeMobileMenu}>Smile Designing</Link>
+            <Link href="/treatments" className="text-sm font-semibold text-brand transition mt-2" onClick={closeMobileMenu}>View All Treatments →</Link>
+          </div>
+
+          <Link href="/gallery" className="px-2 hover:text-brand transition" onClick={closeMobileMenu}>Before & After</Link>
+          <Link href="/blog" className="px-2 hover:text-brand transition" onClick={closeMobileMenu}>Blog</Link>
+          <Link href="/contact" className="px-2 hover:text-brand transition" onClick={closeMobileMenu}>Contact</Link>
+          
+          <Link href="/book-appointment" className="mt-4 bg-brand text-white px-4 py-3 rounded-xl font-semibold text-center shadow-md flex items-center justify-center" onClick={closeMobileMenu}>
+            <Calendar className="w-5 h-5 mr-2" /> Book Appointment
+          </Link>
+        </div>
+      </div>
     </header>
   );
 }
