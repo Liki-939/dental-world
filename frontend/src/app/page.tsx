@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, Star, Clock, Shield, Award, Calendar, Phone } from "lucide-react";
+import PromotionalBanner from "@/components/PromotionalBanner";
 
 export default function Home() {
   return (
@@ -92,6 +93,13 @@ export default function Home() {
                 <p className="text-sm text-slate-500">Easy Payment Options</p>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Promotional Banner Section */}
+        <section className="py-20 bg-slate-50">
+          <div className="container mx-auto px-4">
+            <PromotionalBanner />
           </div>
         </section>
 
