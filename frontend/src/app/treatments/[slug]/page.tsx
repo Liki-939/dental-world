@@ -6,7 +6,6 @@ import Footer from '@/components/Footer';
 import FAQAccordion from '@/components/FAQAccordion';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import TreatmentCostCards from '@/components/TreatmentCostCards';
-import BeforeAfterSection from '@/components/BeforeAfterSection';
 import AnimatedSection from '@/components/AnimatedSection';
 import { Calendar, Phone, Shield, Star, CheckCircle2, Award, Clock, Stethoscope } from 'lucide-react';
 import { treatmentsData } from '@/data/treatments';
@@ -131,13 +130,22 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
         </AnimatedSection>
       </section>
 
-      {/* 5. Before/After Section (Optional based on data) */}
-      {data.cases.length > 0 && (
-        <section className="py-20">
+      {/* 5. Treatment Guide Section */}
+      {data.infographic && (
+        <section className="py-20 bg-white">
           <AnimatedSection className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-heading font-bold text-slate-900 mb-4">Real Transformations. Real Smiles.</h2>
-            <p className="text-slate-600 mb-12 max-w-2xl mx-auto">See the dramatic difference our advanced treatments can make.</p>
-            <BeforeAfterSection cases={data.cases} />
+            <div className="mb-16">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">Complete Treatment Guide</h2>
+              <p className="text-slate-600 mb-10 max-w-2xl mx-auto">Everything you need to know about {data.title}, from how it works to the final results.</p>
+              <div className="relative w-full rounded-3xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border border-slate-100 bg-white">
+                <img 
+                  src={data.infographic} 
+                  alt={`${data.title} Complete Guide`} 
+                  className="w-full h-auto block"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </AnimatedSection>
         </section>
       )}

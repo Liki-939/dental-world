@@ -11,6 +11,7 @@ export interface TreatmentData {
   faqs: { question: string; answer: string }[];
   testimonials: { id: number; patient_name: string; text: string; rating: number; treatment_name: string }[];
   cases: { beforeImg: string; afterImg: string; description: string }[];
+  infographic?: string;
 }
 
 export const treatmentsData: Record<string, TreatmentData> = {
@@ -45,7 +46,8 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     cases: [
       { beforeImg: "/images/cases/root_canal_before.png", afterImg: "/images/cases/root_canal_after.png", description: "Severe decay treated with root canal and porcelain crown." }
-    ]
+    ],
+    infographic: '/zirconia.png'
   },
   'dental-implants': {
     title: 'Dental Implants',
@@ -78,7 +80,8 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     cases: [
       { beforeImg: "/images/cases/implants_before.png", afterImg: "/images/cases/implants_after.png", description: "Missing tooth replaced perfectly with a dental implant." }
-    ]
+    ],
+    infographic: '/fullmouth.png'
   },
   'braces': {
     title: 'Braces',
@@ -111,7 +114,8 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     cases: [
       { beforeImg: "/images/cases/braces_before.png", afterImg: "/images/cases/braces_after.png", description: "Crowding corrected and teeth perfectly aligned." }
-    ]
+    ],
+    infographic: "/braces.png"
   },
   'invisalign-treatment': {
     title: 'Invisalign Treatment',
@@ -140,7 +144,8 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     cases: [
       { beforeImg: "/images/cases/invisalign_before.png", afterImg: "/images/cases/invisalign_after.png", description: "Mild crowding resolved completely with clear aligners." }
-    ]
+    ],
+    infographic: '/invisalign.png'
   },
   'pediatric-dentistry': {
     title: 'Pediatric Dentistry',
@@ -169,7 +174,8 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     cases: [
       { beforeImg: "/images/cases/pediatric_before.png", afterImg: "/images/cases/pediatric_after.png", description: "Childhood cavity painlessly cleaned and filled." }
-    ]
+    ],
+    infographic: "/pediatric.png"
   },
   'smile-designing': {
     title: 'Smile Designing',
@@ -198,7 +204,8 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     cases: [
       { beforeImg: "/images/cases/smile_design_before.png", afterImg: "/images/cases/smile_design_after.png", description: "Complete smile transformation with premium porcelain veneers." }
-    ]
+    ],
+    infographic: '/smilemakeover.png'
   },
   'full-mouth-rehabilitation': {
     title: 'Full Mouth Rehabilitation',
@@ -227,6 +234,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     cases: [
       { beforeImg: "/images/cases/fmr_before.png", afterImg: "/images/cases/fmr_after.png", description: "Severe wear and missing teeth restored entirely." }
-    ]
+    ],
+    infographic: "/fullmouthrehabilitation.png"
   }
 };

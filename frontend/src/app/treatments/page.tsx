@@ -121,6 +121,35 @@ export default function TreatmentsPage() {
           </div>
         </section>
 
+        {/* Gallery Overview Section */}
+        <section className="py-20 bg-slate-900 text-white overflow-hidden">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+              <div className="lg:w-1/3 text-center lg:text-left">
+                <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 leading-tight">
+                  Real Results.<br/><span className="text-brand-light">Proven Expertise.</span>
+                </h2>
+                <p className="text-slate-400 text-lg mb-8">
+                  Browse our portfolio of life-changing smile transformations. Our specialists combine art and science to deliver predictable, stunning results for every treatment.
+                </p>
+                <Link href="/gallery" className="inline-flex items-center text-white font-bold border-b-2 border-brand hover:text-brand transition-colors pb-1">
+                  View Full Gallery <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-700/50 bg-slate-800">
+                  <img 
+                    src="/chatgpt_dental_image.png" 
+                    alt="Smile Transformations Overview" 
+                    className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Why Choose Us Trust Section */}
         <section className="py-16 bg-white border-y border-slate-100">
           <div className="container mx-auto px-4 max-w-6xl">
