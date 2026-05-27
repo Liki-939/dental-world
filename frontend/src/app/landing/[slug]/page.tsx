@@ -66,6 +66,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+export async function generateStaticParams() {
+  return [
+    { slug: 'dental-implants' },
+    { slug: 'root-canal-treatment' },
+    { slug: 'braces-and-aligners' },
+    { slug: 'cosmetic-dentistry' },
+    { slug: 'teeth-whitening' }
+  ];
+}
+
 export default async function LandingPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const data = getLandingData(slug);

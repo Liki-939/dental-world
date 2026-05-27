@@ -13,6 +13,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+export async function generateStaticParams() {
+  return [
+    { slug: 'pragathi-nagar' },
+    { slug: 'bachupally' }
+  ];
+}
+
 export default async function LocationPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const locationName = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');

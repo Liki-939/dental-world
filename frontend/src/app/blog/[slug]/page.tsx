@@ -14,6 +14,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+export async function generateStaticParams() {
+  return [
+    { slug: 'dental-hygiene-tips' },
+    { slug: 'what-to-expect-during-root-canal' },
+    { slug: 'benefits-of-invisalign' },
+    { slug: 'preventing-gum-disease' }
+  ];
+}
+
 export default async function SingleBlogPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const title = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
