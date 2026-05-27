@@ -16,10 +16,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export async function generateStaticParams() {
   return [
-    { slug: 'dental-hygiene-tips' },
-    { slug: 'what-to-expect-during-root-canal' },
+    { slug: 'how-to-prevent-cavities' },
     { slug: 'benefits-of-invisalign' },
-    { slug: 'preventing-gum-disease' }
+    { slug: 'dental-implant-myths' }
   ];
 }
 
