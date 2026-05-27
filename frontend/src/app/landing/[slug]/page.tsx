@@ -72,7 +72,9 @@ export async function generateStaticParams() {
     { slug: 'root-canal-treatment' },
     { slug: 'braces-and-aligners' },
     { slug: 'cosmetic-dentistry' },
-    { slug: 'teeth-whitening' }
+    { slug: 'teeth-whitening' },
+    { slug: 'dental-implant-cost-hyderabad' },
+    { slug: 'invisalign-pragathi-nagar' }
   ];
 }
 
