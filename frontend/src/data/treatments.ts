@@ -11,6 +11,7 @@ export interface TreatmentData {
   faqs: { question: string; answer: string }[];
   testimonials: { id: number; patient_name: string; text: string; rating: number; treatment_name: string }[];
   cases: { beforeImg: string; afterImg: string; description: string }[];
+  technology?: { title: string; icon: string }[];
   infographic?: string;
   infographicData?: {
     beforeImage?: string;
@@ -57,7 +58,15 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/root_canal_before.png", afterImg: "/images/cases/root_canal_after.png", description: "Severe decay treated with root canal and porcelain crown." }
     ],
-    infographic: '/zirconia.png',
+
+    technology: [
+      { title: "Digital X-Rays", icon: "ScanLine" },
+      { title: "Rotary Endodontics", icon: "Activity" },
+      { title: "Apex Locators", icon: "MapPin" },
+      { title: "Laser Disinfection", icon: "ShieldCheck" }
+    ],
+    infographic: '/root_canal_banner.png',
+
     infographicData: {
       title: "ROOT CANAL TREATMENT",
       description: "Root canal therapy saves a severely infected or decayed tooth by removing the damaged nerve and pulp, cleaning the inside, and sealing it to prevent further infection.",
@@ -121,7 +130,14 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/implants_before.png", afterImg: "/images/cases/implants_after.png", description: "Missing tooth replaced perfectly with a dental implant." }
     ],
-    infographic: '/fullmouth.png',
+
+    technology: [
+      { title: "3D CBCT Scan", icon: "ScanLine" },
+      { title: "Digital Smile Planning", icon: "Smile" },
+      { title: "Computer Guided Surgery", icon: "Activity" },
+      { title: "High Quality Implants", icon: "Award" }
+    ],
+    infographic: '/dental_implant_banner.png',
     infographicData: {
       title: "FULL MOUTH DENTAL IMPLANTS",
       description: "Full mouth dental implants replace all missing or failing teeth in the upper and/or lower jaw using strategically placed dental implants and a fixed set of prosthetic teeth.",
@@ -185,7 +201,14 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/braces_before.png", afterImg: "/images/cases/braces_after.png", description: "Crowding corrected and teeth perfectly aligned." }
     ],
-    infographic: "/braces.png",
+
+    technology: [
+      { title: "3D Intraoral Scanning", icon: "ScanLine" },
+      { title: "Digital Treatment Planning", icon: "Smile" },
+      { title: "Self-Ligating Brackets", icon: "Activity" },
+      { title: "Memory Wire Tech", icon: "Award" }
+    ],
+    infographic: "/braces_banner.png",
     infographicData: {
       title: "ORTHODONTIC BRACES",
       description: "Traditional and ceramic braces are a proven, effective way to straighten teeth, correct bite issues, and create a perfectly aligned, healthy smile.",
@@ -245,7 +268,14 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/invisalign_before.png", afterImg: "/images/cases/invisalign_after.png", description: "Mild crowding resolved completely with clear aligners." }
     ],
-    infographic: '/invisalign.png',
+
+    technology: [
+      { title: "iTero 3D Scanner", icon: "ScanLine" },
+      { title: "ClinCheck Software", icon: "Smile" },
+      { title: "SmartTrack Material", icon: "Award" },
+      { title: "Vivera Retainers", icon: "ShieldCheck" }
+    ],
+    infographic: '/invisalign_banner.png',
     infographicData: {
       title: "INVISALIGN CLEAR ALIGNERS",
       description: "Invisalign uses a series of custom-made, virtually invisible clear plastic aligners to gently and gradually shift your teeth into perfect alignment.",
@@ -305,7 +335,14 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/pediatric_before.png", afterImg: "/images/cases/pediatric_after.png", description: "Childhood cavity painlessly cleaned and filled." }
     ],
-    infographic: "/pediatric.png",
+
+    technology: [
+      { title: "Low-Radiation X-Rays", icon: "ScanLine" },
+      { title: "Painless Anesthesia", icon: "Smile" },
+      { title: "Laser Dentistry", icon: "Activity" },
+      { title: "Nitrous Oxide", icon: "ShieldCheck" }
+    ],
+    infographic: "/pediatric_banner.png",
     infographicData: {
       title: "PEDIATRIC DENTAL CARE",
       description: "Specialized, gentle dental care designed exclusively for children, focusing on prevention, education, and creating a positive, fear-free experience.",
@@ -365,7 +402,14 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/smile_design_before.png", afterImg: "/images/cases/smile_design_after.png", description: "Complete smile transformation with premium porcelain veneers." }
     ],
-    infographic: '/smilemakeover.png',
+
+    technology: [
+      { title: "Digital Smile Design", icon: "Smile" },
+      { title: "3D Face Scanning", icon: "ScanLine" },
+      { title: "Mock-up Trial", icon: "Activity" },
+      { title: "Premium E-max", icon: "Award" }
+    ],
+    infographic: '/smile_banner.png',
     infographicData: {
       title: "DIGITAL SMILE DESIGN",
       description: "A comprehensive cosmetic makeover that utilizes advanced digital imaging and porcelain veneers to completely transform the shape, color, and alignment of your smile.",
@@ -425,7 +469,14 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/fmr_before.png", afterImg: "/images/cases/fmr_after.png", description: "Severe wear and missing teeth restored entirely." }
     ],
-    infographic: "/fullmouthrehabilitation.png",
+
+    technology: [
+      { title: "3D CBCT Imaging", icon: "ScanLine" },
+      { title: "T-Scan Bite Analysis", icon: "Activity" },
+      { title: "CAD/CAM Restorations", icon: "Award" },
+      { title: "Guided Implantology", icon: "ShieldCheck" }
+    ],
+    infographic: "/full_banner.png",
     infographicData: {
       title: "FULL MOUTH REHABILITATION",
       description: "An extensive, phased treatment plan that completely rebuilds and restores all teeth in the mouth, combining implants, crowns, and bite correction.",
