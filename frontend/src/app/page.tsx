@@ -54,7 +54,7 @@ export default function Home() {
               </div>
               
               {/* Floating Badge */}
-              <div className="absolute -bottom-4 left-4 md:-bottom-6 md:-left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-premium flex items-center space-x-4 border border-white animate-float z-20">
+              <div className="relative mt-8 md:mt-0 mx-auto md:mx-0 md:absolute md:-bottom-6 md:-left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-premium flex items-center justify-center md:justify-start space-x-4 border border-white animate-float z-20 w-fit">
                 <div className="bg-gradient-to-br from-brand-light to-white p-3 rounded-xl text-brand shadow-sm">
                   <Shield className="w-6 h-6" />
                 </div>
@@ -152,7 +152,7 @@ export default function Home() {
       </main>
 
       {/* Sticky Bottom CTA for Mobile */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] z-50 p-4 flex gap-3 border-t border-white/50">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] z-50 p-4 pb-8 flex gap-3 border-t border-white/50">
         <a href="tel:+917997994646" className="flex-1 bg-brand-light/80 text-brand font-bold py-3.5 rounded-xl flex items-center justify-center text-sm shadow-sm">
           <Phone className="w-4 h-4 mr-2" />
           Call Now
