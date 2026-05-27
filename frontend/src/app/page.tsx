@@ -123,7 +123,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand transition-colors">Invisalign</h3>
                 <p className="text-slate-600 mb-6 text-sm leading-relaxed">Clear, comfortable, and discreet aligners for a perfectly straight smile without braces.</p>
-                <Link href="/treatments/invisalign" className="text-brand font-semibold flex items-center group-hover:text-brand-dark">
+                <Link href="/treatments/invisalign-treatment" className="text-brand font-semibold flex items-center group-hover:text-brand-dark">
                   Learn more <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
                 </Link>
               </div>
@@ -135,7 +135,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand transition-colors">Smile Makeover</h3>
                 <p className="text-slate-600 mb-6 text-sm leading-relaxed">Comprehensive cosmetic treatments including veneers and whitening for a flawless smile.</p>
-                <Link href="/treatments/smile-makeover" className="text-brand font-semibold flex items-center group-hover:text-brand-dark">
+                <Link href="/treatments/smile-designing" className="text-brand font-semibold flex items-center group-hover:text-brand-dark">
                   Learn more <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
                 </Link>
               </div>

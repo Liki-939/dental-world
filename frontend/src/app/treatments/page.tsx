@@ -26,20 +26,20 @@ const treatments = [
     icon: Activity,
   },
   {
-    id: 'invisalign',
-    title: 'Braces & Aligners',
-    description: 'Clear, invisible aligners and traditional braces to straighten teeth and correct misaligned bites.',
+    id: 'invisalign-treatment',
+    title: 'Invisalign Treatment',
+    description: 'Clear, invisible aligners to straighten teeth and correct misaligned bites.',
     icon: Sparkles,
   },
   {
-    id: 'crowns-and-bridges',
-    title: 'Crowns & Bridges',
-    description: 'Premium Zirconia and Ceramic crowns to restore damaged teeth and bridge gaps.',
+    id: 'braces',
+    title: 'Braces',
+    description: 'Traditional and ceramic braces for perfect teeth alignment.',
     icon: ShieldPlus,
   },
   {
-    id: 'smile-makeover',
-    title: 'Cosmetic Dentistry',
+    id: 'smile-designing',
+    title: 'Smile Designing',
     description: 'Complete smile makeovers including porcelain veneers, teeth whitening, and gum contouring.',
     icon: Smile,
   },
@@ -50,16 +50,10 @@ const treatments = [
     icon: Baby,
   },
   {
-    id: 'laser-dentistry',
-    title: 'Laser Dentistry',
-    description: 'Minimally invasive laser treatments for gum disease, surgery, and faster healing without bleeding.',
+    id: 'full-mouth-rehabilitation',
+    title: 'Full Mouth Rehabilitation',
+    description: 'Extensive treatment plan designed to rebuild or simultaneously restore all of the teeth.',
     icon: Heart,
-  },
-  {
-    id: 'advanced-painless-dentistry',
-    title: 'Advanced Painless Dentistry',
-    description: 'General dentistry, scaling, and fillings performed with computer-controlled anesthesia for zero pain.',
-    icon: Star,
   }
 ];
 

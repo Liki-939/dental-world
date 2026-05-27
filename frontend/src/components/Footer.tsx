@@ -35,8 +35,8 @@ export default function Footer() {
           <ul className="space-y-2 text-sm">
             <li><Link href="/treatments/dental-implants" className="hover:text-white transition">Dental Implants</Link></li>
             <li><Link href="/treatments/root-canal-treatment" className="hover:text-white transition">Root Canal Treatment</Link></li>
-            <li><Link href="/treatments/invisalign" className="hover:text-white transition">Invisalign</Link></li>
-            <li><Link href="/treatments/smile-makeover" className="hover:text-white transition">Smile Makeover</Link></li>
+            <li><Link href="/treatments/invisalign-treatment" className="hover:text-white transition">Invisalign</Link></li>
+            <li><Link href="/treatments/smile-designing" className="hover:text-white transition">Smile Makeover</Link></li>
             <li><Link href="/treatments" className="hover:text-white transition">All Treatments</Link></li>
           </ul>
         </div>
