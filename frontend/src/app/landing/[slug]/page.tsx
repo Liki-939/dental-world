@@ -2,36 +2,9 @@ import { Metadata } from 'next';
 import Footer from '@/components/Footer';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import TreatmentCostCards from '@/components/TreatmentCostCards';
-import { Calendar, Phone, CheckCircle2 } from 'lucide-react';
+import { Calendar, CheckCircle2 } from 'lucide-react';
 
-// Specialized Navbar for Landing Pages (No outbound links to keep focus)
-function LandingNavbar() {
-  return (
-    <header className="w-full bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <div className="bg-brand text-white p-2 rounded-lg">
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C8.69 2 6 4.69 6 8c0 1.5.5 2.89 1.35 4.04L12 22l4.65-9.96C17.5 10.89 18 9.5 18 8c0-3.31-2.69-6-6-6zm0 2c2.21 0 4 1.79 4 4 0 1.05-.41 2.02-1.08 2.76L12 17.56l-2.92-6.8A3.99 3.99 0 018 8c0-2.21 1.79-4 4-4z" />
-            </svg>
-          </div>
-          <div>
-            <h1 className="font-heading font-bold text-xl text-brand-dark leading-tight">DENTAL WORLD</h1>
-          </div>
-        </div>
-        <div className="flex items-center space-x-4">
-          <a href="tel:+917997994646" className="hidden md:flex items-center text-slate-700 font-bold hover:text-brand transition">
-            <Phone className="w-5 h-5 mr-2" /> +91 799 799 4646
-          </a>
-          <a href="#book-now" className="bg-brand hover:bg-brand-dark text-white px-5 py-2.5 rounded-full font-bold transition shadow-md text-sm">
-            Book Now
-          </a>
-        </div>
-      </div>
-    </header>
-  );
-}
-
+import Navbar from '@/components/Navbar';
 // In a real app, this would be fetched from the Django backend API
 const getLandingData = (slug: string) => {
   return {
@@ -84,7 +57,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className="flex flex-col min-h-screen bg-surface">
-      <LandingNavbar />
+      <Navbar />
       
       {/* 1. Hero Section (High Conversion Focus) */}
       <section className="bg-brand-light py-12 md:py-20">

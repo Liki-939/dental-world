@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -132,11 +133,12 @@ export default function TreatmentsPage() {
               </div>
               <div className="lg:w-2/3">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-700/50 bg-slate-800">
-                  <img 
+                  <Image 
                     src="/chatgpt_dental_image.png" 
                     alt="Smile Transformations Overview" 
+                    width={1000}
+                    height={600}
                     className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-700"
-                    loading="lazy"
                   />
                 </div>
               </div>

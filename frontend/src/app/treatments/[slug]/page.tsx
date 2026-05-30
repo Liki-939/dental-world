@@ -4,13 +4,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import FAQAccordion from '@/components/FAQAccordion';
-import TestimonialsCarousel from '@/components/TestimonialsCarousel';
-import TreatmentCostCards from '@/components/TreatmentCostCards';
-import AnimatedSection from '@/components/AnimatedSection';
+import dynamic from 'next/dynamic';
+
+const FAQAccordion = dynamic(() => import('@/components/FAQAccordion'), { ssr: true });
+const TreatmentCostCards = dynamic(() => import('@/components/TreatmentCostCards'), { ssr: true });
+
 import { 
-  Calendar, Phone, Shield, Star, CheckCircle2, Award, Clock, Stethoscope,
-  Activity, Droplet, UserCheck, ShieldCheck, HeartPulse, ScanLine, Hospital, MapPin, Smile, ChevronRight, PlayCircle
+  Calendar, Phone, Shield, Star, CheckCircle2, Award, Stethoscope,
+  Activity, UserCheck, ShieldCheck, HeartPulse, ScanLine, Hospital, MapPin, Smile, ChevronRight
 } from 'lucide-react';
 import { treatmentsData } from '@/data/treatments';
 
@@ -62,7 +63,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                 <span className="bg-brand-light px-3 py-1 rounded-full">Trusted</span>
               </div>
               
-              <h1 className="text-[2.1rem] sm:text-4xl md:text-5xl lg:text-[54px] leading-[1.15] sm:leading-[1.1] font-heading font-extrabold text-slate-900 mb-4">
+              <h1 className="text-3xl sm:text-[2.1rem] md:text-5xl lg:text-[54px] leading-[1.15] sm:leading-[1.1] font-heading font-extrabold text-slate-900 mb-4">
                 {data.title} Cost <br/>in <span className="text-brand">Hyderabad</span>
               </h1>
               
@@ -72,8 +73,8 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
 
               {/* Trust Indicators in Hero */}
               <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-4 mb-8">
-                <div className="flex items-center gap-2 bg-white/60 px-3 sm:px-4 py-2 rounded-xl border border-white">
-                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-brand">
+                <div className="flex items-center gap-2 bg-white/60 px-2 sm:px-4 py-2 rounded-xl border border-white">
+                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-brand shrink-0">
                     <Award className="w-4 h-4" />
                   </div>
                   <div>
@@ -81,8 +82,8 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                     <div className="text-[10px] text-slate-500 uppercase font-semibold">Years Experience</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 bg-white/60 px-3 sm:px-4 py-2 rounded-xl border border-white">
-                  <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                <div className="flex items-center gap-2 bg-white/60 px-2 sm:px-4 py-2 rounded-xl border border-white">
+                  <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0">
                     <Smile className="w-4 h-4" />
                   </div>
                   <div>
@@ -90,8 +91,8 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                     <div className="text-[10px] text-slate-500 uppercase font-semibold">Happy Patients</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 bg-white/60 px-3 sm:px-4 py-2 rounded-xl border border-white">
-                  <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                <div className="flex items-center gap-2 bg-white/60 px-2 sm:px-4 py-2 rounded-xl border border-white">
+                  <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 shrink-0">
                     <ShieldCheck className="w-4 h-4" />
                   </div>
                   <div>
@@ -99,7 +100,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                     <div className="text-[10px] text-slate-500 uppercase font-semibold">Technology</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 bg-white/60 px-3 sm:px-4 py-2 rounded-xl border border-white">
+                <div className="flex items-center gap-2 bg-white/60 px-2 sm:px-4 py-2 rounded-xl border border-white">
                   <div className="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 shrink-0">
                     <Shield className="w-4 h-4" />
                   </div>
@@ -446,22 +447,22 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
       </section>
 
       {/* 9. Fixed Bottom Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-10px_30px_-15px_rgba(0,0,0,0.3)] z-50 p-3 lg:p-4 border-t border-slate-200">
-        <div className="container mx-auto max-w-7xl flex gap-3 lg:gap-6 items-center justify-between">
-          <a href="tel:+918247478663" className="flex-1 lg:flex-none lg:w-1/3 bg-slate-900 text-white font-bold py-3.5 lg:py-4 rounded-xl lg:rounded-full flex items-center justify-center text-sm lg:text-base hover:bg-slate-800 transition">
-            <Phone className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
+      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-10px_30px_-15px_rgba(0,0,0,0.3)] z-50 p-2 lg:p-4 border-t border-slate-200">
+        <div className="container mx-auto max-w-7xl flex gap-2 sm:gap-3 lg:gap-6 items-center justify-between">
+          <a href="tel:+918247478663" className="flex-1 lg:flex-none lg:w-1/3 bg-slate-900 text-white font-bold py-3 lg:py-4 rounded-xl lg:rounded-full flex items-center justify-center text-sm lg:text-base hover:bg-slate-800 transition">
+            <Phone className="w-4 h-4 lg:w-5 lg:h-5 sm:mr-2" />
             <span className="hidden lg:inline">Call Now : +91 8247478663</span>
-            <span className="lg:hidden">Call Now</span>
+            <span className="hidden sm:inline lg:hidden text-xs">Call Now</span>
           </a>
-          <a href="https://wa.me/918247478663" className="flex-1 lg:flex-none lg:w-1/3 bg-green-500 text-white font-bold py-3.5 lg:py-4 rounded-xl lg:rounded-full flex items-center justify-center text-sm lg:text-base hover:bg-green-600 transition">
-            <Image src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width={20} height={20} className="mr-2 brightness-0 invert lg:w-5 lg:h-5" />
+          <a href="https://wa.me/918247478663" className="flex-1 lg:flex-none lg:w-1/3 bg-green-500 text-white font-bold py-3 lg:py-4 rounded-xl lg:rounded-full flex items-center justify-center text-sm lg:text-base hover:bg-green-600 transition">
+            <Image src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width={20} height={20} className="sm:mr-2 brightness-0 invert lg:w-5 lg:h-5 w-4 h-4" />
             <span className="hidden lg:inline">WhatsApp Us (Instant Reply)</span>
-            <span className="lg:hidden">WhatsApp</span>
+            <span className="hidden sm:inline lg:hidden text-xs">WhatsApp</span>
           </a>
-          <Link href="/book-appointment" className="flex-1 lg:flex-none lg:w-1/3 bg-brand text-white font-bold py-3.5 lg:py-4 rounded-xl lg:rounded-full flex items-center justify-center text-sm lg:text-base hover:bg-brand-dark transition shadow-lg shadow-brand/30">
-            <Calendar className="w-4 h-4 lg:w-5 lg:h-5 mr-2 hidden lg:block" />
+          <Link href="/book-appointment" className="flex-1 lg:flex-none lg:w-1/3 bg-brand text-white font-bold py-3 lg:py-4 rounded-xl lg:rounded-full flex items-center justify-center text-sm lg:text-base hover:bg-brand-dark transition shadow-lg shadow-brand/30">
+            <Calendar className="w-4 h-4 lg:w-5 lg:h-5 mr-1 sm:mr-2 hidden sm:block" />
             <span className="hidden lg:inline">Book Appointment (Free Consultation)</span>
-            <span className="lg:hidden">Book Appt</span>
+            <span className="lg:hidden text-[11px] sm:text-xs">Book Appt</span>
           </Link>
         </div>
       </div>

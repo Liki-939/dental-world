@@ -3,7 +3,9 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, Star, Clock, Shield, Award, Calendar, Phone } from "lucide-react";
-import PromotionalBanner from "@/components/PromotionalBanner";
+import dynamic from "next/dynamic";
+
+const PromotionalBanner = dynamic(() => import("@/components/PromotionalBanner"), { ssr: true });
 
 export default function Home() {
   return (
@@ -18,7 +20,7 @@ export default function Home() {
               <div className="inline-block bg-white/80 backdrop-blur-sm text-brand-dark px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm border border-brand/20">
                 ⭐ 4.9/5 Based on 500+ Google Reviews
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-slate-900 mb-6 leading-tight text-balance">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-slate-900 mb-6 leading-tight text-balance">
                 Advanced Dental Care for a <span className="text-brand bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand-dark">Beautiful Smile</span>
               </h1>
               <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 text-balance">
@@ -160,12 +162,12 @@ export default function Home() {
       </main>
 
       {/* Sticky Bottom CTA for Mobile */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] z-50 p-4 pb-8 flex gap-3 border-t border-white/50">
-        <a href="tel:+917997994646" className="flex-1 bg-brand-light/80 text-brand font-bold py-3.5 rounded-xl flex items-center justify-center text-sm shadow-sm">
-          <Phone className="w-4 h-4 mr-2" />
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] z-50 p-4 pb-4 sm:pb-8 flex gap-3 border-t border-white/50">
+        <a href="tel:+917997994646" className="flex-1 bg-brand-light/80 text-brand font-bold py-3.5 rounded-xl flex items-center justify-center text-xs sm:text-sm shadow-sm">
+          <Phone className="w-4 h-4 mr-1 sm:mr-2" />
           Call Now
         </a>
-        <Link href="/book-appointment" className="flex-1 bg-gradient-to-r from-brand to-brand-dark text-white font-bold py-3.5 rounded-xl flex items-center justify-center text-sm shadow-md">
+        <Link href="/book-appointment" className="flex-1 bg-gradient-to-r from-brand to-brand-dark text-white font-bold py-3.5 rounded-xl flex items-center justify-center text-xs sm:text-sm shadow-md text-center">
           Book Appointment
         </Link>
       </div>
