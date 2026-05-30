@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Calendar, Clock, MapPin, Phone } from 'lucide-react';
+import { Clock, MapPin, Phone } from 'lucide-react';
+import BookAppointmentForm from '@/components/BookAppointmentForm';
 
 export const metadata: Metadata = {
   title: 'Book Appointment | Dental World',
@@ -65,65 +66,7 @@ export default function BookAppointmentPage() {
 
             {/* Appointment Form Panel */}
             <div className="lg:w-2/3 p-10">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Full Name *</label>
-                    <input type="text" required className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition bg-slate-50 focus:bg-white" placeholder="John Doe" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Phone Number *</label>
-                    <input type="tel" required className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition bg-slate-50 focus:bg-white" placeholder="+91 00000 00000" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-                    <input type="email" className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition bg-slate-50 focus:bg-white" placeholder="john@example.com" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Select Treatment</label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition bg-slate-50 focus:bg-white">
-                      <option>General Consultation</option>
-                      <option>Dental Implants</option>
-                      <option>Invisalign / Braces</option>
-                      <option>Root Canal</option>
-                      <option>Smile Makeover</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Preferred Location *</label>
-                    <select required className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition bg-slate-50 focus:bg-white">
-                      <option value="">Select a location</option>
-                      <option>Pragathi Nagar</option>
-                      <option>Bachupally</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Preferred Date</label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Calendar className="h-5 w-5 text-slate-400" />
-                      </div>
-                      <input type="date" className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition bg-slate-50 focus:bg-white" />
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Message (Optional)</label>
-                  <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition bg-slate-50 focus:bg-white" placeholder="Tell us more about your dental concern..."></textarea>
-                </div>
-
-                <button type="submit" className="w-full md:w-auto bg-brand hover:bg-brand-dark text-white font-bold py-4 px-10 rounded-xl transition shadow-lg flex justify-center items-center">
-                  Confirm Appointment Request
-                </button>
-              </form>
+              <BookAppointmentForm />
             </div>
           </div>
         </div>
