@@ -1,4 +1,4 @@
-import { prisma } from '../../lib/prisma';
+import { prisma } from '../../db/prisma';
 import { Calendar, MapPin, Phone, Mail, Clock } from 'lucide-react';
 import BookingStatusActions from '@/components/BookingStatusActions';
 

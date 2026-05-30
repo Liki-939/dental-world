@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '../../lib/prisma';
+import { prisma } from '../../db/prisma';
 import { revalidatePath } from 'next/cache';
 
 export async function updateBookingStatus(id: string, newStatus: string) {
