@@ -2,175 +2,791 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CheckCircle2, Star, Clock, Shield, Award, Calendar, Phone } from "lucide-react";
-import dynamic from "next/dynamic";
-
-const PromotionalBanner = dynamic(() => import("@/components/PromotionalBanner"), { ssr: true });
+import { 
+  Star, 
+  Clock, 
+  Shield, 
+  Award, 
+  Calendar, 
+  Phone, 
+  MapPin, 
+  ChevronLeft, 
+  ChevronRight, 
+  Users, 
+  Layers 
+} from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen pb-24 md:pb-0">
+    <div className="flex flex-col min-h-screen bg-slate-50/50 pb-16 md:pb-0 font-sans relative">
       <Navbar />
-      
+
+      {/* Floating Action Bar (Desktop only, right side) */}
+      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col bg-white shadow-premium rounded-2xl border border-slate-100 py-5 px-3 space-y-5 text-center items-center w-24">
+        <a href="tel:+918247478663" className="flex flex-col items-center group">
+          <div className="w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </div>
+          <span className="text-[11px] font-bold text-slate-800 mt-1.5 transition-colors group-hover:text-blue-600">Call Us</span>
+        </a>
+        
+        <div className="w-full h-[1px] bg-slate-100"></div>
+        
+        <a href="https://wa.me/917997994646" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group">
+          <div className="w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
+            <svg className="w-5.5 h-5.5 fill-white" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+            </svg>
+          </div>
+          <span className="text-[11px] font-bold text-slate-800 mt-1.5 transition-colors group-hover:text-green-500">WhatsApp</span>
+        </a>
+        
+        <div className="w-full h-[1px] bg-slate-100"></div>
+        
+        <a href="#our-clinics" className="flex flex-col items-center group">
+          <div className="w-10 h-10 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <span className="text-[11px] font-bold text-slate-800 mt-1.5 transition-colors group-hover:text-red-500">Visit Us</span>
+        </a>
+      </div>
+
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-slate-50 via-brand-light/30 to-brand-light overflow-hidden pt-16 pb-24 lg:pt-24 lg:pb-32">
-          <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center">
-            <div className="lg:w-1/2 lg:pr-12 text-center lg:text-left mb-12 lg:mb-0 animate-fade-in-up">
-              <div className="inline-block bg-white/80 backdrop-blur-sm text-brand-dark px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm border border-brand/20">
-                ⭐ 4.9/5 Based on 500+ Google Reviews
-              </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-slate-900 mb-6 leading-tight text-balance">
-                Advanced Dental Care for a <span className="text-brand bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand-dark">Beautiful Smile</span>
-              </h1>
-              <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 text-balance">
-                Experience world-class dentistry with transparent pricing, advanced technology, and a patient-first approach in Hyderabad.
-              </p>
+        
+        {/* HERO SECTION */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#eaf4ff] via-[#f5f9ff] to-white pt-10 pb-20 lg:pt-16 lg:pb-24">
+          <div className="container mx-auto px-4 max-w-7xl relative z-10">
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
               
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 mb-10">
-                <Link href="/book-appointment" className="w-full sm:w-auto bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-lg hover:shadow-xl flex items-center justify-center">
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Book Free Consultation
-                </Link>
-                <a href="https://wa.me/917997994646" className="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-lg hover:shadow-xl flex items-center justify-center">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                  WhatsApp Us
-                </a>
+              {/* Left Column */}
+              <div className="w-full lg:w-[52%] space-y-6 text-left">
+                <span className="inline-block bg-blue-50 text-blue-600 text-[11px] md:text-xs font-bold tracking-wider uppercase px-4 py-1.5 rounded-full border border-blue-100">
+                  HYDERABAD'S MOST TRUSTED DENTAL CARE
+                </span>
+                
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0a1d37] font-heading leading-[1.1]">
+                  Advanced Care.<br />
+                  Beautiful Smiles.<br />
+                  <span className="text-blue-600">For Life.</span>
+                </h1>
+                
+                <p className="text-base md:text-lg text-slate-650 max-w-xl font-medium leading-relaxed">
+                  Expert dentists. Advanced technology. Personalized care for you and your family.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
+                  <Link href="/book-appointment" className="w-full sm:w-auto bg-[#0056D2] hover:bg-blue-700 text-white px-7 py-3.5 rounded-[5px] font-bold transition flex items-center justify-center text-base shadow-sm">
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    Book Consultation
+                  </Link>
+                  
+                  <a href="https://wa.me/917997994646" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto border-2 border-green-500 hover:bg-green-50 text-green-600 px-7 py-3 rounded-[5px] font-bold transition flex items-center justify-center text-base">
+                    <svg className="w-5.5 h-5.5 mr-2 fill-green-600" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                    </svg>
+                    WhatsApp Us
+                  </a>
+                </div>
+
+                {/* Sub features list */}
+                <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-[13.5px] font-bold text-slate-800 pt-6 border-t border-slate-200">
+                  <div className="flex items-center">
+                    <svg className="w-5 h-5 text-blue-600 mr-2 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    Experienced Dentists
+                  </div>
+                  <span className="text-slate-300 hidden sm:inline">|</span>
+                  <div className="flex items-center">
+                    <svg className="w-5 h-5 text-blue-600 mr-2 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    Advanced Technology
+                  </div>
+                  <span className="text-slate-300 hidden sm:inline">|</span>
+                  <div className="flex items-center">
+                    <svg className="w-5 h-5 text-blue-600 mr-2 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                    </svg>
+                    Painless Treatments
+                  </div>
+                </div>
               </div>
 
-              <div className="flex items-center justify-center lg:justify-start space-x-6 text-sm font-medium text-slate-700">
-                <div className="flex items-center"><CheckCircle2 className="w-5 h-5 text-brand mr-2" /> EMI Available</div>
-                <div className="flex items-center"><CheckCircle2 className="w-5 h-5 text-brand mr-2" /> Advanced Tech</div>
+              {/* Right Column (Hero image - dentist treating smiling patient) */}
+              <div className="w-full lg:w-[48%] relative flex justify-center">
+                <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80" 
+                    alt="Patient smiling in dental clinic" 
+                    fill 
+                    className="object-cover"
+                    priority
+                  />
+                </div>
               </div>
+
             </div>
+          </div>
+        </section>
+
+        {/* TREATMENTS GRID */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 max-w-7xl text-center">
             
-            <div className="lg:w-1/2 relative animate-fade-in-up-delay-1">
-              <div className="absolute inset-0 bg-brand/10 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/4 animate-pulse duration-1000"></div>
-              <div className="relative w-full aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-premium border-[12px] border-white/50 backdrop-blur-sm">
-                <Image 
-                  src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80" 
-                  alt="Dentist treating patient" 
-                  fill 
-                  className="object-cover"
-                  priority
-                />
-              </div>
+            {/* 8 Treatment Cards Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
               
-              {/* Floating Badge */}
-              <div className="relative mt-8 md:mt-0 mx-auto md:mx-0 md:absolute md:-bottom-6 md:-left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-premium flex items-center justify-center md:justify-start space-x-4 border border-white animate-float z-20 w-fit">
-                <div className="bg-gradient-to-br from-brand-light to-white p-3 rounded-xl text-brand shadow-sm">
-                  <Shield className="w-6 h-6" />
+              {/* Card 1: General Dentistry */}
+              <Link href="/treatments" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
+                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                    <path d="M12 2C8.69 2 6 4.69 6 8c0 3.31 2.31 5.62 2.31 8.5C8.31 18.84 7 21 7 22c1.5 0 3.5-1 5-2.75 1.5 1.75 3.5 2.75 5 2.75 0-1-1.31-3.16-1.31-5.5C15.69 13.62 18 11.31 18 8c0-3.31-2.69-6-6-6z" />
+                  </svg>
                 </div>
-                <div>
-                  <p className="font-bold text-slate-900 text-lg">15+ Years</p>
-                  <p className="text-xs text-brand font-bold uppercase tracking-wider">Experience</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Trust Badges */}
-        <section className="py-12 bg-white border-b border-slate-100">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="flex flex-col items-center text-center">
-                <div className="text-brand mb-3 bg-brand-light p-4 rounded-2xl"><Star className="w-8 h-8" /></div>
-                <h3 className="font-bold text-xl text-slate-900">5000+</h3>
-                <p className="text-sm text-slate-500">Happy Patients</p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="text-brand mb-3 bg-brand-light p-4 rounded-2xl"><Shield className="w-8 h-8" /></div>
-                <h3 className="font-bold text-xl text-slate-900">100%</h3>
-                <p className="text-sm text-slate-500">Sterile & Safe</p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="text-brand mb-3 bg-brand-light p-4 rounded-2xl"><Award className="w-8 h-8" /></div>
-                <h3 className="font-bold text-xl text-slate-900">Advanced</h3>
-                <p className="text-sm text-slate-500">Digital Technology</p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="text-brand mb-3 bg-brand-light p-4 rounded-2xl"><Clock className="w-8 h-8" /></div>
-                <h3 className="font-bold text-xl text-slate-900">0% EMI</h3>
-                <p className="text-sm text-slate-500">Easy Payment Options</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Promotional Banner Section */}
-        <section className="py-20 bg-slate-50">
-          <div className="container mx-auto px-4">
-            <PromotionalBanner />
-          </div>
-        </section>
-
-        {/* Treatments Section */}
-        <section className="py-20 bg-surface-muted">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">Our Specialised Treatments</h2>
-              <p className="text-slate-600 text-lg">Comprehensive dental care tailored to your unique needs using state-of-the-art technology.</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Treatment Card 1 */}
-              <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-glow hover:-translate-y-2 transition-all duration-300 group border border-slate-100">
-                <div className="w-16 h-16 bg-gradient-to-br from-brand-light to-white text-brand rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand transition-colors">Dental Implants</h3>
-                <p className="text-slate-600 mb-6 text-sm leading-relaxed">Permanent, natural-looking tooth replacements that restore your smile and confidence.</p>
-                <Link href="/treatments/dental-implants" className="text-brand font-semibold flex items-center group-hover:text-brand-dark">
-                  Learn more <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                </Link>
-              </div>
-
-              {/* Treatment Card 2 */}
-              <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-glow hover:-translate-y-2 transition-all duration-300 group border border-slate-100">
-                <div className="w-16 h-16 bg-gradient-to-br from-brand-light to-white text-brand rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand transition-colors">Invisalign</h3>
-                <p className="text-slate-600 mb-6 text-sm leading-relaxed">Clear, comfortable, and discreet aligners for a perfectly straight smile without braces.</p>
-                <Link href="/treatments/invisalign-treatment" className="text-brand font-semibold flex items-center group-hover:text-brand-dark">
-                  Learn more <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                </Link>
-              </div>
-
-              {/* Treatment Card 3 */}
-              <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-glow hover:-translate-y-2 transition-all duration-300 group border border-slate-100">
-                <div className="w-16 h-16 bg-gradient-to-br from-brand-light to-white text-brand rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand transition-colors">Smile Makeover</h3>
-                <p className="text-slate-600 mb-6 text-sm leading-relaxed">Comprehensive cosmetic treatments including veneers and whitening for a flawless smile.</p>
-                <Link href="/treatments/smile-designing" className="text-brand font-semibold flex items-center group-hover:text-brand-dark">
-                  Learn more <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                </Link>
-              </div>
-            </div>
-            
-            <div className="text-center mt-12">
-              <Link href="/treatments" className="inline-flex items-center text-slate-600 hover:text-brand font-semibold border-b-2 border-transparent hover:border-brand transition">
-                View all treatments
+                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">General Dentistry</span>
               </Link>
+              
+              {/* Card 2: Cosmetic Dentistry */}
+              <Link href="/treatments" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
+                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                    <path d="M12 2c1.5 0 3 1.5 3 4s-1.5 4-3 4-3-1.5-3-4 1.5-4 3-4zm0 8c3 0 6 1.5 6 4.5v1.5H6v-1.5C6 11.5 9 10 12 10z" />
+                    <path d="M19 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" fill="currentColor" />
+                  </svg>
+                </div>
+                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Cosmetic Dentistry</span>
+              </Link>
+              
+              {/* Card 3: Dental Implants */}
+              <Link href="/treatments/dental-implants" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
+                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                    <path d="M12 2v6M10 8h4M8 12h8M9 16h6M12 16v6M7 4h10" />
+                  </svg>
+                </div>
+                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Dental Implants</span>
+              </Link>
+              
+              {/* Card 4: Smile Makeover */}
+              <Link href="/treatments/smile-designing" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
+                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                    <path d="M2.5 12a9.5 9.5 0 0 0 19 0H2.5z" />
+                    <path d="M12 3a9.5 9.5 0 0 0-9.5 9.5h19A9.5 9.5 0 0 0 12 3z" />
+                    <path d="M6 12s2 4 6 4 6-4 6-4" />
+                    <path d="M16.5 6.5l1 1.5 1.5-1-1.5-1z" fill="currentColor" />
+                  </svg>
+                </div>
+                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Smile Makeover</span>
+              </Link>
+              
+              {/* Card 5: Root Canal Treatment */}
+              <Link href="/treatments/root-canal-treatment" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
+                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                    <path d="M12 2C8 2 6 5 6 9c0 3.5 2 6 2 9v4h8v-4c0-3 2-5.5 2-9 0-4-2-7-6-7z" />
+                    <path d="M12 6v8M10 9h4" />
+                  </svg>
+                </div>
+                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Root Canal Treatment</span>
+              </Link>
+              
+              {/* Card 6: Invisalign & Braces */}
+              <Link href="/treatments/invisalign-treatment" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
+                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                    <path d="M12 3C8.5 3 6 5.5 6 9c0 3 2.5 5 2.5 8.5C8.5 19 7.5 21.5 6 23h12c-1.5-1.5-2.5-4-2.5-5.5C15.5 14 18 12 18 9c0-3.5-2.5-6-6-6z" />
+                    <rect x="9.5" y="7" width="5" height="4" rx="0.5" fill="currentColor" className="text-blue-500" />
+                    <path d="M4 9h16" />
+                  </svg>
+                </div>
+                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Invisalign & Braces</span>
+              </Link>
+              
+              {/* Card 7: Teeth Whitening */}
+              <Link href="/treatments/teeth-whitening" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
+                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                    <path d="M12 2C8.5 2 6 4.5 6 8c0 3.5 2.5 5.5 2.5 8.5 0 1-.5 2.5-1.5 3.5 3 .5 5-1.5 5-3.5 0-3 2.5-5 2.5-8.5 0-3.5-2.5-6-6-6z" />
+                    <path d="M12 5l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" fill="currentColor" />
+                  </svg>
+                </div>
+                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Teeth Whitening</span>
+              </Link>
+              
+              {/* Card 8: Kids Dentistry */}
+              <Link href="/treatments" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
+                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                    <circle cx="9" cy="9" r="1.5" fill="currentColor" />
+                    <circle cx="15" cy="9" r="1.5" fill="currentColor" />
+                  </svg>
+                </div>
+                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Kids Dentistry</span>
+              </Link>
+
+            </div>
+
+            <div className="mt-10">
+              <Link href="/treatments" className="inline-flex items-center font-bold text-blue-600 hover:text-blue-750 transition text-base">
+                View All Treatments
+                <svg className="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+
+          </div>
+        </section>
+
+        {/* STATISTICS BANNER */}
+        <section className="bg-[#0b1c3c] text-white py-10">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0">
+              
+              {/* Stat 1 */}
+              <div className="flex flex-col items-center text-center border-slate-800 md:border-r last:border-0 px-4">
+                <Users className="w-8 h-8 text-blue-400 mb-2" />
+                <span className="text-3xl font-extrabold font-heading">15+</span>
+                <span className="text-xs text-slate-400 font-bold uppercase mt-1 tracking-wider">Years of Experience</span>
+              </div>
+              
+              {/* Stat 2 */}
+              <div className="flex flex-col items-center text-center border-slate-800 md:border-r last:border-0 px-4">
+                <svg className="w-8 h-8 text-blue-400 mb-2" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" strokeWidth="2.5" stroke="currentColor" />
+                </svg>
+                <span className="text-3xl font-extrabold font-heading">5000+</span>
+                <span className="text-xs text-slate-400 font-bold uppercase mt-1 tracking-wider">Happy Patients</span>
+              </div>
+              
+              {/* Stat 3 */}
+              <div className="flex flex-col items-center text-center border-slate-800 md:border-r last:border-0 px-4">
+                <Layers className="w-8 h-8 text-blue-400 mb-2" />
+                <span className="text-3xl font-extrabold font-heading">3D</span>
+                <span className="text-xs text-slate-400 font-bold uppercase mt-1 tracking-wider">Advanced Technology</span>
+              </div>
+              
+              {/* Stat 4 */}
+              <div className="flex flex-col items-center text-center border-slate-800 last:border-0 px-4">
+                <MapPin className="w-8 h-8 text-blue-400 mb-2" />
+                <span className="text-3xl font-extrabold font-heading">2</span>
+                <span className="text-xs text-slate-400 font-bold uppercase mt-1 tracking-wider">Clinic Locations</span>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* WHY CHOOSE DENTAL WORLD? */}
+        <section className="py-20 bg-slate-50/70">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+              
+              {/* Left text column */}
+              <div className="w-full lg:w-[45%] space-y-5">
+                <span className="inline-block text-blue-600 text-xs font-bold uppercase tracking-widest">
+                  WHY CHOOSE DENTAL WORLD?
+                </span>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1d37] font-heading leading-tight">
+                  Care That Makes<br />
+                  <span className="text-blue-600">The Difference</span>
+                </h2>
+                <p className="text-slate-655 font-medium leading-relaxed max-w-lg">
+                  We combine advanced technology with gentle care to deliver the best dental experience.
+                </p>
+                <div className="pt-2">
+                  <Link href="/about" className="inline-flex items-center whitespace-nowrap w-fit border border-slate-350 hover:bg-slate-100 text-slate-700 font-bold px-6 py-3 rounded-[5px] transition text-[15px]">
+                    Know More About Us
+                    <svg className="w-5 h-5 ml-2 text-slate-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+              
+              {/* Right grid column */}
+              <div className="w-full lg:w-[55%] grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                {/* Feature 1 */}
+                <div className="flex items-start bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                  <div className="w-11 h-11 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mr-4 mt-0.5">
+                    <svg className="w-5.5 h-5.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M19 8l2 2 4-4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Expert Dentists</h4>
+                    <p className="text-xs text-slate-500 font-medium leading-relaxed">Highly skilled & experienced dental specialists</p>
+                  </div>
+                </div>
+
+                {/* Feature 2 */}
+                <div className="flex items-start bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                  <div className="w-11 h-11 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mr-4 mt-0.5">
+                    <svg className="w-5.5 h-5.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      <path d="M9 11l2 2 4-4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Painless & Comfortable</h4>
+                    <p className="text-xs text-slate-500 font-medium leading-relaxed">Advanced techniques for a pain-free experience</p>
+                  </div>
+                </div>
+
+                {/* Feature 3 */}
+                <div className="flex items-start bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                  <div className="w-11 h-11 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mr-4 mt-0.5">
+                    <svg className="w-5.5 h-5.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                      <line x1="8" y1="21" x2="16" y2="21" />
+                      <line x1="12" y1="17" x2="12" y2="21" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Advanced Technology</h4>
+                    <p className="text-xs text-slate-500 font-medium leading-relaxed">3D imaging, digital smile design & modern equipment</p>
+                  </div>
+                </div>
+
+                {/* Feature 4 */}
+                <div className="flex items-start bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                  <div className="w-11 h-11 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mr-4 mt-0.5">
+                    <svg className="w-5.5 h-5.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Patient First Approach</h4>
+                    <p className="text-xs text-slate-500 font-medium leading-relaxed">Personalized care with your comfort as our priority</p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* BEFORE & AFTER SHOWCASE */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 max-w-7xl">
+            
+            {/* Header */}
+            <div className="flex flex-row justify-between items-end mb-10">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#0a1d37] font-heading leading-tight">
+                Real Transformations.<br className="hidden md:inline" /> Real Smiles.
+              </h2>
+              
+              <Link href="/gallery" className="inline-flex items-center text-blue-600 hover:text-blue-750 font-bold transition text-[15px] shrink-0">
+                View More Results
+                <svg className="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Showcase Row */}
+            <div className="relative">
+              {/* Left Arrow Button */}
+              <button className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-slate-650 hover:text-blue-600 transition">
+                <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
+              </button>
+              
+              {/* Right Arrow Button */}
+              <button className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-slate-650 hover:text-blue-600 transition">
+                <ChevronRight className="w-5 h-5 stroke-[2.5]" />
+              </button>
+              
+              {/* Grid of 3 side-by-side Before/After cards (HTML absolute overlay badges removed as labels are already in the images) */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                {/* Case 1: Implants */}
+                <div className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+                  <div className="flex w-full">
+                    {/* Before Image */}
+                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100">
+                      <Image 
+                        src="/images/cases/implants_before.png"
+                        alt="Dental Implants Before"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    {/* After Image */}
+                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100 border-l border-white">
+                      <Image 
+                        src="/images/cases/implants_after.png"
+                        alt="Dental Implants After"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Case 2: Smile Designing */}
+                <div className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+                  <div className="flex w-full">
+                    {/* Before Image */}
+                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100">
+                      <Image 
+                        src="/images/cases/smile_design_before.png"
+                        alt="Smile Makeover Before"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    {/* After Image */}
+                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100 border-l border-white">
+                      <Image 
+                        src="/images/cases/smile_design_after.png"
+                        alt="Smile Makeover After"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Case 3: Invisalign */}
+                <div className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+                  <div className="flex w-full">
+                    {/* Before Image */}
+                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100">
+                      <Image 
+                        src="/images/cases/invisalign_before.png"
+                        alt="Teeth Realignment Before"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    {/* After Image */}
+                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100 border-l border-white">
+                      <Image 
+                        src="/images/cases/invisalign_after.png"
+                        alt="Teeth Realignment After"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* TESTIMONIALS SECTION */}
+        <section className="py-20 bg-slate-50/50">
+          <div className="container mx-auto px-4 max-w-7xl text-center">
+            
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#0a1d37] font-heading mb-12">
+              Loved by Our Patients
+            </h2>
+
+            {/* Testimonials grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+              {/* Review 1 */}
+              <div className="bg-white p-7 rounded-2xl border border-slate-100 shadow-sm text-left flex flex-col justify-between space-y-4">
+                <div className="space-y-4">
+                  {/* Google and Stars */}
+                  <div className="flex items-center justify-between">
+                    <svg className="w-6 h-6 shrink-0" viewBox="0 0 24 24">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                    </svg>
+                    <div className="flex text-amber-400 space-x-0.5">
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                    </div>
+                  </div>
+                  <p className="text-slate-655 font-medium leading-relaxed text-[14.5px]">
+                    "I got my dental implants done at Dental World. The experience was excellent and totally painless. Highly recommended!"
+                  </p>
+                </div>
+                <span className="font-extrabold text-slate-800 text-sm mt-3 inline-block">- Ramesh, Pragathi Nagar</span>
+              </div>
+
+              {/* Review 2 */}
+              <div className="bg-white p-7 rounded-2xl border border-slate-100 shadow-sm text-left flex flex-col justify-between space-y-4">
+                <div className="space-y-4">
+                  {/* Google and Stars */}
+                  <div className="flex items-center justify-between">
+                    <svg className="w-6 h-6 shrink-0" viewBox="0 0 24 24">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                    </svg>
+                    <div className="flex text-amber-400 space-x-0.5">
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                    </div>
+                  </div>
+                  <p className="text-slate-655 font-medium leading-relaxed text-[14.5px]">
+                    "Very professional team and advanced technology. My smile makeover has given me so much confidence!"
+                  </p>
+                </div>
+                <span className="font-extrabold text-slate-800 text-sm mt-3 inline-block">- Sunitha, Bachupally</span>
+              </div>
+
+              {/* Review 3 */}
+              <div className="bg-white p-7 rounded-2xl border border-slate-100 shadow-sm text-left flex flex-col justify-between space-y-4">
+                <div className="space-y-4">
+                  {/* Google and Stars */}
+                  <div className="flex items-center justify-between">
+                    <svg className="w-6 h-6 shrink-0" viewBox="0 0 24 24">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                    </svg>
+                    <div className="flex text-amber-400 space-x-0.5">
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-4.5 h-4.5 fill-current" />
+                    </div>
+                  </div>
+                  <p className="text-slate-655 font-medium leading-relaxed text-[14.5px]">
+                    "Best dental clinic in Hyderabad! Friendly staff, clean clinic and amazing results."
+                  </p>
+                </div>
+                <span className="font-extrabold text-slate-800 text-sm mt-3 inline-block">- Karthik, Pragathi Nagar</span>
+              </div>
+
+            </div>
+
+            {/* Indicators */}
+            <div className="flex justify-center items-center space-x-2 mt-8">
+              <span className="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+            </div>
+
+          </div>
+        </section>
+
+        {/* CLINIC LOCATIONS */}
+        <section className="py-20 bg-white" id="our-clinics">
+          <div className="container mx-auto px-4 max-w-6xl text-center">
+            
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#0a1d37] font-heading mb-12">
+              Our Clinics
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              {/* Clinic 1: Pragathi Nagar */}
+              <div className="bg-[#f8faff] rounded-3xl p-6 border border-slate-100 flex flex-col sm:flex-row gap-6 text-left shadow-sm hover:shadow-md transition">
+                <div className="w-full sm:w-[45%] relative aspect-[4/3] rounded-2xl overflow-hidden shrink-0 bg-slate-200">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80" 
+                    alt="Pragathi Nagar Clinic Front" 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-between space-y-4">
+                  <div className="space-y-2">
+                    <h3 className="font-extrabold text-lg text-blue-600 tracking-tight flex items-center">
+                      <MapPin className="w-5 h-5 mr-1.5 shrink-0" />
+                      Pragathi Nagar
+                    </h3>
+                    <p className="text-[13.5px] text-slate-500 font-medium leading-relaxed">
+                      #7-1-398, Srinivasa Colony, Pragathi Nagar, Hyderabad - 500090
+                    </p>
+                  </div>
+                  <Link href="/locations/pragathi-nagar" className="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-750 transition mt-2">
+                    View on Map
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Clinic 2: Bachupally */}
+              <div className="bg-[#f8faff] rounded-3xl p-6 border border-slate-100 flex flex-col sm:flex-row gap-6 text-left shadow-sm hover:shadow-md transition">
+                <div className="w-full sm:w-[45%] relative aspect-[4/3] rounded-2xl overflow-hidden shrink-0 bg-slate-200">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80" 
+                    alt="Bachupally Clinic Front" 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-between space-y-4">
+                  <div className="space-y-2">
+                    <h3 className="font-extrabold text-lg text-blue-600 tracking-tight flex items-center">
+                      <MapPin className="w-5 h-5 mr-1.5 shrink-0" />
+                      Bachupally
+                    </h3>
+                    <p className="text-[13.5px] text-slate-500 font-medium leading-relaxed">
+                      Plot No. 2, Main Road, Bachupally, Hyderabad - 500090
+                    </p>
+                  </div>
+                  <Link href="/locations/bachupally" className="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-750 transition mt-2">
+                    View on Map
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* FROM OUR BLOG */}
+        <section className="py-20 bg-slate-50/50">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="flex flex-col lg:flex-row gap-8 items-stretch">
+              
+              {/* Blog list column (Left) */}
+              <div className="w-full lg:w-[35%] flex flex-col justify-between space-y-6">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a1d37] font-heading mb-6 pb-2 border-b border-slate-200">
+                    From Our Blog
+                  </h2>
+                  <div className="space-y-5">
+                    <Link href="/blog" className="block text-slate-700 hover:text-blue-600 font-bold transition leading-tight text-base">
+                      How Long Do Dental Implants Last?
+                    </Link>
+                    <Link href="/blog" className="block text-slate-700 hover:text-blue-600 font-bold transition leading-tight text-base">
+                      Root Canal Treatment: Myths vs Facts
+                    </Link>
+                    <Link href="/blog" className="block text-slate-700 hover:text-blue-600 font-bold transition leading-tight text-base">
+                      Cost of Dental Implants in Hyderabad
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <Link href="/blog" className="inline-flex items-center text-blue-600 hover:text-blue-750 font-bold transition text-base">
+                    View All Blogs
+                    <svg className="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Smiling assistant image cutout (Middle) - fixed height container to prevent collapsing */}
+              <div className="w-full lg:w-[28%] relative hidden lg:flex items-end justify-center">
+                <div className="w-full h-[380px] relative overflow-hidden rounded-2xl shadow-md border border-slate-100">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=600&q=80" 
+                    alt="Dental Nurse Smiling"
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
+              </div>
+
+              {/* Blue CTA Card (Right) */}
+              <div className="w-full lg:w-[37%] bg-[#0b1c3c] text-white p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-lg">
+                <div className="space-y-4 relative z-10">
+                  <h3 className="text-2xl font-extrabold font-heading leading-tight">
+                    Ready for Your Best Smile?
+                  </h3>
+                  <p className="text-xs text-slate-350 font-medium leading-relaxed max-w-xs">
+                    Let our experts help you take the first step towards a healthier, confident smile.
+                  </p>
+                </div>
+                
+                {/* Implants graphics vector shape on the right edge */}
+                <div className="absolute right-0 bottom-4 w-36 h-36 opacity-15 pointer-events-none select-none">
+                  <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full text-white">
+                    <path d="M50 10C42 10 35 15 35 25c0 8 5 12 5 18c0 3-.5 6-1.5 8c2.5.5 5-1 5-3v-4c1.5-1.5 2.5-3.5 2.5-6c0-6.5-6-10-6-10z" />
+                    <rect x="47" y="55" width="6" height="30" rx="2" />
+                    <line x1="43" y1="62" x2="57" y2="62" stroke="currentColor" strokeWidth="2" />
+                    <line x1="43" y1="70" x2="57" y2="70" stroke="currentColor" strokeWidth="2" />
+                    <line x1="43" y1="78" x2="57" y2="78" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                </div>
+
+                <div className="mt-8 relative z-10">
+                  <Link href="/book-appointment" className="inline-flex bg-white hover:bg-slate-100 text-[#0b1c3c] font-bold px-6 py-3.5 rounded-[5px] transition items-center text-sm shadow-sm">
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    Book Consultation
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
 
       </main>
 
-      {/* Sticky Bottom CTA for Mobile */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] z-50 p-4 pb-4 sm:pb-8 flex gap-3 border-t border-white/50">
-        <a href="tel:+917997994646" className="flex-1 bg-brand-light/80 text-brand font-bold py-3.5 rounded-xl flex items-center justify-center text-xs sm:text-sm shadow-sm">
-          <Phone className="w-4 h-4 mr-1 sm:mr-2" />
-          Call Now
+      {/* Sticky Bottom Call/Book Bar for Mobile */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-[0_-8px_30px_rgba(0,0,0,0.08)] z-50 p-3.5 flex gap-3 border-t border-slate-100">
+        <a href="tel:+918247478663" className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-3 rounded-lg flex items-center justify-center text-sm transition">
+          <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          Call Us
         </a>
-        <Link href="/book-appointment" className="flex-1 bg-gradient-to-r from-brand to-brand-dark text-white font-bold py-3.5 rounded-xl flex items-center justify-center text-xs sm:text-sm shadow-md text-center">
+        <Link href="/book-appointment" className="flex-1 bg-[#0056D2] hover:bg-blue-700 text-white font-bold py-3 rounded-lg flex items-center justify-center text-sm transition text-center shadow-sm">
           Book Appointment
         </Link>
       </div>
+
+      {/* Floating Sticky Green WhatsApp Button (Bottom-Right) */}
+      <a 
+        href="https://wa.me/917997994646" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="fixed bottom-6 right-6 z-50 bg-[#25d366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-2xl transition hover:scale-110 flex items-center justify-center group animate-bounce"
+        aria-label="Contact us on WhatsApp"
+        style={{ animationDuration: '3s' }}
+      >
+        <svg className="w-6.5 h-6.5 fill-white" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+      </a>
 
       <Footer />
     </div>

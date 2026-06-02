@@ -507,5 +507,32 @@ export const treatmentsData: Record<string, TreatmentData> = {
         { text: "Avoid extremely hard or sticky foods", icon: "Apple" }
       ]
     }
+  },
+  'teeth-whitening': {
+    title: 'Teeth Whitening',
+    hero_headline: 'Instant Teeth Whitening in Hyderabad',
+    hero_subheadline: 'Brighten your smile up to 8 shades in just 45 minutes.',
+    aboutText: 'Professional teeth whitening is a highly effective, safe procedure designed to remove stains and discoloration from your teeth, restoring a bright and youthful smile.',
+    whenRequired: 'Recommended for patients with yellow or stained teeth from coffee, tea, wine, smoking, or natural aging.',
+    benefits: [
+      'Instant Results: Up to 8 shades whiter in 1 sitting.',
+      'Safe for Enamel: US-FDA approved whitening gels.',
+      'Painless Laser Tech: Minimizes sensitivity.',
+      'Long Lasting: Enjoy a bright smile for years.'
+    ],
+    duration: 'Typically completed in a single 45-60 minute visit.',
+    procedure: 'A whitening gel is applied to the teeth and activated with a specialized laser light to break down stains.',
+    pricing: [
+      { title: "Laser Whitening", price: "7,500", features: ["Consultation", "1-Sitting Laser Procedure", "FDA-Approved Gels"] }
+    ],
+    faqs: [
+      { question: "Does it cause sensitivity?", answer: "We use protective gels and advanced laser technology to prevent tooth sensitivity." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Karthik", text: "Amazing results! Got it done before my wedding, and my smile was so bright.", rating: 5, treatment_name: "Teeth Whitening" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/smile_design_before.png", afterImg: "/images/cases/smile_design_after.png", description: "Teeth whitened up to 8 shades whiter." }
+    ]
   }
 };
