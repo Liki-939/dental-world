@@ -2,23 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { 
-  Star, 
-  Clock, 
-  Shield, 
-  Award, 
-  Calendar, 
-  Phone, 
-  MapPin, 
-  ChevronLeft, 
-  ChevronRight, 
-  Users, 
-  Layers 
+import BeforeAfterShowcase from "@/components/BeforeAfterShowcase";
+import {
+  Star,
+  Clock,
+  Shield,
+  Award,
+  Calendar,
+  Phone,
+  MapPin,
+  Users,
+  Layers
 } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50/50 pb-16 md:pb-0 font-sans relative">
+    <div className="flex flex-col min-h-screen bg-slate-50/50 pb-20 lg:pb-0 font-sans relative">
       <Navbar />
 
       {/* Floating Action Bar (Desktop only, right side) */}
@@ -31,20 +30,20 @@ export default function Home() {
           </div>
           <span className="text-[11px] font-bold text-slate-800 mt-1.5 transition-colors group-hover:text-blue-600">Call Us</span>
         </a>
-        
+
         <div className="w-full h-[1px] bg-slate-100"></div>
-        
+
         <a href="https://wa.me/917997994646" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group">
           <div className="w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
-            <svg className="w-5.5 h-5.5 fill-white" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+            <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
             </svg>
           </div>
           <span className="text-[11px] font-bold text-slate-800 mt-1.5 transition-colors group-hover:text-green-500">WhatsApp</span>
         </a>
-        
+
         <div className="w-full h-[1px] bg-slate-100"></div>
-        
+
         <a href="#our-clinics" className="flex flex-col items-center group">
           <div className="w-10 h-10 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -57,28 +56,28 @@ export default function Home() {
       </div>
 
       <main className="flex-grow">
-        
+
         {/* HERO SECTION */}
         <section className="relative overflow-hidden bg-gradient-to-br from-[#eaf4ff] via-[#f5f9ff] to-white pt-10 pb-20 lg:pt-16 lg:pb-24">
           <div className="container mx-auto px-4 max-w-7xl relative z-10">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
-              
+
               {/* Left Column */}
               <div className="w-full lg:w-[52%] space-y-6 text-left">
                 <span className="inline-block bg-blue-50 text-blue-600 text-[11px] md:text-xs font-bold tracking-wider uppercase px-4 py-1.5 rounded-full border border-blue-100">
                   HYDERABAD'S MOST TRUSTED DENTAL CARE
                 </span>
-                
+
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0a1d37] font-heading leading-[1.1]">
                   Advanced Care.<br />
                   Beautiful Smiles.<br />
                   <span className="text-blue-600">For Life.</span>
                 </h1>
-                
+
                 <p className="text-base md:text-lg text-slate-650 max-w-xl font-medium leading-relaxed">
                   Expert dentists. Advanced technology. Personalized care for you and your family.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
                   <Link href="/book-appointment" className="w-full sm:w-auto bg-[#0056D2] hover:bg-blue-700 text-white px-7 py-3.5 rounded-[5px] font-bold transition flex items-center justify-center text-base shadow-sm">
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -89,10 +88,10 @@ export default function Home() {
                     </svg>
                     Book Consultation
                   </Link>
-                  
+
                   <a href="https://wa.me/917997994646" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto border-2 border-green-500 hover:bg-green-50 text-green-600 px-7 py-3 rounded-[5px] font-bold transition flex items-center justify-center text-base">
-                    <svg className="w-5.5 h-5.5 mr-2 fill-green-600" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                    <svg className="w-5 h-5 mr-2 fill-green-600" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
                     </svg>
                     WhatsApp Us
                   </a>
@@ -129,10 +128,10 @@ export default function Home() {
               {/* Right Column (Hero image - dentist treating smiling patient) */}
               <div className="w-full lg:w-[48%] relative flex justify-center">
                 <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
-                  <Image 
-                    src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80" 
-                    alt="Patient smiling in dental clinic" 
-                    fill 
+                  <Image
+                    src="/doc_pat.png"
+                    alt="Patient smiling in dental clinic"
+                    fill
                     className="object-cover"
                     priority
                   />
@@ -146,10 +145,10 @@ export default function Home() {
         {/* TREATMENTS GRID */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 max-w-7xl text-center">
-            
+
             {/* 8 Treatment Cards Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-              
+
               {/* Card 1: General Dentistry */}
               <Link href="/treatments" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
                 <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
@@ -159,7 +158,7 @@ export default function Home() {
                 </div>
                 <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">General Dentistry</span>
               </Link>
-              
+
               {/* Card 2: Cosmetic Dentistry */}
               <Link href="/treatments" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
                 <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
@@ -170,7 +169,7 @@ export default function Home() {
                 </div>
                 <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Cosmetic Dentistry</span>
               </Link>
-              
+
               {/* Card 3: Dental Implants */}
               <Link href="/treatments/dental-implants" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
                 <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
@@ -180,7 +179,7 @@ export default function Home() {
                 </div>
                 <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Dental Implants</span>
               </Link>
-              
+
               {/* Card 4: Smile Makeover */}
               <Link href="/treatments/smile-designing" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
                 <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
@@ -193,7 +192,7 @@ export default function Home() {
                 </div>
                 <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Smile Makeover</span>
               </Link>
-              
+
               {/* Card 5: Root Canal Treatment */}
               <Link href="/treatments/root-canal-treatment" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
                 <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
@@ -204,7 +203,7 @@ export default function Home() {
                 </div>
                 <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Root Canal Treatment</span>
               </Link>
-              
+
               {/* Card 6: Invisalign & Braces */}
               <Link href="/treatments/invisalign-treatment" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
                 <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
@@ -216,7 +215,7 @@ export default function Home() {
                 </div>
                 <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Invisalign & Braces</span>
               </Link>
-              
+
               {/* Card 7: Teeth Whitening */}
               <Link href="/treatments/teeth-whitening" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
                 <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
@@ -227,7 +226,7 @@ export default function Home() {
                 </div>
                 <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Teeth Whitening</span>
               </Link>
-              
+
               {/* Card 8: Kids Dentistry */}
               <Link href="/treatments" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
                 <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
@@ -259,14 +258,14 @@ export default function Home() {
         <section className="bg-[#0b1c3c] text-white py-10">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0">
-              
+
               {/* Stat 1 */}
               <div className="flex flex-col items-center text-center border-slate-800 md:border-r last:border-0 px-4">
                 <Users className="w-8 h-8 text-blue-400 mb-2" />
                 <span className="text-3xl font-extrabold font-heading">15+</span>
                 <span className="text-xs text-slate-400 font-bold uppercase mt-1 tracking-wider">Years of Experience</span>
               </div>
-              
+
               {/* Stat 2 */}
               <div className="flex flex-col items-center text-center border-slate-800 md:border-r last:border-0 px-4">
                 <svg className="w-8 h-8 text-blue-400 mb-2" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
@@ -276,14 +275,14 @@ export default function Home() {
                 <span className="text-3xl font-extrabold font-heading">5000+</span>
                 <span className="text-xs text-slate-400 font-bold uppercase mt-1 tracking-wider">Happy Patients</span>
               </div>
-              
+
               {/* Stat 3 */}
               <div className="flex flex-col items-center text-center border-slate-800 md:border-r last:border-0 px-4">
                 <Layers className="w-8 h-8 text-blue-400 mb-2" />
                 <span className="text-3xl font-extrabold font-heading">3D</span>
                 <span className="text-xs text-slate-400 font-bold uppercase mt-1 tracking-wider">Advanced Technology</span>
               </div>
-              
+
               {/* Stat 4 */}
               <div className="flex flex-col items-center text-center border-slate-800 last:border-0 px-4">
                 <MapPin className="w-8 h-8 text-blue-400 mb-2" />
@@ -299,7 +298,7 @@ export default function Home() {
         <section className="py-20 bg-slate-50/70">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="flex flex-col lg:flex-row items-center gap-12">
-              
+
               {/* Left text column */}
               <div className="w-full lg:w-[45%] space-y-5">
                 <span className="inline-block text-blue-600 text-xs font-bold uppercase tracking-widest">
@@ -321,14 +320,14 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-              
+
               {/* Right grid column */}
               <div className="w-full lg:w-[55%] grid grid-cols-1 md:grid-cols-2 gap-6">
-                
+
                 {/* Feature 1 */}
                 <div className="flex items-start bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
                   <div className="w-11 h-11 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mr-4 mt-0.5">
-                    <svg className="w-5.5 h-5.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                       <circle cx="9" cy="7" r="4" />
                       <path d="M19 8l2 2 4-4" />
@@ -343,7 +342,7 @@ export default function Home() {
                 {/* Feature 2 */}
                 <div className="flex items-start bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
                   <div className="w-11 h-11 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mr-4 mt-0.5">
-                    <svg className="w-5.5 h-5.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                       <path d="M9 11l2 2 4-4" />
                     </svg>
@@ -357,7 +356,7 @@ export default function Home() {
                 {/* Feature 3 */}
                 <div className="flex items-start bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
                   <div className="w-11 h-11 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mr-4 mt-0.5">
-                    <svg className="w-5.5 h-5.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
                       <line x1="8" y1="21" x2="16" y2="21" />
                       <line x1="12" y1="17" x2="12" y2="21" />
@@ -372,7 +371,7 @@ export default function Home() {
                 {/* Feature 4 */}
                 <div className="flex items-start bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
                   <div className="w-11 h-11 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mr-4 mt-0.5">
-                    <svg className="w-5.5 h-5.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
                     </svg>
                   </div>
@@ -391,13 +390,13 @@ export default function Home() {
         {/* BEFORE & AFTER SHOWCASE */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 max-w-7xl">
-            
+
             {/* Header */}
             <div className="flex flex-row justify-between items-end mb-10">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#0a1d37] font-heading leading-tight">
                 Real Transformations.<br className="hidden md:inline" /> Real Smiles.
               </h2>
-              
+
               <Link href="/gallery" className="inline-flex items-center text-blue-600 hover:text-blue-750 font-bold transition text-[15px] shrink-0">
                 View More Results
                 <svg className="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -406,95 +405,7 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Showcase Row */}
-            <div className="relative">
-              {/* Left Arrow Button */}
-              <button className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-slate-650 hover:text-blue-600 transition">
-                <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
-              </button>
-              
-              {/* Right Arrow Button */}
-              <button className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-slate-650 hover:text-blue-600 transition">
-                <ChevronRight className="w-5 h-5 stroke-[2.5]" />
-              </button>
-              
-              {/* Grid of 3 side-by-side Before/After cards (HTML absolute overlay badges removed as labels are already in the images) */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                {/* Case 1: Implants */}
-                <div className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
-                  <div className="flex w-full">
-                    {/* Before Image */}
-                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100">
-                      <Image 
-                        src="/images/cases/implants_before.png"
-                        alt="Dental Implants Before"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    {/* After Image */}
-                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100 border-l border-white">
-                      <Image 
-                        src="/images/cases/implants_after.png"
-                        alt="Dental Implants After"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Case 2: Smile Designing */}
-                <div className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
-                  <div className="flex w-full">
-                    {/* Before Image */}
-                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100">
-                      <Image 
-                        src="/images/cases/smile_design_before.png"
-                        alt="Smile Makeover Before"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    {/* After Image */}
-                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100 border-l border-white">
-                      <Image 
-                        src="/images/cases/smile_design_after.png"
-                        alt="Smile Makeover After"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Case 3: Invisalign */}
-                <div className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
-                  <div className="flex w-full">
-                    {/* Before Image */}
-                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100">
-                      <Image 
-                        src="/images/cases/invisalign_before.png"
-                        alt="Teeth Realignment Before"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    {/* After Image */}
-                    <div className="relative w-1/2 aspect-[4/5] bg-slate-100 border-l border-white">
-                      <Image 
-                        src="/images/cases/invisalign_after.png"
-                        alt="Teeth Realignment After"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+            <BeforeAfterShowcase />
 
           </div>
         </section>
@@ -502,24 +413,24 @@ export default function Home() {
         {/* TESTIMONIALS SECTION */}
         <section className="py-20 bg-slate-50/50">
           <div className="container mx-auto px-4 max-w-7xl text-center">
-            
+
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#0a1d37] font-heading mb-12">
               Loved by Our Patients
             </h2>
 
             {/* Testimonials grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              
+
               {/* Review 1 */}
               <div className="bg-white p-7 rounded-2xl border border-slate-100 shadow-sm text-left flex flex-col justify-between space-y-4">
                 <div className="space-y-4">
                   {/* Google and Stars */}
                   <div className="flex items-center justify-between">
                     <svg className="w-6 h-6 shrink-0" viewBox="0 0 24 24">
-                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                     </svg>
                     <div className="flex text-amber-400 space-x-0.5">
                       <Star className="w-4.5 h-4.5 fill-current" />
@@ -542,10 +453,10 @@ export default function Home() {
                   {/* Google and Stars */}
                   <div className="flex items-center justify-between">
                     <svg className="w-6 h-6 shrink-0" viewBox="0 0 24 24">
-                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                     </svg>
                     <div className="flex text-amber-400 space-x-0.5">
                       <Star className="w-4.5 h-4.5 fill-current" />
@@ -568,10 +479,10 @@ export default function Home() {
                   {/* Google and Stars */}
                   <div className="flex items-center justify-between">
                     <svg className="w-6 h-6 shrink-0" viewBox="0 0 24 24">
-                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                     </svg>
                     <div className="flex text-amber-400 space-x-0.5">
                       <Star className="w-4.5 h-4.5 fill-current" />
@@ -604,20 +515,20 @@ export default function Home() {
         {/* CLINIC LOCATIONS */}
         <section className="py-20 bg-white" id="our-clinics">
           <div className="container mx-auto px-4 max-w-6xl text-center">
-            
+
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#0a1d37] font-heading mb-12">
               Our Clinics
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              
+
               {/* Clinic 1: Pragathi Nagar */}
               <div className="bg-[#f8faff] rounded-3xl p-6 border border-slate-100 flex flex-col sm:flex-row gap-6 text-left shadow-sm hover:shadow-md transition">
                 <div className="w-full sm:w-[45%] relative aspect-[4/3] rounded-2xl overflow-hidden shrink-0 bg-slate-200">
-                  <Image 
-                    src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80" 
-                    alt="Pragathi Nagar Clinic Front" 
-                    fill 
+                  <Image
+                    src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80"
+                    alt="Pragathi Nagar Clinic Front"
+                    fill
                     className="object-cover"
                   />
                 </div>
@@ -643,10 +554,10 @@ export default function Home() {
               {/* Clinic 2: Bachupally */}
               <div className="bg-[#f8faff] rounded-3xl p-6 border border-slate-100 flex flex-col sm:flex-row gap-6 text-left shadow-sm hover:shadow-md transition">
                 <div className="w-full sm:w-[45%] relative aspect-[4/3] rounded-2xl overflow-hidden shrink-0 bg-slate-200">
-                  <Image 
-                    src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80" 
-                    alt="Bachupally Clinic Front" 
-                    fill 
+                  <Image
+                    src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80"
+                    alt="Bachupally Clinic Front"
+                    fill
                     className="object-cover"
                   />
                 </div>
@@ -678,7 +589,7 @@ export default function Home() {
         <section className="py-20 bg-slate-50/50">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="flex flex-col lg:flex-row gap-8 items-stretch">
-              
+
               {/* Blog list column (Left) */}
               <div className="w-full lg:w-[35%] flex flex-col justify-between space-y-6">
                 <div>
@@ -711,8 +622,8 @@ export default function Home() {
               {/* Smiling assistant image cutout (Middle) - fixed height container to prevent collapsing */}
               <div className="w-full lg:w-[28%] relative hidden lg:flex items-end justify-center">
                 <div className="w-full h-[380px] relative overflow-hidden rounded-2xl shadow-md border border-slate-100">
-                  <Image 
-                    src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=600&q=80" 
+                  <Image
+                    src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=600&q=80"
                     alt="Dental Nurse Smiling"
                     fill
                     className="object-cover object-top"
@@ -730,7 +641,7 @@ export default function Home() {
                     Let our experts help you take the first step towards a healthier, confident smile.
                   </p>
                 </div>
-                
+
                 {/* Implants graphics vector shape on the right edge */}
                 <div className="absolute right-0 bottom-4 w-36 h-36 opacity-15 pointer-events-none select-none">
                   <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full text-white">
@@ -770,21 +681,21 @@ export default function Home() {
           Call Us
         </a>
         <Link href="/book-appointment" className="flex-1 bg-[#0056D2] hover:bg-blue-700 text-white font-bold py-3 rounded-lg flex items-center justify-center text-sm transition text-center shadow-sm">
-          Book Appointment
+          Book Now
         </Link>
       </div>
 
       {/* Floating Sticky Green WhatsApp Button (Bottom-Right) */}
-      <a 
-        href="https://wa.me/917997994646" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="fixed bottom-6 right-6 z-50 bg-[#25d366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-2xl transition hover:scale-110 flex items-center justify-center group animate-bounce"
+      <a
+        href="https://wa.me/917997994646"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-24 lg:bottom-6 right-6 z-50 bg-[#25d366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-2xl transition hover:scale-110 flex items-center justify-center group animate-bounce"
         aria-label="Contact us on WhatsApp"
         style={{ animationDuration: '3s' }}
       >
-        <svg className="w-6.5 h-6.5 fill-white" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        <svg className="w-6 h-6 fill-white" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
         </svg>
       </a>
 

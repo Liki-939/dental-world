@@ -79,7 +79,7 @@ export default function ContactPage() {
                       <MapPin className="w-6 h-6 text-brand mr-3 shrink-0" />
                       <div>
                         <h4 className="font-bold text-xl text-slate-900 mb-2">Pragathi Nagar Branch</h4>
-                        <p className="text-slate-600 mb-4">123, Main Road, Pragathi Nagar, Hyderabad - 500090</p>
+                        <p className="text-slate-600 mb-4">#7-1-398, Srinivasa Colony, Pragathi Nagar, Hyderabad - 500090</p>
                         <a href="#" className="inline-block bg-brand-light text-brand px-6 py-2 rounded-lg font-semibold hover:bg-brand hover:text-white transition">Get Directions</a>
                       </div>
                     </div>
@@ -105,7 +105,7 @@ export default function ContactPage() {
                       <MapPin className="w-6 h-6 text-brand mr-3 shrink-0" />
                       <div>
                         <h4 className="font-bold text-xl text-slate-900 mb-2">Bachupally Branch</h4>
-                        <p className="text-slate-600 mb-4">456, Cross Road, Bachupally, Hyderabad - 500090</p>
+                        <p className="text-slate-600 mb-4">Plot No. 2, Main Road, Bachupally, Hyderabad - 500090</p>
                         <a href="#" className="inline-block bg-brand-light text-brand px-6 py-2 rounded-lg font-semibold hover:bg-brand hover:text-white transition">Get Directions</a>
                       </div>
                     </div>

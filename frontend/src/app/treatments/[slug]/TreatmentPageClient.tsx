@@ -5,26 +5,26 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { 
-  Star, 
-  Clock, 
-  Shield, 
-  Award, 
-  Calendar, 
-  Phone, 
-  MapPin, 
-  ChevronLeft, 
-  ChevronRight, 
-  CheckCircle2, 
-  AlertCircle, 
-  XCircle, 
+import {
+  Star,
+  Clock,
+  Shield,
+  Award,
+  Calendar,
+  Phone,
+  MapPin,
+  ChevronLeft,
+  ChevronRight,
+  CheckCircle2,
+  AlertCircle,
+  XCircle,
 
-  Lock, 
-  Stethoscope, 
-  Syringe, 
-  HeartPulse, 
-  Sparkles, 
-  Smile, 
+  Lock,
+  Stethoscope,
+  Syringe,
+  HeartPulse,
+  Sparkles,
+  Smile,
   HelpCircle,
   Check,
   X,
@@ -128,35 +128,35 @@ function SymptomIcon({ name }: { name: string }) {
     );
   }
   // Default fallback
-  return <Smile className="w-8 h-8 text-blue-600" />;
+  return <Smile className="w-8 h-8 text-current" />;
 }
 
 // Flow steps icon mapping
 function StepIcon({ icon }: { icon: string }) {
   switch (icon) {
     case "stethoscope":
-      return <Stethoscope className="w-6 h-6 text-blue-600" />;
+      return <Stethoscope className="w-6 h-6 text-current" />;
     case "syringe":
-      return <Syringe className="w-6 h-6 text-blue-600" />;
+      return <Syringe className="w-6 h-6 text-current" />;
     case "tooth":
       return (
-        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-current" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
           <path d="M12 2C8.69 2 6 4.69 6 8c0 3.31 2.31 5.62 2.31 8.5C8.31 18.84 7 21 7 22c1.5 0 3.5-1 5-2.75 1.5 1.75 3.5 2.75 5 2.75 0-1-1.31-3.16-1.31-5.5C15.69 13.62 18 11.31 18 8c0-3.5-2.5-6-6-6z" />
         </svg>
       );
     case "clean":
-      return <Sparkles className="w-6 h-6 text-blue-600" />;
+      return <Sparkles className="w-6 h-6 text-current" />;
     case "shield":
-      return <Shield className="w-6 h-6 text-blue-600" />;
+      return <Shield className="w-6 h-6 text-current" />;
     case "crown":
       return (
-        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-current" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
           <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z" />
           <path d="M3 20h18v2H3z" />
         </svg>
       );
     default:
-      return <Check className="w-6 h-6 text-blue-600" />;
+      return <Check className="w-6 h-6 text-current" />;
   }
 }
 
@@ -165,6 +165,7 @@ const treatmentsInfo: Record<string, {
   tagline: string;
   subtitle: string;
   techStat: string;
+  heroImage: string;
   features: { title: string; desc: string }[];
   symptoms: string[];
   whatIsTitle: string;
@@ -192,6 +193,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'PAIN RELIEF. TOOTH SAVING CARE.',
     subtitle: 'Painless. Precise. Permanent.',
     techStat: 'Advanced Rotary RCT',
+    heroImage: '/root_canal_banner.png',
     features: [
       { title: 'Pain Relief', desc: 'Painless treatment with anesthesia' },
       { title: 'Save Natural Tooth', desc: 'Keep your original tooth for life' },
@@ -247,7 +249,7 @@ const treatmentsInfo: Record<string, {
       { title: 'High Success Rate', desc: '98%+ success rate' }
     ],
     beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeSmile: { before: '/images/cases/root_canal_before.png', after: '/images/cases/root_canal_after.png' },
     testimonialText: 'I had severe tooth pain and was afraid of RCT. But the treatment at Dental World was completely painless. Excellent care!',
     testimonialAuthor: 'Ramesh, Pragathi Nagar',
     faqs: [
@@ -263,6 +265,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'PERMANENT TOOTH REPLACEMENT. NATURAL FEEL.',
     subtitle: 'Strong. Natural. Lifelong.',
     techStat: '3D Guided Implants',
+    heroImage: '/dental_implant_banner.png',
     features: [
       { title: '100% Biocompatible', desc: 'Medical-grade titanium fuses with bone' },
       { title: 'Restore Biting Force', desc: 'Chew your favorite foods easily' },
@@ -318,7 +321,7 @@ const treatmentsInfo: Record<string, {
       { title: 'High Success Rate', desc: '98%+ success rate' }
     ],
     beforeXray: { before: '/images/cases/implants_before.png', after: '/images/cases/implants_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeSmile: { before: '/images/cases/implants_smile_before.png', after: '/images/cases/implants_smile_after.png' },
     testimonialText: 'I replaced my missing front tooth with an implant at Dental World. The new tooth looks and feels exactly like my natural teeth!',
     testimonialAuthor: 'Sunitha Rao, Bachupally',
     faqs: [
@@ -331,6 +334,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'SMILE ALIGNMENT. PERFECT BITE.',
     subtitle: 'Aligned. Healthy. Confident.',
     techStat: 'Orthodontic Specialist Care',
+    heroImage: '/braces_banner.png',
     features: [
       { title: 'Perfect Alignment', desc: 'Corrects crooked or crowded teeth' },
       { title: 'Bite Correction', desc: 'Resolves overbites, underbites, & crossbites' },
@@ -386,7 +390,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Complete Retainer Guidance', desc: 'Locks in your perfect smile' }
     ],
     beforeXray: { before: '/images/cases/braces_before.png', after: '/images/cases/braces_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeSmile: { before: '/images/cases/braces_smile_before.png', after: '/images/cases/braces_smile_after.png' },
     testimonialText: 'My teeth are perfectly aligned now! The team made the braces journey so easy and comfortable.',
     testimonialAuthor: 'Rahul M., Pragathi Nagar',
     faqs: [
@@ -399,6 +403,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'DISCREET ALIGNMENT. INVISIBLE BRACES.',
     subtitle: 'Clear. Removable. Comfortable.',
     techStat: 'Invisalign Certified Provider',
+    heroImage: '/invisalign_banner.png',
     features: [
       { title: 'Virtually Invisible', desc: 'Clear plastic aligners are unnoticeable' },
       { title: '100% Removable', desc: 'Take them out to eat, brush, and floss' },
@@ -454,7 +459,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Predictable Outcomes', desc: 'See your final smile first' }
     ],
     beforeXray: { before: '/images/cases/invisalign_before.png', after: '/images/cases/invisalign_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeSmile: { before: '/images/cases/invisalign_smile_before.png', after: '/images/cases/invisalign_smile_after.png' },
     testimonialText: 'Clear aligners were so comfortable and virtually invisible. Nobody even knew I was undergoing orthodontic treatment!',
     testimonialAuthor: 'Meghana P., Pragathi Nagar',
     faqs: [
@@ -467,6 +472,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'SMILE TRANSFORMATIONS. BRAND NEW CONFIDENCE.',
     subtitle: 'Custom. Radiant. Beautiful.',
     techStat: 'Digital Smile Design',
+    heroImage: '/smile_banner.png',
     features: [
       { title: 'Personalized Makeover', desc: 'Designed to fit your unique facial features' },
       { title: 'Correct Multi-Flaws', desc: 'Fixes gaps, chips, stains, and crooked teeth' },
@@ -522,7 +528,7 @@ const treatmentsInfo: Record<string, {
       { title: 'High Success Rate', desc: '100% patient satisfaction' }
     ],
     beforeXray: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_smile_before.png', after: '/images/cases/smile_design_smile_after.png' },
     testimonialText: 'I can\'t stop smiling! The veneers look incredibly natural and have given me so much confidence.',
     testimonialAuthor: 'Karan D., Bachupally',
     faqs: [
@@ -535,6 +541,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'GENTLE CARE. HAPPY KIDS.',
     subtitle: 'Fun. Painless. Safe.',
     techStat: 'Pediatric Dental Specialist',
+    heroImage: '/pediatric_banner.png',
     features: [
       { title: 'Child-Friendly Clinic', desc: 'A fun, welcoming environment' },
       { title: 'Painless Treatments', desc: 'Specialized techniques for child comfort' },
@@ -590,7 +597,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Early Orthodontic Checks', desc: 'Monitors jaw alignment' }
     ],
     beforeXray: { before: '/images/cases/pediatric_before.png', after: '/images/cases/pediatric_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeSmile: { before: '/images/cases/pediatric_smile_before.png', after: '/images/cases/pediatric_smile_after.png' },
     testimonialText: 'The pediatric dentist was so patient and gentle. My son actually looks forward to going to the dentist now!',
     testimonialAuthor: 'Priya V. (Mother of Aarav), Pragathi Nagar',
     faqs: [
@@ -603,6 +610,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'COMPLETE RESTORATION. LIFE CHANGING CARE.',
     subtitle: 'Functional. Aesthetic. Complete.',
     techStat: 'Full-Arch Rehabilitation Specialist',
+    heroImage: '/full_banner.png',
     features: [
       { title: 'Complete Smile Restoration', desc: 'Rebuilds all upper and lower teeth' },
       { title: 'Correct Bite Alignment', desc: 'Relieves chronic jaw and TMJ strain' },
@@ -658,7 +666,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Lifetime Smile Support', desc: 'Peace of mind warranty' }
     ],
     beforeXray: { before: '/images/cases/fmr_before.png', after: '/images/cases/fmr_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeSmile: { before: '/images/cases/fmr_smile_before.png', after: '/images/cases/fmr_smile_after.png' },
     testimonialText: 'After years of suffering, I can finally eat normally and smile with confidence again. The team changed my life.',
     testimonialAuthor: 'Rajendra Reddy, Bachupally',
     faqs: [
@@ -671,6 +679,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'INSTANT SMILE BRIGHTENING. SHINE BRIGHT.',
     subtitle: 'Bright. Fast. Painless.',
     techStat: 'Advanced Laser Whitening',
+    heroImage: '/images/treatments/whitening_hero.png',
     features: [
       { title: 'Up to 8 Shades Brighter', desc: 'Instant results in just one sitting' },
       { title: 'Safe for Enamel', desc: 'Does not damage tooth structure' },
@@ -725,8 +734,8 @@ const treatmentsInfo: Record<string, {
       { title: 'Certified Cosmetic Dentists', desc: 'Expert supervision' },
       { title: 'Sensitivity Relief Gel', desc: 'Painless post-treatment care' }
     ],
-    beforeXray: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeXray: { before: '/images/cases/whitening_xray_before.png', after: '/images/cases/whitening_xray_after.png' },
+    beforeSmile: { before: '/images/cases/whitening_smile_before.png', after: '/images/cases/whitening_smile_after.png' },
     testimonialText: 'My teeth are so much brighter now! The Zoom whitening session took less than an hour and was completely painless.',
     testimonialAuthor: 'Karthik, Pragathi Nagar',
     faqs: [
@@ -748,7 +757,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
     treatment: displayTitle,
     clinic: "Pragathi Nagar"
   });
-  
+
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -771,7 +780,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50/50 pb-20 md:pb-0 font-sans">
+    <div className="flex flex-col min-h-screen bg-slate-50/50 pb-20 lg:pb-0 font-sans">
       <Navbar />
 
       {/* Breadcrumb */}
@@ -791,36 +800,36 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
       <section className="bg-gradient-to-br from-[#eaf4ff] via-[#f5f9ff] to-white pt-10 pb-16 lg:pt-14 lg:pb-20 relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="flex flex-col lg:flex-row gap-8 items-start">
-            
+
             {/* Left side - Hero Text */}
             <div className="w-full lg:w-[42%] space-y-5 text-left">
               <span className="inline-block bg-blue-100/50 text-[#0056D2] text-[11px] md:text-xs font-bold tracking-wider uppercase px-4 py-1.5 rounded-full border border-blue-200/50">
                 {info.tagline}
               </span>
-              
+
               <h1 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold tracking-tight text-[#0a1d37] font-heading leading-tight">
-                {displayTitle} <br className="hidden md:inline"/>in Hyderabad
+                {displayTitle} <br className="hidden md:inline" />in Hyderabad
               </h1>
-              
+
               <p className="text-lg md:text-xl font-extrabold text-[#0056D2] leading-tight">
                 {info.subtitle}
               </p>
-              
+
               <p className="text-sm text-slate-650 leading-relaxed font-medium max-w-lg">
                 Advanced {displayTitle.toLowerCase()} using digital imaging, precision tools and pain-free anesthesia.
               </p>
-              
+
               <div className="flex flex-wrap items-center gap-2.5 pt-1">
                 <Link href="/book-appointment" className="bg-[#0056D2] hover:bg-blue-700 text-white px-5 py-2.5 rounded-[5px] font-bold transition flex items-center text-sm shadow-sm">
                   <Calendar className="w-4 h-4 mr-1.5" />
                   Book Consultation
                 </Link>
-                
+
                 <a href="https://wa.me/917997994646" target="_blank" rel="noopener noreferrer" className="border border-green-500 hover:bg-green-50 text-green-600 px-5 py-2.5 rounded-[5px] font-bold transition flex items-center text-sm bg-white">
                   <Image src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width={16} height={16} className="mr-1.5" />
                   WhatsApp Us
                 </a>
-                
+
                 <a href="tel:+918247478663" className="border border-[#0056D2] hover:bg-blue-50 text-[#0056D2] px-5 py-2.5 rounded-[5px] font-bold transition flex items-center text-sm bg-white">
                   <Phone className="w-4 h-4 mr-1.5" />
                   Call Now
@@ -874,8 +883,8 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
             {/* Middle - Doctor Image */}
             <div className="w-full lg:w-[28%]">
               <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-md border-2 border-white bg-slate-200">
-                <Image 
-                  src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" 
+                <Image
+                  src={info.heroImage}
                   alt="Doctor treating patient smiling"
                   fill
                   className="object-cover"
@@ -896,7 +905,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                     <p className="text-sm text-slate-650 max-w-sm">
                       Your consultation request for <strong>{formData.treatment}</strong> has been received successfully. Our coordinator will contact you at <strong>{formData.mobile}</strong> within 15 minutes.
                     </p>
-                    <button 
+                    <button
                       onClick={() => { setIsSubmitted(false); }}
                       className="mt-4 border border-blue-600 text-blue-600 hover:bg-blue-50 font-bold text-xs px-4 py-2 rounded"
                     >
@@ -920,32 +929,32 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                     <div className="space-y-3.5">
                       <div>
                         <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Name</label>
-                        <input 
-                          type="text" 
-                          name="name" 
+                        <input
+                          type="text"
+                          name="name"
                           value={formData.name}
                           onChange={handleInputChange}
-                          placeholder="Enter your name" 
-                          className="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 focus:bg-white transition outline-none text-slate-900 font-medium" 
+                          placeholder="Enter your name"
+                          className="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 focus:bg-white transition outline-none text-slate-900 font-medium"
                         />
                       </div>
 
                       <div>
                         <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Mobile Number</label>
-                        <input 
-                          type="tel" 
-                          name="mobile" 
+                        <input
+                          type="tel"
+                          name="mobile"
                           value={formData.mobile}
                           onChange={handleInputChange}
-                          placeholder="Enter 10 digit mobile number" 
-                          className="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 focus:bg-white transition outline-none text-slate-900 font-medium" 
+                          placeholder="Enter 10 digit mobile number"
+                          className="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 focus:bg-white transition outline-none text-slate-900 font-medium"
                         />
                       </div>
 
                       <div>
                         <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Treatment</label>
-                        <select 
-                          name="treatment" 
+                        <select
+                          name="treatment"
                           value={formData.treatment}
                           onChange={handleInputChange}
                           className="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 focus:bg-white transition outline-none text-slate-900 font-semibold"
@@ -962,8 +971,8 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
                       <div>
                         <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Preferred Clinic</label>
-                        <select 
-                          name="clinic" 
+                        <select
+                          name="clinic"
                           value={formData.clinic}
                           onChange={handleInputChange}
                           className="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 focus:bg-white transition outline-none text-slate-900 font-semibold"
@@ -975,8 +984,8 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
                     </div>
 
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       className="w-full bg-[#0056D2] hover:bg-blue-700 text-white font-bold py-3.5 rounded-[5px] transition text-sm shadow-sm flex items-center justify-center mt-6"
                     >
                       Submit
@@ -1036,14 +1045,14 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col lg:flex-row gap-12">
-            
+
             {/* Left Column - What is */}
             <div className="w-full lg:w-[45%] space-y-6 text-left flex flex-col justify-between">
               <div className="space-y-5">
                 <h2 className="text-2xl md:text-3xl font-extrabold text-[#0056D2] font-heading leading-tight">
                   {info.whatIsTitle}
                 </h2>
-                
+
                 <p className="text-sm md:text-base text-slate-650 font-medium leading-relaxed">
                   {info.whatIsText1}
                 </p>
@@ -1118,7 +1127,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
             {info.processSteps.map((step, idx) => {
               const stepIcons = ["stethoscope", "syringe", "tooth", "clean", "shield", "crown"];
               const iconName = (step as any).icon || stepIcons[idx] || "check";
-              
+
               return (
                 <div key={idx} className="relative z-10 flex flex-col items-center w-full md:w-1/6 group">
                   {/* Icon Circle */}
@@ -1143,7 +1152,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col lg:flex-row gap-10 items-stretch">
-            
+
             {/* Column 1: Types */}
             <div className="w-full lg:w-[33%] bg-slate-50/50 p-6 md:p-8 rounded-3xl border border-slate-200/60 text-left flex flex-col justify-between">
               <div>
@@ -1178,10 +1187,10 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                   COST IN HYDERABAD
                 </h3>
                 <p className="text-xs text-slate-450 font-bold">Transparent pricing. No hidden charges.</p>
-                
+
                 {/* Tooth Cost badge */}
                 <div className="relative w-full aspect-square max-w-[145px] mx-auto my-1 flex items-center justify-center">
-                  <Image 
+                  <Image
                     src="/images/cases/tooth_cross_section.png"
                     alt="Tooth cross section diagram"
                     width={140}
@@ -1214,7 +1223,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                 <h3 className="text-lg font-extrabold text-[#0056D2] uppercase tracking-wider mb-6 pb-2 border-b border-slate-200">
                   {info.comparisonTitle}
                 </h3>
-                
+
                 <div className="bg-white rounded-2xl border border-slate-200/60 overflow-hidden shadow-sm">
                   <table className="w-full text-left text-xs border-collapse">
                     <thead>
@@ -1229,12 +1238,12 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                       {info.comparisonRows.map((row, idx) => (
                         <tr key={idx} className="border-b border-slate-100 last:border-0 hover:bg-slate-50/20 transition">
                           <td className="py-3 px-3 font-bold text-slate-700 leading-tight">{row.feature}</td>
-                          
+
                           {/* Main */}
                           <td className="py-3 px-2 text-center bg-blue-50/20">
                             {row.main === 'check' ? <Check className="w-4.5 h-4.5 text-green-500 mx-auto" /> : <X className="w-4.5 h-4.5 text-red-500 mx-auto" />}
                           </td>
-                          
+
                           {/* Opt 1 */}
                           <td className="py-3 px-2 text-center">
                             {row.opt1 === 'check' && <Check className="w-4.5 h-4.5 text-green-500 mx-auto" />}
@@ -1273,7 +1282,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
             {info.whyChooseCards.map((card, idx) => (
               <div key={idx} className="flex items-start bg-white p-5 rounded-2xl border border-slate-200/50 shadow-sm">
                 <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mr-4 mt-0.5 shadow-sm">
-                  <Check className="w-5.5 h-5.5 stroke-[2.5]" />
+                  <Check className="w-5 h-5 stroke-[2.5]" />
                 </div>
                 <div className="text-left">
                   <h4 className="font-extrabold text-[#0a1d37] mb-1.5 text-sm">{card.title}</h4>
@@ -1289,30 +1298,30 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-            
+
             {/* Box 1: Before/After Case 1 (X-Ray / Close-up) */}
             <div className="bg-[#f8faff] rounded-3xl p-6 border border-slate-200/60 flex flex-col justify-between">
               <h3 className="text-sm font-extrabold text-[#0056D2] uppercase tracking-wider mb-4">
                 X-Ray Before & After
               </h3>
-              
+
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 flex w-full">
                 {/* Before */}
                 <div className="w-1/2 relative h-full">
-                  <Image 
-                    src={info.beforeXray.before} 
-                    alt="X-ray Before" 
-                    fill 
+                  <Image
+                    src={info.beforeXray.before}
+                    alt="X-ray Before"
+                    fill
                     className="object-cover"
                   />
                   <span className="absolute bottom-3 left-3 bg-black/60 text-white font-bold text-[10px] uppercase px-2 py-0.5 rounded">Before</span>
                 </div>
                 {/* After */}
                 <div className="w-1/2 relative h-full border-l-2 border-white">
-                  <Image 
-                    src={info.beforeXray.after} 
-                    alt="X-ray After" 
-                    fill 
+                  <Image
+                    src={info.beforeXray.after}
+                    alt="X-ray After"
+                    fill
                     className="object-cover"
                   />
                   <span className="absolute bottom-3 right-3 bg-[#0056D2] text-white font-bold text-[10px] uppercase px-2 py-0.5 rounded">After</span>
@@ -1325,22 +1334,22 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
               <h3 className="text-sm font-extrabold text-[#0056D2] uppercase tracking-wider mb-4">
                 Smile Transformations
               </h3>
-              
+
               <div className="flex flex-col gap-2 h-full justify-center">
                 <div className="relative h-20 rounded-xl overflow-hidden bg-slate-250">
-                  <Image 
-                    src={info.beforeSmile.before} 
-                    alt="Smile Before" 
-                    fill 
+                  <Image
+                    src={info.beforeSmile.before}
+                    alt="Smile Before"
+                    fill
                     className="object-cover"
                   />
                   <span className="absolute bottom-2 left-2 bg-black/60 text-white font-bold text-[9px] uppercase px-1.5 py-0.5 rounded">Before</span>
                 </div>
                 <div className="relative h-20 rounded-xl overflow-hidden bg-slate-250">
-                  <Image 
-                    src={info.beforeSmile.after} 
-                    alt="Smile After" 
-                    fill 
+                  <Image
+                    src={info.beforeSmile.after}
+                    alt="Smile After"
+                    fill
                     className="object-cover"
                   />
                   <span className="absolute bottom-2 left-2 bg-[#0056D2] text-white font-bold text-[9px] uppercase px-1.5 py-0.5 rounded">After</span>
@@ -1354,7 +1363,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                 <h3 className="text-sm font-extrabold text-[#0056D2] uppercase tracking-wider mb-4">
                   What Our Patients Say
                 </h3>
-                
+
                 {/* Rating */}
                 <div className="flex items-center gap-2 mb-4 bg-white/60 px-3 py-1.5 rounded-full border border-white w-fit">
                   <span className="text-sm font-black text-[#0056D2]">4.9</span>
@@ -1413,7 +1422,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
       {/* BOTTOM BANNER (Tooth Illustration + Action Button) */}
       <section className="bg-[#0b1c3c] text-white py-14 relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-5xl relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-          
+
           <div className="flex items-center gap-4.5">
             {/* White Tooth Outline */}
             <div className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center shrink-0 border border-white/20">
@@ -1454,21 +1463,21 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
           Call Us
         </a>
         <Link href="/book-appointment" className="flex-1 bg-[#0056D2] hover:bg-blue-700 text-white font-bold py-3 rounded-lg flex items-center justify-center text-sm transition text-center shadow-sm">
-          Book Appointment
+          Book Now
         </Link>
       </div>
 
       {/* Floating Sticky WhatsApp Button */}
-      <a 
-        href="https://wa.me/917997994646" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="fixed bottom-6 right-6 z-50 bg-[#25d366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-2xl transition hover:scale-110 flex items-center justify-center group animate-bounce"
+      <a
+        href="https://wa.me/917997994646"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-24 lg:bottom-6 right-6 z-50 bg-[#25d366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-2xl transition hover:scale-110 flex items-center justify-center group animate-bounce"
         aria-label="Contact us on WhatsApp"
         style={{ animationDuration: '3s' }}
       >
-        <svg className="w-6.5 h-6.5 fill-white" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        <svg className="w-6 h-6 fill-white" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
         </svg>
       </a>
 

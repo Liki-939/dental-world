@@ -24,6 +24,18 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const locationName = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
+  const branchData = slug === 'pragathi-nagar' ? {
+    address: '#7-1-398, Srinivasa Colony, Pragathi Nagar, Hyderabad - 500090',
+    phone: '+91 82474 78663',
+    phoneLink: 'tel:+918247478663',
+    mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.305435987179!2d78.39414271487779!3d17.516801987986065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8e0ab85800a7%3A0x6fb2478491c34a2e!2sPragathi%20Nagar%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin'
+  } : {
+    address: 'Plot No. 2, Main Road, Bachupally, Hyderabad - 500090',
+    phone: '+91 91000 61610',
+    phoneLink: 'tel:+919100061610',
+    mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.109861611096!2d78.3845013148779!3d17.525549087995872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8e137b018ecf%3A0x7d6a524a87e07661!2sBachupally%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1680000000001!5m2!1sen!2sin'
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <Navbar />
@@ -56,7 +68,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                     </div>
                     <div>
                       <h4 className="font-bold text-lg text-slate-900 mb-1">Address</h4>
-                      <p className="text-slate-600">Main Road, {locationName}, Hyderabad, Telangana 500090</p>
+                      <p className="text-slate-600">{branchData.address}</p>
                     </div>
                   </div>
                   
@@ -77,7 +89,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                     </div>
                     <div>
                       <h4 className="font-bold text-lg text-slate-900 mb-1">Contact</h4>
-                      <a href="tel:+917997994646" className="text-brand font-semibold text-lg hover:underline">+91 799 799 4646</a>
+                      <a href={branchData.phoneLink} className="text-brand font-semibold text-lg hover:underline">{branchData.phone}</a>
                     </div>
                   </div>
                 </div>
@@ -91,7 +103,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
 
               <div className="bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 min-h-[400px] relative">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.305435987179!2d78.39414271487779!3d17.516801987986065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8e0ab85800a7%3A0x6fb2478491c34a2e!2sPragathi%20Nagar%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin" 
+                  src={branchData.mapSrc} 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 

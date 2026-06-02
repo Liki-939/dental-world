@@ -55,6 +55,12 @@ const treatments = [
     title: 'Full Mouth Rehabilitation',
     description: 'Extensive treatment plan designed to rebuild or simultaneously restore all of the teeth.',
     icon: Heart,
+  },
+  {
+    id: 'teeth-whitening',
+    title: 'Teeth Whitening',
+    description: 'Safe, instant teeth whitening to remove deep stains and brighten your smile by several shades.',
+    icon: Sparkles,
   }
 ];
 

@@ -44,15 +44,12 @@ export default function Navbar() {
               Bachupally
             </span>
           </div>
-          {/* Right Phone & Button */}
-          <div className="flex items-center space-x-5 font-bold">
-            <a href="tel:+9182474785663" className="flex items-center text-slate-200 hover:text-white transition">
+          {/* Right Phone */}
+          <div className="flex items-center font-bold">
+            <a href="tel:+918247478663" className="flex items-center text-slate-200 hover:text-white transition">
               <Phone className="w-3.5 h-3.5 text-blue-400 mr-1.5 shrink-0" />
-              +91 82474 785663
+              +91 82474 78663
             </a>
-            <Link href="/book-appointment" className="bg-[#0056D2] hover:bg-blue-600 text-white px-3.5 py-1.5 rounded-[4px] font-extrabold text-[10px] uppercase tracking-wider transition">
-              Book Consultation
-            </Link>
           </div>
         </div>
       </div>
@@ -141,7 +138,9 @@ export default function Navbar() {
       {/* Mobile Menu Dropdown */}
       <div 
         className={`lg:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl transition-all duration-300 ease-in-out overflow-y-auto ${
-          isMobileMenuOpen ? 'max-h-[calc(100vh-80px)] opacity-100' : 'max-h-0 opacity-0'
+          isMobileMenuOpen 
+            ? 'max-h-[calc(100vh-80px)] opacity-100 visible pointer-events-auto' 
+            : 'max-h-0 opacity-0 invisible pointer-events-none'
         }`}
       >
         <div className="flex flex-col py-4 px-4 space-y-4 font-semibold text-slate-800 bg-white">
