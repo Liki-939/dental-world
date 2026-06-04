@@ -15,7 +15,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -58,10 +58,8 @@ export default function Navbar() {
       <nav className="container mx-auto px-4 flex justify-between items-center relative max-w-7xl py-3.5">
         <Link href="/" className="flex items-center shrink-0" onClick={closeMobileMenu}>
           <div className="flex items-center space-x-2.5">
-            <div className="w-11 h-11 rounded-full bg-[#ef4444] flex items-center justify-center text-white shadow-sm shrink-0">
-              <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12,2C8.69,2,6,4.69,6,8C6,11.31,8.31,13.62,8.31,16.5C8.31,18.84,7,21,7,22C8.5,22,10.5,21,12,19.25C13.5,21,15.5,22,17,22C17,21,15.69,18.84,15.69,16.5C15.69,13.62,18,11.31,18,8C18,4.69,15.31,2,12,2Z" />
-              </svg>
+            <div className="w-11 h-11 relative rounded-full overflow-hidden bg-white shrink-0 shadow-sm border border-slate-100 flex items-center justify-center">
+              <Image src="/logo.jpeg" alt="Dental World Logo" width={44} height={44} className="object-contain p-0.5" />
             </div>
             <div className="flex flex-col">
               <span className="text-lg md:text-xl font-extrabold tracking-tight text-[#0a1d37] leading-none font-heading">DENTAL WORLD</span>
@@ -76,12 +74,12 @@ export default function Navbar() {
             Home
             {pathname === '/' && <span className="absolute -bottom-[15px] w-6 h-[2px] bg-blue-600 rounded"></span>}
           </Link>
-          
+
           <Link href="/about" className={`hover:text-blue-600 transition-colors py-1 flex flex-col items-center relative ${pathname === '/about' ? 'text-blue-600' : 'text-slate-850'}`}>
             About Us
             {pathname === '/about' && <span className="absolute -bottom-[15px] w-6 h-[2px] bg-blue-600 rounded"></span>}
           </Link>
-          
+
           <div className="relative group flex flex-col items-center">
             <Link href="/treatments" className={`hover:text-blue-600 transition-colors py-1 flex items-center relative ${pathname.startsWith('/treatments') ? 'text-blue-600' : 'text-slate-850'}`}>
               Treatments <ChevronDown className="w-3.5 h-3.5 ml-1 text-slate-500" />
@@ -101,12 +99,12 @@ export default function Navbar() {
             Gallery
             {pathname === '/gallery' && <span className="absolute -bottom-[15px] w-6 h-[2px] bg-blue-600 rounded"></span>}
           </Link>
-          
+
           <Link href="/blog" className={`hover:text-blue-600 transition-colors py-1 flex flex-col items-center relative ${pathname.startsWith('/blog') ? 'text-blue-600' : 'text-slate-850'}`}>
             Blog
             {pathname.startsWith('/blog') && <span className="absolute -bottom-[15px] w-6 h-[2px] bg-blue-600 rounded"></span>}
           </Link>
-          
+
           <Link href="/contact" className={`hover:text-blue-600 transition-colors py-1 flex flex-col items-center relative ${pathname === '/contact' ? 'text-blue-600' : 'text-slate-850'}`}>
             Contact
             {pathname === '/contact' && <span className="absolute -bottom-[15px] w-6 h-[2px] bg-blue-600 rounded"></span>}
@@ -124,8 +122,8 @@ export default function Navbar() {
             </svg>
             Book Consultation
           </Link>
-          
-          <button 
+
+          <button
             className="lg:hidden p-2 text-slate-700 hover:text-blue-600 transition-colors"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
@@ -136,17 +134,16 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu Dropdown */}
-      <div 
-        className={`lg:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl transition-all duration-300 ease-in-out overflow-y-auto ${
-          isMobileMenuOpen 
-            ? 'max-h-[calc(100vh-80px)] opacity-100 visible pointer-events-auto' 
-            : 'max-h-0 opacity-0 invisible pointer-events-none'
-        }`}
+      <div
+        className={`lg:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl transition-all duration-300 ease-in-out overflow-y-auto ${isMobileMenuOpen
+          ? 'max-h-[calc(100vh-80px)] opacity-100 visible pointer-events-auto'
+          : 'max-h-0 opacity-0 invisible pointer-events-none'
+          }`}
       >
         <div className="flex flex-col py-4 px-4 space-y-4 font-semibold text-slate-800 bg-white">
           <Link href="/" className={`px-2 transition ${pathname === '/' ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>Home</Link>
           <Link href="/about" className={`px-2 transition ${pathname === '/about' ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>About Us</Link>
-          
+
           <div className="flex flex-col space-y-2 border-l-2 border-slate-100 ml-2 pl-4 py-1">
             <Link href="/treatments" className={`transition font-bold ${pathname.startsWith('/treatments') ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>Treatments</Link>
             <Link href="/treatments/dental-implants" className="text-sm text-slate-500 hover:text-blue-600 transition" onClick={closeMobileMenu}>Dental Implants</Link>
@@ -160,7 +157,7 @@ export default function Navbar() {
           <Link href="/gallery" className={`px-2 transition ${pathname === '/gallery' ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>Gallery</Link>
           <Link href="/blog" className={`px-2 transition ${pathname.startsWith('/blog') ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>Blog</Link>
           <Link href="/contact" className={`px-2 transition ${pathname === '/contact' ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>Contact</Link>
-          
+
           <Link href="/book-appointment" className="mt-4 bg-[#0056D2] text-white px-4 py-3 rounded-[5px] font-bold text-center shadow-md flex items-center justify-center" onClick={closeMobileMenu}>
             Book Consultation
           </Link>

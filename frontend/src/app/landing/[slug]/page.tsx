@@ -854,15 +854,15 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                 {config.hero.desc}
               </p>
 
-              {/* Row of 4 items with outline icons, titles, and subtitles matching mockup */}
-              <div className="flex flex-wrap items-center gap-6 lg:gap-8 pt-2">
+              {/* Grid layout on mobile (2 cols), transitioning to flex on larger screens */}
+              <div className="grid grid-cols-2 gap-x-4 gap-y-5 lg:flex lg:flex-wrap lg:items-center lg:gap-8 pt-2">
                 {iconBullets.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-2.5">
                     <item.icon className="w-6 h-6 text-blue-600 mt-0.5 shrink-0" />
-                    <div className="text-[11px] font-bold text-slate-800 leading-tight">
-                      <span className="block text-slate-900">{item.line1}</span>
-                      <span className="block text-slate-500 font-semibold">{item.line2}</span>
-                      <span className="block text-slate-500 font-semibold">{item.line3}</span>
+                    <div className="text-[11px] font-bold text-slate-850 leading-tight">
+                      <span className="block text-slate-900 font-black">{item.line1}</span>
+                      <span className="block text-slate-500 font-bold mt-0.5">{item.line2}</span>
+                      <span className="block text-slate-500 font-bold">{item.line3}</span>
                     </div>
                   </div>
                 ))}
@@ -902,8 +902,8 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* Right Patient/Specialist Hero Image with Overlay Card */}
-            <div className="lg:col-span-7 relative flex justify-center items-center w-full">
-              <div className="relative w-full aspect-[4/3] lg:aspect-[1.5] rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 bg-slate-50">
+            <div className="lg:col-span-7 flex flex-col items-center w-full relative">
+              <div className="relative w-full aspect-[1.6] lg:aspect-[1.5] rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 bg-slate-50">
                 <Image
                   src={config.hero.image}
                   alt={config.hero.headline}
@@ -913,20 +913,20 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                 />
               </div>
 
-              {/* Overlaid blue card at bottom-right corner matching mockup */}
-              <div className="absolute bottom-6 right-6 bg-[#0a1c3c] text-white p-5 rounded-2xl shadow-2xl border border-slate-800 max-w-[260px] z-10">
-                <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center font-black text-xs text-white shrink-0">
+              {/* Styled trust card: Static block below the image on mobile/tablet, absolute on desktop */}
+              <div className="w-full mt-4 lg:mt-0 lg:absolute lg:bottom-6 lg:right-6 bg-[#0a1c3c]/95 backdrop-blur-sm text-white p-4 md:p-5 rounded-2xl shadow-xl lg:shadow-2xl border border-slate-800/80 lg:max-w-[260px] z-10 transition-all duration-300">
+                <div className="flex items-center space-x-3 mb-2.5">
+                  <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-blue-600 flex items-center justify-center font-black text-xs text-white shrink-0">
                     {overlayCard.circle}
                   </div>
                   <div>
-                    <h4 className="font-black text-[10px] tracking-wider uppercase text-blue-300 leading-none">{overlayCard.title}</h4>
-                    <p className="text-[9px] text-slate-300 font-bold mt-1 leading-none">{overlayCard.sub}</p>
+                    <h4 className="font-black text-[9px] md:text-[10px] tracking-wider uppercase text-blue-300 leading-none">{overlayCard.title}</h4>
+                    <p className="text-[8.5px] md:text-[9px] text-slate-300 font-bold mt-1 leading-none">{overlayCard.sub}</p>
                   </div>
                 </div>
-                <div className="pt-2.5 border-t border-slate-800">
-                  <span className="text-xs font-black text-white block">{overlayCard.name}</span>
-                  <span className="text-[8px] text-slate-400 font-bold uppercase mt-0.5 tracking-wider">Chief Specialist</span>
+                <div className="pt-2 border-t border-slate-850">
+                  <span className="text-xs md:text-sm font-black text-white block leading-tight">{overlayCard.name}</span>
+                  <span className="text-[8px] text-slate-400 font-bold uppercase mt-0.5 tracking-wider block">Chief Specialist</span>
                 </div>
               </div>
             </div>
@@ -1490,27 +1490,29 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
           <span className="text-[10px] text-blue-300 block font-black uppercase tracking-wider">Free Consultation</span>
           <span className="text-xs md:text-sm font-extrabold leading-tight mt-0.5 block">🏥 Dental World {locationName}</span>
         </div>
-        <div className="flex gap-3 w-full sm:w-auto justify-between sm:justify-end">
+        <div className="flex gap-2.5 w-full sm:w-auto justify-between sm:justify-end">
           <a
             href="tel:+919100061610"
-            className="flex-1 sm:flex-initial bg-[#1d4ed8] hover:bg-blue-800 text-white font-black px-4 md:px-6 py-3 rounded-xl text-xs md:text-sm transition flex items-center justify-center gap-2 uppercase tracking-wide"
+            className="flex-1 sm:flex-initial bg-[#1d4ed8] hover:bg-blue-800 text-white font-black px-2 md:px-6 py-3 rounded-xl text-[10px] md:text-sm transition flex items-center justify-center gap-1.5 md:gap-2 uppercase tracking-wide"
           >
-            <Phone className="w-4 h-4 fill-white text-white" />
-            <span>Call: +91 91000 61610</span>
+            <Phone className="w-3.5 h-3.5 md:w-4 md:h-4 fill-white text-white shrink-0" />
+            <span className="hidden md:inline">Call: +91 91000 61610</span>
+            <span className="md:hidden">Call Us</span>
           </a>
           <a
             href="https://wa.me/919100061610"
             target="_blank"
-            className="flex-1 sm:flex-initial bg-[#22c55e] hover:bg-[#16a34a] text-white font-black px-4 md:px-6 py-3 rounded-xl text-xs md:text-sm transition flex items-center justify-center gap-2 uppercase tracking-wide"
+            className="flex-1 sm:flex-initial bg-[#22c55e] hover:bg-[#16a34a] text-white font-black px-2 md:px-6 py-3 rounded-xl text-[10px] md:text-sm transition flex items-center justify-center gap-1.5 md:gap-2 uppercase tracking-wide"
           >
-            <MessageSquare className="w-4 h-4 fill-white text-white" />
+            <MessageSquare className="w-3.5 h-3.5 md:w-4 md:h-4 fill-white text-white shrink-0" />
             <span>WhatsApp</span>
           </a>
           <a
             href="#book-now"
-            className="flex-1 sm:flex-initial bg-[#f97316] hover:bg-orange-700 text-white font-black px-4 md:px-6 py-3 rounded-xl text-xs md:text-sm transition flex items-center justify-center uppercase tracking-wide shadow-md"
+            className="flex-1 sm:flex-initial bg-[#f97316] hover:bg-orange-700 text-white font-black px-2 md:px-6 py-3 rounded-xl text-[10px] md:text-sm transition flex items-center justify-center uppercase tracking-wide shadow-md"
           >
-            <span>Book Appointment</span>
+            <span className="hidden md:inline">Book Appointment</span>
+            <span className="md:hidden">Book Appt</span>
           </a>
         </div>
       </div>
