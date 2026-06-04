@@ -22,15 +22,19 @@ const cases = [
   }
 ];
 
-export default function BeforeAfterShowcase() {
+export default function BeforeAfterShowcase({ customCases }: { customCases?: { before: string; after: string; title?: string }[] }) {
   const [activeIdx, setActiveIdx] = useState(0);
+  
+  const displayCases = customCases && customCases.length > 0 
+    ? customCases.map((c, i) => ({ title: c.title || `Case ${i + 1}`, before: c.before, after: c.after }))
+    : cases;
 
   const handlePrev = () => {
-    setActiveIdx((prev) => (prev === 0 ? cases.length - 1 : prev - 1));
+    setActiveIdx((prev) => (prev === 0 ? displayCases.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setActiveIdx((prev) => (prev === cases.length - 1 ? 0 : prev + 1));
+    setActiveIdx((prev) => (prev === displayCases.length - 1 ? 0 : prev + 1));
   };
 
   return (
@@ -54,7 +58,7 @@ export default function BeforeAfterShowcase() {
       
       {/* Grid for desktop / Single item view on mobile */}
       <div className="hidden md:grid md:grid-cols-3 gap-6">
-        {cases.map((item, idx) => (
+        {displayCases.map((item, idx) => (
           <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-md">
             <div className="flex w-full">
               {/* Before Image */}
@@ -89,8 +93,8 @@ export default function BeforeAfterShowcase() {
             {/* Before Image */}
             <div className="relative w-1/2 aspect-[4/5] bg-slate-100">
               <Image 
-                src={cases[activeIdx].before}
-                alt={`${cases[activeIdx].title} Before`}
+                src={displayCases[activeIdx].before}
+                alt={`${displayCases[activeIdx].title} Before`}
                 fill
                 className="object-cover animate-fade-in-up"
                 style={{ animationDuration: '0.4s' }}
@@ -100,8 +104,8 @@ export default function BeforeAfterShowcase() {
             {/* After Image */}
             <div className="relative w-1/2 aspect-[4/5] bg-slate-100 border-l border-white">
               <Image 
-                src={cases[activeIdx].after}
-                alt={`${cases[activeIdx].title} After`}
+                src={displayCases[activeIdx].after}
+                alt={`${displayCases[activeIdx].title} After`}
                 fill
                 className="object-cover animate-fade-in-up"
                 style={{ animationDuration: '0.4s' }}
@@ -113,7 +117,7 @@ export default function BeforeAfterShowcase() {
 
         {/* Dots indicators */}
         <div className="flex justify-center items-center space-x-2 mt-4">
-          {cases.map((_, idx) => (
+          {displayCases.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setActiveIdx(idx)}

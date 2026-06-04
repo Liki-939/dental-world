@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BeforeAfterShowcase from "@/components/BeforeAfterShowcase";
+import HomeTreatmentsGrid from "@/components/HomeTreatmentsGrid";
 import {
   Star,
   Clock,
@@ -134,6 +135,7 @@ export default function Home() {
                     fill
                     className="object-cover"
                     priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
                   />
                 </div>
               </div>
@@ -146,101 +148,8 @@ export default function Home() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 max-w-7xl text-center">
 
-            {/* 8 Treatment Cards Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-
-              {/* Card 1: General Dentistry */}
-              <Link href="/treatments" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
-                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <path d="M12 2C8.69 2 6 4.69 6 8c0 3.31 2.31 5.62 2.31 8.5C8.31 18.84 7 21 7 22c1.5 0 3.5-1 5-2.75 1.5 1.75 3.5 2.75 5 2.75 0-1-1.31-3.16-1.31-5.5C15.69 13.62 18 11.31 18 8c0-3.31-2.69-6-6-6z" />
-                  </svg>
-                </div>
-                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">General Dentistry</span>
-              </Link>
-
-              {/* Card 2: Cosmetic Dentistry */}
-              <Link href="/treatments" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
-                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <path d="M12 2c1.5 0 3 1.5 3 4s-1.5 4-3 4-3-1.5-3-4 1.5-4 3-4zm0 8c3 0 6 1.5 6 4.5v1.5H6v-1.5C6 11.5 9 10 12 10z" />
-                    <path d="M19 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" fill="currentColor" />
-                  </svg>
-                </div>
-                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Cosmetic Dentistry</span>
-              </Link>
-
-              {/* Card 3: Dental Implants */}
-              <Link href="/treatments/dental-implants" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
-                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <path d="M12 2v6M10 8h4M8 12h8M9 16h6M12 16v6M7 4h10" />
-                  </svg>
-                </div>
-                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Dental Implants</span>
-              </Link>
-
-              {/* Card 4: Smile Makeover */}
-              <Link href="/treatments/smile-designing" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
-                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <path d="M2.5 12a9.5 9.5 0 0 0 19 0H2.5z" />
-                    <path d="M12 3a9.5 9.5 0 0 0-9.5 9.5h19A9.5 9.5 0 0 0 12 3z" />
-                    <path d="M6 12s2 4 6 4 6-4 6-4" />
-                    <path d="M16.5 6.5l1 1.5 1.5-1-1.5-1z" fill="currentColor" />
-                  </svg>
-                </div>
-                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Smile Makeover</span>
-              </Link>
-
-              {/* Card 5: Root Canal Treatment */}
-              <Link href="/treatments/root-canal-treatment" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
-                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <path d="M12 2C8 2 6 5 6 9c0 3.5 2 6 2 9v4h8v-4c0-3 2-5.5 2-9 0-4-2-7-6-7z" />
-                    <path d="M12 6v8M10 9h4" />
-                  </svg>
-                </div>
-                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Root Canal Treatment</span>
-              </Link>
-
-              {/* Card 6: Invisalign & Braces */}
-              <Link href="/treatments/invisalign-treatment" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
-                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <path d="M12 3C8.5 3 6 5.5 6 9c0 3 2.5 5 2.5 8.5C8.5 19 7.5 21.5 6 23h12c-1.5-1.5-2.5-4-2.5-5.5C15.5 14 18 12 18 9c0-3.5-2.5-6-6-6z" />
-                    <rect x="9.5" y="7" width="5" height="4" rx="0.5" fill="currentColor" className="text-blue-500" />
-                    <path d="M4 9h16" />
-                  </svg>
-                </div>
-                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Invisalign & Braces</span>
-              </Link>
-
-              {/* Card 7: Teeth Whitening */}
-              <Link href="/treatments/teeth-whitening" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
-                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <path d="M12 2C8.5 2 6 4.5 6 8c0 3.5 2.5 5.5 2.5 8.5 0 1-.5 2.5-1.5 3.5 3 .5 5-1.5 5-3.5 0-3 2.5-5 2.5-8.5 0-3.5-2.5-6-6-6z" />
-                    <path d="M12 5l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" fill="currentColor" />
-                  </svg>
-                </div>
-                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Teeth Whitening</span>
-              </Link>
-
-              {/* Card 8: Kids Dentistry */}
-              <Link href="/treatments" className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-300 transition duration-300 flex flex-col items-center">
-                <div className="w-14 h-14 text-blue-600 mb-4 flex items-center justify-center bg-blue-50/50 rounded-full group-hover:scale-105 transition">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                    <circle cx="9" cy="9" r="1.5" fill="currentColor" />
-                    <circle cx="15" cy="9" r="1.5" fill="currentColor" />
-                  </svg>
-                </div>
-                <span className="font-bold text-[#0a1d37] text-[15px] md:text-base tracking-tight text-center">Kids Dentistry</span>
-              </Link>
-
-            </div>
+            {/* 24 Treatment Cards Grid */}
+            <HomeTreatmentsGrid />
 
             <div className="mt-10">
               <Link href="/treatments" className="inline-flex items-center font-bold text-blue-600 hover:text-blue-750 transition text-base">
@@ -433,11 +342,11 @@ export default function Home() {
                       <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                     </svg>
                     <div className="flex text-amber-400 space-x-0.5">
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
                     </div>
                   </div>
                   <p className="text-slate-655 font-medium leading-relaxed text-[14.5px]">
@@ -459,11 +368,11 @@ export default function Home() {
                       <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                     </svg>
                     <div className="flex text-amber-400 space-x-0.5">
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
                     </div>
                   </div>
                   <p className="text-slate-655 font-medium leading-relaxed text-[14.5px]">
@@ -485,11 +394,11 @@ export default function Home() {
                       <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                     </svg>
                     <div className="flex text-amber-400 space-x-0.5">
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
-                      <Star className="w-4.5 h-4.5 fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
+                      <Star className="w-[18px] h-[18px] fill-current" />
                     </div>
                   </div>
                   <p className="text-slate-655 font-medium leading-relaxed text-[14.5px]">
@@ -530,6 +439,7 @@ export default function Home() {
                     alt="Pragathi Nagar Clinic Front"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 300px"
                   />
                 </div>
                 <div className="flex flex-col justify-between space-y-4">
@@ -559,6 +469,7 @@ export default function Home() {
                     alt="Bachupally Clinic Front"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 300px"
                   />
                 </div>
                 <div className="flex flex-col justify-between space-y-4">
@@ -627,6 +538,7 @@ export default function Home() {
                     alt="Dental Nurse Smiling"
                     fill
                     className="object-cover object-top"
+                    sizes="(max-width: 1024px) 0vw, 300px"
                   />
                 </div>
               </div>

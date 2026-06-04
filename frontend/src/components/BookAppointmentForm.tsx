@@ -3,7 +3,13 @@
 import { useState } from 'react';
 import { Calendar } from 'lucide-react';
 
-export default function BookAppointmentForm() {
+export default function BookAppointmentForm({ 
+  defaultTreatment = 'General Consultation', 
+  minimal = false 
+}: { 
+  defaultTreatment?: string; 
+  minimal?: boolean; 
+}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -12,7 +18,7 @@ export default function BookAppointmentForm() {
     fullName: '',
     phoneNumber: '',
     emailAddress: '',
-    treatment: 'General Consultation',
+    treatment: defaultTreatment,
     preferredLocation: '',
     preferredDate: '',
     message: ''
@@ -46,7 +52,7 @@ export default function BookAppointmentForm() {
         fullName: '',
         phoneNumber: '',
         emailAddress: '',
-        treatment: 'General Consultation',
+        treatment: defaultTreatment,
         preferredLocation: '',
         preferredDate: '',
         message: ''
@@ -72,6 +78,52 @@ export default function BookAppointmentForm() {
           Book Another
         </button>
       </div>
+    );
+  }
+
+  if (minimal) {
+    return (
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {error && (
+          <div className="bg-red-50 text-red-600 p-4 rounded-xl border border-red-100 text-sm">
+            {error}
+          </div>
+        )}
+        
+        <div>
+          <label className="block text-sm font-medium text-slate-700 mb-1.5">Full Name *</label>
+          <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition bg-slate-50 focus:bg-white text-sm" placeholder="John Doe" />
+        </div>
+        
+        <div>
+          <label className="block text-sm font-medium text-slate-700 mb-1.5">Phone Number *</label>
+          <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition bg-slate-50 focus:bg-white text-sm" placeholder="+91 00000 00000" />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-slate-700 mb-1.5">Preferred Location *</label>
+          <select name="preferredLocation" value={formData.preferredLocation} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition bg-slate-50 focus:bg-white text-sm">
+            <option value="">Select a location</option>
+            <option value="Pragathi Nagar">Pragathi Nagar</option>
+            <option value="Bachupally">Bachupally</option>
+          </select>
+        </div>
+
+        <button type="submit" disabled={isSubmitting} className="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3.5 rounded-xl mt-4 transition shadow-md flex justify-center items-center disabled:opacity-70 disabled:cursor-not-allowed text-base">
+          {isSubmitting ? (
+            <span className="flex items-center">
+              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Submitting...
+            </span>
+          ) : (
+            "Request Callback"
+          )}
+        </button>
+        <p className="text-[11px] text-center text-slate-400 mt-3">We respect your privacy. No spam. Instant confirmation.</p>
+      </form>
     );
   }
 
