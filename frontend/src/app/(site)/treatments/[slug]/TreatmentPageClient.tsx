@@ -742,6 +742,816 @@ const treatmentsInfo: Record<string, {
       { question: 'How long do whitening results last?', answer: 'Typically, results last 1 to 3 years depending on dietary habits. Reducing coffee, tea, and smoking helps maintain the bright white shade.' },
       { question: 'Will it cause tooth sensitivity?', answer: 'Some patients feel mild sensitivity for 24 hours, but we use sensitivity-free laser systems and apply protective fluoride gel to prevent it.' }
     ]
+  },
+  'teeth-cleaning-scaling': {
+    tagline: 'CLEAN TEETH. HEALTHY GUMS.',
+    subtitle: 'Fresh. Bright. Disease-Free.',
+    techStat: 'Ultrasonic Scalers & Polishing',
+    heroImage: '/home_page_png/teeth_cleaning.png',
+    features: [
+      { title: 'Plaque Removal', desc: 'Removes soft bacterial plaque' },
+      { title: 'Calculus Cleansing', desc: 'Scales off hard tartar deposits' },
+      { title: 'Polishing', desc: 'Polishes enamel for smooth finish' },
+      { title: 'Gum Health Check', desc: 'Ensures gum pocket safety' },
+      { title: 'Fresh Breath', desc: 'Reduces halitosis-causing bacteria' }
+    ],
+    symptoms: ['Bleeding Gums', 'Yellow Teeth', 'Bad Breath', 'Swollen Gums', 'Teeth Stains'],
+    whatIsTitle: 'WHAT IS TEETH CLEANING & SCALING?',
+    whatIsText1: "Professional scaling is a routine preventive procedure designed to clean plaque, tartar, and surface stains from your teeth. Over time, bacteria form plaque which hardens into calculus, which cannot be removed by normal brushing. Scaling removes this to prevent gum disease.",
+    whatIsText2: "Scaling is performed using advanced ultrasonic instruments that vibrate gently to release deposits. The teeth are then polished to ensure a smooth, shiny finish that makes it harder for plaque to stick in the future.",
+    whatIsNote: "Dentists recommend a scaling and polishing session every 6 months to maintain optimal oral health.",
+    howItWorksSteps: [
+      { step: 1, title: 'Exam', desc: 'Dentist checks for plaque & pockets', icon: 'stethoscope' },
+      { step: 2, title: 'Scaling', desc: 'Ultrasonic scaler removes tartar', icon: 'tooth' },
+      { step: 3, title: 'Polishing', desc: 'Polishing paste for a smooth shine', icon: 'clean' },
+      { step: 4, title: 'Flossing', desc: 'Cleaning between tight spaces', icon: 'shield' }
+    ],
+    howItWorksSummary: 'Scaling uses high-frequency vibrations to break down tartar from the tooth surface, accompanied by a cool water spray. Once the teeth are free of deposits, a polishing brush and dental paste are applied to buff out micro-stains, giving you a smooth, clean feel.',
+    processSteps: [
+      { step: 1, title: 'Oral Examination', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Ultrasonic Scaling', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Interdental Flossing', desc: '', icon: 'clean' },
+      { step: 4, title: 'Prophylaxis Polishing', desc: '', icon: 'shield' }
+    ],
+    types: [
+      { title: 'Standard Scaling', desc: 'Routine cleaning for healthy gums.' },
+      { title: 'Deep Scaling (Root Planing)', desc: 'Cleans below the gumline to treat early periodontitis.' },
+      { title: 'Laser Scaling', desc: 'Minimal vibration with laser gum disinfection.' }
+    ],
+    startingCost: '₹1,500*',
+    costPoints: ['No Hidden Costs', 'Quick Single Sitting', 'Free Toothbrush Kit'],
+    costDisclaimer: '*Cost may vary depending on plaque buildup and gum health.',
+    comparisonTitle: 'SCALING vs HOME BRUSHING',
+    comparisonHeader: ['CLINIC SCALING', 'BRUSHING', 'FLOSSING'],
+    comparisonRows: [
+      { feature: 'Removes Hard Tartar', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Cleans Below Gumline', main: 'check', opt1: 'cross', opt2: 'dash' },
+      { feature: 'Prevents Periodontitis', main: 'check', opt1: 'dash', opt2: 'dash' }
+    ],
+    whyChooseCards: [
+      { title: 'Advanced Ultrasonic Scalers', desc: 'Gently dislodges hard tartar' },
+      { title: 'Expert Periodontists', desc: 'Specialized gum evaluation' },
+      { title: 'Comfortable Setting', desc: 'Minimal discomfort or sensitivity' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'My teeth feel incredibly clean and my bleeding gum issue resolved completely in a single sitting.',
+    testimonialAuthor: 'Suresh P., Pragathi Nagar',
+    faqs: [
+      { question: 'Does scaling loosen teeth?', answer: 'No. Scaling removes the dirt (calculus) holding loose teeth, revealing the true state of gums. It helps gums heal and tighten around teeth.' },
+      { question: 'How often should I get it done?', answer: 'Once every six months is highly recommended for everyone.' }
+    ]
+  },
+  'wisdom-tooth-extraction': {
+    tagline: 'PAINLESS EXTRACTION. JAW RELIEF.',
+    subtitle: 'Gentle. Fast. Safe.',
+    techStat: 'Oral Surgery Specialist',
+    heroImage: '/home_page_png/wisdom_tooth_extraction.png',
+    features: [
+      { title: 'Painless Procedure', desc: 'Effective local anesthesia' },
+      { title: 'Prevent Crowding', desc: 'Stops teeth from shifting' },
+      { title: 'Relieve Pain', desc: 'Eliminates back jaw ache' },
+      { title: 'Expert Surgeon', desc: 'Safe surgical techniques' }
+    ],
+    symptoms: ['Jaw Pain', 'Swollen Gums', 'Difficulty Chewing', 'Stiff Jaw', 'Headaches'],
+    whatIsTitle: 'WHAT IS WISDOM TOOTH EXTRACTION?',
+    whatIsText1: "Wisdom teeth, or third molars, are the last to erupt and often get trapped (impacted) in the jawbone or grow at angles. This leads to infection, gum pain, cyst formation, or damage to adjacent molars.",
+    whatIsText2: "Our specialist oral surgeons perform extraction using minimally invasive methods under local anesthesia. This relieves pressure, eliminates recurring infections, and protects your biting alignment.",
+    whatIsNote: "Post-operative instructions are carefully provided to ensure quick, complication-free healing.",
+    howItWorksSteps: [
+      { step: 1, title: 'X-ray', desc: 'Assess root depth & bone structure', icon: 'stethoscope' },
+      { step: 2, title: 'Anesthesia', desc: 'Numb the surgical zone', icon: 'syringe' },
+      { step: 3, title: 'Extraction', desc: 'Gently release and lift the tooth', icon: 'tooth' },
+      { step: 4, title: 'Sutures', desc: 'Dissolvable stitches if required', icon: 'shield' }
+    ],
+    howItWorksSummary: 'We use digital dental X-rays to map the wisdom tooth root relation to jaw nerves. Under anesthesia, the surgeon carefully makes a tiny opening in the gums if needed, releases the tooth in sections for maximum safety, cleans the socket, and places sutures to facilitate clean clotting.',
+    processSteps: [
+      { step: 1, title: '3D Scan & Diagnosis', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Local Anesthesia', desc: '', icon: 'syringe' },
+      { step: 3, title: 'Sectioning & Extraction', desc: '', icon: 'tooth' },
+      { step: 4, title: 'Socket Cleaning & Suturing', desc: '', icon: 'shield' }
+    ],
+    types: [
+      { title: 'Simple Extraction', desc: 'For fully erupted wisdom teeth.' },
+      { title: 'Surgical Extraction', desc: 'For impacted or partially buried teeth requiring bone relief.' }
+    ],
+    startingCost: '₹3,000*',
+    costPoints: ['Standardized Fees', 'Specialist Surgeon Charges Included', 'Post-Op Follow-up Free'],
+    costDisclaimer: '*Surgical and bone impactions cost more than simple extractions.',
+    comparisonTitle: 'SURGERY vs IGNORING IT',
+    comparisonHeader: ['EXTRACTION', 'DELAYS', 'NO ACTION'],
+    comparisonRows: [
+      { feature: 'Relieves Infection', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Protects Neighbor Molars', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Avoids Chronic Pain', main: 'check', opt1: 'cross', opt2: 'cross' }
+    ],
+    whyChooseCards: [
+      { title: 'Maxillofacial Surgeon Specialist', desc: 'High expertise' },
+      { title: 'Advanced Anaesthetic Solutions', desc: 'Completely painless' },
+      { title: 'Sterile Operating Environment', desc: 'Zero infection risk' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'The extraction of my impacted tooth took only 20 minutes and I had very minimal post-op swelling.',
+    testimonialAuthor: 'Naveen K., Pragathi Nagar',
+    faqs: [
+      { question: 'Will I feel pain during extraction?', answer: 'No. Local anesthesia ensures the entire area is completely numb. You will only feel slight pressure.' },
+      { question: 'What can I eat after extraction?', answer: 'Stick to soft, cool foods like ice cream, smoothies, curd rice, and pudding for the first 24-48 hours.' }
+    ]
+  },
+  'advanced-gum-treatment': {
+    tagline: 'STOP GUM BLEEDING. SAVE YOUR BONES.',
+    subtitle: 'Laser Flap. Safe Root Planing.',
+    techStat: 'Laser Periodontal Care',
+    heroImage: '/home_page_png/gum_treatment.png',
+    features: [
+      { title: 'Bleeding Cessation', desc: 'Stops bleeding gums immediately' },
+      { title: 'Pocket Reduction', desc: 'Tops deep bacterial pockets' },
+      { title: 'Secure Loose Teeth', desc: 'Supports bone reattachment' },
+      { title: 'Laser Disinfection', desc: 'Sterilizes deep root areas' }
+    ],
+    symptoms: ['Bleeding Gums', 'Receding Gums', 'Bad Breath', 'Loose Teeth', 'Red Swollen Gums'],
+    whatIsTitle: 'WHAT IS ADVANCED GUM TREATMENT?',
+    whatIsText1: "Periodontal disease starts as mild gum irritation but can escalate to bone destruction, causing teeth to become loose and fall out. Advanced gum treatment involves deep cleaning (scaling and root planing) to clean the root surface, or flap surgery to access deep infection.",
+    whatIsText2: "By lifting the gums slightly, we clean out tartar and infection from the bone, then use dental lasers to sterilize the pockets. This allows the gum tissue to reattach firmly to the teeth, preserving your natural smile.",
+    whatIsNote: "Laser-assisted gum surgery ensures faster healing, minimal bleeding, and highly comfortable recovery.",
+    howItWorksSteps: [
+      { step: 1, title: 'Gum Scan', desc: 'Probing pockets and bone loss', icon: 'stethoscope' },
+      { step: 2, title: 'Planing', desc: 'Root surfaces are smoothed out', icon: 'tooth' },
+      { step: 3, title: 'Laser Prep', desc: 'Laser light sterilizes tissue', icon: 'clean' },
+      { step: 4, title: 'Reattachment', desc: 'Gums adapt back to the bone', icon: 'shield' }
+    ],
+    howItWorksSummary: 'Flap surgery cleans root surfaces by temporarily parting the gum margins. Under local anesthesia, the specialist removes subgingival calculus, sterilizes the area with soft-tissue lasers, and places fine sutures. This resolves deep-seated infections and prevents bone loss.',
+    processSteps: [
+      { step: 1, title: 'Periodontal Probing', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Root Planing & Debridement', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Laser Gum Sterilization', desc: '', icon: 'clean' },
+      { step: 4, title: 'Flap Realignment & Suture', desc: '', icon: 'shield' }
+    ],
+    types: [
+      { title: 'Root Planing', desc: 'Non-surgical deep scaling below the gumline.' },
+      { title: 'Gum Flap Surgery', desc: 'Micro-surgical cleaning of deep bone defects.' },
+      { title: 'Laser Periodontitis Therapy', desc: 'Minimally invasive pocket disinfection.' }
+    ],
+    startingCost: '₹4,000*',
+    costPoints: ['Pocket Laser Free', 'Bone Grafting Available', 'Instalment Options'],
+    costDisclaimer: '*Costs depend on the number of quadrants requiring flap surgical access.',
+    comparisonTitle: 'SURGERY vs LATE STAGE LOSS',
+    comparisonHeader: ['FLAP SURGERY', 'SCALING ONLY', 'NO TREATMENT'],
+    comparisonRows: [
+      { feature: 'Eliminates Deep Infection', main: 'check', opt1: 'dash', opt2: 'cross' },
+      { feature: 'Saves Loose Teeth', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Prevents Bone Destruction', main: 'check', opt1: 'cross', opt2: 'cross' }
+    ],
+    whyChooseCards: [
+      { title: 'In-house Periodontists', desc: 'Gum health specialists' },
+      { title: 'Biolase Dental Laser', desc: 'Highly sterile treatment' },
+      { title: 'High-magnification loupes', desc: 'Precise surgical execution' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'My gums stopped bleeding completely and my teeth feel solid now after my flap surgery.',
+    testimonialAuthor: 'Venkatesh M., Pragathi Nagar',
+    faqs: [
+      { question: 'Is flap surgery painful?', answer: 'No. Local anesthesia is used. You will have mild soreness for 3-5 days after the surgery, easily controlled by medication.' },
+      { question: 'Do gums grow back after recession?', answer: 'Gums do not grow back naturally, but gum graft surgeries or laser stimulation can help cover exposed roots.' }
+    ]
+  },
+  'tooth-decay-fillings': {
+    tagline: 'PREVENT CAVITIES. RESTORE STRENGTH.',
+    subtitle: 'Tooth-Colored. Mercury-Free. Invisible.',
+    techStat: 'Composite Restorations',
+    heroImage: '/home_page_png/tooth_filling.png',
+    features: [
+      { title: 'Natural Shade Match', desc: 'Blends with natural teeth' },
+      { title: 'Mercury-Free Safety', desc: 'Safe composite resins' },
+      { title: 'Prevents Deeper Decay', desc: 'Seals cavity from bacteria' },
+      { title: 'Chewing Stability', desc: 'Strong bonding to enamel' }
+    ],
+    symptoms: ['Cavities', 'Black Spots', 'Sensitivity to Cold', 'Food Trap', 'Mild Tooth Pain'],
+    whatIsTitle: 'WHAT IS TOOTH DECAY & FILLINGS?',
+    whatIsText1: "Tooth decay starts when bacteria erode the outer enamel, creating small holes or cavities. If left untreated, decay travels deeper to the pulp, causing severe pain that requires a root canal. A filling stops this progression.",
+    whatIsText2: "We use dental composite resins, which are biocompatible tooth-colored materials. The decay is removed, and the composite is layered, shaped, and cured with a specialized blue light, leaving your tooth strong and looking natural.",
+    whatIsNote: "Composite fillings bond chemically to the tooth structure, restoring up to 90% of its original strength.",
+    howItWorksSteps: [
+      { step: 1, title: 'Clean Cavity', desc: 'Decay is carefully cleaned out', icon: 'stethoscope' },
+      { step: 2, title: 'Conditioning', desc: 'Tooth is etched for bonding', icon: 'tooth' },
+      { step: 3, title: 'Composite Placement', desc: 'Resin is layered and sculpted', icon: 'clean' },
+      { step: 4, title: 'Blue Light Cure', desc: 'Resin is hardened in seconds', icon: 'shield' },
+      { step: 5, title: 'Polishing', desc: 'Surface is smoothed to match bite', icon: 'crown' }
+    ],
+    howItWorksSummary: 'First, the dentist removes the decayed tissue. A mild etching gel is applied to prepare the enamel microscopic pores. The liquid bonding agent is applied, followed by composite paste matched to your tooth shade. Finally, the light cures it, and the dentist shapes it to match your bite.',
+    processSteps: [
+      { step: 1, title: 'Enamel Cavity Preparation', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Bonding Resin Application', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Composite Layer Sculpting', desc: '', icon: 'clean' },
+      { step: 4, title: 'LED Blue Light Polymerization', desc: '', icon: 'shield' },
+      { step: 5, title: 'Bite Adjustment & Polish', desc: '', icon: 'crown' }
+    ],
+    types: [
+      { title: 'Composite Fillings', desc: 'Modern, aesthetic, tooth-colored resin.' },
+      { title: 'Glass Ionomer Fillings (GIC)', desc: 'Fluoride-releasing material ideal for root caries and kids.' }
+    ],
+    startingCost: '₹1,500*',
+    costPoints: ['Long Lifespan', 'Painless Prep', 'FDA-Approved Materials'],
+    costDisclaimer: '*Cost depends on the number of surfaces involved in the tooth structure.',
+    comparisonTitle: 'COMPOSITE vs OLD SILVER AMALGAM',
+    comparisonHeader: ['COMPOSITE', 'SILVER AMALGAM', 'GIC'],
+    comparisonRows: [
+      { feature: 'Natural Appearance', main: 'check', opt1: 'cross', opt2: 'warn' },
+      { feature: 'Mercury-Free', main: 'check', opt1: 'cross', opt2: 'check' },
+      { feature: 'Enamel Preservation', main: 'check', opt1: 'cross', opt2: 'check' }
+    ],
+    whyChooseCards: [
+      { title: 'Shade Matching Guide', desc: 'Blends with natural teeth' },
+      { title: 'Japanese Dental Composites', desc: 'Highest wear-resistance' },
+      { title: 'Painless Quick Prep', desc: 'Done in under 20 minutes' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'The filling is completely invisible. I cannot even tell which tooth had the cavity!',
+    testimonialAuthor: 'Swathi T., Pragathi Nagar',
+    faqs: [
+      { question: 'How long do composite fillings last?', answer: 'They generally last 5 to 10 years with good brushing and flossing habits.' },
+      { question: 'Is composite safe?', answer: 'Yes. Modern composite fillings are bisphenol-free, non-toxic, and contain no mercury.' }
+    ]
+  },
+  'hybrid-dentures': {
+    tagline: 'RESTORE FULL CHEWING. NO SLIPPING.',
+    subtitle: 'Fixed Implant Dentures. BPS Acrylic.',
+    techStat: 'All-on-4 Implant Prosthetics',
+    heroImage: '/home_page_png/dentures.png',
+    features: [
+      { title: 'Secure Implant Fit', desc: 'Zero slipping or falling out' },
+      { title: 'Youthful Smile Restored', desc: 'Fills facial hollows' },
+      { title: 'Eat Hard Foods Again', desc: 'Chewing efficiency returns' },
+      { title: 'Durable BPS Acrylic', desc: 'High break-resistant structure' }
+    ],
+    symptoms: ['Missing Teeth', 'Sunken Cheeks', 'Loose Dentures', 'Inability to Chew', 'Speech Slurring'],
+    whatIsTitle: 'WHAT ARE HYBRID & FULL DENTURES?',
+    whatIsText1: "Traditional dentures can slip, click, and make chewing hard. Hybrid dentures solve this by mounting a custom set of teeth onto 4 or 6 dental implants in the jawbone. This makes the denture completely fixed and highly stable.",
+    whatIsText2: "For cases where implants are not suitable, we construct BPS Dentures (Bio-functional Prosthetic System). BPS dentures use premium materials and unique recording methods to guarantee a precise, snug fit.",
+    whatIsNote: "Hybrid dentures do not cover the palate, preserving your natural ability to taste and feel food.",
+    howItWorksSteps: [
+      { step: 1, title: 'Impressions', desc: 'Create mold of jaws and gums', icon: 'stethoscope' },
+      { step: 2, title: 'Jaw Recording', desc: 'Record exact bite relationship', icon: 'tooth' },
+      { step: 3, title: 'Wax Trial', desc: 'Test aesthetic shape and teeth color', icon: 'clean' },
+      { step: 4, title: 'Processing', desc: 'BPS polymerization for high strength', icon: 'shield' },
+      { step: 5, title: 'Placement', desc: 'Secure fit and final adjustments', icon: 'crown' }
+    ],
+    howItWorksSummary: 'Hybrid dentures are customized to your chewing pattern. We capture dynamic jaw relations, design the tooth setup in wax, verify the fit, and process the final denture in BPS acrylic. For fixed hybrids, the teeth are securely screwed onto implants.',
+    processSteps: [
+      { step: 1, title: 'Bite Scanning & Impressions', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Bite Jaw Relation Recording', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Wax Aesthetic Tooth Trial', desc: '', icon: 'clean' },
+      { step: 4, title: 'Lab Processing & Denture Delivery', desc: '', icon: 'shield' }
+    ],
+    types: [
+      { title: 'BPS Complete Dentures', desc: 'High quality premium removable dentures.' },
+      { title: 'Implant Overdentures', desc: 'Removable dentures that snap onto implants for stability.' },
+      { title: 'Fixed Hybrid Dentures', desc: 'Completely fixed screw-retained implant prosthesis.' }
+    ],
+    startingCost: '₹35,000*',
+    costPoints: ['BPS Quality Certification', 'Natural Look', '0% EMI Options'],
+    costDisclaimer: '*Implant-supported options cost more due to surgical components.',
+    comparisonTitle: 'HYBRID vs TRADITIONAL DENTURES',
+    comparisonHeader: ['HYBRID DENTURE', 'OVERDENTURE', 'BASIC DENTURE'],
+    comparisonRows: [
+      { feature: 'Completely Fixed', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Chewing Power', main: 'check', opt1: 'warn', opt2: 'cross' },
+      { feature: 'No Palate Cover', main: 'check', opt1: 'cross', opt2: 'cross' }
+    ],
+    whyChooseCards: [
+      { title: 'Certified BPS Lab Partners', desc: 'Premium materials' },
+      { title: 'Implantologist Team', desc: 'Expert surgical placement' },
+      { title: 'Custom Facial Contouring', desc: 'Restores youthfulness' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'I can eat nuts and apples again without worrying about my teeth moving. Truly life changing!',
+    testimonialAuthor: 'Ramarao Y., Pragathi Nagar',
+    faqs: [
+      { question: 'Do hybrid dentures need to be removed at night?', answer: 'Fixed hybrid dentures do not need to be removed; you brush them in your mouth like natural teeth. Removable overdentures should be taken out and cleaned.' },
+      { question: 'How long do implants take to heal?', answer: 'Implant integration usually takes 3 to 4 months before the final fixed hybrid denture is attached.' }
+    ]
+  },
+  'bad-breath-halitosis': {
+    tagline: 'FRESH BREATH. MORE CONFIDENCE.',
+    subtitle: 'Bacteria elimination. Salivary Care.',
+    techStat: 'Oral Microbiome Cleanse',
+    heroImage: '/home_page_png/bad_breath.png',
+    features: [
+      { title: 'Deep Gum Sanitization', desc: 'Removes deep bacteria pockets' },
+      { title: 'Salivary Flow Check', desc: 'Addresses dry mouth issues' },
+      { title: 'Tongue Coating Treatment', desc: 'Cleans sulfur-producing areas' },
+      { title: 'Home Maintenance Guide', desc: 'Custom mouthwash protocols' }
+    ],
+    symptoms: ['Persistent Bad Breath', 'Sour Taste', 'White Tongue Coating', 'Dry Mouth', 'Bleeding Gums'],
+    whatIsTitle: 'WHAT IS BAD BREATH & HALITOSIS?',
+    whatIsText1: "Bad breath is primarily caused by anaerobic bacteria on the back of the tongue or in deep gum pockets. These bacteria break down proteins and release Volatile Sulfur Compounds (VSCs), resulting in a foul odor that brushing alone cannot cure.",
+    whatIsText2: "Our clinical bad breath therapy diagnoses root causes—which may include plaque buildup, dry mouth, or decaying teeth—and eliminates them using targeted scaling, tongue therapy, and medical-grade antibacterial rinses.",
+    whatIsNote: "90% of bad breath cases originate inside the mouth and can be resolved with proper dental hygiene.",
+    howItWorksSteps: [
+      { step: 1, title: 'Analysis', desc: 'Locating bacteria & plaque source', icon: 'stethoscope' },
+      { step: 2, title: 'Deep Cleaning', desc: 'Scale teeth & gum pockets', icon: 'tooth' },
+      { step: 3, title: 'Tongue Scrub', desc: 'Scrape back tongue bacteria', icon: 'clean' },
+      { step: 4, title: 'Antisepsis', desc: 'Apply specialized antimicrobial gels', icon: 'shield' }
+    ],
+    howItWorksSummary: 'We identify bacterial accumulation zones. Using ultrasonic scaling and targeted mechanical scraping of the tongue, we strip away the bacterial biofilm, followed by ozone or laser disinfection to leave oral tissues sterile and clean.',
+    processSteps: [
+      { step: 1, title: 'Oral Odor Source Evaluation', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Ultrasonic Gum Scaling', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Tongue Biofilm Debridement', desc: '', icon: 'clean' },
+      { step: 4, title: 'Antibacterial Disinfection', desc: '', icon: 'shield' }
+    ],
+    types: [
+      { title: 'Dental Halitosis Cure', desc: 'Resolves gum and plaque causes.' },
+      { title: 'Xerostomia Therapy', desc: 'Treats dry mouth to restore natural saliva wash.' }
+    ],
+    startingCost: '₹2,000*',
+    costPoints: ['Includes Antibacterial Rinse', 'Tongue Scraper Free', 'Follow-up Consultation'],
+    costDisclaimer: '*Additional costs apply if gum flap surgery or decay fillings are required.',
+    comparisonTitle: 'THERAPY vs COSMETIC SPRAYS',
+    comparisonHeader: ['CLINIC THERAPY', 'MOUTH SPRAYS', 'MINTS'],
+    comparisonRows: [
+      { feature: 'Kills Sulfur Bacteria', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Cleans Deep Pockets', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Long Term Cure', main: 'check', opt1: 'cross', opt2: 'cross' }
+    ],
+    whyChooseCards: [
+      { title: 'Targeted Bacterial Cleansing', desc: 'Highly effective results' },
+      { title: 'Periodontist Evaluation', desc: 'Check for hidden gum pockets' },
+      { title: 'Custom Home-care Regimen', desc: 'Keeps breath fresh daily' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'The treatment solved my chronic bad breath issue. Brushing and mouthwash never did the trick.',
+    testimonialAuthor: 'Prasad G., Pragathi Nagar',
+    faqs: [
+      { question: 'Why does bad breath persist?', answer: 'Standard brushing only cleans 60% of tooth surfaces. Bacteria in deep gum pockets and tongue folds can only be removed professionally.' },
+      { question: 'Is bad breath related to stomach issues?', answer: 'Only in 5-10% of cases. Most causes are local to the mouth and resolved by dentist scaling.' }
+    ]
+  },
+  'dental-crown-bridges': {
+    tagline: 'REBUILD SHAPE. FILL THE GAPS.',
+    subtitle: 'High Strength Zirconia. Premium E-max.',
+    techStat: 'CAD/CAM Digital Milling',
+    heroImage: '/home_page_png/crown_bridges.png',
+    features: [
+      { title: 'Tooth Protection', desc: 'Strengthens weak or cracked teeth' },
+      { title: 'Restore Chew Function', desc: 'Replaces missing teeth' },
+      { title: 'CAD/CAM Precision', desc: 'Perfect margins and fit' },
+      { title: 'Natural Translucency', desc: 'Matches natural tooth enamel' }
+    ],
+    symptoms: ['Broken Tooth', 'Missing Teeth', 'Post-RCT Tooth', 'Difficulty Chewing', 'Unsightly Gaps'],
+    whatIsTitle: 'WHAT ARE DENTAL CROWNS & BRIDGES?',
+    whatIsText1: "A dental crown is a custom cap that fits over a weak, cracked, or root-canal-treated tooth, protecting it from fractures. A dental bridge uses crowns on adjacent teeth to support a false tooth in the middle, bridging the gap of missing teeth.",
+    whatIsText2: "We use metal-free Zirconia and E-max porcelain. These materials are milled using advanced digital CAD/CAM technology to guarantee an exact fit and a beautiful, natural appearance that will not show dark metal lines at the gums.",
+    whatIsNote: "Modern ceramic restorations are highly biocompatible and can last 10-15+ years.",
+    howItWorksSteps: [
+      { step: 1, title: 'Prep', desc: 'Tooth is reshaped slightly', icon: 'stethoscope' },
+      { step: 2, title: 'Scan', desc: 'Digital impression of teeth', icon: 'tooth' },
+      { step: 3, title: 'Temp Crown', desc: 'Protected with temporary cap', icon: 'clean' },
+      { step: 4, title: 'Milling', desc: 'Zirconia milled in dental laboratory', icon: 'shield' },
+      { step: 5, title: 'Cementation', desc: 'Permanent placement & bite check', icon: 'crown' }
+    ],
+    howItWorksSummary: 'The tooth is prepared under local anesthesia to make room for the crown. A digital intraoral scanner captures the exact shape. In a couple of days, the milled zirconia crown arrives and is permanently bonded to the tooth structure.',
+    processSteps: [
+      { step: 1, title: 'Tooth Preparation', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Intraoral Digital Impression', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Temporary Crown Insertion', desc: '', icon: 'clean' },
+      { step: 4, title: 'Permanent Crown Cementation', desc: '', icon: 'crown' }
+    ],
+    types: [
+      { title: 'PFM Crowns', desc: 'Porcelain fused to metal; strong but has a metal base.' },
+      { title: 'Zirconia Crowns', desc: 'Ultra-strong, metal-free, highly aesthetic.' },
+      { title: 'E-max Crowns', desc: 'Lithium disilicate glass-ceramic; ultimate aesthetics for front teeth.' }
+    ],
+    startingCost: '₹5,000*',
+    costPoints: ['Up to 15-Year Warranty', 'CAD/CAM Milled', 'Perfect Metal-Free Margin'],
+    costDisclaimer: '*Price depends on material selected (PFM, Zirconia, E-max).',
+    comparisonTitle: 'ZIRCONIA vs BASIC METAL CROWNS',
+    comparisonHeader: ['ZIRCONIA', 'PFM CROWNS', 'METAL CROWNS'],
+    comparisonRows: [
+      { feature: 'Metal-Free Aesthetics', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Strength & Durability', main: 'check', opt1: 'check', opt2: 'check' },
+      { feature: 'No Dark Gum Linings', main: 'check', opt1: 'cross', opt2: 'cross' }
+    ],
+    whyChooseCards: [
+      { title: 'CAD/CAM Digital Scans', desc: 'Zero messy tray impressions' },
+      { title: 'High Aesthetics Ceramics', desc: 'Perfect color blending' },
+      { title: 'Long-term Warranties', desc: 'Up to 15 years on Zirconia' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'The crown matches my adjacent teeth so perfectly that no one can tell it is artificial.',
+    testimonialAuthor: 'Madhavi L., Pragathi Nagar',
+    faqs: [
+      { question: 'Is a crown necessary after a Root Canal?', answer: 'Yes. A root-canal-treated tooth loses its blood supply and becomes brittle, making it highly prone to cracking without a crown.' },
+      { question: 'How do I care for my dental bridge?', answer: 'Brush normally, and use a specialized superfloss or water flosser to clean under the suspended bridge tooth.' }
+    ]
+  },
+  'frenectomy': {
+    tagline: 'LASER REVISION. PAINLESS RELEASE.',
+    subtitle: 'Suture-free. Bloodless. Safe.',
+    techStat: 'WaterLase Soft-Tissue Laser',
+    heroImage: '/home_page_png/frenectomy.png',
+    features: [
+      { title: 'Painless Laser Cut', desc: 'No surgical scalpels used' },
+      { title: 'Suture-free Healing', desc: 'No stitches to remove' },
+      { title: 'Speech Improvement', desc: 'Releases tight tongue-tie' },
+      { title: 'Close Dental Gaps', desc: 'Aids orthodontic closing' }
+    ],
+    symptoms: ['Speech Impediment', 'Tongue Tie', 'Nursing Difficulty', 'Wide Gap in Front Teeth', 'Receding Gums'],
+    whatIsTitle: 'WHAT IS A FRENECTOMY?',
+    whatIsText1: "A frenectomy is the surgical release of a muscular band of tissue (frenum) under the tongue or lip. If this tissue is too thick or short, it causes tongue-tie (limiting speech and feeding) or lip-tie (causing gum pull and dental gaps).",
+    whatIsText2: "We perform frenectomies using advanced dental lasers. The laser vaporizes the tight tissue band in seconds, sealing blood vessels and nerves simultaneously. This means there is no bleeding, no stitches, and minimal soreness.",
+    whatIsNote: "Excellent option for toddlers and children due to speed and lack of needles or sutures.",
+    howItWorksSteps: [
+      { step: 1, title: 'Evaluation', desc: 'Check tongue mobility and latch', icon: 'stethoscope' },
+      { step: 2, title: 'Numbing Gel', desc: 'Topical anesthetic for comfort', icon: 'syringe' },
+      { step: 3, title: 'Laser Release', desc: 'Vaporize tissue band in 2 mins', icon: 'tooth' },
+      { step: 4, title: 'Stretches', desc: 'Exercise to prevent reattachment', icon: 'shield' }
+    ],
+    howItWorksSummary: 'Laser frenectomy releases restrictive tissue without surgical cutting. The laser energy precisely dissolves the fibers of the frenum. The procedure is complete in 5 minutes with zero bleeding, and healing is rapid.',
+    processSteps: [
+      { step: 1, title: 'Mobility Evaluation', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Topical Numbing Gel', desc: '', icon: 'syringe' },
+      { step: 3, title: 'Laser Tissue Release', desc: '', icon: 'tooth' },
+      { step: 4, title: 'Post-op Range Stretching', desc: '', icon: 'shield' }
+    ],
+    types: [
+      { title: 'Lingual Frenectomy', desc: 'Releases tongue-tie to restore speech and nursing.' },
+      { title: 'Labial Frenectomy', desc: 'Releases lip-tie to close midline front gaps.' }
+    ],
+    startingCost: '₹5,000*',
+    costPoints: ['Laser Precision', 'No Sutures Needed', 'Free Post-op Stretching Check'],
+    costDisclaimer: '*Procedure price includes specialist surgeon and laser fees.',
+    comparisonTitle: 'LASER vs SCALPEL FRENECTOMY',
+    comparisonHeader: ['LASER METHOD', 'SCALPEL METHOD', 'NO SURGERY'],
+    comparisonRows: [
+      { feature: 'Zero Bleeding', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'No Stitches Required', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Minimal Soreness', main: 'check', opt1: 'cross', opt2: 'cross' }
+    ],
+    whyChooseCards: [
+      { title: 'WaterLase iPlus Laser', desc: 'Painless soft tissue revision' },
+      { title: 'Pediatric Dental Experts', desc: 'Gentle handling of kids' },
+      { title: 'Instant Mobilty', desc: 'Immediate movement results' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'My son had tongue-tie and couldn\'t speak clearly. The laser treatment took 5 minutes and his speech improved immediately!',
+    testimonialAuthor: 'Sujatha (Mother of Hemanth), Pragathi Nagar',
+    faqs: [
+      { question: 'Will my child need general anesthesia?', answer: 'No, laser frenectomy is done in the dental chair using a topical numbing gel or minor local anesthesia.' },
+      { question: 'What is the aftercare?', answer: 'We will show you simple tongue stretching exercises to perform for 2-3 weeks to prevent the tissue from healing back.' }
+    ]
+  },
+  'cosmetic-dentistry': {
+    tagline: 'BEAUTIFY YOUR SMILE. PERFECT SHAPES.',
+    subtitle: 'Composite Veneers. Gum Depigmentation. Contouring.',
+    techStat: 'Aesthetic Dental Artistry',
+    heroImage: '/home_page_png/cosmetic_dentistry.png',
+    features: [
+      { title: 'Close Front Gaps', desc: 'Painless diastema closure' },
+      { title: 'Reshape Uneven Teeth', desc: 'Cosmetic contouring & bonding' },
+      { title: 'Laser Pink Gums', desc: 'Removes dark gum pigmentation' },
+      { title: 'Instant Enhancements', desc: 'Completed in a single visit' }
+    ],
+    symptoms: ['Chipped Tooth', 'Gap in Front Teeth', 'Dark Gums', 'Uneven Teeth Shapes', 'Gummy Smile'],
+    whatIsTitle: 'WHAT IS COSMETIC DENTISTRY?',
+    whatIsText1: "Cosmetic dentistry is focused on improving the visual harmony of your teeth and gums. This includes teeth bonding (applying resin to repair chips or close gaps), enamel shaping (contouring jagged edges), and laser gum depigmentation.",
+    whatIsText2: "Using advanced cosmetic resins and soft-tissue lasers, we can transform a gummy, dark, or uneven smile into a bright, symmetrical, and confident Hollywood look. Most treatments are non-invasive and done in a single sitting.",
+    whatIsNote: "Cosmetic bonding matches your enamel translucency perfectly, making restorations completely invisible.",
+    howItWorksSteps: [
+      { step: 1, title: 'Design', desc: 'Map out symmetrical tooth lines', icon: 'stethoscope' },
+      { step: 2, title: 'Bonding', desc: 'Apply resin and build shape', icon: 'tooth' },
+      { step: 3, title: 'Laser Lift', desc: 'Contour gums or remove dark spots', icon: 'clean' },
+      { step: 4, title: 'Polish', desc: 'Polish surfaces to high shine', icon: 'shield' }
+    ],
+    howItWorksSummary: 'We analyze your facial proportions. For gaps or chips, we bond layer after layer of composite resin, curing and sculpting it manually. For dark gums, a gentle dental laser peels away melanin pigments to reveal natural pink gums.',
+    processSteps: [
+      { step: 1, title: 'Cosmetic Smile Analysis', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Enamel Conditioning & Bonding', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Laser Gum Depigmentation', desc: '', icon: 'clean' },
+      { step: 4, title: 'High-Gloss Polishing & Finishing', desc: '', icon: 'crown' }
+    ],
+    types: [
+      { title: 'Composite Bonding', desc: 'Quick tooth-colored additions to close gaps.' },
+      { title: 'Laser Gum Depigmentation', desc: 'Peeling dark gum layers for healthy pink gums.' },
+      { title: 'Enamel Contouring', desc: 'Reshaping jagged edges.' }
+    ],
+    startingCost: '₹2,500*',
+    costPoints: ['Single Sitting Results', 'No Injection Bonding', 'Custom Shade Match'],
+    costDisclaimer: '*Gum depigmentation and porcelain veneers cost more than composite bonding.',
+    comparisonTitle: 'BONDING vs PORCELAIN VENEERS',
+    comparisonHeader: ['COMPOSITE BONDING', 'PORCELAIN VENEERS', 'CROWNS'],
+    comparisonRows: [
+      { feature: 'Single Sitting Done', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Zero Tooth Cutting', main: 'check', opt1: 'warn', opt2: 'cross' },
+      { feature: 'Stain Resistance', main: 'warn', opt1: 'check', opt2: 'check' }
+    ],
+    whyChooseCards: [
+      { title: 'Ultra-thin Layering Resin', desc: 'High light-translucency' },
+      { title: 'Advanced Gum Lasers', desc: 'Quick pink gum whitening' },
+      { title: 'Cosmetic Dental Masters', desc: 'Artistic smile modifications' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'The gap between my front teeth is gone! The composite bonding is absolutely invisible.',
+    testimonialAuthor: 'Ria S., Pragathi Nagar',
+    faqs: [
+      { question: 'How long does composite bonding last?', answer: 'Typically 3 to 7 years. You must avoid biting hard foods directly on bonded teeth.' },
+      { question: 'Does gum depigmentation recur?', answer: 'Generally, results last 10+ years, but smoking or sun exposure can cause minor pigment return.' }
+    ]
+  },
+  'laser-dentistry': {
+    tagline: 'NO DRILL. NO SCALPEL. PAINLESS CLINIC.',
+    subtitle: 'Minimally Invasive. Bloodless Healing.',
+    techStat: 'FDA-Approved Hard & Soft Tissue Lasers',
+    heroImage: '/home_page_png/laser_dentistry.png',
+    features: [
+      { title: 'No Drilling Vibration', desc: 'More comfortable cavity prep' },
+      { title: 'Reduced Needle Needs', desc: 'Lesser local anesthesia needed' },
+      { title: 'Rapid Laser Healing', desc: 'Promotes cellular recovery' },
+      { title: 'Sterile Tooth Treatment', desc: 'Kills 99.9% of bacteria' }
+    ],
+    symptoms: ['Dental Anxiety', 'Sensitive Teeth', 'Gummy Smile', 'Canker Sores', 'Deep Decay'],
+    whatIsTitle: 'WHAT IS LASER DENTISTRY?',
+    whatIsText1: "Laser dentistry uses concentrated light energy to perform a variety of dental procedures. Hard-tissue lasers can prepare teeth for fillings without the heat, vibration, and noise of traditional drills. Soft-tissue lasers shape gums and remove lesions with zero bleeding.",
+    whatIsText2: "By eliminating mechanical friction, lasers reduce post-operative pain, require less anesthesia, and seal incisions instantly, drastically lowering the risk of bacterial infections.",
+    whatIsNote: "Perfect for patients with dental phobias or children who dread the sound of the drill.",
+    howItWorksSteps: [
+      { step: 1, title: 'Calibrate Laser', desc: 'Set wave settings for tissue', icon: 'stethoscope' },
+      { step: 2, title: 'Laser Clean', desc: 'Dissolve decay or shape gum', icon: 'tooth' },
+      { step: 3, title: 'Disinfect', desc: 'Sterilize canals and pockets', icon: 'clean' },
+      { step: 4, title: 'Fill/Heal', desc: 'Complete restoration or seal', icon: 'shield' }
+    ],
+    howItWorksSummary: 'Dental lasers emit a wavelength absorbed by water and enamel minerals. The laser beam vaporizes decayed structure and sterilizes soft tissue without contacting the tooth directly. The process is clean, quiet, and extremely fast.',
+    processSteps: [
+      { step: 1, title: 'Laser Safety Check & Goggles', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Wavelength Calibration', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Precise Laser Ablation', desc: '', icon: 'clean' },
+      { step: 4, title: 'Restoration & Light Curing', desc: '', icon: 'shield' }
+    ],
+    types: [
+      { title: 'Soft-Tissue Laser', desc: 'For gum surgeries, frenectomies, and ulcer cures.' },
+      { title: 'Hard-Tissue Laser', desc: 'For painless cavity preparation and etching.' }
+    ],
+    startingCost: '₹2,000*',
+    costPoints: ['Painless Technology', 'Quick Recovery', 'FDA-Approved Lasers'],
+    costDisclaimer: '*Laser treatment is an add-on cost depending on the baseline dental procedure.',
+    comparisonTitle: 'LASER vs CONVENTIONAL DRILL',
+    comparisonHeader: ['DENTAL LASER', 'ROTARY DRILL', 'SCALPEL'],
+    comparisonRows: [
+      { feature: 'No Heat/Vibration', main: 'check', opt1: 'cross', opt2: 'check' },
+      { feature: 'Zero Bleeding', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Minimal Anesthesia Needed', main: 'check', opt1: 'cross', opt2: 'cross' }
+    ],
+    whyChooseCards: [
+      { title: 'BIOLASE Epic & Waterlase', desc: 'World leaders in dental lasers' },
+      { title: 'Certified Laser Specialists', desc: 'Precision wave safety' },
+      { title: 'Ultra-Comfortable Rooms', desc: 'Relaxing environment' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'I felt no vibration and heard no drill sound! Laser fillings are a game changer.',
+    testimonialAuthor: 'Abhinav D., Pragathi Nagar',
+    faqs: [
+      { question: 'Is laser dentistry safe for pregnant patients?', answer: 'Yes, it is completely safe as there is no radiation. Protective glasses are worn by everyone in the room.' },
+      { question: 'Can all cavities be filled with lasers?', answer: 'Lasers are excellent for small to medium cavities, but very large decay or metal removal still requires traditional drills.' }
+    ]
+  },
+  'jaw-surgery': {
+    tagline: 'CORRECT SKELETAL BITE. FACIAL BALANCE.',
+    subtitle: 'Orthognathic Surgery. 3D Surgical Guide.',
+    techStat: 'Maxillofacial Skeletal Alignment',
+    heroImage: '/home_page_png/jaw_surgery.png',
+    features: [
+      { title: 'Align Jaw Asymmetry', desc: 'Creates balanced facial lines' },
+      { title: 'Resolve Severe Bite Issues', desc: 'Corrects underbites and overbites' },
+      { title: 'Cures TMJ Joint Pain', desc: 'Relieves joint stress points' },
+      { title: 'Improves Speech & Sleep', desc: 'Opens airway blockages' }
+    ],
+    symptoms: ['Severe Underbite', 'Gummy Smile', 'Facial Asymmetry', 'Difficulty Swallowing', 'Sleep Apnea'],
+    whatIsTitle: 'WHAT IS CORRECTIVE JAW SURGERY?',
+    whatIsText1: "Corrective jaw surgery (orthognathic surgery) is a specialized procedure that repositions misaligned jaws. When teeth cannot be aligned by braces alone because the underlying jawbones are mismatched, surgery is needed to align the skeletal structure.",
+    whatIsText2: "Using advanced 3D virtual surgical planning, the maxillofacial surgeon repositions the upper and lower jaws into their ideal functional and aesthetic positions, securing them with bio-compatible plates.",
+    whatIsNote: "This surgery is coordinates with orthodontic braces to ensure teeth fit together perfectly post-alignment.",
+    howItWorksSteps: [
+      { step: 1, title: '3D Plan', desc: 'CT scans and bite planning', icon: 'stethoscope' },
+      { step: 2, title: 'Braces', desc: 'Align teeth before surgical date', icon: 'tooth' },
+      { step: 3, title: 'Surgical Shift', desc: 'Reposition upper/lower jaw bone', icon: 'clean' },
+      { step: 4, title: 'Fixation', desc: 'Secure bone with titanium plates', icon: 'shield' }
+    ],
+    howItWorksSummary: 'Jaw surgery is performed under general anesthesia. The surgeon makes incisions entirely inside the mouth, relocates the jawbones using 3D printed guides, and secures them in place. Dental braces then complete final teeth alignment.',
+    processSteps: [
+      { step: 1, title: '3D Virtual Surgical Setup', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Pre-Surgical Orthodontic Braces', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Corrective Osteotomy Shift', desc: '', icon: 'clean' },
+      { step: 4, title: 'Skeletal Rigid Fixation', desc: '', icon: 'shield' }
+    ],
+    types: [
+      { title: 'Maxillary Osteotomy', desc: 'Repositioning the upper jaw for gummy smiles or open bites.' },
+      { title: 'Mandibular Osteotomy', desc: 'Repositioning the lower jaw for severe underbites or retrognathia.' },
+      { title: 'Bimaxillary Surgery', desc: 'Repositioning both upper and lower jaws.' }
+    ],
+    startingCost: 'Custom*',
+    costPoints: ['Maxillofacial Surgeon Specialist', '3D CT Planning Included', 'Full Hospital Integration'],
+    costDisclaimer: '*Cost is customized depending on hospital stay and single/double jaw correction requirements.',
+    comparisonTitle: 'SURGERY vs BRACES ALONE',
+    comparisonHeader: ['JAW SURGERY', 'BRACES ALONE', 'NO CURE'],
+    comparisonRows: [
+      { feature: 'Corrects Skeletal Deformity', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Improves Facial Profile', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Resolves Severe Joint Strain', main: 'check', opt1: 'warn', opt2: 'cross' }
+    ],
+    whyChooseCards: [
+      { title: 'Senior Maxillofacial Surgeons', desc: 'Top jaw surgery experts' },
+      { title: '3D Virtual Surgical Planning', desc: 'Simulate results before surgery' },
+      { title: 'Integrated Ortho-Surgical Care', desc: 'Seamless coordination' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'The surgery completely aligned my jaw profile and cured my chronic TMJ joint headaches.',
+    testimonialAuthor: 'Deepak R., Pragathi Nagar',
+    faqs: [
+      { question: 'How long is the jaw surgery recovery?', answer: 'Initial healing takes 6 weeks, while complete bone integration takes 3 to 6 months.' },
+      { question: 'Will I have scars on my face?', answer: 'No. The surgical cuts are made entirely inside your mouth, so no facial scars are left.' }
+    ]
+  },
+  'genioplasty': {
+    tagline: 'REFINE CHIN PROFILE. RESTORE SYMMETRY.',
+    subtitle: 'Surgical Chin Correction. No External Scars.',
+    techStat: 'Precision Chin Osteotomy',
+    heroImage: '/home_page_png/genioplasty.png',
+    features: [
+      { title: 'Correct Weak Chin', desc: 'Advancement to define jawline' },
+      { title: 'Reduce Protruding Chin', desc: 'Recession to soften profile' },
+      { title: 'Chin Asymmetry Repair', desc: 'Aligns chin point with face center' },
+      { title: 'Zero Facial Scarring', desc: 'Incision is completely inside lip' }
+    ],
+    symptoms: ['Receding Chin', 'Protruding Chin', 'Asymmetric Chin Point', 'Weak Jawline Profile', 'Sunken Lower Face'],
+    whatIsTitle: 'WHAT IS A GENIOPLASTY?',
+    whatIsText1: "Genioplasty is a surgical cosmetic procedure to reshape the chin bone. Unlike temporary chin fillers or implants that can shift, genioplasty shifts the chin bone itself to achieve permanent facial symmetry.",
+    whatIsText2: "A maxillofacial surgeon performs this procedure through an incision inside the mouth. The bone is cut, advanced or reduced, and secured with bio-compatible plates, balancing your chin with your nose and lips.",
+    whatIsNote: "Provides immediate, lifelong jawline definition and neck contour enhancements.",
+    howItWorksSteps: [
+      { step: 1, title: 'CT Scan', desc: 'Assess facial bone proportions', icon: 'stethoscope' },
+      { step: 2, title: 'Incision', desc: 'Cut made inside the lower lip', icon: 'tooth' },
+      { step: 3, title: 'Osteotomy', desc: 'Precisely slide the chin bone', icon: 'clean' },
+      { step: 4, title: 'Fixation', desc: 'Secure with titanium miniplates', icon: 'shield' }
+    ],
+    howItWorksSummary: 'Under general anesthesia, the chin bone is exposed through the inside of the lower lip. The bone is cut, repositioned to the planned advancement or reduction guidelines, fixed with plate screws, and sutured shut.',
+    processSteps: [
+      { step: 1, title: 'Facial Profile CT Scan', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Intraoral Lip Access', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Precision Chin Osteotomy', desc: '', icon: 'clean' },
+      { step: 4, title: 'Plate Fixation & Suture Close', desc: '', icon: 'shield' }
+    ],
+    types: [
+      { title: 'Advancement Genioplasty', desc: 'Shifting chin forward to correct retrognathic weak profiles.' },
+      { title: 'Reduction Genioplasty', desc: 'Shifting chin back to soften protruding profiles.' }
+    ],
+    startingCost: 'Custom*',
+    costPoints: ['Lifelong Permanent Results', 'No Chin Implant Rejection Risk', 'No External Scars'],
+    costDisclaimer: '*Exact cost is determined after CT evaluation and orthodontic planning.',
+    comparisonTitle: 'GENIOPLASTY vs CHIN IMPLANTS',
+    comparisonHeader: ['GENIOPLASTY BONE SHIFT', 'SILICONE IMPLANTS', 'FILLERS'],
+    comparisonRows: [
+      { feature: 'Zero Infection/Dislocation Risk', main: 'check', opt1: 'cross', opt2: 'check' },
+      { feature: 'Corrects Asymmetry', main: 'check', opt1: 'warn', opt2: 'cross' },
+      { feature: 'Permanent Result', main: 'check', opt1: 'check', opt2: 'cross' }
+    ],
+    whyChooseCards: [
+      { title: '3D Simulation Software', desc: 'Visualize your profile change' },
+      { title: 'Maxillofacial Elite Specialists', desc: 'Expert bone carvers' },
+      { title: 'Complete Post-op Comfort Care', desc: 'Smooth recovery guides' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'My profile looks incredibly balanced now. The weak chin was corrected permanently.',
+    testimonialAuthor: 'Sanjana P., Pragathi Nagar',
+    faqs: [
+      { question: 'Will my lips feel numb after surgery?', answer: 'Temporary lower lip numbness is common due to nerve stretching but resolves fully in a few weeks.' },
+      { question: 'How long do stitches take to dissolve?', answer: 'The dissolvable stitches inside the mouth typically fall out in 10 to 14 days.' }
+    ]
+  },
+  'mouth-ulcers': {
+    tagline: 'INSTANT ULCER PAIN RELIEF.',
+    subtitle: 'Laser Photobiomodulation. Fast Sore Healing.',
+    techStat: 'Low-Level Laser Cauterization',
+    heroImage: '/home_page_png/mouth_ulcers.png',
+    features: [
+      { title: 'Instant Pain Block', desc: 'Numbs ulcer nerves in 60 seconds' },
+      { title: 'Cuts Healing Time', desc: 'Accelerates sore tissue closure' },
+      { title: 'Painless Non-contact Laser', desc: 'Laser tip never touches the sore' },
+      { title: 'Prevents Sore Recurrence', desc: 'Sterilizes local sore boundaries' }
+    ],
+    symptoms: ['Painful Canker Sores', 'Difficulty Swallowing', 'Red Cheek Sores', 'Burning Gums', 'Sharp Tooth Rubbing'],
+    whatIsTitle: 'WHAT IS LASER MOUTH ULCER TREATMENT?',
+    whatIsText1: "Mouth ulcers (aphthous ulcers) are painful spots that make talking, eating, and drinking hot liquids unbearable. While topical gels take 10-14 days to heal them, low-level laser therapy provides relief in seconds.",
+    whatIsText2: "The dental laser delivers light energy directly to the ulcer. This stimulates cellular healing, destroys bacteria, and temporarily de-sensitizes local nerve endings, allowing you to eat comfortably immediately after the treatment.",
+    whatIsNote: "The procedure is completely non-contact, quiet, and requires zero injections.",
+    howItWorksSteps: [
+      { step: 1, title: 'Clean', desc: 'Sore is gently isolated', icon: 'stethoscope' },
+      { step: 2, title: 'Laser Hover', desc: 'Laser beam points at the ulcer', icon: 'tooth' },
+      { step: 3, title: 'De-sensitize', desc: 'Nerve endings are neutralized', icon: 'clean' },
+      { step: 4, title: 'Heal', desc: 'Tissue regeneration starts', icon: 'shield' }
+    ],
+    howItWorksSummary: 'Laser energy de-sensitizes localized nerve endings around the canker sore. In a single session, the low-power laser tip is scanned over the ulcer for 90 seconds. Healing factors are activated, sealing the sore for quick recovery.',
+    processSteps: [
+      { step: 1, title: 'Ulcer Isolation & Cleanse', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Goggles Protection Placement', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Laser Cauterization Scanning', desc: '', icon: 'clean' },
+      { step: 4, title: 'Soothing Topical Gel Finish', desc: '', icon: 'shield' }
+    ],
+    types: [
+      { title: 'Laser Aphthous Therapy', desc: 'Direct treatment of painful sores.' },
+      { title: 'Sharp Tooth Contouring', desc: 'Smooves sharp tooth margins causing recurring cheek sores.' }
+    ],
+    startingCost: '₹1,000*',
+    costPoints: ['Instant Relief Guaranteed', 'Takes Under 5 Minutes', 'Anti-inflammatory Care Included'],
+    costDisclaimer: '*Price covers laser cauterization and post-op healing gels.',
+    comparisonTitle: 'LASER vs SALTS/CREAMS',
+    comparisonHeader: ['LASER SCAN', 'OVER THE COUNTER GELS', 'SALT WATER'],
+    comparisonRows: [
+      { feature: 'Instant Pain Block', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Heals in 24-48 Hours', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Zero Burning Sensation', main: 'check', opt1: 'cross', opt2: 'cross' }
+    ],
+    whyChooseCards: [
+      { title: 'Diode Low-Energy Laser', desc: 'Non-burning light therapy' },
+      { title: 'Instant Comfort Check', desc: 'Walk out pain-free' },
+      { title: 'Ulcer Preventive Evaluation', desc: 'Addresses systemic vitamins' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'I couldn\'t speak due to a huge ulcer. The laser took 1 minute and the pain vanished completely!',
+    testimonialAuthor: 'Divya K., Pragathi Nagar',
+    faqs: [
+      { question: 'Does the laser burn my cheek?', answer: 'No. The laser uses cold-pulse biostimulation. You will only feel a warm, comforting sensation.' },
+      { question: 'Why do I get recurring ulcers?', answer: 'Recurring ulcers can be triggered by stress, vitamin B12 deficiencies, sharp tooth margins, or acidic foods.' }
+    ]
+  },
+  'preventive-dentistry': {
+    tagline: 'SHIELD YOUR ENAMEL. BLOCK CAVITIES.',
+    subtitle: 'Pit & Fissure Sealants. Fluoride Varnish.',
+    techStat: 'Proactive Enamel Protection',
+    heroImage: '/home_page_png/preventive_dentistry.png',
+    features: [
+      { title: 'Fluoride Enamel Shield', desc: 'Re-mineralizes weak enamel spots' },
+      { title: 'Pit & Fissure Sealants', desc: 'Coats deep molar grooves' },
+      { title: 'Custom Nightguards', desc: 'Stops teeth grinding wear' },
+      { title: 'Child Decay Defense', desc: 'Keeps kids teeth cavity-free' }
+    ],
+    symptoms: ['Acid Sensitivity', 'Deep Molar Grooves', 'Teeth Grinding (Bruxism)', 'Chipped Enamel Edges', 'Plaque Buildup'],
+    whatIsTitle: 'WHAT IS PREVENTIVE DENTISTRY?',
+    whatIsText1: "Preventive dentistry aims to stop dental issues before they start. Key treatments include dental sealants (painting thin coatings over molar crevices to keep food out) and fluoride varnishes (strengthening enamel against bacterial acid).",
+    whatIsText2: "We also fabricate custom Nightguards for patients who grind their teeth (bruxism), protecting the teeth from fractures, flattening, and TMJ jaw joint pain.",
+    whatIsNote: "Investing in preventive treatments saves you from expensive root canals or extractions later.",
+    howItWorksSteps: [
+      { step: 1, title: 'Clean', desc: 'Polish tooth crevices thoroughly', icon: 'stethoscope' },
+      { step: 2, title: 'Sealant Paint', desc: 'Flowable composite in grooves', icon: 'tooth' },
+      { step: 3, title: 'Curing', desc: 'LED light hardens the sealant', icon: 'clean' },
+      { step: 4, title: 'Fluoride gel', desc: 'Apply protective enamel varnish', icon: 'shield' }
+    ],
+    howItWorksSummary: 'Dental sealants are flowable resins applied to deep grooves of permanent molars. Once light-cured, they act as a physical shield against food packing. Fluoride therapy infuses essential minerals back into early decay pores to reverse minor lesions.',
+    processSteps: [
+      { step: 1, title: 'Plaque Cleaning & Polishing', desc: '', icon: 'stethoscope' },
+      { step: 2, title: 'Pit Resin Sealant Application', desc: '', icon: 'tooth' },
+      { step: 3, title: 'Blue light Polymerization', desc: '', icon: 'clean' },
+      { step: 4, title: 'Concentrated Fluoride Application', desc: '', icon: 'shield' }
+    ],
+    types: [
+      { title: 'Dental Sealants', desc: 'Protective coatings for chewing surfaces of back teeth.' },
+      { title: 'Fluoride Therapy', desc: 'Professional strength varnish to strengthen enamel.' },
+      { title: 'Bruxism Nightguards', desc: 'Custom mouthguards to prevent teeth grinding wear.' }
+    ],
+    startingCost: '₹1,200*',
+    costPoints: ['Quick Painless Procedure', 'No Tooth Cutting', 'Highly Cost Effective'],
+    costDisclaimer: '*Fluoride and Nightguards have different pricing based on arch size.',
+    comparisonTitle: 'SEALANTS vs CAVITY REPAIR',
+    comparisonHeader: ['PREVENTIVE SEALANTS', 'FILLINGS', 'ROOT CANAL'],
+    comparisonRows: [
+      { feature: 'Saves Natural Enamel', main: 'check', opt1: 'warn', opt2: 'cross' },
+      { feature: 'Zero Pain/Discomfort', main: 'check', opt1: 'warn', opt2: 'cross' },
+      { feature: 'Highly Affordable', main: 'check', opt1: 'dash', opt2: 'cross' }
+    ],
+    whyChooseCards: [
+      { title: 'Clinically Proven Sealants', desc: 'Up to 90% cavity reduction' },
+      { title: 'FDA Fluoride Varnishes', desc: 'Deep enamel re-mineralization' },
+      { title: 'Custom Nightguards Milling', desc: 'Ideal jaw joint fits' }
+    ],
+    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
+    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    testimonialText: 'My daughter got sealants done for her back teeth. It has kept them cavity-free for years!',
+    testimonialAuthor: 'Arjun S. (Father of Ria), Pragathi Nagar',
+    faqs: [
+      { question: 'Are dental sealants permanent?', answer: 'Sealants can last 5 to 10 years, but need to be checked during regular dental visits to ensure they haven\'t worn down.' },
+      { question: 'Do nightguards cure teeth grinding?', answer: 'Nightguards do not stop the grinding habit (which is often stress-related), but they absorb chewing forces to protect your teeth and joints from wearing down.' }
+    ]
   }
 };
 

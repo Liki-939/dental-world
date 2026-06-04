@@ -508,31 +508,390 @@ export const treatmentsData: Record<string, TreatmentData> = {
       ]
     }
   },
-  'teeth-whitening': {
-    title: 'Teeth Whitening',
-    hero_headline: 'Instant Teeth Whitening in Hyderabad',
-    hero_subheadline: 'Brighten your smile up to 8 shades in just 45 minutes.',
-    aboutText: 'Professional teeth whitening is a highly effective, safe procedure designed to remove stains and discoloration from your teeth, restoring a bright and youthful smile.',
-    whenRequired: 'Recommended for patients with yellow or stained teeth from coffee, tea, wine, smoking, or natural aging.',
+  'teeth-cleaning-scaling': {
+    title: 'Teeth Cleaning & Scaling',
+    hero_headline: 'Professional Teeth Cleaning & Scaling in Hyderabad',
+    hero_subheadline: 'Restore the natural shine of your teeth and maintain optimal gum health.',
+    aboutText: 'Professional teeth cleaning, scaling, and polishing is a fundamental preventive procedure that removes accumulated plaque and tartar (calculus) from your teeth, especially in hard-to-reach areas. This helps prevent gum disease, cavities, and bad breath.',
+    whenRequired: 'It is recommended to get a professional dental cleaning every 6 months to maintain healthy gums and prevent periodontal diseases.',
     benefits: [
-      'Instant Results: Up to 8 shades whiter in 1 sitting.',
-      'Safe for Enamel: US-FDA approved whitening gels.',
-      'Painless Laser Tech: Minimizes sensitivity.',
-      'Long Lasting: Enjoy a bright smile for years.'
+      'Removes Plaque and Tartar: Prevents cavities and gum infections.',
+      'Fresh Breath: Eliminates bacteria that cause bad breath (halitosis).',
+      'Removes Surface Stains: Clears tea, coffee, and tobacco stains.',
+      'Prevents Gum Disease: Stops bleeding gums and bone loss.'
     ],
-    duration: 'Typically completed in a single 45-60 minute visit.',
-    procedure: 'A whitening gel is applied to the teeth and activated with a specialized laser light to break down stains.',
+    duration: 'Typically completed in a single 30-45 minute session.',
+    procedure: 'Using advanced ultrasonic scalers, the dentist gently removes tartar and plaque from the teeth and gum line, followed by polishing to smooth the enamel surface.',
     pricing: [
-      { title: "Laser Whitening", price: "7,500", features: ["Consultation", "1-Sitting Laser Procedure", "FDA-Approved Gels"] }
+      { title: "Standard Scaling", price: "1,500", features: ["Full Mouth Scaling", "Polishing", "Consultation"] }
     ],
     faqs: [
-      { question: "Does it cause sensitivity?", answer: "We use protective gels and advanced laser technology to prevent tooth sensitivity." }
+      { question: "Is scaling painful?", answer: "No, it is a non-invasive procedure. You may feel mild vibration and water spray, but no pain." },
+      { question: "Does scaling weaken teeth?", answer: "No, this is a myth. Scaling only removes harmful deposits, protecting your teeth and gums." }
     ],
     testimonials: [
-      { id: 1, patient_name: "Karthik", text: "Amazing results! Got it done before my wedding, and my smile was so bright.", rating: 5, treatment_name: "Teeth Whitening" }
+      { id: 1, patient_name: "Suresh P.", text: "Quick and professional scaling. My teeth feel incredibly clean!", rating: 5, treatment_name: "Teeth Cleaning" }
     ],
     cases: [
-      { beforeImg: "/images/cases/smile_design_before.png", afterImg: "/images/cases/smile_design_after.png", description: "Teeth whitened up to 8 shades whiter." }
+      { beforeImg: "/images/gums_before.png", afterImg: "/images/gums_after.png", description: "Plaque and tartar removed, revealing healthy gums." }
+    ]
+  },
+  'wisdom-tooth-extraction': {
+    title: 'Wisdom Tooth Extraction',
+    hero_headline: 'Painless Wisdom Tooth Extraction in Hyderabad',
+    hero_subheadline: 'Relieve pain and prevent alignment issues with gentle, specialized wisdom teeth removal.',
+    aboutText: 'Wisdom tooth extraction is a common surgical procedure to remove one or more of the third molars (wisdom teeth) located at the back corners of your mouth. Extraction is often needed when these teeth are impacted, causing pain, infection, or crowding.',
+    whenRequired: 'Required when wisdom teeth fail to emerge properly (impaction), grow at an incorrect angle, cause pain, swelling, cyst formation, or damage adjacent teeth.',
+    benefits: [
+      'Relieves Pain: Alleviates chronic pressure and jaw ache.',
+      'Prevents Infection: Eliminates pockets where food and bacteria collect.',
+      'Protects Neighboring Teeth: Prevents decay and root damage to adjacent molars.',
+      'Avoids Crowding: Prevents alignment issues in the rest of the teeth.'
+    ],
+    duration: 'Takes about 30 to 60 minutes depending on case complexity.',
+    procedure: 'Conducted under local anesthesia. The dentist or oral surgeon gently exposes the bone and tooth, extracts the tooth, cleans the site, and places sutures if needed.',
+    pricing: [
+      { title: "Simple Extraction", price: "3,000", features: ["Local Anesthesia", "Extraction", "Post-op Check"] },
+      { title: "Surgical Extraction", price: "6,000", features: ["Impacted Tooth Removal", "Suturing", "Specialist Oral Surgeon"], isPopular: true }
+    ],
+    faqs: [
+      { question: "Is wisdom tooth extraction painful?", answer: "The procedure is completely painless as it is done under local anesthesia. Some post-op soreness is expected and managed with pain relievers." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Naveen K.", text: "I was scared of the extraction, but the oral surgeon was so quick and painless!", rating: 5, treatment_name: "Wisdom Tooth" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/rct_xray_before.png", afterImg: "/images/cases/rct_xray_after.png", description: "Impacted wisdom tooth extracted successfully." }
+    ]
+  },
+  'advanced-gum-treatment': {
+    title: 'Advanced Gum Treatment',
+    hero_headline: 'Periodontal Therapy & Flap Surgery in Hyderabad',
+    hero_subheadline: 'Treat gum infections, stop bleeding, and secure loose teeth with advanced periodontal care.',
+    aboutText: 'Advanced gum treatment (periodontics) focuses on treating infections of the gums and supporting bone structures. When gum disease progresses to periodontitis, deep cleaning (root planing) or surgical interventions like flap surgery are required to clean infected root surfaces and reduce pockets.',
+    whenRequired: 'Indicated for bleeding gums, chronic bad breath, receding gum lines, deep gum pockets, or loose teeth due to bone loss.',
+    benefits: [
+      'Stops Gum Bleeding: Restores healthy pink gums.',
+      'Saves Loose Teeth: Strengthens the bone support around your teeth.',
+      'Freshens Breath: Eliminates deep pockets of bacteria.',
+      'Protects Overall Health: Reduces the risk of systemic inflammation linked to heart disease.'
+    ],
+    duration: 'Usually completed in 2 to 4 sessions depending on the severity.',
+    procedure: 'Deep cleaning (scaling & root planing) is performed, and in advanced cases, gum flap surgery is done to access and clean deep root areas, often utilizing lasers for sterile healing.',
+    pricing: [
+      { title: "Deep Root Planing", price: "4,000", features: ["Deep Scaling", "Root Planing", "Laser Sterilization"] },
+      { title: "Flap Surgery (per quadrant)", price: "8,000", features: ["Flap Access", "Debridement", "Bone Grafting if needed"], isPopular: true }
+    ],
+    faqs: [
+      { question: "What is flap surgery?", answer: "It is a routine procedure where gums are gently lifted back to clean deep tartar deposits on the roots, then sutured back in place for healthy reattachment." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Venkatesh M.", text: "My bleeding gums have completely healed. The treatment saved my teeth!", rating: 5, treatment_name: "Gum Treatment" }
+    ],
+    cases: [
+      { beforeImg: "/images/gums_before.png", afterImg: "/images/gums_after.png", description: "Gums restored to healthy status after periodontal flap surgery." }
+    ]
+  },
+  'tooth-decay-fillings': {
+    title: 'Tooth Decay & Fillings',
+    hero_headline: 'Composite Tooth Fillings in Hyderabad',
+    hero_subheadline: 'Repair cavities and restore tooth strength with natural-looking, mercury-free composite fillings.',
+    aboutText: 'Tooth fillings are used to treat cavities caused by decay, restoring the damaged tooth structure back to its normal shape and function. We use advanced, tooth-colored composite resins that blend seamlessly with your natural teeth and provide strong durability.',
+    whenRequired: 'Required when you have cavities, black spots on teeth, food lodging, or mild sensitivity due to enamel erosion.',
+    benefits: [
+      'Natural Appearance: Tooth-colored composite matches your enamel.',
+      'Prevents Further Decay: Seals the cavity to stop bacteria.',
+      'Restores Strength: Strengthens the tooth structure for chewing.',
+      'Mercury-Free: Safe, modern materials.'
+    ],
+    duration: 'Takes 20 to 30 minutes per tooth.',
+    procedure: 'The decayed portion of the tooth is gently cleaned out, and the cavity is filled with composite resin, which is then cured with a special blue light and polished.',
+    pricing: [
+      { title: "Composite Filling", price: "1,500", features: ["Laser Prep Option", "High-Quality Resin", "Polishing"] }
+    ],
+    faqs: [
+      { question: "How long do composite fillings last?", answer: "With good oral hygiene, modern composite fillings typically last 5 to 10 years or more." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Swathi T.", text: "The filling matches my tooth color perfectly. I can't even see where the cavity was!", rating: 5, treatment_name: "Fillings" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/root_canal_before.png", afterImg: "/images/cases/root_canal_after.png", description: "Cavity restored with invisible composite filling." }
+    ]
+  },
+  'hybrid-dentures': {
+    title: 'Hybrid & Full Mouth Dentures',
+    hero_headline: 'Premium Full Mouth Dentures in Hyderabad',
+    hero_subheadline: 'Regain your smile, chewing power, and confidence with fixed or BPS dentures.',
+    aboutText: 'Full dentures and hybrid dentures are custom-made prosthetics designed to replace all missing teeth in the upper or lower jaw. Hybrid dentures are secured by dental implants, providing a completely fixed, non-slip solution that behaves exactly like natural teeth.',
+    whenRequired: 'Indicated for complete tooth loss in one or both jaws, or when remaining teeth are failing and need extraction.',
+    benefits: [
+      'Restores Chewing Ability: Eat your favorite foods with confidence.',
+      'No Slipping or Clicking: Fixed implant-supported dentures stay secure.',
+      'Natural Aesthetics: Restores youthful facial structure and look.',
+      'Durable and Comfortable: Custom-fit using premium materials.'
+    ],
+    duration: 'Takes 2 to 4 weeks depending on customizations and healing.',
+    procedure: 'Impressions or digital scans of the jaws are taken to design the base and teeth position. The final denture is fabricated, tried in, and adjusted for a perfect fit.',
+    pricing: [
+      { title: "BPS Dentures (Single Arch)", price: "35,000", features: ["BPS High-Strength Acrylic", "Precise Fit", "Natural Look"] },
+      { title: "Implant Overdenture", price: "1,20,000", features: ["2-4 Implants", "Locators/Semi-Fixed", "Enhanced Stability"], isPopular: true }
+    ],
+    faqs: [
+      { question: "What is a hybrid denture?", answer: "A hybrid denture is a fixed set of teeth supported by 4 to 6 dental implants. It is bolted in place and can only be removed by a dentist, offering ultimate stability." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Ramarao Y.", text: "The implant-supported dentures are amazing. They don't slip at all when I eat!", rating: 5, treatment_name: "Dentures" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/fmr_before.png", afterImg: "/images/cases/fmr_after.png", description: "Complete smile rebuilt with implant-supported dentures." }
+    ]
+  },
+  'bad-breath-halitosis': {
+    title: 'Bad Breath & Halitosis',
+    hero_headline: 'Effective Bad Breath & Halitosis Treatment',
+    hero_subheadline: 'Eliminate chronic bad breath and restore your oral confidence with targeted antibacterial care.',
+    aboutText: 'Halitosis, or chronic bad breath, is often caused by sulfur-producing bacteria accumulating on the tongue, gums, and between teeth. Our targeted bad breath treatment identifies the root cause—such as gum disease, dry mouth, or plaque—and eliminates it using advanced clinical hygiene methods.',
+    whenRequired: 'Recommended if you suffer from persistent bad breath that does not go away with brushing, a constant bad taste in the mouth, or chronic dry mouth.',
+    benefits: [
+      'Fresh, Clean Breath: Eliminates sulfur-producing bacteria.',
+      'Boosts Confidence: Smile and speak closely without worry.',
+      'Improved Gum Health: Removes underlying plaque and tartar.',
+      'Detailed Diagnostics: Finds the exact cause of halitosis.'
+    ],
+    duration: 'Usually resolved in 1 to 2 visits.',
+    procedure: 'A clinical evaluation is conducted, followed by deep scaling, tongue cleaning, and the application of specialized antibacterial washes.',
+    pricing: [
+      { title: "Halitosis Package", price: "2,000", features: ["Detailed Assessment", "Full Scaling & Tongue Clean", "Antibacterial Kit"] }
+    ],
+    faqs: [
+      { question: "Why do I have bad breath despite brushing?", answer: "Plaque and bacteria can hide deep between teeth, on the back of the tongue, or in gum pockets where normal brushing cannot reach." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Prasad G.", text: "The bad breath treatment was highly effective. I feel much more confident now!", rating: 5, treatment_name: "Bad Breath" }
+    ],
+    cases: [
+      { beforeImg: "/images/gums_before.png", afterImg: "/images/gums_after.png", description: "Plaque-free teeth and tongue resolving halitosis." }
+    ]
+  },
+  'dental-crown-bridges': {
+    title: 'Dental Crown & Bridges',
+    hero_headline: 'Premium Zirconia Crowns & Bridges in Hyderabad',
+    hero_subheadline: 'Protect damaged teeth and fill gaps with natural-looking CAD/CAM restorations.',
+    aboutText: 'Dental crowns are protective caps placed over damaged or weak teeth to restore their strength and shape. A dental bridge replaces one or more missing teeth by anchoring to neighboring healthy teeth. We use premium metal-free Zirconia and E-max ceramics for high strength and natural translucency.',
+    whenRequired: 'Indicated for fractured teeth, root-canal-treated teeth, large fillings, or to replace missing teeth.',
+    benefits: [
+      'Durable and Strong: Protects weak teeth from fracturing.',
+      'Metal-Free Options: Zirconia and E-max look exactly like natural enamel.',
+      'Restores Chewing: Fill gaps to chew comfortably on both sides.',
+      'CAD/CAM Precision: Perfect fit using digital dental technology.'
+    ],
+    duration: 'Takes 2 visits over 3 to 5 days.',
+    procedure: 'The tooth is prepared and shaped. A digital or physical impression is taken to fabricate the custom crown in a lab, which is permanently cemented on the second visit.',
+    pricing: [
+      { title: "Standard Crown", price: "5,000", features: ["Metal-Ceramic (PFM)", "5-Year Warranty"] },
+      { title: "Premium Zirconia", price: "12,000", features: ["CAD/CAM Zirconia", "15-Year Warranty", "High Aesthetics"], isPopular: true }
+    ],
+    faqs: [
+      { question: "Is a crown necessary after a Root Canal?", answer: "Yes, teeth become brittle after root canals. A crown covers and protects the tooth from cracking under chewing forces." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Madhavi L.", text: "The zirconia bridge looks identical to my natural teeth. Perfect shade matching!", rating: 5, treatment_name: "Crowns" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/root_canal_before.png", afterImg: "/images/cases/root_canal_after.png", description: "Cracked tooth restored with premium Zirconia crown." }
+    ]
+  },
+  'frenectomy': {
+    title: 'Frenectomy',
+    hero_headline: 'Laser Frenectomy Treatment in Hyderabad',
+    hero_subheadline: 'Painless laser correction for tongue-tie and lip-tie with immediate relief.',
+    aboutText: 'A frenectomy is a simple procedure that removes or releases a small fold of tissue (frenum) under the tongue or upper lip. When this tissue is too tight, it causes tongue-tie or lip-tie, impacting speech, eating, or causing gap teeth. We perform this painlessly using advanced soft-tissue lasers with zero bleeding.',
+    whenRequired: 'Required for infants with latching issues, children with speech impediments (tongue-tie), or orthodontic patients with a wide gap between front teeth.',
+    benefits: [
+      'Painless Laser Procedure: No scalpel, no stitches, and minimal discomfort.',
+      'Immediate Relief: Improved tongue movement or lip latching.',
+      'Quick Healing: Laser sterilizes the area for rapid recovery.',
+      'Zero Bleeding: Safe for infants and children.'
+    ],
+    duration: 'Takes only 10 to 15 minutes.',
+    procedure: 'A local anesthetic gel is applied, and a precise dental laser is used to gently release the tissue band in seconds.',
+    pricing: [
+      { title: "Laser Frenectomy", price: "5,000", features: ["Laser Technology", "Consultation", "Zero Sutures"] }
+    ],
+    faqs: [
+      { question: "Is there a healing period?", answer: "Healing is very fast with lasers. Mild soreness lasts 1-2 days, and stretches are recommended to prevent reattachment." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Sujatha (Mother of Hemanth)", text: "My baby had tongue-tie and couldn't feed. The laser procedure took 5 minutes and solved it completely!", rating: 5, treatment_name: "Frenectomy" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/pediatric_before.png", afterImg: "/images/cases/pediatric_after.png", description: "Tight labial frenum released, allowing closing of front gap." }
+    ]
+  },
+  'cosmetic-dentistry': {
+    title: 'Cosmetic Dentistry',
+    hero_headline: 'Advanced Cosmetic Dentistry in Hyderabad',
+    hero_subheadline: 'Create your perfect smile with custom aesthetic bonding, contouring, and gum lifting.',
+    aboutText: 'Cosmetic dentistry encompasses procedures designed to enhance the visual appeal of your smile. This includes composite bonding to repair chips, diastema closure to fill gaps, gum depigmentation, and teeth contouring for symmetrical, beautiful teeth.',
+    whenRequired: 'For individuals seeking to correct cosmetic flaws like chipped teeth, gaps between teeth, dark gums, or uneven tooth shapes.',
+    benefits: [
+      'Flawless Smile: Corrects chips, gaps, and shape issues.',
+      'Instant Enhancements: Composite bonding is completed in a single visit.',
+      'Symmetrical Gum Line: Gum contouring shapes a gummy smile.',
+      'Stain-Resistant Materials: High-quality cosmetic resins.'
+    ],
+    duration: 'Varies from 30 minutes (bonding) to 2 visits (veneers).',
+    procedure: 'Minimal tooth preparation is done, followed by custom sculpting of cosmetic composite or placement of custom veneers to match your aesthetic goals.',
+    pricing: [
+      { title: "Cosmetic Bonding (per tooth)", price: "2,500", features: ["Composite Sculpting", "Polishing", "Shade Match"] },
+      { title: "Gum Depigmentation", price: "10,000", features: ["Laser Gum Bleaching", "Pink Gums", "Symmetrical Line"], isPopular: true }
+    ],
+    faqs: [
+      { question: "What is teeth bonding?", answer: "It is a procedure where tooth-colored composite resin is applied and shaped on your tooth to fix chips or close gaps, completing in just one visit." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Ria S.", text: "They closed the gap between my front teeth in just 30 minutes! It looks so natural.", rating: 5, treatment_name: "Cosmetic Dentistry" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/smile_design_before.png", afterImg: "/images/cases/smile_design_after.png", description: "Tooth gaps closed with cosmetic composite bonding." }
+    ]
+  },
+  'laser-dentistry': {
+    title: 'Laser Dentistry',
+    hero_headline: 'Minimally Invasive Laser Dentistry in Hyderabad',
+    hero_subheadline: 'Experience suture-free, drill-free, and pain-free dental care with advanced laser tech.',
+    aboutText: 'Laser dentistry uses highly focused light beams to perform various dental procedures. Lasers can be used for cavity preparation, gum shaping, sterilization of root canals, and lesion removal, eliminating the need for loud drills and invasive scalpels.',
+    whenRequired: 'Ideal for patients seeking a more comfortable, quiet, and painless treatment option, especially those with dental anxiety.',
+    benefits: [
+      'Painless and Comfortable: Often requires little or no anesthesia.',
+      'No Loud Drills: Reduces anxiety during cavity treatments.',
+      'Faster Recovery: Promotes blood clotting and tissue regeneration.',
+      'Sterile Procedures: Minimizes risk of post-treatment infections.'
+    ],
+    duration: 'Varies based on the procedure; generally faster than traditional methods.',
+    procedure: 'A specialized dental laser is calibrated and used by a certified laser dentist to precisely treat soft or hard tissues.',
+    pricing: [
+      { title: "Laser Procedure Add-on", price: "2,000", features: ["Laser Sterilization", "Reduced Sensitivity", "Painless Tech"] }
+    ],
+    faqs: [
+      { question: "Are dental lasers safe?", answer: "Yes, dental lasers are highly safe and approved by the FDA. Specialized safety goggles are worn during the procedure." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Abhinav D.", text: "No injection and no drill for my cavity filling! Laser dentistry is amazing.", rating: 5, treatment_name: "Laser Dentistry" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/root_canal_before.png", afterImg: "/images/cases/root_canal_after.png", description: "Decay cleaned precisely using hard-tissue dental laser." }
+    ]
+  },
+  'jaw-surgery': {
+    title: 'Jaw Surgery',
+    hero_headline: 'Orthognathic Jaw Surgery in Hyderabad',
+    hero_subheadline: 'Correct severe bite issues, jaw misalignment, and facial asymmetry with expert surgery.',
+    aboutText: 'Orthognathic surgery, or corrective jaw surgery, is performed by oral and maxillofacial surgeons to correct skeletal irregularities of the upper and lower jaws. This procedure improves chewing, speaking, and breathing, while dramatically enhancing facial aesthetics.',
+    whenRequired: 'Indicated for severe overbites, underbites, open bites, facial asymmetry, or sleep apnea that cannot be treated with braces alone.',
+    benefits: [
+      'Corrects Skeletal Bite: Aligns upper and lower jaws perfectly.',
+      'Improves Chewing and Speech: Restores normal oral functions.',
+      'Enhances Facial Balance: Creates a harmonious jawline profile.',
+      'Relieves TMJ & Sleep Apnea: Opens airways and relieves joint strain.'
+    ],
+    duration: 'Surgical phase takes 2 to 4 hours; full recovery takes several weeks.',
+    procedure: 'Performed in a hospital setting under general anesthesia. The surgeon repositions the jawbones using virtual 3D planning guides, securing them with miniature plates and screws.',
+    pricing: [
+      { title: "Surgical Planning", price: "10,000", features: ["3D Face Scan", "Surgical Guides", "Consultation"] },
+      { title: "Jaw Correction Surgery", price: "Custom", features: ["Maxillofacial Surgeon", "Hospitalization", "Follow-up Care"], isPopular: true }
+    ],
+    faqs: [
+      { question: "Do I need braces with jaw surgery?", answer: "Yes, orthognathic surgery is usually combined with orthodontic treatment (braces) before and after surgery to align the teeth with the new jaw positions." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Deepak R.", text: "Corrected my severe underbite. The surgery completely changed my profile and chewing!", rating: 5, treatment_name: "Jaw Surgery" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/implants_before.png", afterImg: "/images/cases/implants_after.png", description: "Severe bite misalignment corrected surgically." }
+    ]
+  },
+  'genioplasty': {
+    title: 'Genioplasty',
+    hero_headline: 'Cosmetic Chin Reshaping in Hyderabad',
+    hero_subheadline: 'Enhance your jawline and facial symmetry with custom surgical chin correction.',
+    aboutText: 'Genioplasty is a surgical cosmetic procedure that reshapes the chin to improve facial harmony and profile balance. The chin can be advanced (moved forward), receded (moved back), or lengthened/shortened to complement your nose, lips, and jaw structure.',
+    whenRequired: 'For patients with a receding chin (weak chin), excessively protruding chin, or chin asymmetry.',
+    benefits: [
+      'Improves Facial Profile: Restores balance between the chin, nose, and lips.',
+      'Surgical Precision: Custom bony movements for a natural, permanent look.',
+      'Improves Jawline Definition: Tightens the neck and jawline tissue.',
+      'Permanent Results: No need for temporary dermal fillers.'
+    ],
+    duration: 'Takes 1 to 2 hours under general anesthesia.',
+    procedure: 'An incision is made inside the mouth (no external scars). The chin bone is cut, shifted to the planned position, and secured with a tiny titanium plate.',
+    pricing: [
+      { title: "Genioplasty Surgery", price: "Custom", features: ["Virtual 3D Simulation", "Maxillofacial Surgeon", "No External Scars"] }
+    ],
+    faqs: [
+      { question: "Will there be scars on my face?", answer: "No, the entire procedure is performed from inside the lower lip, so there are absolutely no visible scars on your face." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Sanjana P.", text: "Reshaped my receding chin. My jawline looks so much more defined now!", rating: 5, treatment_name: "Genioplasty" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/smile_design_before.png", afterImg: "/images/cases/smile_design_after.png", description: "Profile projection restored with chin advancement genioplasty." }
+    ]
+  },
+  'mouth-ulcers': {
+    title: 'Mouth Ulcers',
+    hero_headline: 'Laser Mouth Ulcer Treatment in Hyderabad',
+    hero_subheadline: 'Get instant pain relief and accelerate healing of painful mouth sores with laser therapy.',
+    aboutText: 'Mouth ulcers or canker sores are painful lesions in the mouth that make eating and speaking difficult. We offer advanced low-level laser therapy (photobiomodulation) that instantly numbs the ulcer pain and cuts healing time in half, completed in a 2-minute clinical sitting.',
+    whenRequired: 'Recommended if you have painful ulcers, recurring canker sores, or sores from sharp teeth/braces irritation.',
+    benefits: [
+      'Instant Pain Relief: Laser blocks nerve pain pathways immediately.',
+      'Accelerated Healing: Promotes tissue healing and cell regeneration.',
+      '2-Minute Treatment: Extremely fast, non-contact laser application.',
+      'Prevents Recurrence: Sterilizes the ulcer site.'
+    ],
+    duration: 'Takes less than 5 minutes in the clinic.',
+    procedure: 'A gentle, low-energy dental laser is pointed at the ulcer for 60-90 seconds. The patient feels a mild warm sensation and immediate relief.',
+    pricing: [
+      { title: "Laser Ulcer Treatment", price: "1,000", features: ["Instant Relief", "Laser Therapy", "Home Gel Included"] }
+    ],
+    faqs: [
+      { question: "Does the laser touch the ulcer?", answer: "No, the laser tip is held a few millimeters away. It is a completely non-contact, painless treatment." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Divya K.", text: "I had a huge ulcer and couldn't eat. The laser therapy removed the pain instantly!", rating: 5, treatment_name: "Mouth Ulcers" }
+    ],
+    cases: [
+      { beforeImg: "/images/gums_before.png", afterImg: "/images/gums_after.png", description: "Severe mouth ulcer healed within 24 hours of laser treatment." }
+    ]
+  },
+  'preventive-dentistry': {
+    title: 'Preventive Dentistry',
+    hero_headline: 'Comprehensive Preventive Dentistry in Hyderabad',
+    hero_subheadline: 'Shield your teeth from cavities and maintain healthy gums with proactive dental care.',
+    aboutText: 'Preventive dentistry focuses on maintaining oral health to prevent cavities, gum disease, and enamel wear. Key treatments include dental sealants to protect chewing surfaces, fluoride therapy to strengthen enamel, and custom nightguards to prevent teeth grinding.',
+    whenRequired: 'Ideal for patients of all ages who want to avoid dental problems, especially children with growing permanent molars.',
+    benefits: [
+      'Prevents Cavities: Pit and fissure sealants block food packing.',
+      'Strengthens Enamel: Fluoride varnishes re-mineralize weak spots.',
+      'Saves Treatment Costs: Proactive care avoids expensive root canals or extractions.',
+      'Protects Teeth from Wear: Custom nightguards prevent damage from grinding.'
+    ],
+    duration: 'Typically completed in a 30-minute appointment.',
+    procedure: 'Teeth are cleaned, and thin protective resins (sealants) are cured on chewing surfaces, or a highly concentrated fluoride varnish is applied.',
+    pricing: [
+      { title: "Dental Sealant (per tooth)", price: "1,200", features: ["Cavity Protection", "Pit & Fissure Sealing", "Quick Fit"] },
+      { title: "Fluoride Therapy (Full Mouth)", price: "2,500", features: ["Enamel Remineralization", "Sensitivity Protection"], isPopular: true }
+    ],
+    faqs: [
+      { question: "What are dental sealants?", answer: "They are thin, protective plastic coatings painted on the chewing surfaces of back teeth (molars) to prevent decay by sealing out food and plaque." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Arjun S.", text: "Got sealants done for my daughter. It is a great way to keep her teeth cavity-free!", rating: 5, treatment_name: "Preventive Care" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/pediatric_before.png", afterImg: "/images/cases/pediatric_after.png", description: "Dental sealants applied to molars, blocking decay." }
     ]
   }
 };

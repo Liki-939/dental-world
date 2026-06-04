@@ -60,15 +60,27 @@ export const NAV_LINKS = [
 ] as const;
 
 export const TREATMENT_NAV_LINKS = [
-  { href: '/treatments/dental-implants', label: 'Dental Implants' },
-  { href: '/treatments/root-canal-treatment', label: 'Root Canal' },
-  { href: '/treatments/invisalign-treatment', label: 'Invisalign & Braces' },
-  { href: '/treatments/smile-designing', label: 'Smile Makeover' },
+  { href: '/treatments/root-canal-treatment', label: 'Root Canal Treatment' },
+  { href: '/treatments/teeth-cleaning-scaling', label: 'Teeth Cleaning/Scaling' },
+  { href: '/treatments/dental-implants', label: 'Dental Implants & Full Mouth Implants' },
+  { href: '/treatments/invisalign-treatment', label: 'Clear Aligners & Invisible Aligners' },
+  { href: '/treatments/pediatric-dentistry', label: 'Kids & Pediatric Dentistry' },
+  { href: '/treatments/wisdom-tooth-extraction', label: 'Wisdom Tooth Extraction' },
+  { href: '/treatments/advanced-gum-treatment', label: 'Advanced Gum Treatment & Flap' },
+  { href: '/treatments/tooth-decay-fillings', label: 'Tooth Decay & Fillings' },
+  { href: '/treatments/hybrid-dentures', label: 'Hybrid & Full Mouth Dentures' },
+  { href: '/treatments/smile-designing', label: 'Smile Designing' },
+  { href: '/treatments/braces', label: 'Dental Braces' },
   { href: '/treatments/teeth-whitening', label: 'Teeth Whitening' },
-  { href: '/treatments/pediatric-dentistry', label: 'Kids Dentistry' },
+  { href: '/treatments/bad-breath-halitosis', label: 'Bad Breath & Halitosis' },
+  { href: '/treatments/dental-crown-bridges', label: 'Dental Crown & Bridges' },
+  { href: '/treatments/frenectomy', label: 'Frenectomy' },
+  { href: '/treatments/cosmetic-dentistry', label: 'Cosmetic Dentistry' },
+  { href: '/treatments/laser-dentistry', label: 'Laser Dentistry' },
+  { href: '/treatments/jaw-surgery', label: 'Jaw Surgery' },
+  { href: '/treatments/genioplasty', label: 'Genioplasty' },
+  { href: '/treatments/mouth-ulcers', label: 'Mouth Ulcers' },
+  { href: '/treatments/preventive-dentistry', label: 'Preventive Dentistry' },
 ] as const;
 
-export const FOOTER_TREATMENT_LINKS = [
-  ...TREATMENT_NAV_LINKS,
-  { href: '/treatments/full-mouth-rehabilitation', label: 'Full Mouth Rehabilitation' },
-] as const;
+export const FOOTER_TREATMENT_LINKS = TREATMENT_NAV_LINKS;
