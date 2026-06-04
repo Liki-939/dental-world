@@ -5,8 +5,8 @@ import { Clock, MapPin, Phone } from 'lucide-react';
 import BookAppointmentForm from '@/components/BookAppointmentForm';
 
 export const metadata: Metadata = {
-  title: 'Book Appointment | Dental World',
-  description: 'Schedule your consultation with our expert dental specialists in Hyderabad.',
+  title: 'Book Dental Consultation Online | Dental World Hyderabad',
+  description: 'Book your dental consultation online at Dental World Clinic. Select your preferred branch (Pragathi Nagar or Bachupally), treatments, and time slot.',
 };
 
 export default function BookAppointmentPage() {

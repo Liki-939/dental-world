@@ -5,8 +5,8 @@ import Footer from '@/components/Footer';
 import { Star } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Our Doctors | Dental World',
-  description: 'Meet the expert team of dentists and specialists at Dental World.',
+  title: 'Best Dental Specialists & MDS Surgeons in Hyderabad | Dental World',
+  description: 'Meet our team of board-certified dentists, orthodontists, endodontists, and oral surgeons at Dental World. Committed to advanced, painless treatments.',
 };
 
 const doctors = [

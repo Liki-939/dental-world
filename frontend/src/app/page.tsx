@@ -15,6 +15,26 @@ import {
   Users,
   Layers
 } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dental World Clinic | Best Dental Clinic in Hyderabad",
+  description: "Dental World is Hyderabad's most trusted MDS dental clinic located in Pragathi Nagar & Bachupally. Expert treatment for Dental Implants, Invisalign Clear Aligners, Root Canal, Braces, and Laser Dentistry.",
+  keywords: [
+    "dental clinic Hyderabad",
+    "best dentist in Hyderabad",
+    "dental clinic Pragathi Nagar",
+    "dental clinic Bachupally",
+    "dental implants cost Hyderabad",
+    "best dentist near me",
+    "invisalign clear aligners Hyderabad",
+    "root canal treatment Hyderabad",
+    "braces cost Hyderabad"
+  ],
+  alternates: {
+    canonical: "https://www.dentalworldhyd.com",
+  },
+};
 
 export default function Home() {
   return (

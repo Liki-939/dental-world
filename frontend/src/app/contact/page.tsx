@@ -4,8 +4,8 @@ import Footer from '@/components/Footer';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Dental World',
-  description: 'Get in touch with Dental World. Find our clinic locations, phone numbers, and operating hours.',
+  title: 'Contact Dental World | Book Dentist Appointment in Hyderabad',
+  description: 'Contact Dental World Clinic in Pragathi Nagar (+91 82474 78663) or Bachupally (+91 91000 61610). View addresses, operating hours, maps, and book a consultation online.',
 };
 
 export default function ContactPage() {

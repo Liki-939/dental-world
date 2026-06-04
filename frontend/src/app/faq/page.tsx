@@ -2,10 +2,11 @@ import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FAQAccordion from '@/components/FAQAccordion';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions | Dental World',
-  description: 'Find answers to common questions about dental treatments, insurance, and appointments at Dental World.',
+  title: 'Dental FAQ | Common Questions Answered | Dental World',
+  description: 'Have questions about root canals, implants, pricing, or appointments? Find answers to dental FAQs from specialists at Dental World Clinic.',
 };
 
 const generalFaqs = [
@@ -17,9 +18,27 @@ const generalFaqs = [
 ];
 
 export default function FAQPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": generalFaqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <Navbar />
+      <Script
+        id="faq-page-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       
       <main className="flex-grow">
         <section className="bg-brand-dark py-20 text-white text-center">

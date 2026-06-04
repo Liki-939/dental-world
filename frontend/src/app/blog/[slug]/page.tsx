@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
+import Script from 'next/script';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -25,10 +26,36 @@ export async function generateStaticParams() {
 export default async function SingleBlogPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const title = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "image": "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80",
+    "datePublished": "2024-10-24T09:00:00+05:30",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Ramesh Kumar"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Dental World Clinic",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.dentalworldhyd.com/logo.png"
+      }
+    },
+    "description": `Read our comprehensive guide on ${title}.`
+  };
   
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <Navbar />
+      <Script
+        id={`blog-schema-${slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       
       <main className="flex-grow py-12">
         <div className="container mx-auto px-4 max-w-4xl">

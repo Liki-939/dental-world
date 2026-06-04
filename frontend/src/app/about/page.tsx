@@ -5,8 +5,8 @@ import Footer from '@/components/Footer';
 import { Award, Heart } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Us | Dental World',
-  description: 'Learn about our mission, vision, and the expert team of dentists at Dental World.',
+  title: 'About Dental World Clinic | Top Dental Surgeons in Hyderabad',
+  description: 'Learn about Dental World, Hyderabad\'s leading MDS dental clinic. Meet our experienced dental surgeons, explore our high-tech sterilizations, and see why 5000+ patients trust us in Pragathi Nagar & Bachupally.',
 };
 
 export default function AboutPage() {

@@ -5,8 +5,8 @@ import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import { Star } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Patient Testimonials & Reviews | Dental World',
-  description: 'Read what our patients have to say about their experience and treatments at Dental World.',
+  title: 'Dental Clinic Reviews Hyderabad | Patient Testimonials | Dental World',
+  description: 'Read reviews and testimonials from patients who visited Dental World Clinic. See how our dental surgeons helped them achieve healthy, beautiful smiles.',
 };
 
 const allTestimonials = [

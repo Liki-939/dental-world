@@ -8,10 +8,11 @@ import BeforeAfterShowcase from '@/components/BeforeAfterShowcase';
 import TreatmentCostCards from '@/components/TreatmentCostCards';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import FAQAccordion from '@/components/FAQAccordion';
-import { 
-  CheckCircle2, ShieldCheck, Award, Sparkles, Star, 
-  PhoneCall, Shield, Clock, Heart, Users, MapPin, 
-  Check, X, ArrowRight, MessageSquare, Phone, ChevronRight 
+import Script from 'next/script';
+import {
+  CheckCircle2, ShieldCheck, Award, Sparkles, Star,
+  PhoneCall, Shield, Clock, Heart, Users, MapPin,
+  Check, X, ArrowRight, MessageSquare, Phone, ChevronRight, Play
 } from 'lucide-react';
 import { treatmentsData } from '@/data/treatments';
 
@@ -263,7 +264,7 @@ const landingConfigs: Record<string, LandingConfig> = {
         "0% EMI Financing Options Available",
         "Same-Day Temporary Teeth Available"
       ],
-      image: '/dental_implant_banner.png',
+      image: '/dental_cover.jpg',
       badge: {
         title: '15+ Years Trust',
         subtitle: 'EXPERT IMPLANTOLOGIST',
@@ -311,7 +312,7 @@ const landingConfigs: Record<string, LandingConfig> = {
       summary: 'Our dental implants look, feel, and function exactly like your natural teeth.'
     },
     cost: {
-      starting: '₹25,000',
+      starting: '25,000',
       range: 'Starting from ₹25,000*',
       bullets: [
         "Consultation & 3D CBCT Scan included",
@@ -456,7 +457,7 @@ const landingConfigs: Record<string, LandingConfig> = {
       summary: 'We use advanced rotary endodontics to make your root canal fast, painless, and highly comfortable.'
     },
     cost: {
-      starting: '₹4,600',
+      starting: '4,600',
       range: 'Starting from ₹4,600*',
       bullets: [
         "Consultation & digital X-rays included",
@@ -518,7 +519,7 @@ const landingConfigs: Record<string, LandingConfig> = {
       title: 'Meet Our Root Canal Specialist',
       name: 'Dr. Abdul Wahed',
       titleLabel: 'MDS Endodontics & Root Canal Specialist',
-      desc: 'Dr. Abdul Wahed is a premier Endodontist with an MDS in Endodontics and a Masters Fellowship in Microscopic Endodontics (MFM). Specializing in advanced, single-visit root canals, retreatment, and microscopic surgery, he has successfully completed over 15,000+ painless root canals.',
+      desc: 'Dr. Abdul Wahed is a premier Endodontist with an MDS in Endodontics and a Masters Fellowship in Microscopic Endodontics (MFM). Specializing in advanced, single-visit root canals, retreatment, and microscopic surgery, he has successfully completed over 15,050+ painless root canals.',
       image: '/dr.abdul.jpg',
       bullets: [
         "10+ Years of Specialist Experience",
@@ -601,7 +602,7 @@ const landingConfigs: Record<string, LandingConfig> = {
       summary: 'We offer metallic, ceramic (clear), self-ligating brackets, and clear aligners to fit your preferences.'
     },
     cost: {
-      starting: '₹30,000',
+      starting: '30,000',
       range: '₹30,000 - ₹90,000*',
       bullets: [
         "Detailed 3D scans and x-rays included",
@@ -708,7 +709,7 @@ export async function generateStaticParams() {
 }
 
 // Icon mapper for general icons
-function RenderIcon({ name, className = "w-6 h-6 text-blue-600 shrink-0" }: { name: string; className?: string }) {
+function RenderIcon({ name, className = "w-6 h-6 text-blue-650 shrink-0" }: { name: string; className?: string }) {
   if (name === "ScanLine") return <CheckCircle2 className={className} />; // Fallbacks to standard icons
   if (name === "Smile") return <Sparkles className={className} />;
   if (name === "Award") return <Award className={className} />;
@@ -728,146 +729,204 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
 
   // Fetch the dynamic cases and testimonials from standard data
   const baseData = treatmentsData[key] || treatmentsData['root-canal-treatment'];
-  
+
   const mappedCases = baseData.cases?.map(c => ({
     before: c.beforeImg,
     after: c.afterImg,
     title: c.description
   })) || [];
 
+  const procedureSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalProcedure",
+    "name": config.title,
+    "description": config.hero.desc,
+    "bodyLocation": "Mouth",
+    "outcome": "Improves oral health and aesthetics",
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "INR",
+      "priceRange": config.cost.range
+    }
+  };
+
+  const faqSchema = baseData.faqs ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": baseData.faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : undefined;
+
+  let locationName = "Bachupally";
+  if (slug.includes("pragathi-nagar")) {
+    locationName = "Pragathi Nagar";
+  } else if (slug.includes("bachupally")) {
+    locationName = "Bachupally";
+  }
+
+  const iconBullets = key === 'dental-implants' ? [
+    { icon: Shield, line1: "10,000+", line2: "Implants", line3: "Placed Successfully" },
+    { icon: Star, line1: "4.9★", line2: "Google", line3: "Ratings" },
+    { icon: Sparkles, line1: "Advanced", line2: "3D Implant", line3: "Technology" },
+    { icon: Heart, line1: "Painless &", line2: "Safe Implant", line3: "Procedures" }
+  ] : key === 'invisalign-treatment' ? [
+    { icon: Shield, line1: "Gold Provider", line2: "Invisalign", line3: "Certified Care" },
+    { icon: Star, line1: "4.9★", line2: "Google", line3: "Ratings & Reviews" },
+    { icon: Sparkles, line1: "iTero 3D", line2: "Digital Smile", line3: "Simulations" },
+    { icon: Heart, line1: "Virtually", line2: "Invisible &", line3: "Removable Aligners" }
+  ] : key === 'root-canal-treatment' ? [
+    { icon: Shield, line1: "MDS Specialist", line2: "10+ Years", line3: "Clinical Trust" },
+    { icon: Star, line1: "4.9★", line2: "Google", line3: "Ratings" },
+    { icon: Sparkles, line1: "Laser Tech", line2: "Microscopic", line3: "Rotary Precision" },
+    { icon: Heart, line1: "100% Painless", line2: "Advanced", line3: "RCT Numbing" }
+  ] : [ // braces
+    { icon: Shield, line1: "MDS Specialist", line2: "14+ Years", line3: "Orthodontics" },
+    { icon: Star, line1: "4.9★", line2: "Google", line3: "Ratings" },
+    { icon: Sparkles, line1: "3D Scanning", line2: "Custom Bracket", line3: "Aligner Setup" },
+    { icon: Heart, line1: "Metal, Ceramic", line2: "Self-Ligating", line3: "Braces Systems" }
+  ];
+
+  const overlayCard = key === 'dental-implants' ? {
+    circle: "15+",
+    title: "YEARS OF TRUST",
+    sub: "Led by Expert Implantologists",
+    name: "Dr. Anurag Lahoti"
+  } : key === 'invisalign-treatment' ? {
+    circle: "14+",
+    title: "YEARS OF TRUST",
+    sub: "Gold Invisalign Provider",
+    name: "Dr. Nitin Bharat"
+  } : key === 'root-canal-treatment' ? {
+    circle: "10+",
+    title: "YEARS OF TRUST",
+    sub: "Microscope Endodontics",
+    name: "Dr. Abdul Wahed"
+  } : { // braces
+    circle: "14+",
+    title: "YEARS OF TRUST",
+    sub: "MDS Orthodontics Expert",
+    name: "Dr. Nitin Bharat"
+  };
+
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50/30 text-slate-800 antialiased font-sans pb-16 md:pb-0">
-      {/* Top Banner Bar */}
-      <div className="bg-[#0a1c3c] text-white text-[11px] md:text-xs py-2 text-center font-medium border-b border-slate-800">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-8">
-          <span>🕒 Open Daily: 10:00 AM – 9:00 PM</span>
-          <span className="hidden md:inline">|</span>
-          <span>📍 Pragathi Nagar & Bachupally, Hyderabad</span>
-          <span className="hidden md:inline">|</span>
-          <span className="font-bold">📞 Call Helpline: +91 91000 61610</span>
-        </div>
-      </div>
+    <div className="flex flex-col min-h-screen bg-[#f8faff] text-slate-800 antialiased font-sans pb-20 md:pb-24">
+      <Script
+        id={`landing-procedure-schema-${slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(procedureSchema) }}
+      />
+      {faqSchema && (
+        <Script
+          id={`landing-faq-schema-${slug}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <Navbar />
 
-      {/* 1. HERO SECTION - 3-column Layout */}
-      <section className="relative bg-gradient-to-br from-[#f0f7ff] via-white to-[#f0f7ff] pt-12 pb-16 md:py-20 border-b border-slate-100 overflow-hidden">
-        {/* Soft Background Glows */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
-          <div className="absolute top-[-10%] left-[-10%] w-[350px] h-[350px] rounded-full bg-blue-200 blur-[120px]"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[450px] h-[450px] rounded-full bg-cyan-200 blur-[130px]"></div>
-        </div>
-
-        <div className="container mx-auto px-4 max-w-7xl relative z-10">
-          {/* Breadcrumb */}
-          <div className="flex items-center space-x-2 text-xs text-slate-400 mb-6">
-            <Link href="/" className="hover:text-blue-600 transition">Home</Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-slate-500 font-medium">Treatments</span>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-blue-600 font-semibold">{config.breadcrumb}</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Column 1: Copy and Primary CTAs */}
-            <div className="lg:col-span-5 text-left space-y-6">
-              <div className="inline-flex items-center space-x-2 bg-blue-100/50 border border-blue-200 text-blue-800 px-4 py-1.5 rounded-full text-xs font-semibold backdrop-blur-sm">
-                <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
-                <span>Hyderabad&apos;s Premium MDS Dental Clinic</span>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-[#f0f7ff] via-white to-white py-12 lg:py-16 border-b border-slate-100 overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1440px] relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Copy Column */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="inline-flex items-center space-x-2 border border-blue-200 text-blue-800 px-4 py-1.5 rounded-full text-xs font-bold bg-blue-50">
+                <span className="text-amber-500 font-bold">★</span>
+                <span>5-Star Rated Dental Clinic in Your City</span>
               </div>
 
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-slate-900 leading-tight">
-                {config.hero.headline}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-black text-[#0a1c3c] leading-tight tracking-tight uppercase">
+                Best {config.title} Clinic <br />At {locationName}
               </h1>
 
-              <p className="text-lg font-semibold text-blue-600">
+              <div className="bg-[#1d4ed8] text-white font-bold text-xs md:text-sm px-4 py-2.5 rounded-lg tracking-wider uppercase inline-block shadow-sm">
                 {config.hero.subtitle}
-              </p>
+              </div>
 
-              <p className="text-slate-600 text-sm md:text-base leading-relaxed">
+              <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl">
                 {config.hero.desc}
               </p>
 
-              {/* Checkmark List */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                {config.hero.bullets.map((bullet, idx) => (
-                  <div key={idx} className="flex items-start space-x-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
-                    <span className="text-xs md:text-sm font-medium text-slate-700">{bullet}</span>
+              {/* Row of 4 items with outline icons, titles, and subtitles matching mockup */}
+              <div className="flex flex-wrap items-center gap-6 lg:gap-8 pt-2">
+                {iconBullets.map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-2.5">
+                    <item.icon className="w-6 h-6 text-blue-600 mt-0.5 shrink-0" />
+                    <div className="text-[11px] font-bold text-slate-800 leading-tight">
+                      <span className="block text-slate-900">{item.line1}</span>
+                      <span className="block text-slate-500 font-semibold">{item.line2}</span>
+                      <span className="block text-slate-500 font-semibold">{item.line3}</span>
+                    </div>
                   </div>
                 ))}
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                <a 
-                  href="#book-now" 
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3.5 rounded-xl text-center text-sm transition shadow-md hover:shadow-lg active:scale-98"
+              {/* 2-line CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <a
+                  href="#book-now"
+                  className="bg-[#1d4ed8] hover:bg-blue-800 text-white px-6 py-3 rounded-xl transition text-left flex flex-col justify-center shadow-md hover:shadow-lg min-w-[280px]"
                 >
-                  Book Free Consultation
+                  <span className="font-black text-sm tracking-wide uppercase flex items-center gap-2">
+                    📅 BOOK FREE {config.title.split(' ')[0].toUpperCase()} CONSULTATION
+                  </span>
+                  <span className="text-[10px] text-blue-200 mt-1 font-bold">
+                    Get treatment plan & cost estimate in 15 minutes
+                  </span>
                 </a>
-                <a 
-                  href="https://wa.me/919100061610" 
+                <a
+                  href="https://wa.me/919100061610"
                   target="_blank"
-                  className="border-2 border-emerald-500 hover:bg-emerald-50 text-emerald-700 font-bold px-6 py-3 rounded-xl text-center text-sm transition flex items-center justify-center gap-2"
+                  className="bg-[#22c55e] hover:bg-[#16a34a] text-white px-6 py-3 rounded-xl transition text-left flex flex-col justify-center shadow-md hover:shadow-lg min-w-[220px]"
                 >
-                  <MessageSquare className="w-4 h-4 fill-emerald-600 text-emerald-600" />
-                  WhatsApp Us
+                  <span className="font-black text-sm tracking-wide uppercase flex items-center gap-2">
+                    💬 WHATSAPP US
+                  </span>
+                  <span className="text-[10px] text-emerald-100 mt-1 font-bold">
+                    Quick Response
+                  </span>
                 </a>
-                <a 
-                  href="tel:+919100061610" 
-                  className="border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 font-bold px-6 py-3 rounded-xl text-center text-sm transition flex items-center justify-center gap-2 shadow-sm"
-                >
-                  <Phone className="w-4 h-4 text-slate-500" />
-                  +91 91000 61610
-                </a>
+              </div>
+
+              <div className="text-xs text-slate-500 font-bold flex items-center gap-2 pt-2">
+                <Clock className="w-4 h-4 text-slate-400" />
+                <span>Limited Same-Day Consultation Slots Available – Book Now!</span>
               </div>
             </div>
 
-            {/* Column 2: Patient/Specialist Hero Image */}
-            <div className="lg:col-span-4 relative flex justify-center items-center">
-              <div className="relative w-full aspect-square md:aspect-[4/5] max-w-[340px] rounded-3xl overflow-hidden shadow-premium border-4 border-white bg-slate-100">
-                <Image 
-                  src={config.hero.image} 
-                  alt={config.title}
+            {/* Right Patient/Specialist Hero Image with Overlay Card */}
+            <div className="lg:col-span-7 relative flex justify-center items-center w-full">
+              <div className="relative w-full aspect-[4/3] lg:aspect-[1.5] rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 bg-slate-50">
+                <Image
+                  src={config.hero.image}
+                  alt={config.hero.headline}
                   fill
                   className="object-cover"
                   priority
                 />
               </div>
-            </div>
 
-            {/* Column 3: Specialization Badge Card */}
-            <div className="lg:col-span-3">
-              <div className="bg-white rounded-3xl border border-slate-100 shadow-premium p-6 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full -z-10"></div>
-                
-                <span className="text-[10px] font-bold text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1 rounded-full uppercase tracking-wider block w-max mb-4">
-                  {config.hero.badge.subtitle}
-                </span>
-
-                <h3 className="text-xl font-bold text-slate-900 tracking-tight mb-4">
-                  {config.hero.badge.title}
-                </h3>
-
-                <ul className="space-y-3">
-                  {config.hero.badge.bullets.map((b, idx) => (
-                    <li key={idx} className="flex items-start space-x-2.5 text-xs text-slate-600 font-medium">
-                      <Check className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">
-                  <div className="flex text-amber-400">
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
+              {/* Overlaid blue card at bottom-right corner matching mockup */}
+              <div className="absolute bottom-6 right-6 bg-[#0a1c3c] text-white p-5 rounded-2xl shadow-2xl border border-slate-800 max-w-[260px] z-10">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center font-black text-xs text-white shrink-0">
+                    {overlayCard.circle}
                   </div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Verified</span>
+                  <div>
+                    <h4 className="font-black text-[10px] tracking-wider uppercase text-blue-300 leading-none">{overlayCard.title}</h4>
+                    <p className="text-[9px] text-slate-300 font-bold mt-1 leading-none">{overlayCard.sub}</p>
+                  </div>
+                </div>
+                <div className="pt-2.5 border-t border-slate-800">
+                  <span className="text-xs font-black text-white block">{overlayCard.name}</span>
+                  <span className="text-[8px] text-slate-400 font-bold uppercase mt-0.5 tracking-wider">Chief Specialist</span>
                 </div>
               </div>
             </div>
@@ -875,67 +934,89 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      {/* 2. TRUST BADGE STRIP - Dark Blue strip below Hero */}
+      {/* Trust Badge Strip */}
       <section className="bg-[#0a1c3c] text-white py-6 shadow-md relative z-10">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6 items-center text-center divide-y md:divide-y-0 md:divide-x divide-slate-800">
-            {config.trustStrip.map((item, idx) => (
-              <div 
-                key={idx} 
+            {[
+              { label: "15+ Years", desc: "Specialist Experience" },
+              { label: slug.includes('implants') ? "10,000+" : "15,000+", desc: slug.includes('implants') ? "Successful Implants" : "Happy Smiles Created" },
+              { label: "5-Star", desc: "Rated On Google" },
+              { label: "Painless", desc: "& Comfortable Care" },
+              { label: "0% EMI", desc: "Options Available" }
+            ].map((item, idx) => (
+              <div
+                key={idx}
                 className={`flex flex-col items-center justify-center p-2 ${idx >= 4 ? 'col-span-2 md:col-span-1 pt-6 md:pt-2' : ''} ${idx > 0 && idx % 2 === 0 ? 'pt-6 md:pt-2' : ''}`}
               >
-                <span className="font-extrabold text-lg md:text-xl text-blue-400 tracking-tight mb-0.5">{item.label}</span>
-                <span className="text-[10px] md:text-xs uppercase tracking-wider text-slate-300 font-semibold">{item.desc}</span>
+                <span className="font-black text-lg md:text-xl text-blue-400 tracking-tight mb-0.5">{item.label}</span>
+                <span className="text-[10px] uppercase tracking-wider text-slate-300 font-bold">{item.desc}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. PATIENT PAIN POINTS ("Are You Struggling With?") */}
-      <section className="py-16 bg-white border-b border-slate-150">
+      {/* Struggling With Section */}
+      <section className="py-16 bg-white border-b border-slate-100">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-blue-600 font-extrabold uppercase tracking-wider text-xs block mb-2">Identify Your Concern</span>
-            <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-slate-900">
-              {config.painPoints.title}
+            <h2 className="text-2xl md:text-3xl font-heading font-black text-[#0a1c3c] tracking-tight uppercase">
+              ARE YOU STRUGGLING WITH?
             </h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            {/* Left: 6 Circles Pain Points */}
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {config.painPoints.items.map((item, idx) => (
-                <div key={idx} className="bg-slate-50 rounded-2xl p-5 border border-slate-100 shadow-sm flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-full bg-blue-100/50 flex items-center justify-center text-blue-600 mb-4 font-bold text-lg border border-blue-100">
-                    {idx + 1}
+            {/* Left: 6 circular items */}
+            <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-6">
+              {[
+                { label: "Missing Teeth", img: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=150&q=80" },
+                { label: "Loose Dentures", img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=150&q=80" },
+                { label: "Difficulty Chewing", img: "https://images.unsplash.com/photo-1512223792601-592a9809eed4?auto=format&fit=crop&w=150&q=80" },
+                { label: "Embarrassment While Smiling", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" },
+                { label: "Bone Loss", img: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=150&q=80" },
+                { label: "Facial Sagging", img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=150&q=80" }
+              ].map((item, idx) => (
+                <div key={idx} className="flex flex-col items-center text-center p-4 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm hover:scale-102 transition duration-300">
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-md bg-slate-200 mb-3">
+                    <Image
+                      src={item.img}
+                      alt={item.label}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  <h4 className="font-bold text-slate-900 mb-2 text-sm md:text-base">{item.label}</h4>
-                  <p className="text-xs text-slate-550 leading-relaxed font-medium">{item.desc}</p>
+                  <h4 className="font-extrabold text-slate-800 text-xs md:text-sm tracking-tight">{item.label}</h4>
                 </div>
               ))}
             </div>
 
-            {/* Right: Hook Resolution Card */}
+            {/* Right: Hook resolution card */}
             <div className="lg:col-span-4">
-              <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-3xl p-8 shadow-xl flex flex-col justify-between h-full relative overflow-hidden">
-                <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+              <div className="bg-gradient-to-br from-[#0a1c3c] to-[#1e3a8a] text-white rounded-3xl p-8 shadow-xl flex flex-col justify-between h-full relative overflow-hidden">
                 <div className="space-y-6">
-                  <Sparkles className="w-10 h-10 text-blue-200" />
-                  <h3 className="text-2xl font-bold font-heading leading-tight">
-                    {config.painPoints.card.title}
+                  <Sparkles className="w-10 h-10 text-blue-300" />
+                  <h3 className="text-2xl font-black font-heading leading-tight uppercase tracking-wide">
+                    {config.title.toUpperCase()}
                   </h3>
-                  <p className="text-sm text-blue-100 leading-relaxed font-medium">
-                    {config.painPoints.card.desc}
+                  <p className="text-sm text-blue-100 leading-relaxed font-semibold">
+                    Can Permanently Restore Your Smile & Confidence!
                   </p>
+                  {/* Glowing Implant Render Graphic */}
+                  <div className="relative w-full h-32 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-2xl"></div>
+                    <svg className="w-20 h-20 text-blue-300 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v1.244c0 .892-.724 1.615-1.615 1.615H6.892c-.892 0-1.615-.723-1.615-1.615V3.104m13.472 0v1.244c0 .892-.724 1.615-1.615 1.615H15.65c-.892 0-1.615-.723-1.615-1.615V3.104M9.75 16.5v1.244c0 .892-.724 1.616-1.615 1.616H6.892c-.892 0-1.615-.724-1.615-1.616V16.5m13.472 0v1.244c0 .892-.724 1.616-1.615 1.616H15.65c-.892 0-1.615-.724-1.615-1.616V16.5M3 7.5h18M3 12h18M3 16.5h18" />
+                    </svg>
+                  </div>
                 </div>
 
                 <div className="mt-8">
-                  <a 
-                    href="#book-now" 
-                    className="w-full inline-block bg-white hover:bg-slate-100 text-blue-800 font-extrabold py-3.5 px-6 rounded-xl text-center text-sm transition shadow-md active:scale-98"
+                  <a
+                    href="#book-now"
+                    className="w-full inline-block bg-white hover:bg-slate-100 text-blue-900 font-black py-4 px-6 rounded-xl text-center text-xs tracking-wider uppercase transition shadow-md active:scale-98"
                   >
-                    {config.painPoints.card.btnText}
+                    Get Free Estimate
                   </a>
                 </div>
               </div>
@@ -944,399 +1025,334 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      {/* 4. PROCESS FLOW TIMELINE ("How it Works") */}
+      {/* Middle Row: Cost, Why Choose Us, Callback Booking */}
       <section className="py-16 bg-slate-50 border-b border-slate-100">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-blue-600 font-extrabold uppercase tracking-wider text-xs block mb-2">Step-by-Step Pathway</span>
-            <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-slate-900">
-              {config.process.title}
-            </h2>
-          </div>
-
-          {/* Horizontal Steps Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 relative">
-            {config.process.steps.map((step, idx) => (
-              <div key={idx} className="relative group bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:border-blue-200 transition-all duration-300">
-                <div className="absolute top-[-15px] left-5 w-8 h-8 rounded-full bg-blue-600 text-white font-extrabold text-xs flex items-center justify-center shadow-md">
-                  {step.step}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            {/* Col 1: Cost details */}
+            <div className="bg-white border border-slate-200/60 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-sm">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg md:text-xl font-black text-[#0a1c3c] uppercase tracking-tight">{config.title} Cost in {locationName}</h3>
+                  <p className="text-slate-400 text-xs font-semibold mt-1">STARTING FROM</p>
                 </div>
-                <h4 className="font-bold text-slate-950 mb-2 mt-2 text-sm md:text-base">{step.title.split('. ')[1]}</h4>
-                <p className="text-xs text-slate-500 leading-relaxed font-medium">{step.desc}</p>
-              </div>
-            ))}
-          </div>
 
-          <div className="mt-12 text-center">
-            <div className="inline-block bg-blue-100/50 border border-blue-200 text-blue-900 font-bold px-6 py-3 rounded-full text-xs md:text-sm shadow-sm">
-              ✨ {config.process.summary}
+                <div className="py-4 border-y border-slate-100">
+                  <span className="text-4xl font-black text-blue-700">₹{config.cost.starting}*</span>
+                  <p className="text-[9px] text-slate-400 mt-2 font-medium">*All inclusive: consultation, scan, implant, and custom crown.</p>
+                </div>
+
+                <ul className="space-y-3 font-bold text-slate-700 text-xs">
+                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-500 mr-2.5 shrink-0" /> Consultation included</li>
+                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-500 mr-2.5 shrink-0" /> Custom implant setup</li>
+                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-500 mr-2.5 shrink-0" /> CBCT 3D Scan & diagnostics</li>
+                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-500 mr-2.5 shrink-0" /> High precision surgical procedures</li>
+                </ul>
+              </div>
+
+              {/* Finance Badges */}
+              <div className="mt-8 pt-6 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
+                <div className="p-2 bg-slate-50 rounded-xl border border-slate-100">
+                  <span className="font-black text-xs text-blue-700 block">0%</span>
+                  <span className="text-[8px] uppercase font-bold text-slate-450">No Cost EMI</span>
+                </div>
+                <div className="p-2 bg-slate-50 rounded-xl border border-slate-100">
+                  <span className="font-black text-xs text-blue-700 block">Flexible</span>
+                  <span className="text-[8px] uppercase font-bold text-slate-450">Pay Plans</span>
+                </div>
+                <div className="p-2 bg-slate-50 rounded-xl border border-slate-100">
+                  <span className="font-black text-xs text-blue-700 block">Insurance</span>
+                  <span className="text-[8px] uppercase font-bold text-slate-455">Assistance</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Col 2: Why Choose Us (7 circle items) */}
+            <div className="bg-white border border-slate-200/60 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-sm">
+              <div className="space-y-6">
+                <h3 className="text-lg md:text-xl font-black text-[#0a1c3c] uppercase tracking-tight">Why Patients Choose Dental World</h3>
+
+                {/* 7 item horizontal/vertical lists with circular badges */}
+                <div className="grid grid-cols-1 gap-3.5">
+                  {[
+                    "Specialized Implantologists & MDS",
+                    "Advanced Computer-Guided Surgery",
+                    "Virtually Pain-Free Procedures",
+                    "In-House 3D CBCT Scanning",
+                    "100% Sterile Class-B Autoclaves",
+                    "Long-Lasting International Implant Systems",
+                    "Personalized Lifelong Smile Transformations"
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-center space-x-3">
+                      <div className="w-7 h-7 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0 font-black text-[10px]">
+                        {idx + 1}
+                      </div>
+                      <span className="text-xs font-bold text-slate-700">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-slate-100">
+                <p className="text-[10px] text-slate-455 font-medium italic text-center">
+                  All implants are placed using world-class technology & international quality implant systems for long-term success.
+                </p>
+              </div>
+            </div>
+
+            {/* Col 3: Callback Booking Form card */}
+            <div className="bg-[#0a1c3c] text-white rounded-3xl p-6 md:p-8 shadow-xl border border-slate-800 flex flex-col justify-between h-full relative overflow-hidden" id="book-now">
+              <div className="mb-4">
+                <span className="text-[10px] font-black uppercase tracking-wider text-blue-300 block mb-1">Instant Booking</span>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight">Book Your Free Consultation Today!</h3>
+                <p className="text-xs text-slate-400 mt-1 font-medium">Get a call-back from our smile experts in 15 minutes.</p>
+              </div>
+
+              <div className="text-slate-900 flex-grow mt-2">
+                <BookAppointmentForm minimal defaultTreatment={config.title} />
+              </div>
+
+              <div className="mt-4 pt-4 border-t border-slate-800 flex justify-between gap-2">
+                <a
+                  href="tel:+919100061610"
+                  className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-black py-3 rounded-xl text-center text-xs tracking-wider uppercase transition flex items-center justify-center gap-1.5"
+                >
+                  <Phone className="w-3.5 h-3.5 fill-white text-white" />
+                  Call Now
+                </a>
+                <a
+                  href="https://wa.me/919100061610"
+                  target="_blank"
+                  className="flex-1 border border-emerald-500 text-emerald-450 hover:bg-emerald-950/20 font-black py-3 rounded-xl text-center text-xs tracking-wider uppercase transition flex items-center justify-center gap-1.5"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 fill-current text-current" />
+                  WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. PRICING, DURATION & COMPARISON GRID */}
+      {/* Before / After Showcase */}
       <section className="py-16 bg-white border-b border-slate-100">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-blue-600 font-extrabold uppercase tracking-wider text-xs block mb-2">Compare & Choose</span>
-            <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-slate-900">
-              Cost, Timeline & Alternatives
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-            {/* Cost Card */}
-            <div className="bg-[#f8faff] border border-slate-200/50 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-sm">
-              <div className="space-y-6">
-                <div>
-                  <span className="text-xs uppercase tracking-wider font-extrabold text-blue-650">TRANSPARENT COST</span>
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-900 mt-1">Starting Price</h3>
-                </div>
-
-                <div className="py-4 border-y border-slate-200/60">
-                  <span className="text-3xl md:text-4xl font-black text-slate-900">{config.cost.range}</span>
-                  <p className="text-[10px] text-slate-400 mt-2 italic">*All pricing is subject to diagnostic scans & clinical evaluation.</p>
-                </div>
-
-                <ul className="space-y-3 font-semibold text-slate-700 text-xs md:text-sm">
-                  {config.cost.bullets.map((b, idx) => (
-                    <li key={idx} className="flex items-center">
-                      <Check className="w-4 h-4 text-blue-600 mr-2.5 shrink-0" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Finance Badges */}
-              <div className="mt-8 pt-6 border-t border-slate-200/60 grid grid-cols-3 gap-2 text-center">
-                <div className="p-2 bg-white rounded-xl border border-slate-100 shadow-sm">
-                  <span className="font-extrabold text-xs text-blue-650 block">0%</span>
-                  <span className="text-[8px] uppercase tracking-wider font-bold text-slate-450">No Cost EMI</span>
-                </div>
-                <div className="p-2 bg-white rounded-xl border border-slate-100 shadow-sm">
-                  <span className="font-extrabold text-xs text-blue-650 block">Flexible</span>
-                  <span className="text-[8px] uppercase tracking-wider font-bold text-slate-450">Pay Plans</span>
-                </div>
-                <div className="p-2 bg-white rounded-xl border border-slate-100 shadow-sm">
-                  <span className="font-extrabold text-xs text-blue-650 block">Insurance</span>
-                  <span className="text-[8px] uppercase tracking-wider font-bold text-slate-450">Assistance</span>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left title */}
+            <div className="lg:col-span-4 space-y-6">
+              <h2 className="text-2xl md:text-4xl font-heading font-black text-[#0a1c3c] leading-tight uppercase tracking-tight">
+                REAL PATIENTS.<br />REAL RESULTS.<br />REAL CONFIDENCE.
+              </h2>
+              <p className="text-slate-500 text-xs md:text-sm font-semibold leading-relaxed">
+                See the life-changing transformations with dental implants. Browse actual photos of patient teeth restoration completed at Dental World.
+              </p>
+              <Link
+                href="/gallery"
+                className="inline-flex items-center text-blue-600 hover:text-blue-800 font-extrabold text-sm border-b-2 border-blue-600 pb-0.5 transition"
+              >
+                VIEW MORE CASES <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
             </div>
 
-            {/* Duration Card */}
-            <div className="bg-[#f8faff] border border-slate-200/50 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-sm">
-              <div className="space-y-6">
-                <div>
-                  <span className="text-xs uppercase tracking-wider font-extrabold text-blue-650">TREATMENT TIMELINE</span>
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-900 mt-1">{config.duration.title}</h3>
-                </div>
-
-                <div className="space-y-4 py-4 border-y border-slate-200/60">
-                  {config.duration.items.map((item, idx) => (
-                    <div key={idx} className="flex justify-between items-center bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
-                      <span className="font-bold text-slate-700 text-xs md:text-sm">{item.label}</span>
-                      <span className="font-extrabold text-xs md:text-sm text-blue-650 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full">{item.duration}</span>
+            {/* Right: 4 case thumbnails */}
+            <div className="lg:col-span-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { title: "Case 1", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Case 2", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Case 3", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Case 4", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" }
+                ].map((item, idx) => (
+                  <div key={idx} className="relative rounded-2xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50 group hover:scale-102 transition duration-300">
+                    <div className="relative aspect-square w-full">
+                      <Image
+                        src={item.after}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-blue-700 shadow-md">
+                          <Play className="w-4 h-4 fill-current ml-0.5" />
+                        </div>
+                      </div>
                     </div>
-                  ))}
-                </div>
-
-                <p className="text-xs text-slate-500 italic font-medium">
-                  💡 {config.duration.note}
-                </p>
-              </div>
-
-              <div className="mt-8">
-                <a 
-                  href="#book-now" 
-                  className="w-full inline-block bg-slate-900 hover:bg-slate-800 text-white font-extrabold py-3.5 rounded-xl text-center text-sm transition shadow-sm"
-                >
-                  Get Individual Timeline
-                </a>
+                    <div className="p-3 bg-white text-center">
+                      <span className="text-[10px] font-black text-slate-800 uppercase">Transformation {idx + 1}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Alternatives Comparison Table */}
-            <div className="bg-white border border-slate-200/50 rounded-3xl p-6 shadow-sm overflow-hidden flex flex-col justify-between">
+      {/* Comparison table, Specialist Bio, Implant Types */}
+      <section className="py-16 bg-slate-50 border-b border-slate-100">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            {/* Col 1: Comparison table */}
+            <div className="lg:col-span-4 bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="mb-2">
-                  <span className="text-xs uppercase tracking-wider font-extrabold text-blue-650">DIRECT COMPARISON</span>
-                  <h3 className="text-xl font-bold text-slate-900 mt-1">{config.comparison.title}</h3>
-                </div>
-
-                <div className="border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
-                  <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-50 text-[10px] uppercase font-bold text-slate-450 border-b border-slate-100">
+                <h3 className="text-lg font-black text-[#0a1c3c] uppercase tracking-tight">WHY {config.title.toUpperCase()} ARE BETTER THAN DENTURES</h3>
+                <div className="border border-slate-100 rounded-2xl overflow-hidden mt-4">
+                  <table className="w-full text-left text-xs font-semibold">
+                    <thead className="bg-slate-50 text-[10px] uppercase font-bold text-slate-400 border-b border-slate-100">
                       <tr>
-                        {config.comparison.headers.map((h, idx) => (
-                          <th key={idx} className="px-3 py-2 text-center first:text-left">{h}</th>
-                        ))}
+                        <th className="px-3 py-2.5">FEATURE</th>
+                        <th className="px-3 py-2.5 text-center text-blue-700 bg-blue-50/30">IMPLANTS</th>
+                        <th className="px-3 py-2.5 text-center">DENTURES</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100 font-semibold">
-                      {config.comparison.rows.map((row, idx) => (
+                    <tbody className="divide-y divide-slate-100 text-slate-700">
+                      {[
+                        { f: "Looks & Feels Natural", i: true, d: false },
+                        { f: "Fixed & Non-Removable", i: true, d: false },
+                        { f: "Eat Hard Foods Easily", i: true, d: false },
+                        { f: "No Slipping/Clicking", i: true, d: false },
+                        { f: "Preserves Jawbone Density", i: true, d: false },
+                        { f: "Long-Lasting (Lifetime)", i: true, d: false }
+                      ].map((row, idx) => (
                         <tr key={idx} className="hover:bg-slate-50/50 transition">
-                          <td className="px-3 py-2 text-slate-800 text-[11px] leading-tight">{row.name}</td>
-                          <td className="px-3 py-2 text-center text-blue-700 font-extrabold bg-blue-50/20">{row.main}</td>
-                          <td className="px-3 py-2 text-center text-slate-500">{row.alt}</td>
-                          {row.alt2 && <td className="px-3 py-2 text-center text-slate-500">{row.alt2}</td>}
+                          <td className="px-3 py-2.5 text-[11px] leading-tight">{row.f}</td>
+                          <td className="px-3 py-2.5 text-center bg-blue-50/20 text-emerald-600">
+                            {row.i ? <Check className="w-4 h-4 mx-auto font-black" /> : <X className="w-4 h-4 mx-auto text-red-500" />}
+                          </td>
+                          <td className="px-3 py-2.5 text-center text-red-500">
+                            {row.d ? <Check className="w-4 h-4 mx-auto text-emerald-600" /> : <X className="w-4 h-4 mx-auto" />}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
               </div>
-
-              <div className="mt-4">
-                <p className="text-[10px] text-center text-slate-400">Choose the best standard of care for your lifestyle & health.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. CLINICAL LOCATIONS ("In Your Area") */}
-      <section className="py-16 bg-slate-50 border-b border-slate-100">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-blue-600 font-extrabold uppercase tracking-wider text-xs block mb-2">Our Locations</span>
-            <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-slate-900">
-              Treatment Available Near You
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Bachupally */}
-            <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition duration-300">
-              <div className="relative h-48 w-full bg-slate-200">
-                <Image 
-                  src="/couple.png" 
-                  alt="Bachupally Clinic"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-xl font-bold">Bachupally Branch</h3>
-                  <p className="text-xs text-slate-200">Opposite Pragathi Nagar Main Road</p>
-                </div>
-              </div>
-              <div className="p-6 space-y-4">
-                <ul className="space-y-2 text-xs font-semibold text-slate-700">
-                  <li className="flex items-center"><Check className="w-4 h-4 text-blue-600 mr-2 shrink-0" /> Advanced digital diagnostics & x-rays</li>
-                  <li className="flex items-center"><Check className="w-4 h-4 text-blue-600 mr-2 shrink-0" /> Free parking & comfortable spacious waiting lounge</li>
-                  <li className="flex items-center"><Check className="w-4 h-4 text-blue-600 mr-2 shrink-0" /> Expert board-certified endodontists & implantologists</li>
-                </ul>
-                <div className="pt-2">
-                  <a 
-                    href="https://maps.google.com" 
-                    target="_blank"
-                    className="w-full inline-block bg-blue-650 hover:bg-blue-700 text-white text-center py-3 rounded-xl font-bold text-xs transition"
-                  >
-                    Get Directions
-                  </a>
-                </div>
-              </div>
             </div>
 
-            {/* Pragathi Nagar */}
-            <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition duration-300">
-              <div className="relative h-48 w-full bg-slate-200">
-                <Image 
-                  src="/doc_pat.png" 
-                  alt="Pragathi Nagar Clinic"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-xl font-bold">Pragathi Nagar Branch</h3>
-                  <p className="text-xs text-slate-200">Main Road, Near Hanuman Temple</p>
-                </div>
-              </div>
-              <div className="p-6 space-y-4">
-                <ul className="space-y-2 text-xs font-semibold text-slate-700">
-                  <li className="flex items-center"><Check className="w-4 h-4 text-blue-600 mr-2 shrink-0" /> iTero 3D intraoral scanner facility</li>
-                  <li className="flex items-center"><Check className="w-4 h-4 text-blue-600 mr-2 shrink-0" /> Easy road accessibility & local transit links</li>
-                  <li className="flex items-center"><Check className="w-4 h-4 text-blue-600 mr-2 shrink-0" /> Painless laser dentistry technologies</li>
-                </ul>
-                <div className="pt-2">
-                  <a 
-                    href="https://maps.google.com" 
-                    target="_blank"
-                    className="w-full inline-block bg-blue-650 hover:bg-blue-700 text-white text-center py-3 rounded-xl font-bold text-xs transition"
-                  >
-                    Get Directions
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            {/* Col 2: Specialist Bio Card */}
+            <div className="lg:col-span-5 bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+              <div className="space-y-4">
+                <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest block">Meet Our Implant Expert</span>
+                <h3 className="text-xl md:text-2xl font-black text-[#0a1c3c] uppercase leading-tight tracking-tight">DR. ANURAG LAHOTI</h3>
+                <span className="text-xs font-bold text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1 rounded-full uppercase tracking-wider inline-block">
+                  14+ Years of Experience
+                </span>
 
-      {/* 7. ADVANCED TECH & BEFORE/AFTER SHOWCASE */}
-      <section className="py-16 bg-white border-b border-slate-100">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left: Technology */}
-            <div className="lg:col-span-5 text-left space-y-6">
-              <span className="text-blue-600 font-extrabold uppercase tracking-wider text-xs block">Technology & Accuracy</span>
-              <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-slate-900">
-                {config.tech.title}
-              </h2>
-              <p className="text-slate-500 text-xs md:text-sm leading-relaxed font-medium">
-                We believe that modern technology achieves predictable dental results. Our diagnostics reduce procedure times, eliminate pain, and guarantee higher safety.
-              </p>
-
-              <div className="space-y-4 pt-2">
-                {config.tech.items.map((techItem, idx) => (
-                  <div key={idx} className="flex items-start space-x-3.5 bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <RenderIcon name={techItem.icon} className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
-                    <div>
-                      <h4 className="font-bold text-slate-900 text-xs md:text-sm">{techItem.title}</h4>
-                      <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">{techItem.desc}</p>
-                    </div>
+                <div className="flex gap-4 items-start pt-2">
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md bg-slate-200 shrink-0">
+                    <Image
+                      src={config.specialist.image}
+                      alt={config.specialist.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                ))}
+                  <div className="space-y-2 text-xs font-semibold text-slate-650 leading-relaxed">
+                    <p>• Specialist in Prosthodontics & Implant Dentistry</p>
+                    <p>• Expert in Full Mouth Rehabilitation Procedures</p>
+                    <p>• Advanced Implant Surgery Specialist</p>
+                    <p>• Thousands of Successful Cases Placed</p>
+                    <p>• Committed to Painless, Precise Clinical Care</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-450 tracking-wider">
+                <span>ICOI MEMBER</span>
+                <span>•</span>
+                <span>ISOI MEMBER</span>
               </div>
             </div>
 
-            {/* Right: Before & After Cases */}
-            <div className="lg:col-span-7">
-              <div className="bg-slate-50 rounded-[2.5rem] p-6 md:p-8 border border-slate-150 shadow-sm text-center">
-                <span className="text-blue-600 font-extrabold uppercase tracking-wider text-xs block mb-2">Visible Transformations</span>
-                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-6">Clinical Outcomes</h3>
-                
-                <BeforeAfterShowcase customCases={mappedCases} />
-                
-                <p className="text-[11px] text-slate-400 mt-6 italic">Unretouched clinic cases of actual patient smile makeovers completed at Dental World.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. WHO, BENEFITS & CALLBACK FORM */}
-      <section className="py-16 bg-slate-50 border-b border-slate-100" id="book-now">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            {/* Left: Who Can Get? */}
-            <div className="lg:col-span-4 bg-white border border-slate-200/50 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between">
-              <div className="space-y-6">
-                <h3 className="text-xl md:text-2xl font-bold text-slate-900">{config.who.title}</h3>
-                <ul className="space-y-4 text-xs md:text-sm font-semibold text-slate-750">
-                  {config.who.bullets.map((b, idx) => (
-                    <li key={idx} className="flex items-start space-x-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-8 pt-4 border-t border-slate-100">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Candidate Check</span>
-              </div>
-            </div>
-
-            {/* Middle: Benefits */}
-            <div className="lg:col-span-4 bg-white border border-slate-200/50 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between">
-              <div className="space-y-6">
-                <h3 className="text-xl md:text-2xl font-bold text-slate-900">{config.benefits.title}</h3>
-                <div className="space-y-4">
-                  {config.benefits.items.map((b, idx) => (
-                    <div key={idx} className="flex items-start space-x-3">
-                      <RenderIcon name={b.icon} className="w-4.5 h-4.5 text-blue-600 mt-0.5 shrink-0" />
+            {/* Col 3: Implant Types We Offer */}
+            <div className="lg:col-span-3 bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+              <div className="space-y-4">
+                <h3 className="text-lg font-black text-[#0a1c3c] uppercase tracking-tight">Implant Types We Offer</h3>
+                <div className="space-y-3 text-xs font-bold text-slate-700">
+                  {[
+                    { title: "Single Tooth Implant", desc: "Replace one missing tooth root" },
+                    { title: "Multiple Teeth Implant", desc: "Bridge gaps of multiple teeth" },
+                    { title: "Full Mouth Implants", desc: "All-on-4 / All-on-6 setups" },
+                    { title: "Implant Supported Dentures", desc: "Superior stability & bone lock" }
+                  ].map((item, idx) => (
+                    <div key={idx} className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl flex items-center space-x-3 hover:border-blue-200 transition duration-350">
+                      <div className="w-5 h-5 rounded-full bg-blue-650 flex items-center justify-center text-white text-[10px] shrink-0">
+                        {idx + 1}
+                      </div>
                       <div>
-                        <h4 className="font-bold text-slate-900 text-xs md:text-sm">{b.title}</h4>
-                        <p className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">{b.desc}</p>
+                        <h4 className="text-slate-900 leading-none">{item.title}</h4>
+                        <p className="text-[9px] text-slate-450 font-semibold mt-0.5">{item.desc}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="mt-8 pt-4 border-t border-slate-100">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Proven Advantages</span>
-              </div>
-            </div>
 
-            {/* Right: Callback Form Card */}
-            <div className="lg:col-span-4">
-              <div className="bg-[#0a1c3c] text-white rounded-3xl p-6 md:p-8 shadow-xl border border-slate-800 h-full flex flex-col justify-between relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-28 h-28 bg-gradient-to-bl from-blue-900/40 to-transparent rounded-bl-full -z-10"></div>
-                <div className="mb-4">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-blue-300 block mb-1">Instant Registration</span>
-                  <h3 className="text-xl md:text-2xl font-bold text-white leading-tight">Get a Call Back</h3>
-                  <p className="text-xs text-slate-350 mt-1">Book your free estimate and appointment slot below.</p>
-                </div>
-
-                <div className="text-slate-900 flex-grow mt-2">
-                  <BookAppointmentForm minimal defaultTreatment={config.title} />
-                </div>
+              <div className="mt-6">
+                <a
+                  href="#book-now"
+                  className="w-full inline-block bg-[#1d4ed8] hover:bg-blue-800 text-white font-black py-3 rounded-xl text-center text-xs tracking-wider uppercase transition shadow-sm"
+                >
+                  Learn More
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 9. MEET THE SPECIALIST */}
+      {/* 6-Step Treatment Process */}
       <section className="py-16 bg-white border-b border-slate-100">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-blue-600 font-extrabold uppercase tracking-wider text-xs block mb-2">MDS Clinicians</span>
-            <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-slate-900">
-              {config.specialist.title}
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-2xl md:text-3xl font-heading font-black text-[#0a1c3c] uppercase tracking-tight">
+              OUR DENTAL IMPLANT TREATMENT PROCESS
             </h2>
           </div>
 
-          <div className="bg-slate-50 rounded-[2.5rem] p-6 md:p-10 border border-slate-150 shadow-sm">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Specialist Image */}
-              <div className="lg:col-span-4 flex justify-center">
-                <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-md bg-slate-200">
-                  <Image 
-                    src={config.specialist.image} 
-                    alt={config.specialist.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* Bio details */}
-              <div className="lg:col-span-5 text-left space-y-4">
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-heading font-extrabold text-slate-950">{config.specialist.name}</h3>
-                  <span className="text-xs md:text-sm font-semibold text-blue-650 tracking-wide mt-1 block">{config.specialist.titleLabel}</span>
-                </div>
-                <p className="text-xs md:text-sm text-slate-500 leading-relaxed font-medium">
-                  {config.specialist.desc}
-                </p>
-                <ul className="space-y-2 text-xs font-semibold text-slate-700 pt-2">
-                  {config.specialist.bullets.map((b, idx) => (
-                    <li key={idx} className="flex items-center space-x-2">
-                      <Check className="w-4.5 h-4.5 text-blue-600 shrink-0" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Accreditation Badge */}
-              <div className="lg:col-span-3">
-                <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm text-center space-y-4">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Affiliation</span>
-                  <div className="py-2 border-y border-slate-100">
-                    <span className="text-lg font-black text-slate-800 tracking-tight uppercase block">{config.specialist.badgeTitle}</span>
-                    <span className="text-[9px] font-bold text-amber-600 bg-amber-50 border border-amber-100 px-2 py-0.5 rounded uppercase tracking-wider inline-block mt-1">{config.specialist.badgeLabel}</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            {/* Timeline Steps */}
+            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
+              {[
+                { title: "1. Consultation & 3D Scan", desc: "Detailed evaluation & digital scan parameters" },
+                { title: "2. Implant Planning", desc: "Personalized virtual implant planning models" },
+                { title: "3. Implant Placement", desc: "Virtually painless implant surgical placement" },
+                { title: "4. Osseointegration", desc: "Implant fuses securely with your jawbone over months" },
+                { title: "5. Abutment Placement", desc: "Custom metal connector placed on top of implant" },
+                { title: "6. Crown Placement", desc: "Permanent dental crown for a natural aesthetic smile" }
+              ].map((step, idx) => (
+                <div key={idx} className="bg-slate-50 border border-slate-100 rounded-2xl p-5 shadow-sm hover:border-blue-200 transition duration-300 relative">
+                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xs mb-3">
+                    {idx + 1}
                   </div>
-                  <ul className="text-left space-y-2 text-[11px] text-slate-500 font-medium">
-                    {config.specialist.badgeBullets.map((b, idx) => (
-                      <li key={idx} className="flex items-center"><Check className="w-3.5 h-3.5 text-blue-600 mr-2 shrink-0" /> {b}</li>
-                    ))}
-                  </ul>
+                  <h4 className="font-extrabold text-slate-900 text-xs md:text-sm">{step.title}</h4>
+                  <p className="text-[10px] text-slate-500 font-semibold mt-1.5 leading-relaxed">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Box */}
+            <div className="lg:col-span-4">
+              <div className="bg-[#0a1c3c] text-white rounded-3xl p-8 shadow-xl border border-slate-800 flex flex-col justify-between h-full">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-black uppercase tracking-wide text-white">
+                    Take the First Step Towards a New You!
+                  </h3>
+                  <p className="text-xs text-slate-300 font-semibold leading-relaxed">
+                    Book your appointment today and secure a free professional implantologist consultation.
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <a
+                    href="#book-now"
+                    className="w-full inline-block bg-white hover:bg-slate-100 text-blue-900 font-black py-4 px-6 rounded-xl text-center text-xs tracking-wider uppercase transition shadow-md"
+                  >
+                    BOOK NOW →
+                  </a>
+                  <span className="text-[9px] text-slate-400 mt-2 block text-center uppercase tracking-widest font-bold">
+                    Get Free Implant Consultation
+                  </span>
                 </div>
               </div>
             </div>
@@ -1344,106 +1360,157 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      {/* 10. FAQS ACCORDION */}
+      {/* Video Testimonials */}
       <section className="py-16 bg-slate-50 border-b border-slate-100">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-12">
-            <span className="text-blue-600 font-extrabold uppercase tracking-wider text-xs block mb-2">Common Patient Questions</span>
-            <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-slate-900">
-              Frequently Asked Questions
-            </h2>
-          </div>
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
+            {/* Left title */}
+            <div className="lg:col-span-4 space-y-4">
+              <h2 className="text-2xl md:text-4xl font-heading font-black text-[#0a1c3c] uppercase tracking-tight">
+                WHAT OUR PATIENTS SAY
+              </h2>
+              <div className="flex items-center space-x-2">
+                <div className="flex text-amber-500">
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                </div>
+                <span className="text-xs font-black text-slate-700">4.9/5 Based on 500+ Reviews</span>
+              </div>
+              <Link
+                href="/testimonials"
+                className="inline-block bg-[#1d4ed8] hover:bg-blue-800 text-white font-black px-6 py-2.5 rounded-full text-xs transition shadow-sm"
+              >
+                READ MORE REVIEWS
+              </Link>
+            </div>
 
-          <FAQAccordion faqs={baseData.faqs || []} />
+            {/* Right: 4 video thumbnails */}
+            <div className="lg:col-span-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { title: "Full Mouth Implant Transformation", duration: "1:25", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Patient Testimonial Real Stories", duration: "1:02", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Dr. Anurag Explaining Implants", duration: "1:18", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Implant Procedure Step by Step", duration: "1:05", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=300&q=80" }
+                ].map((vid, idx) => (
+                  <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm group hover:scale-102 transition duration-300">
+                    <div className="relative aspect-video w-full bg-slate-200">
+                      <Image
+                        src={vid.img}
+                        alt={vid.title}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-white/95 flex items-center justify-center text-blue-700 shadow-md">
+                          <Play className="w-5 h-5 fill-current ml-0.5" />
+                        </div>
+                      </div>
+                      <span className="absolute bottom-2 right-2 bg-black/60 text-white text-[9px] font-bold px-2 py-0.5 rounded">
+                        {vid.duration}
+                      </span>
+                    </div>
+                    <div className="p-3">
+                      <h4 className="font-extrabold text-slate-800 text-[11px] leading-tight line-clamp-2">{vid.title}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 11. FOOTER BRAND CTA */}
-      <section className="py-16 bg-gradient-to-br from-[#0c1d3b] via-[#050f24] to-[#0c1d3b] text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none opacity-25 z-0">
-          <div className="absolute top-1/2 left-[-10%] w-[300px] h-[300px] rounded-full bg-blue-500 blur-[120px]"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-full bg-cyan-500 blur-[120px]"></div>
-        </div>
+      {/* FAQ, Servicing Area, Map */}
+      <section className="py-16 bg-white border-b border-slate-100">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            {/* Col 1: FAQ Accordion */}
+            <div className="lg:col-span-5 space-y-4">
+              <h3 className="text-xl font-black text-[#0a1c3c] uppercase tracking-tight mb-4">FREQUENTLY ASKED QUESTIONS</h3>
+              <FAQAccordion faqs={baseData.faqs || []} />
+            </div>
 
-        <div className="container mx-auto px-4 max-w-3xl relative z-10 space-y-6">
-          <span className="text-blue-400 font-bold uppercase tracking-widest text-xs block">Immediate Call Booking</span>
-          <h2 className="text-2xl md:text-4xl font-heading font-extrabold leading-tight">
-            Your Dream Smile is Just a Consultation Away!
-          </h2>
-          <p className="text-slate-350 text-sm md:text-base max-w-xl mx-auto leading-relaxed font-medium">
-            Restore your dental health and confidence under the care of Hyderabad&apos;s premier MDS specialists. Book your consultation in minutes.
-          </p>
+            {/* Col 2: Servicing Neighborhoods */}
+            <div className="lg:col-span-3 bg-slate-50 border border-slate-150 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+              <div className="space-y-4">
+                <h3 className="text-lg font-black text-[#0a1c3c] uppercase tracking-tight">PROUDLY SERVING FROM 2 LOCATIONS</h3>
+                <div className="flex flex-col gap-3 text-xs font-bold text-slate-600 pt-2">
+                  <div className="flex items-center bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                    <MapPin className="w-4 h-4 text-blue-600 mr-2.5 shrink-0" />
+                    <span>Bachupally Clinic</span>
+                  </div>
+                  <div className="flex items-center bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                    <MapPin className="w-4 h-4 text-blue-600 mr-2.5 shrink-0" />
+                    <span>Pragathi Nagar Clinic</span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <a 
-              href="#book-now" 
-              className="bg-white hover:bg-slate-100 text-blue-900 font-extrabold py-3.5 px-8 rounded-full text-sm transition shadow-lg hover:shadow-xl active:scale-98"
-            >
-              Get Free Estimate
-            </a>
-            <a 
-              href="tel:+919100061610" 
-              className="border-2 border-white hover:bg-white/10 text-white font-extrabold py-3 px-8 rounded-full text-sm transition flex items-center justify-center gap-2"
-            >
-              <PhoneCall className="w-4 h-4" />
-              Call Helpline
-            </a>
+            {/* Col 3: Map location */}
+            <div className="lg:col-span-4 bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h4 className="font-extrabold text-slate-900 text-sm">DENTAL WORLD - BACHUPALLY</h4>
+                    <p className="text-[10px] text-slate-550 font-semibold mt-1">Opp. Pragathi Nagar Main Road, Bachupally, Hyderabad - 500090</p>
+                  </div>
+                  <div className="flex items-center space-x-1 shrink-0 text-amber-500 font-black text-xs bg-amber-50 border border-amber-100 px-2 py-0.5 rounded">
+                    <span>★</span>
+                    <span>4.9</span>
+                  </div>
+                </div>
+
+                <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-slate-100">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.109861611096!2d78.3845013148779!3d17.525549087995872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8e137b018ecf%3A0x7d6a524a87e07661!2sBachupally%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1680000000001!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    title="Dental World Bachupally Location Map"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <Footer />
 
-      {/* 11. FLOATING BOTTOM STICKY CTA BAR - High-converting bar tracking scroll */}
-      <div className="fixed bottom-0 left-0 right-0 bg-[#0a1c3c] text-white py-3 px-4 md:px-8 border-t border-slate-800 shadow-2xl z-50 flex items-center justify-between md:hidden">
-        <div className="text-left">
-          <span className="text-[10px] text-slate-350 block leading-none font-bold uppercase">Free Consultation</span>
-          <span className="text-xs font-bold leading-tight mt-1 block">Book Your Visit Today</span>
+      {/* Fixed Bottom Sticky CTA Bar (Desktop & Mobile) */}
+      <div className="fixed bottom-0 left-0 right-0 bg-[#0a1c3c] text-white py-3.5 px-4 md:px-8 border-t border-slate-800 shadow-2xl z-50 flex items-center justify-between">
+        <div className="hidden sm:block text-left">
+          <span className="text-[10px] text-blue-300 block font-black uppercase tracking-wider">Free Consultation</span>
+          <span className="text-xs md:text-sm font-extrabold leading-tight mt-0.5 block">🏥 Dental World {locationName}</span>
         </div>
-        <div className="flex gap-2">
-          <a 
-            href="tel:+919100061610" 
-            className="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-white"
-            aria-label="Call clinic"
+        <div className="flex gap-3 w-full sm:w-auto justify-between sm:justify-end">
+          <a
+            href="tel:+919100061610"
+            className="flex-1 sm:flex-initial bg-[#1d4ed8] hover:bg-blue-800 text-white font-black px-4 md:px-6 py-3 rounded-xl text-xs md:text-sm transition flex items-center justify-center gap-2 uppercase tracking-wide"
           >
-            <Phone className="w-4 h-4" />
+            <Phone className="w-4 h-4 fill-white text-white" />
+            <span>Call: +91 91000 61610</span>
           </a>
-          <a 
-            href="https://wa.me/919100061610" 
+          <a
+            href="https://wa.me/919100061610"
             target="_blank"
-            className="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white"
-            aria-label="WhatsApp clinic"
+            className="flex-1 sm:flex-initial bg-[#22c55e] hover:bg-[#16a34a] text-white font-black px-4 md:px-6 py-3 rounded-xl text-xs md:text-sm transition flex items-center justify-center gap-2 uppercase tracking-wide"
           >
-            <MessageSquare className="w-4.5 h-4.5 fill-white text-white" />
+            <MessageSquare className="w-4 h-4 fill-white text-white" />
+            <span>WhatsApp</span>
           </a>
-          <a 
-            href="#book-now" 
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 text-xs rounded-xl flex items-center justify-center transition"
+          <a
+            href="#book-now"
+            className="flex-1 sm:flex-initial bg-[#f97316] hover:bg-orange-700 text-white font-black px-4 md:px-6 py-3 rounded-xl text-xs md:text-sm transition flex items-center justify-center uppercase tracking-wide shadow-md"
           >
-            Book Now
-          </a>
-        </div>
-      </div>
-
-      <div className="fixed bottom-4 right-4 bg-[#0a1c3c] text-white py-3.5 px-6 border border-slate-800 shadow-premium rounded-2xl z-50 hidden md:flex items-center gap-4 transition-all duration-300">
-        <div className="text-left pr-2 border-r border-slate-800">
-          <span className="text-[9px] text-blue-400 block leading-none font-extrabold uppercase">Free consultation</span>
-          <span className="text-xs font-extrabold leading-tight mt-1 block">📞 +91 91000 61610</span>
-        </div>
-        <div className="flex gap-2.5">
-          <a 
-            href="https://wa.me/919100061610" 
-            target="_blank"
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 transition"
-          >
-            <MessageSquare className="w-3.5 h-3.5 fill-white text-white" />
-            WhatsApp
-          </a>
-          <a 
-            href="#book-now" 
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl text-xs transition"
-          >
-            Request Call
+            <span>Book Appointment</span>
           </a>
         </div>
       </div>

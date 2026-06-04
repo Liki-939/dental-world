@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { MapPin, Phone, Clock, Calendar } from 'lucide-react';
 import Link from 'next/link';
+import Script from 'next/script';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -36,9 +37,53 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
     mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.109861611096!2d78.3845013148779!3d17.525549087995872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8e137b018ecf%3A0x7d6a524a87e07661!2sBachupally%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1680000000001!5m2!1sen!2sin'
   };
 
+  const branchSchema = {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": `Dental World ${locationName}`,
+    "image": slug === 'pragathi-nagar'
+      ? "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80"
+      : "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80",
+    "@id": `https://www.dentalworldhyd.com/locations/${slug}`,
+    "url": `https://www.dentalworldhyd.com/locations/${slug}`,
+    "telephone": branchData.phone.replace(/\s+/g, ''),
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": slug === 'pragathi-nagar' ? "#7-1-398, Srinivasa Colony" : "Plot No. 2, Main Road",
+      "addressLocality": locationName,
+      "addressRegion": "Hyderabad",
+      "postalCode": "500090",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": slug === 'pragathi-nagar' ? 17.5168 : 17.5255,
+      "longitude": slug === 'pragathi-nagar' ? 78.3941 : 78.3845
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "10:00",
+        "closes": "14:00"
+      }
+    ]
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <Navbar />
+      <Script
+        id={`branch-schema-${slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(branchSchema) }}
+      />
       
       <main className="flex-grow">
         <section className="bg-brand-dark py-20 text-white text-center">

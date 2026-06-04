@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import GalleryClient from './GalleryClient';
 
 export const metadata: Metadata = {
-  title: 'Smile Gallery | Before & After Transformations | Dental World',
-  description: 'View our gallery of successful dental treatments including implants, veneers, and full mouth rehabilitations.',
+  title: 'Smile Gallery | Dental Before & After Transformations Hyderabad',
+  description: 'See real transformations at Dental World. Browse dental before & after pictures for implants, aligners, root canals, and smile makeovers in Hyderabad.',
 };
 
 export default function GalleryPage() {
