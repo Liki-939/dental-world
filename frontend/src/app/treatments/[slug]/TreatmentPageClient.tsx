@@ -135,28 +135,28 @@ function SymptomIcon({ name }: { name: string }) {
 function StepIcon({ icon }: { icon: string }) {
   switch (icon) {
     case "stethoscope":
-      return <Stethoscope className="w-6 h-6 text-current" />;
+      return <Stethoscope className="w-7 h-7 text-current" />;
     case "syringe":
-      return <Syringe className="w-6 h-6 text-current" />;
+      return <Syringe className="w-7 h-7 text-current" />;
     case "tooth":
       return (
-        <svg className="w-6 h-6 text-current" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+        <svg className="w-7 h-7 text-current" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
           <path d="M12 2C8.69 2 6 4.69 6 8c0 3.31 2.31 5.62 2.31 8.5C8.31 18.84 7 21 7 22c1.5 0 3.5-1 5-2.75 1.5 1.75 3.5 2.75 5 2.75 0-1-1.31-3.16-1.31-5.5C15.69 13.62 18 11.31 18 8c0-3.5-2.5-6-6-6z" />
         </svg>
       );
     case "clean":
-      return <Sparkles className="w-6 h-6 text-current" />;
+      return <Sparkles className="w-7 h-7 text-current" />;
     case "shield":
-      return <Shield className="w-6 h-6 text-current" />;
+      return <Shield className="w-7 h-7 text-current" />;
     case "crown":
       return (
-        <svg className="w-6 h-6 text-current" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+        <svg className="w-7 h-7 text-current" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
           <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z" />
           <path d="M3 20h18v2H3z" />
         </svg>
       );
     default:
-      return <Check className="w-6 h-6 text-current" />;
+      return <Check className="w-7 h-7 text-current" />;
   }
 }
 
@@ -785,7 +785,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
       {/* Breadcrumb */}
       <div className="bg-white border-b border-slate-100">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1600px]">
           <div className="flex items-center space-x-2 text-xs md:text-[13px] text-slate-500 py-3.5">
             <Link href="/" className="hover:text-blue-600 transition">Home</Link>
             <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
@@ -798,12 +798,12 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
       {/* HERO SECTION */}
       <section className="bg-gradient-to-br from-[#eaf4ff] via-[#f5f9ff] to-white pt-10 pb-16 lg:pt-14 lg:pb-20 relative overflow-hidden">
-        <div className="container mx-auto px-4 max-w-7xl relative z-10">
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1600px] relative z-10">
+          <div className="bg-white border border-slate-200/60 shadow-xl rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 
             {/* Left side - Hero Text */}
-            <div className="w-full lg:w-[42%] space-y-5 text-left">
-              <span className="inline-block bg-blue-100/50 text-[#0056D2] text-[11px] md:text-xs font-bold tracking-wider uppercase px-4 py-1.5 rounded-full border border-blue-200/50">
+            <div className="lg:col-span-5 p-6 md:p-8 lg:p-10 flex flex-col justify-center space-y-6 z-20 relative bg-white text-left">
+              <span className="inline-block bg-blue-100/50 text-[#0056D2] text-[11px] md:text-xs font-bold tracking-wider uppercase px-4 py-1.5 rounded-full border border-blue-200/50 self-start">
                 {info.tagline}
               </span>
 
@@ -881,123 +881,126 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
             </div>
 
             {/* Middle - Doctor Image */}
-            <div className="w-full lg:w-[28%]">
-              <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-md border-2 border-white bg-slate-200">
-                <Image
-                  src={info.heroImage}
-                  alt="Doctor treating patient smiling"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+            <div className="lg:col-span-4 relative min-h-[350px] md:min-h-[480px] lg:min-h-full overflow-hidden w-full z-10 bg-slate-200">
+              <Image
+                src={info.heroImage}
+                alt="Doctor treating patient smiling"
+                fill
+                className="object-cover"
+                priority
+              />
+              {/* Left edge seamless gradient blend for desktop */}
+              <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+              {/* Right edge seamless gradient blend for desktop */}
+              <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-slate-50/50 to-transparent z-10 pointer-events-none"></div>
+              {/* Top soft blend for mobile when items stack */}
+              <div className="lg:hidden absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none"></div>
+              {/* Bottom soft blend for mobile when items stack */}
+              <div className="lg:hidden absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50/50 to-transparent z-10 pointer-events-none"></div>
             </div>
 
             {/* Right side - Consultation Form */}
-            <div className="w-full lg:w-[30%]">
-              {/* Consultation Form Box */}
-              <div className="bg-white rounded-2xl border border-slate-200/80 p-5 md:p-6 shadow-premium text-left relative overflow-hidden">
-                {isSubmitted ? (
-                  <div className="py-8 flex flex-col items-center text-center space-y-4">
-                    <div className="w-14 h-14 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
-                      <CheckCircle2 className="w-9 h-9" />
-                    </div>
-                    <h3 className="text-xl font-extrabold text-slate-900">Thank You!</h3>
-                    <p className="text-sm text-slate-650 max-w-sm">
-                      Your consultation request for <strong>{formData.treatment}</strong> has been received successfully. Our coordinator will contact you at <strong>{formData.mobile}</strong> within 15 minutes.
-                    </p>
-                    <button
-                      onClick={() => { setIsSubmitted(false); }}
-                      className="mt-4 border border-blue-600 text-blue-600 hover:bg-blue-50 font-bold text-xs px-4 py-2 rounded"
-                    >
-                      Book Another Consultation
-                    </button>
+            <div className="lg:col-span-3 p-6 md:p-8 bg-slate-50/50 border-l border-slate-200/60 z-20 relative flex flex-col justify-center text-left">
+              {isSubmitted ? (
+                <div className="py-8 flex flex-col items-center text-center space-y-4">
+                  <div className="w-14 h-14 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                    <CheckCircle2 className="w-9 h-9" />
                   </div>
-                ) : (
-                  <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <h3 className="text-xl font-extrabold text-slate-900">Thank You!</h3>
+                  <p className="text-sm text-slate-650 max-w-sm">
+                    Your consultation request for <strong>{formData.treatment}</strong> has been received successfully. Our coordinator will contact you at <strong>{formData.mobile}</strong> within 15 minutes.
+                  </p>
+                  <button
+                    onClick={() => { setIsSubmitted(false); }}
+                    className="mt-4 border border-blue-600 text-blue-600 hover:bg-blue-50 font-bold text-xs px-4 py-2 rounded"
+                  >
+                    Book Another Consultation
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <div>
+                    <h3 className="text-lg font-extrabold text-slate-900">Book Your Consultation</h3>
+                    <p className="text-xs text-slate-450 mt-1">Fill the form and our team will get in touch</p>
+                  </div>
+
+                  {errorMsg && (
+                    <div className="bg-red-50 text-red-600 text-xs px-3 py-2 rounded border border-red-200 flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{errorMsg}</span>
+                    </div>
+                  )}
+
+                  <div className="space-y-3.5">
                     <div>
-                      <h3 className="text-lg font-extrabold text-slate-900">Book Your Consultation</h3>
-                      <p className="text-xs text-slate-450 mt-1">Fill the form and our team will get in touch</p>
+                      <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Name</label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Enter your name"
+                        className="w-full px-3 py-2.5 text-sm bg-white border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 transition outline-none text-slate-900 font-medium"
+                      />
                     </div>
 
-                    {errorMsg && (
-                      <div className="bg-red-50 text-red-600 text-xs px-3 py-2 rounded border border-red-200 flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 shrink-0" />
-                        <span>{errorMsg}</span>
-                      </div>
-                    )}
-
-                    <div className="space-y-3.5">
-                      <div>
-                        <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Name</label>
-                        <input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          placeholder="Enter your name"
-                          className="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 focus:bg-white transition outline-none text-slate-900 font-medium"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Mobile Number</label>
-                        <input
-                          type="tel"
-                          name="mobile"
-                          value={formData.mobile}
-                          onChange={handleInputChange}
-                          placeholder="Enter 10 digit mobile number"
-                          className="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 focus:bg-white transition outline-none text-slate-900 font-medium"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Treatment</label>
-                        <select
-                          name="treatment"
-                          value={formData.treatment}
-                          onChange={handleInputChange}
-                          className="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 focus:bg-white transition outline-none text-slate-900 font-semibold"
-                        >
-                          <option value="Root Canal Treatment">Root Canal Treatment</option>
-                          <option value="Dental Implants">Dental Implants</option>
-                          <option value="Invisalign & Braces">Invisalign & Braces</option>
-                          <option value="Smile Makeover">Smile Makeover</option>
-                          <option value="Teeth Whitening">Teeth Whitening</option>
-                          <option value="Kids Dentistry">Kids Dentistry</option>
-                          <option value="Full Mouth Rehabilitation">Full Mouth Rehabilitation</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Preferred Clinic</label>
-                        <select
-                          name="clinic"
-                          value={formData.clinic}
-                          onChange={handleInputChange}
-                          className="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 focus:bg-white transition outline-none text-slate-900 font-semibold"
-                        >
-                          <option value="Pragathi Nagar">Pragathi Nagar</option>
-                          <option value="Bachupally">Bachupally</option>
-                        </select>
-                      </div>
-
+                    <div>
+                      <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Mobile Number</label>
+                      <input
+                        type="tel"
+                        name="mobile"
+                        value={formData.mobile}
+                        onChange={handleInputChange}
+                        placeholder="Enter 10 digit mobile number"
+                        className="w-full px-3 py-2.5 text-sm bg-white border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 transition outline-none text-slate-900 font-medium"
+                      />
                     </div>
 
-                    <button
-                      type="submit"
-                      className="w-full bg-[#0056D2] hover:bg-blue-700 text-white font-bold py-3.5 rounded-[5px] transition text-sm shadow-sm flex items-center justify-center mt-6"
-                    >
-                      Submit
-                    </button>
-
-                    <div className="flex items-center justify-center text-[11px] text-slate-450 gap-1.5 mt-2">
-                      <Lock className="w-3.5 h-3.5 text-slate-400" />
-                      <span>Your information is safe and secure.</span>
+                    <div>
+                      <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Treatment</label>
+                      <select
+                        name="treatment"
+                        value={formData.treatment}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2.5 text-sm bg-white border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 transition outline-none text-slate-900 font-semibold"
+                      >
+                        <option value="Root Canal Treatment">Root Canal Treatment</option>
+                        <option value="Dental Implants">Dental Implants</option>
+                        <option value="Invisalign & Braces">Invisalign & Braces</option>
+                        <option value="Smile Makeover">Smile Makeover</option>
+                        <option value="Teeth Whitening">Teeth Whitening</option>
+                        <option value="Kids Dentistry">Kids Dentistry</option>
+                        <option value="Full Mouth Rehabilitation">Full Mouth Rehabilitation</option>
+                      </select>
                     </div>
-                  </form>
-                )}
-              </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">Preferred Clinic</label>
+                      <select
+                        name="clinic"
+                        value={formData.clinic}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2.5 text-sm bg-white border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 transition outline-none text-slate-900 font-semibold"
+                      >
+                        <option value="Pragathi Nagar">Pragathi Nagar</option>
+                        <option value="Bachupally">Bachupally</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-[#0056D2] hover:bg-blue-700 text-white font-bold py-3.5 rounded-[5px] transition text-sm shadow-sm flex items-center justify-center mt-6"
+                  >
+                    Submit
+                  </button>
+
+                  <div className="flex items-center justify-center text-[11px] text-slate-450 gap-1.5 mt-2">
+                    <Lock className="w-3.5 h-3.5 text-slate-400" />
+                    <span>Your information is safe and secure.</span>
+                  </div>
+                </form>
+              )}
             </div>
 
           </div>
@@ -1006,7 +1009,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
       {/* KEY FEATURES ROW */}
       <section className="bg-white border-y border-slate-200/60 py-6">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1600px]">
           <div className="flex flex-wrap md:flex-nowrap justify-between gap-6 md:gap-4 overflow-x-auto">
             {info.features.map((feat, idx) => (
               <div key={idx} className="flex items-start space-x-3 text-left min-w-[200px] md:min-w-0 md:flex-1">
@@ -1023,18 +1026,18 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
       {/* SYMPTOMS SECTION */}
       <section className="py-12 bg-slate-50/50">
-        <div className="container mx-auto px-4 max-w-7xl text-center">
-          <span className="inline-block text-[#0056D2] text-[11px] md:text-xs font-bold tracking-widest uppercase mb-6">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1600px] text-center">
+          <span className="inline-block text-[#0056D2] text-xs md:text-sm font-black tracking-widest uppercase mb-8">
             SYMPTOMS THAT MAY REQUIRE {displayTitle.toUpperCase()} EVALUATION
           </span>
 
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
             {info.symptoms.map((sym, idx) => (
-              <div key={idx} className="bg-white p-5 rounded-2xl border border-slate-200/50 flex flex-col items-center justify-center text-center shadow-sm">
-                <div className="mb-3.5 w-12 h-12 bg-blue-50/50 rounded-full flex items-center justify-center shrink-0">
+              <div key={idx} className="bg-white px-5 py-3.5 rounded-full border border-slate-200/60 flex items-center justify-center space-x-3.5 shadow-sm hover:scale-105 hover:shadow-md transition duration-300">
+                <div className="w-12 h-12 rounded-full bg-blue-50/50 flex items-center justify-center shrink-0 text-[#0056D2]">
                   <SymptomIcon name={sym} />
                 </div>
-                <span className="text-xs font-bold text-[#0a1d37] leading-tight tracking-tight">{sym}</span>
+                <span className="text-xs md:text-sm font-black text-[#0a1d37] leading-tight tracking-tight text-left">{sym}</span>
               </div>
             ))}
           </div>
@@ -1043,7 +1046,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
       {/* WHAT IS / HOW DOES IT WORK SPLIT ROW */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1600px]">
           <div className="flex flex-col lg:flex-row gap-12">
 
             {/* Left Column - What is */}
@@ -1083,20 +1086,20 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                   <div key={idx} className="flex items-center flex-1 min-w-[110px] md:min-w-0">
                     <div className="flex flex-col items-center text-center flex-grow">
                       {/* Icon Box */}
-                      <div className="w-14 h-14 bg-white rounded-xl border border-blue-100 shadow-sm flex items-center justify-center mb-3 shrink-0">
-                        <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                      <div className="w-[72px] h-[72px] bg-white rounded-2xl border border-blue-100 shadow-md flex items-center justify-center mb-3 shrink-0">
+                        <div className="w-14 h-14 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
                           <StepIcon icon={step.icon} />
                         </div>
                       </div>
-                      <h4 className="font-extrabold text-[#0a1d37] text-[11px] md:text-xs leading-snug mb-1">
+                      <h4 className="font-extrabold text-[#0a1d37] text-xs md:text-sm leading-snug mb-1.5">
                         {step.step}. {step.title}
                       </h4>
-                      <p className="text-[9px] md:text-[10px] text-slate-405 font-bold leading-tight max-w-[100px] h-8 overflow-hidden">
+                      <p className="text-[10.5px] md:text-xs text-slate-500 font-semibold leading-tight max-w-[125px] min-h-[44px] px-1">
                         {step.desc}
                       </p>
                     </div>
                     {idx < info.howItWorksSteps.length - 1 && (
-                      <div className="text-blue-300 font-bold text-sm md:text-base px-1 md:px-2 select-none self-center mb-10 shrink-0">
+                      <div className="text-blue-300 font-bold text-sm md:text-base px-1 md:px-2 select-none self-center mb-12 shrink-0">
                         →
                       </div>
                     )}
@@ -1115,7 +1118,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
       {/* STEP-BY-STEP PROCESS TIMELINE (Horizontal circles connected by dotted lines) */}
       <section className="py-20 bg-slate-50/60 border-y border-slate-200/50">
-        <div className="container mx-auto px-4 max-w-7xl text-center">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1600px] text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-[#0056D2] font-heading mb-14 uppercase tracking-wider">
             STEP-BY-STEP {displayTitle.toUpperCase()} PROCESS
           </h2>
@@ -1150,7 +1153,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
       {/* THREE COLUMN SECTION (Types / Cost / Comparison) */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1600px]">
           <div className="flex flex-col lg:flex-row gap-10 items-stretch">
 
             {/* Column 1: Types */}
@@ -1273,7 +1276,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
       {/* WHY CHOOSE DENTAL WORLD (6 Grid Cards) */}
       <section className="py-20 bg-slate-50/50 border-t border-slate-200/50">
-        <div className="container mx-auto px-4 max-w-7xl text-center">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1600px] text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-[#0056D2] font-heading mb-14">
             WHY CHOOSE DENTAL WORLD?
           </h2>
@@ -1296,7 +1299,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
       {/* TRANSFORMATIONS AND TESTIMONIAL ROW (Before/After + Testimonial) */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1600px]">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
 
             {/* Box 1: Before/After Case 1 (X-Ray / Close-up) */}

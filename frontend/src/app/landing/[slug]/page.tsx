@@ -836,7 +836,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
         <div className="container mx-auto px-4 lg:px-8 max-w-[1600px] relative z-10">
           <div className="bg-white border border-slate-200/60 shadow-xl rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
             {/* Left Copy Column */}
-            <div className="lg:col-span-5 p-6 md:p-8 lg:p-10 xl:p-12 flex flex-col justify-center space-y-6 z-20 relative bg-white">
+            <div className="lg:col-span-5 p-6 md:p-8 lg:p-10 xl:p-12 flex flex-col justify-center space-y-6 z-20 relative bg-white/90 lg:bg-white backdrop-blur-[3px] lg:backdrop-blur-none">
               <div className="inline-flex items-center space-x-2 border border-blue-200 text-[#003B8F] px-4 py-1.5 rounded-full text-xs font-bold bg-blue-50 self-start">
                 <span className="text-amber-500 font-bold">★</span>
                 <span>5-Star Rated Dental Clinic in Your City</span>
@@ -892,22 +892,22 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* Right Patient/Specialist Hero Image with Overlay Card (Blending into Left Copy Column) */}
-            <div className="lg:col-span-7 relative min-h-[350px] md:min-h-[480px] lg:min-h-full overflow-hidden w-full flex flex-col justify-end z-10">
+            <div className="lg:col-span-7 absolute inset-0 lg:relative min-h-full lg:min-h-full overflow-hidden w-full flex flex-col justify-end z-10">
               <Image
                 src={config.hero.image}
                 alt={config.hero.headline}
                 fill
-                className="object-cover"
+                className="object-cover opacity-20 lg:opacity-100"
                 priority
               />
 
               {/* Left edge seamless gradient blend for desktop */}
               <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-              {/* Top soft blend for mobile when items stack */}
-              <div className="lg:hidden absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none"></div>
+              {/* Gradient mask for mobile backdrop */}
+              <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/95 z-10 pointer-events-none"></div>
 
-              {/* Styled trust card: Absolutely positioned over the bottom right of the blended image */}
-              <div className="absolute bottom-4 left-4 right-4 lg:left-auto lg:right-6 lg:bottom-6 bg-[#002D72]/95 backdrop-blur-sm text-white p-4 md:p-5 rounded-2xl shadow-2xl border border-slate-800/85 lg:max-w-[270px] z-20 transition-all duration-300">
+              {/* Styled trust card: Absolutely positioned over the bottom right of the blended image (Desktop only) */}
+              <div className="hidden lg:block absolute bottom-4 left-4 right-4 lg:left-auto lg:right-6 lg:bottom-6 bg-[#002D72]/95 backdrop-blur-sm text-white p-4 md:p-5 rounded-2xl shadow-2xl border border-slate-800/85 lg:max-w-[270px] z-20 transition-all duration-300">
                 <div className="flex items-center space-x-3 mb-2.5">
                   <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#003B8F] flex items-center justify-center font-black text-xs text-white shrink-0">
                     {overlayCard.circle}
