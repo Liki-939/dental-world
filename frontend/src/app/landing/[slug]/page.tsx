@@ -264,7 +264,7 @@ const landingConfigs: Record<string, LandingConfig> = {
         "0% EMI Financing Options Available",
         "Same-Day Temporary Teeth Available"
       ],
-      image: '/dental_cover.jpg',
+      image: '/dental_cover.png',
       badge: {
         title: '15+ Years Trust',
         subtitle: 'EXPERT IMPLANTOLOGIST',
@@ -771,31 +771,31 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
   }
 
   const iconBullets = key === 'dental-implants' ? [
-    { icon: Shield, line1: "10,000+", line2: "Implants", line3: "Placed Successfully" },
-    { icon: Star, line1: "4.9★", line2: "Google", line3: "Ratings" },
-    { icon: Sparkles, line1: "Advanced", line2: "3D Implant", line3: "Technology" },
-    { icon: Heart, line1: "Painless &", line2: "Safe Implant", line3: "Procedures" }
+    { icon: Shield, line1: "10,000+ Implant Cases", line2: "", line3: "" },
+    { icon: Star, line1: "4.9 Google Rating", line2: "", line3: "" },
+    { icon: Sparkles, line1: "Advanced Implant", line2: "Technology", line3: "" },
+    { icon: Heart, line1: "Painless Procedure", line2: "", line3: "" }
   ] : key === 'invisalign-treatment' ? [
-    { icon: Shield, line1: "Gold Provider", line2: "Invisalign", line3: "Certified Care" },
-    { icon: Star, line1: "4.9★", line2: "Google", line3: "Ratings & Reviews" },
-    { icon: Sparkles, line1: "iTero 3D", line2: "Digital Smile", line3: "Simulations" },
-    { icon: Heart, line1: "Virtually", line2: "Invisible &", line3: "Removable Aligners" }
+    { icon: Shield, line1: "Gold Provider", line2: "Invisalign Certified Care", line3: "" },
+    { icon: Star, line1: "4.9 Google Rating", line2: "", line3: "" },
+    { icon: Sparkles, line1: "iTero 3D Digital", line2: "Smile Simulations", line3: "" },
+    { icon: Heart, line1: "Virtually Invisible", line2: "& Removable Aligners", line3: "" }
   ] : key === 'root-canal-treatment' ? [
-    { icon: Shield, line1: "MDS Specialist", line2: "10+ Years", line3: "Clinical Trust" },
-    { icon: Star, line1: "4.9★", line2: "Google", line3: "Ratings" },
-    { icon: Sparkles, line1: "Laser Tech", line2: "Microscopic", line3: "Rotary Precision" },
-    { icon: Heart, line1: "100% Painless", line2: "Advanced", line3: "RCT Numbing" }
+    { icon: Shield, line1: "MDS Specialist", line2: "10+ Years Trust", line3: "" },
+    { icon: Star, line1: "4.9 Google Rating", line2: "", line3: "" },
+    { icon: Sparkles, line1: "Laser Microscopic", line2: "Rotary Precision", line3: "" },
+    { icon: Heart, line1: "100% Painless RCT", line2: "", line3: "" }
   ] : [ // braces
-    { icon: Shield, line1: "MDS Specialist", line2: "14+ Years", line3: "Orthodontics" },
-    { icon: Star, line1: "4.9★", line2: "Google", line3: "Ratings" },
-    { icon: Sparkles, line1: "3D Scanning", line2: "Custom Bracket", line3: "Aligner Setup" },
-    { icon: Heart, line1: "Metal, Ceramic", line2: "Self-Ligating", line3: "Braces Systems" }
+    { icon: Shield, line1: "MDS Specialist", line2: "14+ Years Orthodontics", line3: "" },
+    { icon: Star, line1: "4.9 Google Rating", line2: "", line3: "" },
+    { icon: Sparkles, line1: "3D Scanning", line2: "Custom Bracket Setup", line3: "" },
+    { icon: Heart, line1: "Metal & Ceramic Braces", line2: "", line3: "" }
   ];
 
   const overlayCard = key === 'dental-implants' ? {
     circle: "15+",
     title: "YEARS OF TRUST",
-    sub: "Led by Expert Implantologists",
+    sub: "Led by Expert Implantologist",
     name: "Dr. Anurag Lahoti"
   } : key === 'invisalign-treatment' ? {
     circle: "14+",
@@ -832,66 +832,56 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#f0f7ff] via-white to-white py-12 lg:py-16 border-b border-slate-100 overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8 max-w-[1440px] relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <section className="relative bg-gradient-to-br from-[#f0f7ff] via-slate-50 to-white py-8 md:py-12 lg:py-16 border-b border-slate-100 overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1600px] relative z-10">
+          <div className="bg-white border border-slate-200/60 shadow-xl rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
             {/* Left Copy Column */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="inline-flex items-center space-x-2 border border-blue-200 text-blue-800 px-4 py-1.5 rounded-full text-xs font-bold bg-blue-50">
+            <div className="lg:col-span-5 p-6 md:p-8 lg:p-10 xl:p-12 flex flex-col justify-center space-y-6 z-20 relative bg-white">
+              <div className="inline-flex items-center space-x-2 border border-blue-200 text-[#003B8F] px-4 py-1.5 rounded-full text-xs font-bold bg-blue-50 self-start">
                 <span className="text-amber-500 font-bold">★</span>
                 <span>5-Star Rated Dental Clinic in Your City</span>
               </div>
 
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-black text-[#0a1c3c] leading-tight tracking-tight uppercase">
-                Best {config.title} Clinic <br />At {locationName}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-black text-[#002D72] leading-tight tracking-tight uppercase">
+                Best {config.title} Clinic <br />
+                <span className="text-[#FF8A00]">At {locationName}</span>
               </h1>
 
-              <div className="bg-[#1d4ed8] text-white font-bold text-xs md:text-sm px-4 py-2.5 rounded-lg tracking-wider uppercase inline-block shadow-sm">
-                {config.hero.subtitle}
+              <div className="bg-[#003B8F] text-white font-bold text-xs md:text-sm px-4 py-2.5 rounded-lg tracking-wider uppercase inline-block shadow-sm self-start">
+                PERMANENT TEETH. NATURAL SMILE. EAT CONFIDENTLY AGAIN
               </div>
 
-              <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl">
+              <p className="text-[#0F172A] text-sm md:text-base leading-relaxed max-w-xl font-medium">
                 {config.hero.desc}
               </p>
 
-              {/* Grid layout on mobile (2 cols), transitioning to flex on larger screens */}
-              <div className="grid grid-cols-2 gap-x-4 gap-y-5 lg:flex lg:flex-wrap lg:items-center lg:gap-8 pt-2">
+              {/* Symmetrical 2-column grid layout with larger readable text */}
+              <div className="grid grid-cols-2 gap-x-4 gap-y-5 pt-2">
                 {iconBullets.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-2.5">
-                    <item.icon className="w-6 h-6 text-blue-600 mt-0.5 shrink-0" />
-                    <div className="text-[11px] font-bold text-slate-850 leading-tight">
-                      <span className="block text-slate-900 font-black">{item.line1}</span>
-                      <span className="block text-slate-500 font-bold mt-0.5">{item.line2}</span>
-                      <span className="block text-slate-500 font-bold">{item.line3}</span>
+                    <item.icon className="w-5 h-5 text-[#003B8F] mt-0.5 shrink-0" />
+                    <div className="text-xs md:text-sm font-bold text-slate-800 leading-snug">
+                      <span className="block text-[#0F172A] font-black">{item.line1}</span>
+                      {item.line2 && <span className="block text-slate-500 font-semibold mt-0.5">{item.line2}</span>}
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* 2-line CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row lg:flex-row lg:flex-wrap xl:flex-nowrap gap-4 pt-4">
                 <a
                   href="#book-now"
-                  className="bg-[#1d4ed8] hover:bg-blue-800 text-white px-6 py-3 rounded-xl transition text-left flex flex-col justify-center shadow-md hover:shadow-lg min-w-[280px]"
+                  className="bg-[#FF8A00] hover:bg-[#e07b00] text-white px-6 py-4 rounded-xl transition font-black text-sm tracking-wide uppercase flex items-center justify-center gap-2 shadow-md hover:shadow-lg min-w-[280px] h-[52px]"
                 >
-                  <span className="font-black text-sm tracking-wide uppercase flex items-center gap-2">
-                    📅 BOOK FREE {config.title.split(' ')[0].toUpperCase()} CONSULTATION
-                  </span>
-                  <span className="text-[10px] text-blue-200 mt-1 font-bold">
-                    Get treatment plan & cost estimate in 15 minutes
-                  </span>
+                  📅 BOOK {config.title.split(' ')[0].toUpperCase()} CONSULTATION
                 </a>
                 <a
-                  href="https://wa.me/919100061610"
+                  href="https://wa.me/917997994646"
                   target="_blank"
-                  className="bg-[#22c55e] hover:bg-[#16a34a] text-white px-6 py-3 rounded-xl transition text-left flex flex-col justify-center shadow-md hover:shadow-lg min-w-[220px]"
+                  className="bg-[#25D366] hover:bg-[#20bd58] text-white px-6 py-4 rounded-xl transition font-black text-sm tracking-wide uppercase flex items-center justify-center gap-2 shadow-md hover:shadow-lg min-w-[220px] h-[52px]"
                 >
-                  <span className="font-black text-sm tracking-wide uppercase flex items-center gap-2">
-                    💬 WHATSAPP US
-                  </span>
-                  <span className="text-[10px] text-emerald-100 mt-1 font-bold">
-                    Quick Response
-                  </span>
+                  💬 WHATSAPP US
                 </a>
               </div>
 
@@ -901,22 +891,25 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
               </div>
             </div>
 
-            {/* Right Patient/Specialist Hero Image with Overlay Card */}
-            <div className="lg:col-span-7 flex flex-col items-center w-full relative">
-              <div className="relative w-full aspect-[1.6] lg:aspect-[1.5] rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 bg-slate-50">
-                <Image
-                  src={config.hero.image}
-                  alt={config.hero.headline}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
+            {/* Right Patient/Specialist Hero Image with Overlay Card (Blending into Left Copy Column) */}
+            <div className="lg:col-span-7 relative min-h-[350px] md:min-h-[480px] lg:min-h-full overflow-hidden w-full flex flex-col justify-end z-10">
+              <Image
+                src={config.hero.image}
+                alt={config.hero.headline}
+                fill
+                className="object-cover"
+                priority
+              />
 
-              {/* Styled trust card: Static block below the image on mobile/tablet, absolute on desktop */}
-              <div className="w-full mt-4 lg:mt-0 lg:absolute lg:bottom-6 lg:right-6 bg-[#0a1c3c]/95 backdrop-blur-sm text-white p-4 md:p-5 rounded-2xl shadow-xl lg:shadow-2xl border border-slate-800/80 lg:max-w-[260px] z-10 transition-all duration-300">
+              {/* Left edge seamless gradient blend for desktop */}
+              <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+              {/* Top soft blend for mobile when items stack */}
+              <div className="lg:hidden absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none"></div>
+
+              {/* Styled trust card: Absolutely positioned over the bottom right of the blended image */}
+              <div className="absolute bottom-4 left-4 right-4 lg:left-auto lg:right-6 lg:bottom-6 bg-[#002D72]/95 backdrop-blur-sm text-white p-4 md:p-5 rounded-2xl shadow-2xl border border-slate-800/85 lg:max-w-[270px] z-20 transition-all duration-300">
                 <div className="flex items-center space-x-3 mb-2.5">
-                  <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-blue-600 flex items-center justify-center font-black text-xs text-white shrink-0">
+                  <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#003B8F] flex items-center justify-center font-black text-xs text-white shrink-0">
                     {overlayCard.circle}
                   </div>
                   <div>
@@ -924,7 +917,18 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                     <p className="text-[8.5px] md:text-[9px] text-slate-300 font-bold mt-1 leading-none">{overlayCard.sub}</p>
                   </div>
                 </div>
-                <div className="pt-2 border-t border-slate-850">
+                {/* Dental implant illustration on card */}
+                {key === 'dental-implants' && (
+                  <div className="my-2.5 py-1.5 border-t border-b border-slate-800/60 flex items-center gap-2">
+                    <svg className="w-5 h-8 text-blue-400 shrink-0" viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20 40C20 20 30 10 50 10C70 10 80 20 80 40C80 60 70 70 50 70C30 70 20 60 20 40Z" fill="#93c5fd" />
+                      <rect x="42" y="70" width="16" height="50" rx="3" fill="#3b82f6" />
+                      <path d="M40 80H60M40 90H60M40 100H60" stroke="#1d4ed8" strokeWidth="2" />
+                    </svg>
+                    <span className="text-[9.5px] font-bold text-slate-300 leading-tight">Advanced Titanium Implant Root System</span>
+                  </div>
+                )}
+                <div className="pt-2 border-t border-slate-800">
                   <span className="text-xs md:text-sm font-black text-white block leading-tight">{overlayCard.name}</span>
                   <span className="text-[8px] text-slate-400 font-bold uppercase mt-0.5 tracking-wider block">Chief Specialist</span>
                 </div>
@@ -935,15 +939,15 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* Trust Badge Strip */}
-      <section className="bg-[#0a1c3c] text-white py-6 shadow-md relative z-10">
+      <section className="bg-[#002D72] text-white py-6 shadow-md relative z-10">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6 items-center text-center divide-y md:divide-y-0 md:divide-x divide-slate-800">
             {[
-              { label: "15+ Years", desc: "Specialist Experience" },
+              { label: "15+ Years", desc: "Experience" },
               { label: slug.includes('implants') ? "10,000+" : "15,000+", desc: slug.includes('implants') ? "Successful Implants" : "Happy Smiles Created" },
-              { label: "5-Star", desc: "Rated On Google" },
-              { label: "Painless", desc: "& Comfortable Care" },
-              { label: "0% EMI", desc: "Options Available" }
+              { label: "5-Star", desc: "Rated on Google" },
+              { label: "Painless", desc: "& Comfortable" },
+              { label: "EMI Options", desc: "Available" }
             ].map((item, idx) => (
               <div
                 key={idx}
@@ -958,175 +962,266 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* Struggling With Section */}
-      <section className="py-16 bg-white border-b border-slate-100">
+      <section className="py-12 bg-[#F7F9FC] border-b border-slate-100">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-2xl md:text-3xl font-heading font-black text-[#0a1c3c] tracking-tight uppercase">
-              ARE YOU STRUGGLING WITH?
-            </h2>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            {/* Left: 6 circular items */}
-            <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-6">
-              {[
-                { label: "Missing Teeth", img: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=150&q=80" },
-                { label: "Loose Dentures", img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=150&q=80" },
-                { label: "Difficulty Chewing", img: "https://images.unsplash.com/photo-1512223792601-592a9809eed4?auto=format&fit=crop&w=150&q=80" },
-                { label: "Embarrassment While Smiling", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" },
-                { label: "Bone Loss", img: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=150&q=80" },
-                { label: "Facial Sagging", img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=150&q=80" }
-              ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center p-4 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm hover:scale-102 transition duration-300">
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-md bg-slate-200 mb-3">
-                    <Image
-                      src={item.img}
-                      alt={item.label}
-                      fill
-                      className="object-cover"
-                    />
+            
+            {/* Left Box: Struggles (White background, Rounded card) */}
+            <div className="lg:col-span-9 bg-white border border-slate-200/60 shadow-xl rounded-3xl p-6 md:p-8 lg:p-10 flex flex-col justify-between">
+              <div className="text-center mb-8">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-heading font-black text-[#002D72] tracking-tight uppercase">
+                  ARE YOU STRUGGLING WITH?
+                </h2>
+              </div>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+                {[
+                  { label: "Missing Teeth", img: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=150&q=80" },
+                  { label: "Loose Dentures", img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=150&q=80" },
+                  { label: "Difficulty Chewing", img: "https://images.unsplash.com/photo-1512223792601-592a9809eed4?auto=format&fit=crop&w=150&q=80" },
+                  { label: "Embarrassment While Smiling", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" },
+                  { label: "Bone Loss", img: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=150&q=80" },
+                  { label: "Facial Sagging", img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=150&q=80" }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex flex-col items-center text-center p-2 hover:scale-105 transition duration-350">
+                    <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-slate-100 shadow-sm bg-slate-200 mb-4 shrink-0">
+                      <Image
+                        src={item.img}
+                        alt={item.label}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <h4 className="font-black text-slate-800 text-xs md:text-sm leading-tight tracking-tight mt-auto">{item.label}</h4>
                   </div>
-                  <h4 className="font-extrabold text-slate-800 text-xs md:text-sm tracking-tight">{item.label}</h4>
-                </div>
-              ))}
-            </div>
-
-            {/* Right: Hook resolution card */}
-            <div className="lg:col-span-4">
-              <div className="bg-gradient-to-br from-[#0a1c3c] to-[#1e3a8a] text-white rounded-3xl p-8 shadow-xl flex flex-col justify-between h-full relative overflow-hidden">
-                <div className="space-y-6">
-                  <Sparkles className="w-10 h-10 text-blue-300" />
-                  <h3 className="text-2xl font-black font-heading leading-tight uppercase tracking-wide">
-                    {config.title.toUpperCase()}
-                  </h3>
-                  <p className="text-sm text-blue-100 leading-relaxed font-semibold">
-                    Can Permanently Restore Your Smile & Confidence!
-                  </p>
-                  {/* Glowing Implant Render Graphic */}
-                  <div className="relative w-full h-32 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-2xl"></div>
-                    <svg className="w-20 h-20 text-blue-300 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v1.244c0 .892-.724 1.615-1.615 1.615H6.892c-.892 0-1.615-.723-1.615-1.615V3.104m13.472 0v1.244c0 .892-.724 1.615-1.615 1.615H15.65c-.892 0-1.615-.723-1.615-1.615V3.104M9.75 16.5v1.244c0 .892-.724 1.616-1.615 1.616H6.892c-.892 0-1.615-.724-1.615-1.616V16.5m13.472 0v1.244c0 .892-.724 1.616-1.615 1.616H15.65c-.892 0-1.615-.724-1.615-1.616V16.5M3 7.5h18M3 12h18M3 16.5h18" />
-                    </svg>
-                  </div>
-                </div>
-
-                <div className="mt-8">
-                  <a
-                    href="#book-now"
-                    className="w-full inline-block bg-white hover:bg-slate-100 text-blue-900 font-black py-4 px-6 rounded-xl text-center text-xs tracking-wider uppercase transition shadow-md active:scale-98"
-                  >
-                    Get Free Estimate
-                  </a>
-                </div>
+                ))}
               </div>
             </div>
+
+            {/* Right Box: Solution (Dark blue background, Rounded card) */}
+            <div className="lg:col-span-3 bg-[#002D72] text-white border border-slate-800/80 shadow-xl rounded-3xl p-6 md:p-8 lg:p-10 flex flex-col justify-between min-h-[280px]">
+              <div className="space-y-4 text-center mt-2">
+                <h3 className="text-xl md:text-2xl font-black font-heading leading-tight uppercase tracking-wide text-white">
+                  {config.title.toUpperCase()}
+                </h3>
+                <p className="text-xs md:text-sm text-slate-200 leading-relaxed font-bold">
+                  Can Permanently Restore Your Smile & Confidence!
+                </p>
+              </div>
+              {/* Glowing Implant Render Graphic */}
+              <div className="relative w-full h-36 flex items-center justify-center mt-4">
+                <div className="absolute w-24 h-24 bg-blue-500/20 rounded-full blur-2xl bottom-0"></div>
+
+                {/* Glowing 3D Implant SVG */}
+                <svg className="w-16 h-28 text-blue-400 drop-shadow-[0_0_12px_rgba(93,173,226,0.6)]" viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Crown */}
+                  <path d="M20 40C20 20 30 10 50 10C70 10 80 20 80 40C80 60 70 70 50 70C30 70 20 60 20 40Z" fill="url(#crownGrad)" stroke="#60a5fa" strokeWidth="2" />
+                  {/* Abutment */}
+                  <path d="M40 70H60L55 90H45L40 70Z" fill="#93c5fd" />
+                  {/* Implant Screw */}
+                  <rect x="42" y="90" width="16" height="50" rx="3" fill="url(#screwGrad)" stroke="#3b82f6" strokeWidth="1.5" />
+                  {/* Threads */}
+                  <path d="M40 100H60M40 110H60M40 120H60M40 130H60" stroke="#1e3a8a" strokeWidth="2" strokeLinecap="round" />
+
+                  {/* Gradients */}
+                  <defs>
+                    <linearGradient id="crownGrad" x1="50" y1="10" x2="50" y2="70" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stopColor="#ffffff" />
+                      <stop offset="60%" stopColor="#dbeafe" />
+                      <stop offset="100%" stopColor="#60a5fa" />
+                    </linearGradient>
+                    <linearGradient id="screwGrad" x1="50" y1="90" x2="50" y2="140" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stopColor="#93c5fd" />
+                      <stop offset="50%" stopColor="#3b82f6" />
+                      <stop offset="100%" stopColor="#1e3a8a" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* Middle Row: Cost, Why Choose Us, Callback Booking */}
-      <section className="py-16 bg-slate-50 border-b border-slate-100">
+      <section className="py-16 bg-[#F7F9FC] border-b border-slate-100">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-            {/* Col 1: Cost details */}
-            <div className="bg-white border border-slate-200/60 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-sm">
+            {/* Col 1: Cost details (Blue gradient card) */}
+            <div className="bg-gradient-to-br from-[#003B8F] to-[#002D72] text-white rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-md border border-slate-800">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg md:text-xl font-black text-[#0a1c3c] uppercase tracking-tight">{config.title} Cost in {locationName}</h3>
-                  <p className="text-slate-400 text-xs font-semibold mt-1">STARTING FROM</p>
+                  <h3 className="text-lg md:text-xl font-black text-white uppercase tracking-tight">{config.title} Cost in {locationName}</h3>
+                  <p className="text-blue-200 text-xs font-semibold mt-1">STARTING FROM</p>
                 </div>
 
-                <div className="py-4 border-y border-slate-100">
-                  <span className="text-4xl font-black text-blue-700">₹{config.cost.starting}*</span>
-                  <p className="text-[9px] text-slate-400 mt-2 font-medium">*All inclusive: consultation, scan, implant, and custom crown.</p>
+                <div className="py-4 border-y border-blue-800">
+                  <span className="text-4xl font-black text-white">₹{config.cost.starting}*</span>
+                  <p className="text-[9.5px] text-blue-200 mt-2 font-semibold">*All inclusive: consultation, scan, implant, and custom crown.</p>
                 </div>
 
-                <ul className="space-y-3 font-bold text-slate-700 text-xs">
-                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-500 mr-2.5 shrink-0" /> Consultation included</li>
-                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-500 mr-2.5 shrink-0" /> Custom implant setup</li>
-                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-500 mr-2.5 shrink-0" /> CBCT 3D Scan & diagnostics</li>
-                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-500 mr-2.5 shrink-0" /> High precision surgical procedures</li>
+                <ul className="space-y-3 font-bold text-blue-100 text-xs">
+                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-450 mr-2.5 shrink-0" /> Consultation included</li>
+                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-450 mr-2.5 shrink-0" /> Custom implant setup</li>
+                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-450 mr-2.5 shrink-0" /> CBCT 3D Scan & diagnostics</li>
+                  <li className="flex items-center"><Check className="w-4 h-4 text-emerald-450 mr-2.5 shrink-0" /> High precision surgical procedures</li>
                 </ul>
               </div>
 
               {/* Finance Badges */}
-              <div className="mt-8 pt-6 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
-                <div className="p-2 bg-slate-50 rounded-xl border border-slate-100">
-                  <span className="font-black text-xs text-blue-700 block">0%</span>
-                  <span className="text-[8px] uppercase font-bold text-slate-450">No Cost EMI</span>
+              <div className="mt-8 pt-6 border-t border-blue-800 grid grid-cols-3 gap-2 text-center">
+                <div className="p-2 bg-blue-900/50 rounded-xl border border-blue-800">
+                  <span className="font-black text-xs text-white block">0%</span>
+                  <span className="text-[8px] uppercase font-bold text-blue-300">No Cost EMI</span>
                 </div>
-                <div className="p-2 bg-slate-50 rounded-xl border border-slate-100">
-                  <span className="font-black text-xs text-blue-700 block">Flexible</span>
-                  <span className="text-[8px] uppercase font-bold text-slate-450">Pay Plans</span>
+                <div className="p-2 bg-blue-900/50 rounded-xl border border-blue-800">
+                  <span className="font-black text-xs text-white block">Flexible</span>
+                  <span className="text-[8px] uppercase font-bold text-blue-300">Pay Plans</span>
                 </div>
-                <div className="p-2 bg-slate-50 rounded-xl border border-slate-100">
-                  <span className="font-black text-xs text-blue-700 block">Insurance</span>
-                  <span className="text-[8px] uppercase font-bold text-slate-455">Assistance</span>
+                <div className="p-2 bg-blue-900/50 rounded-xl border border-blue-800">
+                  <span className="font-black text-xs text-white block">Insurance</span>
+                  <span className="text-[8px] uppercase font-bold text-blue-300">Assistance</span>
                 </div>
               </div>
             </div>
 
-            {/* Col 2: Why Choose Us (7 circle items) */}
+            {/* Col 2: Why Choose Us (8 centered features) */}
             <div className="bg-white border border-slate-200/60 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-sm">
               <div className="space-y-6">
-                <h3 className="text-lg md:text-xl font-black text-[#0a1c3c] uppercase tracking-tight">Why Patients Choose Dental World</h3>
+                <h3 className="text-lg md:text-xl font-black text-[#002D72] uppercase tracking-tight text-center">Why Patients Choose Dental World</h3>
 
-                {/* 7 item horizontal/vertical lists with circular badges */}
-                <div className="grid grid-cols-1 gap-3.5">
+                {/* 8 item centered layout */}
+                <div className="grid grid-cols-4 gap-x-2 gap-y-6 pt-2 text-center justify-items-center">
                   {[
-                    "Specialized Implantologists & MDS",
-                    "Advanced Computer-Guided Surgery",
-                    "Virtually Pain-Free Procedures",
-                    "In-House 3D CBCT Scanning",
-                    "100% Sterile Class-B Autoclaves",
-                    "Long-Lasting International Implant Systems",
-                    "Personalized Lifelong Smile Transformations"
+                    {
+                      title: "Specialized", desc: "Implantologists",
+                      icon: (
+                        <svg className="w-7 h-7 text-[#003B8F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.957 11.957 0 01-9.618 5.04c-.334.814-.543 1.704-.595 2.632A11.955 11.955 0 0012 21.368a11.957 11.957 0 009.618-8.752c-.052-.928-.261-1.818-.595-2.632z" />
+                        </svg>
+                      )
+                    },
+                    {
+                      title: "Advanced", desc: "Guided Surgery",
+                      icon: (
+                        <svg className="w-7 h-7 text-[#003B8F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                        </svg>
+                      )
+                    },
+                    {
+                      title: "Painless", desc: "Procedures",
+                      icon: (
+                        <svg className="w-7 h-7 text-[#003B8F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                      )
+                    },
+                    {
+                      title: "3D CBCT", desc: "Planning",
+                      icon: (
+                        <svg className="w-7 h-7 text-[#003B8F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      )
+                    },
+                    {
+                      title: "Sterile", desc: "Protocols",
+                      icon: (
+                        <svg className="w-7 h-7 text-[#003B8F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      )
+                    },
+                    {
+                      title: "Long-lasting", desc: "Implants",
+                      icon: (
+                        <svg className="w-7 h-7 text-[#003B8F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      )
+                    },
+                    {
+                      title: "Personalized", desc: "Restoration",
+                      icon: (
+                        <svg className="w-7 h-7 text-[#003B8F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      )
+                    },
+                    {
+                      title: "Expert", desc: "Care",
+                      icon: (
+                        <svg className="w-7 h-7 text-[#003B8F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      )
+                    }
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center space-x-3">
-                      <div className="w-7 h-7 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0 font-black text-[10px]">
-                        {idx + 1}
+                    <div key={idx} className="flex flex-col items-center w-full max-w-[120px]">
+                      <div className="w-14 h-14 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center shadow-sm shrink-0 mb-2">
+                        {item.icon}
                       </div>
-                      <span className="text-xs font-bold text-slate-700">{item}</span>
+                      <span className="text-xs md:text-sm font-black text-slate-800 leading-tight block">{item.title}</span>
+                      <span className="text-[10px] md:text-xs font-semibold text-slate-500 leading-none mt-0.5 block">{item.desc}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-100">
-                <p className="text-[10px] text-slate-455 font-medium italic text-center">
+              <div className="mt-6 pt-4 border-t border-slate-100 bg-slate-50/50 rounded-xl p-3 border border-slate-100 flex flex-col items-center gap-2">
+                <p className="text-[10px] text-slate-500 font-semibold italic text-center leading-relaxed">
                   All implants are placed using world-class technology & international quality implant systems for long-term success.
                 </p>
+                <Link
+                  href={`/treatments/${key}`}
+                  className="text-xs text-[#003B8F] hover:underline font-extrabold uppercase tracking-wider flex items-center gap-1"
+                >
+                  View Full {config.title} Guide <ArrowRight className="w-3 h-3" />
+                </Link>
               </div>
             </div>
 
-            {/* Col 3: Callback Booking Form card */}
-            <div className="bg-[#0a1c3c] text-white rounded-3xl p-6 md:p-8 shadow-xl border border-slate-800 flex flex-col justify-between h-full relative overflow-hidden" id="book-now">
-              <div className="mb-4">
-                <span className="text-[10px] font-black uppercase tracking-wider text-blue-300 block mb-1">Instant Booking</span>
-                <h3 className="text-xl font-bold text-white uppercase tracking-tight">Book Your Free Consultation Today!</h3>
-                <p className="text-xs text-slate-400 mt-1 font-medium">Get a call-back from our smile experts in 15 minutes.</p>
+            {/* Col 3: Callback Booking Form card (Green CTA Card) */}
+            <div className="bg-[#25D366] text-white rounded-3xl p-6 md:p-8 shadow-md border border-emerald-600 flex flex-col justify-between h-full relative overflow-hidden" id="book-now">
+              <div className="space-y-5">
+                <div>
+                  <span className="text-[9px] font-black uppercase tracking-wider text-emerald-100 block mb-1">Instant Booking</span>
+                  <h3 className="text-lg md:text-xl font-black text-white uppercase tracking-tight">
+                    BOOK YOUR FREE CONSULTATION TODAY
+                  </h3>
+                </div>
+
+                <ul className="space-y-3 font-bold text-white text-xs">
+                  <li className="flex items-center"><Check className="w-4 h-4 text-white mr-2.5 shrink-0" /> Get Expert Evaluation</li>
+                  <li className="flex items-center"><Check className="w-4 h-4 text-white mr-2.5 shrink-0" /> Know Your Implant Options</li>
+                  <li className="flex items-center"><Check className="w-4 h-4 text-white mr-2.5 shrink-0" /> Cost Estimate</li>
+                  <li className="flex items-center"><Check className="w-4 h-4 text-white mr-2.5 shrink-0" /> No Obligation</li>
+                </ul>
               </div>
 
-              <div className="text-slate-900 flex-grow mt-2">
-                <BookAppointmentForm minimal defaultTreatment={config.title} />
-              </div>
-
-              <div className="mt-4 pt-4 border-t border-slate-800 flex justify-between gap-2">
+              <div className="mt-8 space-y-4">
                 <a
-                  href="tel:+919100061610"
-                  className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-black py-3 rounded-xl text-center text-xs tracking-wider uppercase transition flex items-center justify-center gap-1.5"
+                  href="tel:+918247478663"
+                  className="w-full bg-white hover:bg-slate-100 text-[#002D72] font-black py-4 px-6 rounded-xl text-center text-xs tracking-wider uppercase transition shadow-md flex items-center justify-center gap-2 h-[52px]"
                 >
-                  <Phone className="w-3.5 h-3.5 fill-white text-white" />
-                  Call Now
+                  <Phone className="w-4 h-4 fill-[#002D72] text-[#002D72]" />
+                  CALL NOW
                 </a>
+
+                <div className="flex items-center justify-center">
+                  <span className="text-[10px] uppercase font-bold text-emerald-100 bg-emerald-700/30 px-3 py-1 rounded-full border border-emerald-500/30">or</span>
+                </div>
+
                 <a
-                  href="https://wa.me/919100061610"
+                  href="https://wa.me/917997994646"
                   target="_blank"
-                  className="flex-1 border border-emerald-500 text-emerald-450 hover:bg-emerald-950/20 font-black py-3 rounded-xl text-center text-xs tracking-wider uppercase transition flex items-center justify-center gap-1.5"
+                  rel="noopener noreferrer"
+                  className="w-full border-2 border-white text-white hover:bg-white/10 font-black py-4 px-6 rounded-xl text-center text-xs tracking-wider uppercase transition shadow-sm flex items-center justify-center gap-2 h-[52px]"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 fill-current text-current" />
-                  WhatsApp
+                  <MessageSquare className="w-4 h-4 fill-current text-current" />
+                  WHATSAPP US
                 </a>
               </div>
             </div>
@@ -1140,7 +1235,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left title */}
             <div className="lg:col-span-4 space-y-6">
-              <h2 className="text-2xl md:text-4xl font-heading font-black text-[#0a1c3c] leading-tight uppercase tracking-tight">
+              <h2 className="text-2xl md:text-4xl font-heading font-black text-[#002D72] leading-tight uppercase tracking-tight">
                 REAL PATIENTS.<br />REAL RESULTS.<br />REAL CONFIDENCE.
               </h2>
               <p className="text-slate-500 text-xs md:text-sm font-semibold leading-relaxed">
@@ -1148,20 +1243,24 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
               </p>
               <Link
                 href="/gallery"
-                className="inline-flex items-center text-blue-600 hover:text-blue-800 font-extrabold text-sm border-b-2 border-blue-600 pb-0.5 transition"
+                className="inline-flex items-center text-[#003B8F] hover:text-blue-800 font-extrabold text-sm border-b-2 border-[#003B8F] pb-0.5 transition"
               >
                 VIEW MORE CASES <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>
 
-            {/* Right: 4 case thumbnails */}
+            {/* Right: 8 case thumbnails */}
             <div className="lg:col-span-8">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {[
-                  { title: "Case 1", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
-                  { title: "Case 2", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
-                  { title: "Case 3", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
-                  { title: "Case 4", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" }
+                  { title: "Transformation 1", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Transformation 2", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Transformation 3", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Transformation 4", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Transformation 5", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Transformation 6", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Transformation 7", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" },
+                  { title: "Transformation 8", before: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=300&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=300&q=80" }
                 ].map((item, idx) => (
                   <div key={idx} className="relative rounded-2xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50 group hover:scale-102 transition duration-300">
                     <div className="relative aspect-square w-full">
@@ -1172,13 +1271,13 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                         className="object-cover"
                       />
                       <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
-                        <div className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-blue-700 shadow-md">
+                        <div className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-[#003B8F] shadow-md">
                           <Play className="w-4 h-4 fill-current ml-0.5" />
                         </div>
                       </div>
                     </div>
                     <div className="p-3 bg-white text-center">
-                      <span className="text-[10px] font-black text-slate-800 uppercase">Transformation {idx + 1}</span>
+                      <span className="text-[10px] font-black text-slate-800 uppercase">{item.title}</span>
                     </div>
                   </div>
                 ))}
@@ -1189,20 +1288,20 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* Comparison table, Specialist Bio, Implant Types */}
-      <section className="py-16 bg-slate-50 border-b border-slate-100">
-        <div className="container mx-auto px-4 max-w-7xl">
+      <section className="py-16 bg-[#F7F9FC] border-b border-slate-100">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1600px]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             {/* Col 1: Comparison table */}
-            <div className="lg:col-span-4 bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+            <div className="lg:col-span-4 bg-white border border-slate-200/60 shadow-md rounded-3xl p-6 flex flex-col justify-between">
               <div className="space-y-4">
-                <h3 className="text-lg font-black text-[#0a1c3c] uppercase tracking-tight">WHY {config.title.toUpperCase()} ARE BETTER THAN DENTURES</h3>
+                <h3 className="text-xl md:text-2xl font-heading font-black text-[#002D72] uppercase tracking-tight">WHY {config.title.toUpperCase()} ARE BETTER THAN DENTURES</h3>
                 <div className="border border-slate-100 rounded-2xl overflow-hidden mt-4">
                   <table className="w-full text-left text-xs font-semibold">
-                    <thead className="bg-slate-50 text-[10px] uppercase font-bold text-slate-400 border-b border-slate-100">
+                    <thead className="bg-slate-50 text-xs md:text-sm uppercase font-bold text-slate-500 border-b border-slate-100">
                       <tr>
-                        <th className="px-3 py-2.5">FEATURE</th>
-                        <th className="px-3 py-2.5 text-center text-blue-700 bg-blue-50/30">IMPLANTS</th>
-                        <th className="px-3 py-2.5 text-center">DENTURES</th>
+                        <th className="px-3.5 py-3">FEATURE</th>
+                        <th className="px-3.5 py-3 text-center text-[#003B8F] bg-blue-50/30">IMPLANTS</th>
+                        <th className="px-3.5 py-3 text-center">DENTURES</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 text-slate-700">
@@ -1215,12 +1314,12 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                         { f: "Long-Lasting (Lifetime)", i: true, d: false }
                       ].map((row, idx) => (
                         <tr key={idx} className="hover:bg-slate-50/50 transition">
-                          <td className="px-3 py-2.5 text-[11px] leading-tight">{row.f}</td>
-                          <td className="px-3 py-2.5 text-center bg-blue-50/20 text-emerald-600">
-                            {row.i ? <Check className="w-4 h-4 mx-auto font-black" /> : <X className="w-4 h-4 mx-auto text-red-500" />}
+                          <td className="px-3.5 py-3 text-xs md:text-sm font-black text-slate-800 leading-tight">{row.f}</td>
+                          <td className="px-3.5 py-3 text-center bg-blue-50/20 text-[#25D366]">
+                            {row.i ? <Check className="w-5 h-5 mx-auto font-black" /> : <X className="w-5 h-5 mx-auto text-red-500" />}
                           </td>
-                          <td className="px-3 py-2.5 text-center text-red-500">
-                            {row.d ? <Check className="w-4 h-4 mx-auto text-emerald-600" /> : <X className="w-4 h-4 mx-auto" />}
+                          <td className="px-3.5 py-3 text-center text-red-500">
+                            {row.d ? <Check className="w-5 h-5 mx-auto text-[#25D366]" /> : <X className="w-5 h-5 mx-auto" />}
                           </td>
                         </tr>
                       ))}
@@ -1231,58 +1330,84 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* Col 2: Specialist Bio Card */}
-            <div className="lg:col-span-5 bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
-              <div className="space-y-4">
-                <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest block">Meet Our Implant Expert</span>
-                <h3 className="text-xl md:text-2xl font-black text-[#0a1c3c] uppercase leading-tight tracking-tight">DR. ANURAG LAHOTI</h3>
-                <span className="text-xs font-bold text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1 rounded-full uppercase tracking-wider inline-block">
-                  14+ Years of Experience
-                </span>
+            <div className="lg:col-span-5 bg-[#002D72] text-white rounded-3xl overflow-hidden shadow-md border border-slate-800 flex flex-col justify-between">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-0 h-full items-stretch">
+                {/* Left side: Doctor portrait photo filling the full card height */}
+                <div className="col-span-12 md:col-span-5 relative min-h-[300px] md:min-h-full">
+                  <Image
+                    src={config.specialist.image}
+                    alt={config.specialist.name}
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
 
-                <div className="flex gap-4 items-start pt-2">
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md bg-slate-200 shrink-0">
-                    <Image
-                      src={config.specialist.image}
-                      alt={config.specialist.name}
-                      fill
-                      className="object-cover"
-                    />
+                {/* Right side: Specialist details */}
+                <div className="col-span-12 md:col-span-7 p-6 flex flex-col justify-between space-y-4">
+                  <div className="space-y-3.5">
+                    <div>
+                      <span className="text-[11px] md:text-xs font-black text-blue-300 uppercase tracking-widest block">Meet Our Implant Expert</span>
+                      <h3 className="text-2xl lg:text-3xl font-black text-white uppercase leading-tight tracking-tight mt-0.5">DR. ANURAG LAHOTI</h3>
+                      <p className="text-xs md:text-sm font-semibold text-slate-300 mt-0.5">Prosthodontist / Implantologist / 14+ Years Experience</p>
+                    </div>
+
+                    <div className="inline-block">
+                      <span className="text-[11px] md:text-xs font-black text-white bg-[#003B8F] px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-sm border border-blue-700">
+                        14+ Years Experience
+                      </span>
+                    </div>
+
+                    <div className="space-y-2.5 text-xs md:text-sm font-black text-slate-100 leading-relaxed pt-1">
+                      <p className="flex items-start gap-1.5">
+                        <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                        <span>Specialist in Prosthodontics & Implant Dentistry</span>
+                      </p>
+                      <p className="flex items-start gap-1.5">
+                        <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                        <span>Expert in Full Mouth Rehabilitation</span>
+                      </p>
+                      <p className="flex items-start gap-1.5">
+                        <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                        <span>Advanced Implant Surgeries Specialist</span>
+                      </p>
+                      <p className="flex items-start gap-1.5">
+                        <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                        <span>Thousands of Successful Cases Placed</span>
+                      </p>
+                      <p className="flex items-start gap-1.5">
+                        <Check className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                        <span>Committed to Painless Clinical Excellence</span>
+                      </p>
+                    </div>
                   </div>
-                  <div className="space-y-2 text-xs font-semibold text-slate-650 leading-relaxed">
-                    <p>• Specialist in Prosthodontics & Implant Dentistry</p>
-                    <p>• Expert in Full Mouth Rehabilitation Procedures</p>
-                    <p>• Advanced Implant Surgery Specialist</p>
-                    <p>• Thousands of Successful Cases Placed</p>
-                    <p>• Committed to Painless, Precise Clinical Care</p>
+
+                  <div className="pt-3.5 border-t border-slate-800 flex items-center justify-between text-[11px] md:text-xs font-black text-slate-400 tracking-wider">
+                    <span>ICOI MEMBER</span>
+                    <span>•</span>
+                    <span>ISOI MEMBER</span>
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-450 tracking-wider">
-                <span>ICOI MEMBER</span>
-                <span>•</span>
-                <span>ISOI MEMBER</span>
               </div>
             </div>
 
             {/* Col 3: Implant Types We Offer */}
-            <div className="lg:col-span-3 bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+            <div className="lg:col-span-3 bg-white border border-slate-200/60 shadow-md rounded-3xl p-6 flex flex-col justify-between">
               <div className="space-y-4">
-                <h3 className="text-lg font-black text-[#0a1c3c] uppercase tracking-tight">Implant Types We Offer</h3>
-                <div className="space-y-3 text-xs font-bold text-slate-700">
+                <h3 className="text-xl md:text-2xl font-heading font-black text-[#002D72] uppercase tracking-tight">Implant Types We Offer</h3>
+                <div className="space-y-3.5 text-sm font-bold text-slate-700">
                   {[
                     { title: "Single Tooth Implant", desc: "Replace one missing tooth root" },
                     { title: "Multiple Teeth Implant", desc: "Bridge gaps of multiple teeth" },
                     { title: "Full Mouth Implants", desc: "All-on-4 / All-on-6 setups" },
                     { title: "Implant Supported Dentures", desc: "Superior stability & bone lock" }
                   ].map((item, idx) => (
-                    <div key={idx} className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl flex items-center space-x-3 hover:border-blue-200 transition duration-350">
-                      <div className="w-5 h-5 rounded-full bg-blue-650 flex items-center justify-center text-white text-[10px] shrink-0">
+                    <div key={idx} className="p-3 bg-slate-50 border border-slate-100 rounded-xl flex items-center space-x-3 hover:border-blue-200 transition duration-350">
+                      <div className="w-6 h-6 rounded-full bg-[#003B8F] flex items-center justify-center text-white text-xs font-black shrink-0">
                         {idx + 1}
                       </div>
                       <div>
-                        <h4 className="text-slate-900 leading-none">{item.title}</h4>
-                        <p className="text-[9px] text-slate-450 font-semibold mt-0.5">{item.desc}</p>
+                        <h4 className="text-slate-900 font-black leading-tight">{item.title}</h4>
+                        <p className="text-[11px] md:text-xs text-slate-500 font-semibold mt-0.5">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -1290,12 +1415,12 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
               </div>
 
               <div className="mt-6">
-                <a
-                  href="#book-now"
-                  className="w-full inline-block bg-[#1d4ed8] hover:bg-blue-800 text-white font-black py-3 rounded-xl text-center text-xs tracking-wider uppercase transition shadow-sm"
+                <Link
+                  href={`/treatments/${key}`}
+                  className="w-full inline-block bg-[#003B8F] hover:bg-blue-800 text-white font-black py-4 px-6 rounded-xl text-center text-sm tracking-wider uppercase transition shadow-sm h-[52px] flex items-center justify-center"
                 >
                   Learn More
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -1306,7 +1431,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
       <section className="py-16 bg-white border-b border-slate-100">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-2xl md:text-3xl font-heading font-black text-[#0a1c3c] uppercase tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-heading font-black text-[#002D72] uppercase tracking-tight">
               OUR DENTAL IMPLANT TREATMENT PROCESS
             </h2>
           </div>
@@ -1323,7 +1448,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                 { title: "6. Crown Placement", desc: "Permanent dental crown for a natural aesthetic smile" }
               ].map((step, idx) => (
                 <div key={idx} className="bg-slate-50 border border-slate-100 rounded-2xl p-5 shadow-sm hover:border-blue-200 transition duration-300 relative">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xs mb-3">
+                  <div className="w-8 h-8 rounded-full bg-[#003B8F] text-white flex items-center justify-center font-black text-xs mb-3">
                     {idx + 1}
                   </div>
                   <h4 className="font-extrabold text-slate-900 text-xs md:text-sm">{step.title}</h4>
@@ -1334,23 +1459,23 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
 
             {/* CTA Box */}
             <div className="lg:col-span-4">
-              <div className="bg-[#0a1c3c] text-white rounded-3xl p-8 shadow-xl border border-slate-800 flex flex-col justify-between h-full">
+              <div className="bg-[#002D72] text-white rounded-3xl p-8 shadow-xl border border-slate-800 flex flex-col justify-between h-full">
                 <div className="space-y-4">
                   <h3 className="text-xl font-black uppercase tracking-wide text-white">
                     Take the First Step Towards a New You!
                   </h3>
-                  <p className="text-xs text-slate-300 font-semibold leading-relaxed">
+                  <p className="text-xs text-slate-350 font-semibold leading-relaxed">
                     Book your appointment today and secure a free professional implantologist consultation.
                   </p>
                 </div>
                 <div className="mt-8">
                   <a
                     href="#book-now"
-                    className="w-full inline-block bg-white hover:bg-slate-100 text-blue-900 font-black py-4 px-6 rounded-xl text-center text-xs tracking-wider uppercase transition shadow-md"
+                    className="w-full inline-block bg-white hover:bg-slate-100 text-[#002D72] font-black py-4 px-6 rounded-xl text-center text-xs tracking-wider uppercase transition shadow-md animate-pulse"
                   >
                     BOOK NOW →
                   </a>
-                  <span className="text-[9px] text-slate-400 mt-2 block text-center uppercase tracking-widest font-bold">
+                  <span className="text-[9px] text-blue-200 mt-2 block text-center uppercase tracking-widest font-bold">
                     Get Free Implant Consultation
                   </span>
                 </div>
@@ -1361,12 +1486,12 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* Video Testimonials */}
-      <section className="py-16 bg-slate-50 border-b border-slate-100">
+      <section className="py-16 bg-[#F7F9FC] border-b border-slate-100">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
             {/* Left title */}
             <div className="lg:col-span-4 space-y-4">
-              <h2 className="text-2xl md:text-4xl font-heading font-black text-[#0a1c3c] uppercase tracking-tight">
+              <h2 className="text-2xl md:text-4xl font-heading font-black text-[#002D72] uppercase tracking-tight">
                 WHAT OUR PATIENTS SAY
               </h2>
               <div className="flex items-center space-x-2">
@@ -1381,7 +1506,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
               </div>
               <Link
                 href="/testimonials"
-                className="inline-block bg-[#1d4ed8] hover:bg-blue-800 text-white font-black px-6 py-2.5 rounded-full text-xs transition shadow-sm"
+                className="inline-block bg-[#003B8F] hover:bg-blue-800 text-white font-black px-6 py-2.5 rounded-full text-xs transition shadow-sm"
               >
                 READ MORE REVIEWS
               </Link>
@@ -1430,21 +1555,21 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             {/* Col 1: FAQ Accordion */}
             <div className="lg:col-span-5 space-y-4">
-              <h3 className="text-xl font-black text-[#0a1c3c] uppercase tracking-tight mb-4">FREQUENTLY ASKED QUESTIONS</h3>
+              <h3 className="text-xl font-black text-[#002D72] uppercase tracking-tight mb-4">FREQUENTLY ASKED QUESTIONS</h3>
               <FAQAccordion faqs={baseData.faqs || []} />
             </div>
 
             {/* Col 2: Servicing Neighborhoods */}
-            <div className="lg:col-span-3 bg-slate-50 border border-slate-150 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+            <div className="lg:col-span-3 bg-[#F7F9FC] border border-slate-150 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
-                <h3 className="text-lg font-black text-[#0a1c3c] uppercase tracking-tight">PROUDLY SERVING FROM 2 LOCATIONS</h3>
+                <h3 className="text-lg font-black text-[#002D72] uppercase tracking-tight">PROUDLY SERVING FROM 2 LOCATIONS</h3>
                 <div className="flex flex-col gap-3 text-xs font-bold text-slate-600 pt-2">
                   <div className="flex items-center bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
-                    <MapPin className="w-4 h-4 text-blue-600 mr-2.5 shrink-0" />
+                    <MapPin className="w-4 h-4 text-[#003B8F] mr-2.5 shrink-0" />
                     <span>Bachupally Clinic</span>
                   </div>
                   <div className="flex items-center bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
-                    <MapPin className="w-4 h-4 text-blue-600 mr-2.5 shrink-0" />
+                    <MapPin className="w-4 h-4 text-[#003B8F] mr-2.5 shrink-0" />
                     <span>Pragathi Nagar Clinic</span>
                   </div>
                 </div>
@@ -1485,31 +1610,31 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
       <Footer />
 
       {/* Fixed Bottom Sticky CTA Bar (Desktop & Mobile) */}
-      <div className="fixed bottom-0 left-0 right-0 bg-[#0a1c3c] text-white py-3.5 px-4 md:px-8 border-t border-slate-800 shadow-2xl z-50 flex items-center justify-between">
+      <div className="fixed bottom-0 left-0 right-0 bg-[#002D72] text-white py-3.5 px-4 md:px-8 border-t border-slate-800 shadow-2xl z-50 flex items-center justify-between">
         <div className="hidden sm:block text-left">
           <span className="text-[10px] text-blue-300 block font-black uppercase tracking-wider">Free Consultation</span>
           <span className="text-xs md:text-sm font-extrabold leading-tight mt-0.5 block">🏥 Dental World {locationName}</span>
         </div>
         <div className="flex gap-2.5 w-full sm:w-auto justify-between sm:justify-end">
           <a
-            href="tel:+919100061610"
-            className="flex-1 sm:flex-initial bg-[#1d4ed8] hover:bg-blue-800 text-white font-black px-2 md:px-6 py-3 rounded-xl text-[10px] md:text-sm transition flex items-center justify-center gap-1.5 md:gap-2 uppercase tracking-wide"
+            href="tel:+918247478663"
+            className="flex-1 sm:flex-initial bg-[#003B8F] hover:bg-blue-800 text-white font-black px-2 md:px-6 py-3 rounded-xl text-[10px] md:text-sm transition flex items-center justify-center gap-1.5 md:gap-2 uppercase tracking-wide h-[52px]"
           >
             <Phone className="w-3.5 h-3.5 md:w-4 md:h-4 fill-white text-white shrink-0" />
-            <span className="hidden md:inline">Call: +91 91000 61610</span>
+            <span className="hidden md:inline">Call: +91 82474 78663</span>
             <span className="md:hidden">Call Us</span>
           </a>
           <a
-            href="https://wa.me/919100061610"
+            href="https://wa.me/917997994646"
             target="_blank"
-            className="flex-1 sm:flex-initial bg-[#22c55e] hover:bg-[#16a34a] text-white font-black px-2 md:px-6 py-3 rounded-xl text-[10px] md:text-sm transition flex items-center justify-center gap-1.5 md:gap-2 uppercase tracking-wide"
+            className="flex-1 sm:flex-initial bg-[#25D366] hover:bg-emerald-600 text-white font-black px-2 md:px-6 py-3 rounded-xl text-[10px] md:text-sm transition flex items-center justify-center gap-1.5 md:gap-2 uppercase tracking-wide h-[52px]"
           >
             <MessageSquare className="w-3.5 h-3.5 md:w-4 md:h-4 fill-white text-white shrink-0" />
             <span>WhatsApp</span>
           </a>
           <a
             href="#book-now"
-            className="flex-1 sm:flex-initial bg-[#f97316] hover:bg-orange-700 text-white font-black px-2 md:px-6 py-3 rounded-xl text-[10px] md:text-sm transition flex items-center justify-center uppercase tracking-wide shadow-md"
+            className="flex-1 sm:flex-initial bg-[#FF8A00] hover:bg-orange-650 text-white font-black px-2 md:px-6 py-3 rounded-xl text-[10px] md:text-sm transition flex items-center justify-center uppercase tracking-wide shadow-md h-[52px]"
           >
             <span className="hidden md:inline">Book Appointment</span>
             <span className="md:hidden">Book Appt</span>
