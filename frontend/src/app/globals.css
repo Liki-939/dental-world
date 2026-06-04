@@ -14,8 +14,30 @@
   }
 }
 
+@layer components {
+  .section-container {
+    @apply container mx-auto px-4 max-w-7xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-brand-cta hover:bg-brand-dark text-white font-bold rounded-lg px-6 py-3 transition-colors shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center border-2 border-brand text-brand hover:bg-brand-light font-bold rounded-lg px-6 py-3 transition-colors;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-slate-100;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom, 0);
   }
 }

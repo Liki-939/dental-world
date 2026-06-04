@@ -7,7 +7,11 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
-  title: "Dental World | Advanced Dental Care in Hyderabad",
+  metadataBase: new URL("https://www.dentalworldhyd.com"),
+  title: {
+    default: "Dental World | Advanced Dental Care in Hyderabad",
+    template: "%s | Dental World",
+  },
   description: "High-quality, affordable dental care in Hyderabad. Book an appointment today for dental implants, root canals, invisalign, and smile makeovers.",
   keywords: [
     "dental clinic hyderabad",

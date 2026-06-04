@@ -4,7 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { Phone, ChevronDown, Menu, X, MapPin } from 'lucide-react';
+import { Phone, ChevronDown, Menu, X, MapPin, Calendar } from 'lucide-react';
+import { LOCATIONS, NAV_LINKS, SITE, TREATMENT_NAV_LINKS } from '@/lib/site';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -12,155 +13,155 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
+  useEffect(() => {
     setIsMobileMenuOpen(false);
-  };
+  }, [pathname]);
+
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  const navLinkClass = (active: boolean) =>
+    `hover:text-brand transition-colors py-1 relative ${active ? 'text-brand' : 'text-slate-700'}`;
 
   return (
-    <header className={`w-full sticky top-0 z-[60] transition-all duration-500 border-b border-slate-100 ${scrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-md shadow-sm'}`}>
-      {/* Top Bar */}
-      <div className="hidden lg:block bg-[#0a1c3c] text-white text-[11.5px] py-2.5 border-b border-[#1e2d42]">
-        <div className="container mx-auto px-4 max-w-7xl flex justify-between items-center">
-          {/* Left Locations */}
-          <div className="flex items-center space-x-6 font-bold">
-            <span className="flex items-center text-slate-200">
-              <MapPin className="w-3.5 h-3.5 text-blue-400 mr-1.5 shrink-0" />
-              Pragathi Nagar
-            </span>
-            <span className="flex items-center text-slate-200">
-              <MapPin className="w-3.5 h-3.5 text-blue-400 mr-1.5 shrink-0" />
-              Bachupally
-            </span>
+    <header
+      className={`w-full sticky top-0 z-[60] transition-all duration-300 border-b ${
+        scrolled ? 'bg-white shadow-md border-slate-100' : 'bg-white/95 backdrop-blur-md shadow-sm border-slate-100'
+      }`}
+    >
+      <div className="hidden lg:block bg-nav text-white text-xs py-2.5 border-b border-nav-border">
+        <div className="section-container flex justify-between items-center">
+          <div className="flex items-center gap-6 font-semibold">
+            {LOCATIONS.map((loc) => (
+              <Link
+                key={loc.slug}
+                href={`/locations/${loc.slug}`}
+                className="flex items-center text-slate-200 hover:text-white transition"
+              >
+                <MapPin className="w-3.5 h-3.5 text-brand-light mr-1.5 shrink-0" aria-hidden />
+                {loc.shortName}
+              </Link>
+            ))}
           </div>
-          {/* Right Phone */}
-          <div className="flex items-center font-bold">
-            <a href="tel:+918247478663" className="flex items-center text-slate-200 hover:text-white transition">
-              <Phone className="w-3.5 h-3.5 text-blue-400 mr-1.5 shrink-0" />
-              +91 82474 78663
-            </a>
-          </div>
+          <a
+            href={`tel:${SITE.phone.tel}`}
+            className="flex items-center text-slate-200 hover:text-white transition font-semibold"
+          >
+            <Phone className="w-3.5 h-3.5 text-brand-light mr-1.5 shrink-0" aria-hidden />
+            {SITE.phone.display}
+          </a>
         </div>
       </div>
 
-      {/* Main Navigation */}
-      <nav className="container mx-auto px-4 flex justify-between items-center relative max-w-7xl py-3.5">
+      <nav className="section-container flex justify-between items-center py-3" aria-label="Main">
         <Link href="/" className="flex items-center shrink-0" onClick={closeMobileMenu}>
-          <div className="flex items-center space-x-2.5">
-            <div className="w-11 h-11 relative rounded-full overflow-hidden bg-white shrink-0 shadow-sm border border-slate-100 flex items-center justify-center">
-              <Image src="/logo.jpeg" alt="Dental World Logo" width={44} height={44} className="object-contain p-0.5" />
+          <div className="flex items-center gap-2.5">
+            <div className="w-11 h-11 relative rounded-full overflow-hidden bg-white shrink-0 shadow-sm border border-slate-100">
+              <Image src="/logo.jpeg" alt="" width={44} height={44} className="object-contain p-0.5" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg md:text-xl font-extrabold tracking-tight text-[#0a1d37] leading-none font-heading">DENTAL WORLD</span>
-              <span className="text-[8px] md:text-[9px] font-bold text-blue-600 tracking-wider uppercase leading-none mt-0.5">EXPERT DENTAL CARE</span>
+              <span className="text-lg md:text-xl font-extrabold tracking-tight text-ink leading-none font-heading">
+                {SITE.name.toUpperCase()}
+              </span>
+              <span className="text-[8px] md:text-[9px] font-bold text-brand tracking-wider uppercase leading-none mt-0.5">
+                {SITE.tagline}
+              </span>
             </div>
           </div>
         </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden lg:flex items-center space-x-6 xl:space-x-8 font-bold text-slate-800 text-[14px]">
-          <Link href="/" className={`hover:text-blue-600 transition-colors py-1 flex flex-col items-center relative ${pathname === '/' ? 'text-blue-600' : 'text-slate-850'}`}>
-            Home
-            {pathname === '/' && <span className="absolute -bottom-[15px] w-6 h-[2px] bg-blue-600 rounded"></span>}
-          </Link>
-
-          <Link href="/about" className={`hover:text-blue-600 transition-colors py-1 flex flex-col items-center relative ${pathname === '/about' ? 'text-blue-600' : 'text-slate-850'}`}>
-            About Us
-            {pathname === '/about' && <span className="absolute -bottom-[15px] w-6 h-[2px] bg-blue-600 rounded"></span>}
-          </Link>
-
-          <div className="relative group flex flex-col items-center">
-            <Link href="/treatments" className={`hover:text-blue-600 transition-colors py-1 flex items-center relative ${pathname.startsWith('/treatments') ? 'text-blue-600' : 'text-slate-850'}`}>
-              Treatments <ChevronDown className="w-3.5 h-3.5 ml-1 text-slate-500" />
-              {pathname.startsWith('/treatments') && <span className="absolute -bottom-[15px] w-6 h-[2px] bg-blue-600 rounded"></span>}
-            </Link>
-            <div className="absolute top-full left-0 mt-2 w-60 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 flex flex-col py-2 font-semibold">
-              <Link href="/treatments/dental-implants" className="px-4 py-2 hover:bg-slate-50 hover:text-blue-600 transition-colors">Dental Implants</Link>
-              <Link href="/treatments/root-canal-treatment" className="px-4 py-2 hover:bg-slate-50 hover:text-blue-600 transition-colors">Root Canal Treatment</Link>
-              <Link href="/treatments/invisalign-treatment" className="px-4 py-2 hover:bg-slate-50 hover:text-blue-600 transition-colors">Invisalign & Braces</Link>
-              <Link href="/treatments/smile-designing" className="px-4 py-2 hover:bg-slate-50 hover:text-blue-600 transition-colors">Smile Makeover</Link>
-              <Link href="/treatments/teeth-whitening" className="px-4 py-2 hover:bg-slate-50 hover:text-blue-600 transition-colors">Teeth Whitening</Link>
-              <Link href="/treatments/pediatric-dentistry" className="px-4 py-2 hover:bg-slate-50 hover:text-blue-600 transition-colors">Kids Dentistry</Link>
-            </div>
-          </div>
-
-          <Link href="/gallery" className={`hover:text-blue-600 transition-colors py-1 flex flex-col items-center relative ${pathname === '/gallery' ? 'text-blue-600' : 'text-slate-850'}`}>
-            Gallery
-            {pathname === '/gallery' && <span className="absolute -bottom-[15px] w-6 h-[2px] bg-blue-600 rounded"></span>}
-          </Link>
-
-          <Link href="/blog" className={`hover:text-blue-600 transition-colors py-1 flex flex-col items-center relative ${pathname.startsWith('/blog') ? 'text-blue-600' : 'text-slate-850'}`}>
-            Blog
-            {pathname.startsWith('/blog') && <span className="absolute -bottom-[15px] w-6 h-[2px] bg-blue-600 rounded"></span>}
-          </Link>
-
-          <Link href="/contact" className={`hover:text-blue-600 transition-colors py-1 flex flex-col items-center relative ${pathname === '/contact' ? 'text-blue-600' : 'text-slate-850'}`}>
-            Contact
-            {pathname === '/contact' && <span className="absolute -bottom-[15px] w-6 h-[2px] bg-blue-600 rounded"></span>}
-          </Link>
+        <div className="hidden lg:flex items-center gap-5 xl:gap-6 font-semibold text-sm">
+          {NAV_LINKS.map((link) => {
+            const active = link.match(pathname);
+            if (link.href === '/treatments') {
+              return (
+                <div key={link.href} className="relative group">
+                  <Link href={link.href} className={`${navLinkClass(active)} flex items-center gap-0.5`}>
+                    {link.label}
+                    <ChevronDown className="w-3.5 h-3.5 text-slate-400" aria-hidden />
+                    {active && <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-brand rounded-full" />}
+                  </Link>
+                  <div className="absolute top-full left-0 mt-3 w-56 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2">
+                    {TREATMENT_NAV_LINKS.map((t) => (
+                      <Link
+                        key={t.href}
+                        href={t.href}
+                        className="block px-4 py-2 text-slate-700 hover:bg-slate-50 hover:text-brand transition-colors text-sm"
+                      >
+                        {t.label}
+                      </Link>
+                    ))}
+                    <Link
+                      href="/treatments"
+                      className="block px-4 py-2 text-brand font-semibold border-t border-slate-100 mt-1 text-sm"
+                    >
+                      View all treatments →
+                    </Link>
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <Link key={link.href} href={link.href} className={navLinkClass(active)}>
+                {link.label}
+                {active && <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-brand rounded-full" />}
+              </Link>
+            );
+          })}
         </div>
 
-        {/* CTA Button & Mobile Toggle */}
-        <div className="flex items-center space-x-4">
-          <Link href="/book-appointment" className="hidden lg:flex bg-[#0056D2] hover:bg-blue-700 text-white px-5 py-2.5 rounded-[5px] font-bold transition-all duration-300 items-center text-sm shadow-sm">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
+        <div className="flex items-center gap-3">
+          <Link href="/book-appointment" className="hidden lg:inline-flex btn-primary text-sm !py-2.5 !px-5 !rounded-lg">
+            <Calendar className="w-4 h-4 mr-2" aria-hidden />
             Book Consultation
           </Link>
-
           <button
-            className="lg:hidden p-2 text-slate-700 hover:text-blue-600 transition-colors"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
+            type="button"
+            className="lg:hidden p-2 text-slate-700 hover:text-brand transition-colors"
+            onClick={() => setIsMobileMenuOpen((o) => !o)}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {isMobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
       <div
-        className={`lg:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl transition-all duration-300 ease-in-out overflow-y-auto ${isMobileMenuOpen
-          ? 'max-h-[calc(100vh-80px)] opacity-100 visible pointer-events-auto'
-          : 'max-h-0 opacity-0 invisible pointer-events-none'
-          }`}
+        id="mobile-menu"
+        className={`lg:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl transition-all duration-300 overflow-y-auto max-h-[calc(100dvh-4rem)] ${
+          isMobileMenuOpen ? 'opacity-100 visible' : 'max-h-0 opacity-0 invisible pointer-events-none'
+        }`}
       >
-        <div className="flex flex-col py-4 px-4 space-y-4 font-semibold text-slate-800 bg-white">
-          <Link href="/" className={`px-2 transition ${pathname === '/' ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>Home</Link>
-          <Link href="/about" className={`px-2 transition ${pathname === '/about' ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>About Us</Link>
-
-          <div className="flex flex-col space-y-2 border-l-2 border-slate-100 ml-2 pl-4 py-1">
-            <Link href="/treatments" className={`transition font-bold ${pathname.startsWith('/treatments') ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>Treatments</Link>
-            <Link href="/treatments/dental-implants" className="text-sm text-slate-500 hover:text-blue-600 transition" onClick={closeMobileMenu}>Dental Implants</Link>
-            <Link href="/treatments/root-canal-treatment" className="text-sm text-slate-500 hover:text-blue-600 transition" onClick={closeMobileMenu}>Root Canal Treatment</Link>
-            <Link href="/treatments/invisalign-treatment" className="text-sm text-slate-500 hover:text-blue-600 transition" onClick={closeMobileMenu}>Invisalign & Braces</Link>
-            <Link href="/treatments/smile-designing" className="text-sm text-slate-500 hover:text-blue-600 transition" onClick={closeMobileMenu}>Smile Makeover</Link>
-            <Link href="/treatments/teeth-whitening" className="text-sm text-slate-500 hover:text-blue-600 transition" onClick={closeMobileMenu}>Teeth Whitening</Link>
-            <Link href="/treatments/pediatric-dentistry" className="text-sm text-slate-500 hover:text-blue-600 transition" onClick={closeMobileMenu}>Kids Dentistry</Link>
+        <div className="flex flex-col py-4 px-4 gap-1 font-semibold text-slate-800">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`px-2 py-2 rounded-lg ${link.match(pathname) ? 'text-brand bg-brand-light/50' : 'hover:text-brand'}`}
+              onClick={closeMobileMenu}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <div className="border-l-2 border-slate-100 ml-2 pl-4 py-2 space-y-1 text-sm text-slate-600">
+            {TREATMENT_NAV_LINKS.map((t) => (
+              <Link key={t.href} href={t.href} className="block hover:text-brand" onClick={closeMobileMenu}>
+                {t.label}
+              </Link>
+            ))}
           </div>
-
-          <Link href="/gallery" className={`px-2 transition ${pathname === '/gallery' ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>Gallery</Link>
-          <Link href="/blog" className={`px-2 transition ${pathname.startsWith('/blog') ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>Blog</Link>
-          <Link href="/contact" className={`px-2 transition ${pathname === '/contact' ? 'text-blue-600 font-bold' : 'hover:text-blue-600'}`} onClick={closeMobileMenu}>Contact</Link>
-
-          <Link href="/book-appointment" className="mt-4 bg-[#0056D2] text-white px-4 py-3 rounded-[5px] font-bold text-center shadow-md flex items-center justify-center" onClick={closeMobileMenu}>
+          <Link href="/book-appointment" className="btn-primary mt-3 text-center" onClick={closeMobileMenu}>
             Book Consultation
           </Link>
+          <a href={`tel:${SITE.phone.tel}`} className="text-center text-brand py-2 text-sm">
+            {SITE.phone.display}
+          </a>
         </div>
       </div>
     </header>

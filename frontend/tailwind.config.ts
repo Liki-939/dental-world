@@ -10,15 +10,23 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          light: '#e0f2fe', // light blue background
-          DEFAULT: '#0284c7', // main blue
-          dark: '#0369a1', // dark blue for hover
-          accent: '#ef4444', // red for urgent CTAs like appointments
+          light: '#e0f2fe',
+          DEFAULT: '#0284c7',
+          dark: '#0369a1',
+          accent: '#ef4444',
+          cta: '#0056d2',
+        },
+        nav: {
+          DEFAULT: '#0a1c3c',
+          border: '#1e2d42',
+        },
+        ink: {
+          DEFAULT: '#0a1d37',
         },
         surface: {
           DEFAULT: '#ffffff',
           muted: '#f8fafc',
-        }
+        },
       },
       fontFamily: {
         sans: ['var(--font-inter)'],

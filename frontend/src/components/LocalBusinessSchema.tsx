@@ -1,44 +1,31 @@
 import Script from 'next/script';
+import { LOCATIONS, SITE } from '@/lib/site';
 
 export default function LocalBusinessSchema() {
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "Dentist",
-    "name": "Dental World Hyderabad",
-    "image": "https://www.dentalworldhyd.com/logo.png",
-    "@id": "https://www.dentalworldhyd.com",
-    "url": "https://www.dentalworldhyd.com",
-    "telephone": "+917997994646",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "123, Main Road",
-      "addressLocality": "Pragathi Nagar",
-      "addressRegion": "Hyderabad",
-      "postalCode": "500090",
-      "addressCountry": "IN"
+    '@context': 'https://schema.org',
+    '@type': 'Dentist',
+    name: `${SITE.name} Hyderabad`,
+    image: `${SITE.domain}/logo.jpeg`,
+    '@id': SITE.domain,
+    url: SITE.domain,
+    telephone: SITE.phone.tel,
+    email: SITE.email,
+    address: LOCATIONS.map((loc) => ({
+      '@type': 'PostalAddress',
+      streetAddress: loc.address,
+      addressLocality: loc.name,
+      addressRegion: 'Hyderabad',
+      postalCode: '500090',
+      addressCountry: 'IN',
+    })),
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '09:00',
+      closes: '21:00',
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 17.5143,
-      "longitude": 78.3965
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
-      "opens": "09:00",
-      "closes": "21:00"
-    },
-    "sameAs": [
-      "https://www.facebook.com/dentalworldhyd",
-      "https://www.instagram.com/dentalworldhyd"
-    ]
+    sameAs: [SITE.social.facebook, SITE.social.instagram],
   };
 
   return (
