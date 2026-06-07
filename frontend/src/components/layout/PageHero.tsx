@@ -10,7 +10,7 @@ export default function PageHero({ title, description, highlight }: PageHeroProp
   return (
     <section className="bg-nav text-white text-center">
       <div className="section-container py-16 md:py-20 max-w-4xl">
-        <h1 className="text-4xl md:text-5xl font-heading font-extrabold mb-5 text-balance">
+        <h1 className="text-4xl md:text-5xl font-heading font-extrabold mb-5 text-balance !text-white" style={{ color: '#ffffff' }}>
           {title}
           {highlight ? (
             <>

@@ -520,60 +520,74 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row gap-8 items-stretch">
 
               {/* Blog list column (Left) */}
-              <div className="w-full lg:w-[35%] flex flex-col justify-between space-y-6">
+              <div className="w-full lg:w-[48%] flex flex-col justify-between space-y-6 bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition duration-300">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a1d37] font-heading mb-6 pb-2 border-b border-slate-200">
-                    From Our Blog
+                  <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a1d37] font-heading mb-8 pb-3 border-b border-slate-100 flex items-center justify-between">
+                    <span>From Our Blog</span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse"></span>
                   </h2>
-                  <div className="space-y-5">
-                    <Link href="/blog" className="block text-slate-700 hover:text-blue-600 font-bold transition leading-tight text-base">
-                      How Long Do Dental Implants Last?
+                  <div className="space-y-6">
+                    {/* Blog item 1 */}
+                    <Link href="/blog" className="group block space-y-2">
+                      <span className="inline-block bg-blue-50 text-blue-600 text-[11px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-md">
+                        Dental Implants
+                      </span>
+                      <h3 className="text-slate-800 group-hover:text-blue-600 font-bold transition leading-snug text-lg">
+                        How Long Do Dental Implants Last?
+                      </h3>
+                      <p className="text-slate-400 text-xs font-semibold">June 2026 • 5 min read</p>
                     </Link>
-                    <Link href="/blog" className="block text-slate-700 hover:text-blue-600 font-bold transition leading-tight text-base">
-                      Root Canal Treatment: Myths vs Facts
+                    
+                    {/* Blog item 2 */}
+                    <Link href="/blog" className="group block space-y-2">
+                      <span className="inline-block bg-indigo-50 text-indigo-600 text-[11px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-md">
+                        Root Canal
+                      </span>
+                      <h3 className="text-slate-800 group-hover:text-blue-600 font-bold transition leading-snug text-lg">
+                        Root Canal Treatment: Myths vs Facts
+                      </h3>
+                      <p className="text-slate-400 text-xs font-semibold">May 2026 • 4 min read</p>
                     </Link>
-                    <Link href="/blog" className="block text-slate-700 hover:text-blue-600 font-bold transition leading-tight text-base">
-                      Cost of Dental Implants in Hyderabad
+
+                    {/* Blog item 3 */}
+                    <Link href="/blog" className="group block space-y-2">
+                      <span className="inline-block bg-emerald-50 text-emerald-600 text-[11px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-md">
+                        Cost Guide
+                      </span>
+                      <h3 className="text-slate-800 group-hover:text-blue-600 font-bold transition leading-snug text-lg">
+                        Cost of Dental Implants in Hyderabad
+                      </h3>
+                      <p className="text-slate-400 text-xs font-semibold">May 2026 • 6 min read</p>
                     </Link>
                   </div>
                 </div>
 
-                <div className="pt-4">
-                  <Link href="/blog" className="inline-flex items-center text-blue-600 hover:text-blue-750 font-bold transition text-base">
+                <div className="pt-6 border-t border-slate-100 mt-6">
+                  <Link href="/blog" className="inline-flex items-center text-blue-600 hover:text-blue-750 font-bold transition text-base group">
                     View All Blogs
-                    <svg className="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 ml-1.5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </Link>
                 </div>
               </div>
 
-              {/* Smiling assistant image cutout (Middle) - fixed height container to prevent collapsing */}
-              <div className="w-full lg:w-[28%] relative hidden lg:flex items-end justify-center">
-                <div className="w-full h-[380px] relative overflow-hidden rounded-2xl shadow-md border border-slate-100">
-                  <Image
-                    src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=600&q=80"
-                    alt="Dental Nurse Smiling"
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 1024px) 0vw, 300px"
-                  />
-                </div>
-              </div>
-
               {/* Blue CTA Card (Right) */}
-              <div className="w-full lg:w-[37%] bg-[#0b1c3c] text-white p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-lg">
-                <div className="space-y-4 relative z-10">
-                  <h3 className="text-2xl font-extrabold font-heading leading-tight">
+              <div className="w-full lg:w-[48%] bg-gradient-to-br from-[#0c2340] via-[#0b1c3c] to-[#071329] text-white p-8 md:p-10 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-xl border border-blue-950/20 hover:shadow-2xl transition duration-300">
+                <div className="space-y-6 relative z-10">
+                  <span className="inline-block bg-blue-500/10 text-blue-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1 rounded-full border border-blue-500/20">
+                    Get in Touch
+                  </span>
+                  <h3 className="text-3xl md:text-4xl font-extrabold font-heading leading-tight !text-white" style={{ color: '#ffffff' }}>
                     Ready for Your Best Smile?
                   </h3>
-                  <p className="text-xs text-slate-350 font-medium leading-relaxed max-w-xs">
-                    Let our experts help you take the first step towards a healthier, confident smile.
+                  <p className="text-sm font-medium leading-relaxed max-w-md !text-slate-300" style={{ color: '#cbd5e1' }}>
+                    Let our experts help you take the first step towards a healthier, confident smile. Book an appointment today for a consultation.
                   </p>
                 </div>
 
                 {/* Implants graphics vector shape on the right edge */}
-                <div className="absolute right-0 bottom-4 w-36 h-36 opacity-15 pointer-events-none select-none">
+                <div className="absolute right-0 bottom-4 w-40 h-40 opacity-10 pointer-events-none select-none">
                   <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full text-white">
                     <path d="M50 10C42 10 35 15 35 25c0 8 5 12 5 18c0 3-.5 6-1.5 8c2.5.5 5-1 5-3v-4c1.5-1.5 2.5-3.5 2.5-6c0-6.5-6-10-6-10z" />
                     <rect x="47" y="55" width="6" height="30" rx="2" />
@@ -584,8 +598,8 @@ export default function Home() {
                 </div>
 
                 <div className="mt-8 relative z-10">
-                  <Link href="/book-appointment" className="inline-flex bg-white hover:bg-slate-100 text-[#0b1c3c] font-bold px-6 py-3.5 rounded-[5px] transition items-center text-sm shadow-sm">
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <Link href="/book-appointment" className="inline-flex bg-white hover:bg-blue-50 text-[#0b1c3c] hover:text-blue-800 font-extrabold px-8 py-4 rounded-xl transition duration-300 items-center text-base shadow-md hover:shadow-lg group hover:scale-[1.02] transform border border-blue-100/10">
+                    <svg className="w-5 h-5 mr-2.5 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                       <line x1="16" y1="2" x2="16" y2="6" />
                       <line x1="8" y1="2" x2="8" y2="6" />

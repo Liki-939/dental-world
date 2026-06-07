@@ -3,7 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { 
   Smile, ShieldPlus, Layers, Activity, Star, Heart, 
-  Sparkles, Baby, ArrowRight, CheckCircle2, Shield
+  Sparkles, Baby, ArrowRight, CheckCircle2, Shield,
+  Scissors, Zap, Crown, Wind, Flame
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -59,6 +60,90 @@ const treatments = [
     title: 'Teeth Whitening',
     description: 'Safe, instant teeth whitening to remove deep stains and brighten your smile by several shades.',
     icon: Sparkles,
+  },
+  {
+    id: 'teeth-cleaning-scaling',
+    title: 'Teeth Cleaning & Scaling',
+    description: 'Professional ultrasonic cleaning and scaling to remove plaque, tartar, and surface stains.',
+    icon: Sparkles,
+  },
+  {
+    id: 'wisdom-tooth-extraction',
+    title: 'Wisdom Tooth Extraction',
+    description: 'Safe, gentle, and painless surgical extraction of impacted or painful wisdom teeth.',
+    icon: Scissors,
+  },
+  {
+    id: 'advanced-gum-treatment',
+    title: 'Advanced Gum Treatment',
+    description: 'Advanced flap surgery and laser gum therapy to cure bleeding gums and secure loose teeth.',
+    icon: Heart,
+  },
+  {
+    id: 'tooth-decay-fillings',
+    title: 'Tooth Decay & Fillings',
+    description: 'Mercury-free, natural-looking composite fillings to repair cavities and restore tooth strength.',
+    icon: ShieldPlus,
+  },
+  {
+    id: 'hybrid-dentures',
+    title: 'Hybrid & Full Mouth Dentures',
+    description: 'Premium BPS or fixed implant-supported dentures to restore full chewing power.',
+    icon: Smile,
+  },
+  {
+    id: 'bad-breath-halitosis',
+    title: 'Bad Breath & Halitosis',
+    description: 'Targeted clinical therapy to eliminate chronic bad breath and restore oral hygiene.',
+    icon: Wind,
+  },
+  {
+    id: 'dental-crown-bridges',
+    title: 'Dental Crown & Bridges',
+    description: 'Premium metal-free Zirconia and E-max crowns to protect damaged teeth and fill gaps.',
+    icon: Crown,
+  },
+  {
+    id: 'frenectomy',
+    title: 'Frenectomy',
+    description: 'Painless, suture-free laser correction for tongue-tie and lip-tie with immediate mobility.',
+    icon: Zap,
+  },
+  {
+    id: 'cosmetic-dentistry',
+    title: 'Cosmetic Dentistry',
+    description: 'Aesthetic composite bonding, contouring, and gum lifting for a flawless smile.',
+    icon: Smile,
+  },
+  {
+    id: 'laser-dentistry',
+    title: 'Laser Dentistry',
+    description: 'Minimally invasive, drill-free, and suture-free treatments using advanced dental lasers.',
+    icon: Zap,
+  },
+  {
+    id: 'jaw-surgery',
+    title: 'Jaw Surgery',
+    description: 'Skeletally corrective orthognathic surgery to resolve severe bite misalignment and asymmetry.',
+    icon: Shield,
+  },
+  {
+    id: 'genioplasty',
+    title: 'Genioplasty',
+    description: 'Cosmetic chin reshaping surgery to enhance jawline definition and facial symmetry.',
+    icon: Smile,
+  },
+  {
+    id: 'mouth-ulcers',
+    title: 'Mouth Ulcers',
+    description: 'Instant pain relief and rapid healing of canker sores using low-level laser therapy.',
+    icon: Flame,
+  },
+  {
+    id: 'preventive-dentistry',
+    title: 'Preventive Dentistry',
+    description: 'Fluoride varnish, dental sealants, and custom nightguards to proactively protect teeth.',
+    icon: Shield,
   }
 ];
 

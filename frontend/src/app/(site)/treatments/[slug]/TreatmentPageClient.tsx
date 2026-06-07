@@ -747,7 +747,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'CLEAN TEETH. HEALTHY GUMS.',
     subtitle: 'Fresh. Bright. Disease-Free.',
     techStat: 'Ultrasonic Scalers & Polishing',
-    heroImage: '/home_page_png/teeth_cleaning.png',
+    heroImage: '/home_page_png_updated/Teeth Scaling-cleaning.png',
     features: [
       { title: 'Plaque Removal', desc: 'Removes soft bacterial plaque' },
       { title: 'Calculus Cleansing', desc: 'Scales off hard tartar deposits' },
@@ -806,7 +806,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'PAINLESS EXTRACTION. JAW RELIEF.',
     subtitle: 'Gentle. Fast. Safe.',
     techStat: 'Oral Surgery Specialist',
-    heroImage: '/home_page_png/wisdom_tooth_extraction.png',
+    heroImage: '/home_page_png_updated/Wisdom tooth Extraction.png',
     features: [
       { title: 'Painless Procedure', desc: 'Effective local anesthesia' },
       { title: 'Prevent Crowding', desc: 'Stops teeth from shifting' },
@@ -863,7 +863,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'STOP GUM BLEEDING. SAVE YOUR BONES.',
     subtitle: 'Laser Flap. Safe Root Planing.',
     techStat: 'Laser Periodontal Care',
-    heroImage: '/home_page_png/gum_treatment.png',
+    heroImage: '/home_page_png_updated/Periodontal Diseases & Flap Surgery.png',
     features: [
       { title: 'Bleeding Cessation', desc: 'Stops bleeding gums immediately' },
       { title: 'Pocket Reduction', desc: 'Tops deep bacterial pockets' },
@@ -921,7 +921,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'PREVENT CAVITIES. RESTORE STRENGTH.',
     subtitle: 'Tooth-Colored. Mercury-Free. Invisible.',
     techStat: 'Composite Restorations',
-    heroImage: '/home_page_png/tooth_filling.png',
+    heroImage: '/home_page_png_updated/Tooth Decay and Fillings.png',
     features: [
       { title: 'Natural Shade Match', desc: 'Blends with natural teeth' },
       { title: 'Mercury-Free Safety', desc: 'Safe composite resins' },
@@ -980,7 +980,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'RESTORE FULL CHEWING. NO SLIPPING.',
     subtitle: 'Fixed Implant Dentures. BPS Acrylic.',
     techStat: 'All-on-4 Implant Prosthetics',
-    heroImage: '/home_page_png/dentures.png',
+    heroImage: '/home_page_png_updated/Hybrid-Full Mouth Denture.png',
     features: [
       { title: 'Secure Implant Fit', desc: 'Zero slipping or falling out' },
       { title: 'Youthful Smile Restored', desc: 'Fills facial hollows' },
@@ -1039,7 +1039,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'FRESH BREATH. MORE CONFIDENCE.',
     subtitle: 'Bacteria elimination. Salivary Care.',
     techStat: 'Oral Microbiome Cleanse',
-    heroImage: '/home_page_png/bad_breath.png',
+    heroImage: '/home_page_png_updated/Bad Breath.png',
     features: [
       { title: 'Deep Gum Sanitization', desc: 'Removes deep bacteria pockets' },
       { title: 'Salivary Flow Check', desc: 'Addresses dry mouth issues' },
@@ -1096,7 +1096,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'REBUILD SHAPE. FILL THE GAPS.',
     subtitle: 'High Strength Zirconia. Premium E-max.',
     techStat: 'CAD/CAM Digital Milling',
-    heroImage: '/home_page_png/crown_bridges.png',
+    heroImage: '/home_page_png_updated/Dental Crown & Bridge.png',
     features: [
       { title: 'Tooth Protection', desc: 'Strengthens weak or cracked teeth' },
       { title: 'Restore Chew Function', desc: 'Replaces missing teeth' },
@@ -1155,7 +1155,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'LASER REVISION. PAINLESS RELEASE.',
     subtitle: 'Suture-free. Bloodless. Safe.',
     techStat: 'WaterLase Soft-Tissue Laser',
-    heroImage: '/home_page_png/frenectomy.png',
+    heroImage: '/home_page_png_updated/Frenectomy.png',
     features: [
       { title: 'Painless Laser Cut', desc: 'No surgical scalpels used' },
       { title: 'Suture-free Healing', desc: 'No stitches to remove' },
@@ -1212,7 +1212,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'BEAUTIFY YOUR SMILE. PERFECT SHAPES.',
     subtitle: 'Composite Veneers. Gum Depigmentation. Contouring.',
     techStat: 'Aesthetic Dental Artistry',
-    heroImage: '/home_page_png/cosmetic_dentistry.png',
+    heroImage: '/home_page_png_updated/Cosmetic Dentistry.png',
     features: [
       { title: 'Close Front Gaps', desc: 'Painless diastema closure' },
       { title: 'Reshape Uneven Teeth', desc: 'Cosmetic contouring & bonding' },
@@ -1270,7 +1270,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'NO DRILL. NO SCALPEL. PAINLESS CLINIC.',
     subtitle: 'Minimally Invasive. Bloodless Healing.',
     techStat: 'FDA-Approved Hard & Soft Tissue Lasers',
-    heroImage: '/home_page_png/laser_dentistry.png',
+    heroImage: '/home_page_png_updated/Laser Dentistry.png',
     features: [
       { title: 'No Drilling Vibration', desc: 'More comfortable cavity prep' },
       { title: 'Reduced Needle Needs', desc: 'Lesser local anesthesia needed' },
@@ -1327,7 +1327,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'CORRECT SKELETAL BITE. FACIAL BALANCE.',
     subtitle: 'Orthognathic Surgery. 3D Surgical Guide.',
     techStat: 'Maxillofacial Skeletal Alignment',
-    heroImage: '/home_page_png/jaw_surgery.png',
+    heroImage: '/home_page_png_updated/Jaw Surgery.png',
     features: [
       { title: 'Align Jaw Asymmetry', desc: 'Creates balanced facial lines' },
       { title: 'Resolve Severe Bite Issues', desc: 'Corrects underbites and overbites' },
@@ -1385,7 +1385,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'REFINE CHIN PROFILE. RESTORE SYMMETRY.',
     subtitle: 'Surgical Chin Correction. No External Scars.',
     techStat: 'Precision Chin Osteotomy',
-    heroImage: '/home_page_png/genioplasty.png',
+    heroImage: '/home_page_png_updated/Genoplasty.png',
     features: [
       { title: 'Correct Weak Chin', desc: 'Advancement to define jawline' },
       { title: 'Reduce Protruding Chin', desc: 'Recession to soften profile' },
@@ -1442,7 +1442,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'INSTANT ULCER PAIN RELIEF.',
     subtitle: 'Laser Photobiomodulation. Fast Sore Healing.',
     techStat: 'Low-Level Laser Cauterization',
-    heroImage: '/home_page_png/mouth_ulcers.png',
+    heroImage: '/home_page_png_updated/Mouth Ulcers.png',
     features: [
       { title: 'Instant Pain Block', desc: 'Numbs ulcer nerves in 60 seconds' },
       { title: 'Cuts Healing Time', desc: 'Accelerates sore tissue closure' },
@@ -1499,7 +1499,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'SHIELD YOUR ENAMEL. BLOCK CAVITIES.',
     subtitle: 'Pit & Fissure Sealants. Fluoride Varnish.',
     techStat: 'Proactive Enamel Protection',
-    heroImage: '/home_page_png/preventive_dentistry.png',
+    heroImage: '/home_page_png_updated/Preventive Dentistry.png',
     features: [
       { title: 'Fluoride Enamel Shield', desc: 'Re-mineralizes weak enamel spots' },
       { title: 'Pit & Fissure Sealants', desc: 'Coats deep molar grooves' },
@@ -2233,21 +2233,13 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
       <section className="bg-[#0b1c3c] text-white py-14 relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-5xl relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
 
-          <div className="flex items-center gap-4.5">
-            {/* White Tooth Outline */}
-            <div className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center shrink-0 border border-white/20">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M12 2C8.69 2 6 4.69 6 8c0 3.31 2.31 5.62 2.31 8.5C8.31 18.84 7 21 7 22c1.5 0 3.5-1 5-2.75 1.5 1.75 3.5 2.75 5 2.75 0-1-1.31-3.16-1.31-5.5C15.69 13.62 18 11.31 18 8c0-3.31-2.69-6-6-6z" />
-              </svg>
-            </div>
-            <div>
-              <h2 className="text-xl md:text-2xl font-black font-heading leading-tight text-white !text-white">
-                Don't Ignore Tooth Pain. Consult an Expert Today.
-              </h2>
-              <p className="text-xs text-blue-200 font-bold mt-1 uppercase tracking-wider">
-                Relieve pain, save your natural tooth and smile with confidence.
-              </p>
-            </div>
+          <div>
+            <h2 className="text-xl md:text-2xl font-black font-heading leading-tight text-white !text-white">
+              Don't Ignore Tooth Pain. Consult an Expert Today.
+            </h2>
+            <p className="text-xs text-blue-200 font-bold mt-1 uppercase tracking-wider">
+              Relieve pain, save your natural tooth and smile with confidence.
+            </p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-3.5 shrink-0">

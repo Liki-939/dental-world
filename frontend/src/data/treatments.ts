@@ -893,5 +893,36 @@ export const treatmentsData: Record<string, TreatmentData> = {
     cases: [
       { beforeImg: "/images/cases/pediatric_before.png", afterImg: "/images/cases/pediatric_after.png", description: "Dental sealants applied to molars, blocking decay." }
     ]
+  },
+  'teeth-whitening': {
+    title: 'Teeth Whitening',
+    hero_headline: 'Advanced Laser Teeth Whitening in Hyderabad',
+    hero_subheadline: 'Brighten your smile by up to 8 shades in a single comfortable visit.',
+    aboutText: 'Teeth Whitening is the quickest, most effective way to brighten your smile. Over time, consumption of coffee, tea, red wine, and smoking can stain the outer enamel. Professional whitening uses safe, hydrogen peroxide gels activated by a specialized laser light to break down deep stains.',
+    whenRequired: 'Teeth whitening is recommended for individuals with stained, yellowed, or dull teeth due to aging, dietary habits (like drinking coffee or tea), or tobacco use, who want to restore the natural shine and brightness of their smile.',
+    benefits: [
+      'Up to 8 Shades Brighter: Instant results in just one sitting.',
+      'Safe for Enamel: Does not damage tooth structure.',
+      'Long-Lasting Shine: Keeps teeth white for years.',
+      'Painless Laser Tech: Prevents post-treatment sensitivity.',
+      'Custom Trays Included: Maintain your bright smile at home.'
+    ],
+    duration: 'A professional in-office teeth whitening session typically takes 45 to 60 minutes.',
+    procedure: 'First, the teeth are cleaned and polished. A protective barrier is applied to the gums, followed by the professional whitening gel on the teeth. A specialized laser light is then directed at the teeth to activate the whitening molecules. Finally, the gel is rinsed off, and a sensitivity relief gel is applied.',
+    pricing: [
+      { title: "Standard Zoom", price: "7,500", features: ["In-Office Session", "US-FDA Approved Gels", "Gum Protection"] },
+      { title: "Premium Package", price: "12,000", features: ["Laser Activation", "Custom Home-Care Kit", "Desensitizing Gel", "1-Year Touch-Up Warranty"], isPopular: true }
+    ],
+    faqs: [
+      { question: "Does teeth whitening damage natural enamel?", answer: "No, professional whitening under dental supervision is completely safe and does not alter the natural structure of the enamel." },
+      { question: "How long do whitening results last?", answer: "Typically, results last 1 to 3 years depending on dietary habits. Reducing coffee, tea, and smoking helps maintain the bright white shade." },
+      { question: "Will it cause tooth sensitivity?", answer: "Some patients feel mild sensitivity for 24 hours, but we use sensitivity-free laser systems and apply protective fluoride gel to prevent it." }
+    ],
+    testimonials: [
+      { id: 1, patient_name: "Karthik", text: "My teeth are so much brighter now! The Zoom whitening session took less than an hour and was completely painless.", rating: 5, treatment_name: "Teeth Whitening" }
+    ],
+    cases: [
+      { beforeImg: "/images/cases/whitening_smile_before.png", afterImg: "/images/cases/whitening_smile_after.png", description: "Dull, stained teeth brightened significantly in one session." }
+    ]
   }
 };

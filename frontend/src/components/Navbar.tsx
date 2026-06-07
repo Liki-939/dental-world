@@ -85,19 +85,21 @@ export default function Navbar() {
                     <ChevronDown className="w-3.5 h-3.5 text-slate-400" aria-hidden />
                     {active && <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-brand rounded-full" />}
                   </Link>
-                  <div className="absolute top-full left-0 mt-3 w-80 max-h-[400px] overflow-y-auto bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2 scroll-smooth">
-                    {TREATMENT_NAV_LINKS.map((t) => (
-                      <Link
-                        key={t.href}
-                        href={t.href}
-                        className="block px-4 py-2 text-slate-700 hover:bg-slate-50 hover:text-brand transition-colors text-sm"
-                      >
-                        {t.label}
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-0 mt-3 w-80 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 flex flex-col overflow-hidden">
+                    <div className="max-h-[320px] overflow-y-auto py-2 scroll-smooth">
+                      {TREATMENT_NAV_LINKS.map((t) => (
+                        <Link
+                          key={t.href}
+                          href={t.href}
+                          className="block px-4 py-2 text-slate-700 hover:bg-slate-50 hover:text-brand transition-colors text-sm"
+                        >
+                          {t.label}
+                        </Link>
+                      ))}
+                    </div>
                     <Link
                       href="/treatments"
-                      className="block px-4 py-2 text-brand font-semibold border-t border-slate-100 mt-1 text-sm sticky bottom-0 bg-white"
+                      className="block px-4 py-2.5 text-brand font-semibold border-t border-slate-100 bg-white hover:bg-slate-50 transition-colors text-sm"
                     >
                       View all treatments →
                     </Link>

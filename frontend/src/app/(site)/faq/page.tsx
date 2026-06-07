@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import PageHero from '@/components/layout/PageHero';
-import FAQAccordion from '@/components/FAQAccordion';
-import Script from 'next/script';
+import FAQClient from './FAQClient';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -11,71 +10,29 @@ export const metadata: Metadata = {
     'Answers to common questions about root canals, implants, pricing, and appointments at Dental World Clinic.',
 };
 
-const generalFaqs = [
-  {
-    question: 'Are your dental treatments really painless?',
-    answer:
-      'Yes. We use advanced anesthesia delivery and minimally invasive techniques for virtually pain-free procedures.',
-  },
-  {
-    question: 'Do you accept dental insurance?',
-    answer:
-      'We assist with insurance claims and provide documentation. Cashless processing depends on your provider network.',
-  },
-  {
-    question: 'How often should I visit the dentist?',
-    answer: 'We recommend a check-up and professional cleaning every 6 months for optimal oral health.',
-  },
-  {
-    question: 'Do you offer EMI options?',
-    answer: 'Yes — 0% interest EMI on major credit cards for treatments above ₹15,000.',
-  },
-  {
-    question: 'What should I do in a dental emergency?',
-    answer:
-      'Call us immediately. We prioritize knocked-out teeth, severe toothaches, and trauma during working hours.',
-  },
-];
-
 export default function FAQPage() {
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: generalFaqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-    })),
-  };
-
   return (
     <main className="flex-grow">
-      <Script
-        id="faq-page-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <PageHero
         title="Frequently Asked"
         highlight="Questions"
         description="Everything you need to know about visits and treatments at Dental World."
       />
 
-      <section className="py-20">
-        <div className="section-container max-w-4xl">
-          <h2 className="text-2xl font-bold text-center text-slate-900 mb-10">General Inquiries</h2>
-          <FAQAccordion faqs={generalFaqs} />
+      <section className="py-16 md:py-20 bg-slate-50/20">
+        <div className="section-container max-w-5xl">
+          <FAQClient />
 
-          <div className="mt-16 text-center bg-brand-light p-8 rounded-2xl">
-            <h3 className="text-xl font-bold text-brand-dark mb-4">Still have questions?</h3>
-            <p className="text-slate-600 mb-6">
+          <div className="mt-20 text-center bg-brand-light/40 p-10 rounded-[24px] border border-blue-50">
+            <h3 className="text-xl md:text-2xl font-black text-brand-dark mb-3">Still have questions?</h3>
+            <p className="text-slate-600 font-semibold mb-7 max-w-lg mx-auto leading-relaxed text-sm md:text-base">
               Our team is ready to help with any specific queries about your dental health.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={`tel:${SITE.phone.tel}`} className="btn-primary">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a href={`tel:${SITE.phone.tel}`} className="btn-primary w-full sm:w-auto px-8 py-3.5 text-center">
                 Call {SITE.phone.display}
               </a>
-              <Link href="/book-appointment" className="btn-secondary">
+              <Link href="/book-appointment" className="btn-secondary w-full sm:w-auto px-8 py-3.5 text-center">
                 Book Online
               </Link>
             </div>
