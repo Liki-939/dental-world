@@ -40,7 +40,7 @@ export default async function SingleBlogPage({ params }: { params: Promise<{ slu
       "name": "Dental World Clinic",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.dentalworldhyd.com/logo.png"
+        "url": "https://www.dentalworld.in/logo.png"
       }
     },
     "description": `Read our comprehensive guide on ${title}.`

@@ -4,7 +4,7 @@ import { treatmentsData } from '@/data/treatments';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.dentalworldhyd.com';
+  const baseUrl = 'https://www.dentalworld.in';
 
   // Dynamic treatment pages from treatmentsData
   const treatmentSlugs = Object.keys(treatmentsData);
