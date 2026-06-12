@@ -3,11 +3,15 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.dentalworldhyd.com"),
+  icons: {
+    icon: "/dentalworld-favicon.svg",
+    apple: "/dentalworld-favicon.svg",
+  },
   title: {
     default: "Dental World | Advanced Dental Care in Hyderabad",
     template: "%s | Dental World",
@@ -51,6 +55,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://www.google.com" />
+      </head>
       <body className={`${inter.variable} ${outfit.variable} font-sans`}>
         <LocalBusinessSchema />
         {children}

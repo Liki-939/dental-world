@@ -56,6 +56,7 @@ export default function BlogPage() {
                       alt={blog.title} 
                       fill 
                       className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
                   <div className="p-8 flex flex-col flex-grow">

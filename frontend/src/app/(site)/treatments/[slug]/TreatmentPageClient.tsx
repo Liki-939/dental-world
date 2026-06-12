@@ -779,7 +779,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Laser Scaling', desc: 'Minimal vibration with laser gum disinfection.' }
     ],
     startingCost: '₹1,500*',
-    costPoints: ['No Hidden Costs', 'Quick Single Sitting', 'Free Toothbrush Kit'],
+    costPoints: ['No Hidden Costs', 'Quick Single Sitting', 'Toothbrush Kit Included'],
     costDisclaimer: '*Cost may vary depending on plaque buildup and gum health.',
     comparisonTitle: 'SCALING vs HOME BRUSHING',
     comparisonHeader: ['CLINIC SCALING', 'BRUSHING', 'FLOSSING'],
@@ -836,7 +836,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Surgical Extraction', desc: 'For impacted or partially buried teeth requiring bone relief.' }
     ],
     startingCost: '₹3,000*',
-    costPoints: ['Standardized Fees', 'Specialist Surgeon Charges Included', 'Post-Op Follow-up Free'],
+    costPoints: ['Standardized Fees', 'Specialist Surgeon Charges Included', 'Post-Op Follow-up Included'],
     costDisclaimer: '*Surgical and bone impactions cost more than simple extractions.',
     comparisonTitle: 'SURGERY vs IGNORING IT',
     comparisonHeader: ['EXTRACTION', 'DELAYS', 'NO ACTION'],
@@ -894,7 +894,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Laser Periodontitis Therapy', desc: 'Minimally invasive pocket disinfection.' }
     ],
     startingCost: '₹4,000*',
-    costPoints: ['Pocket Laser Free', 'Bone Grafting Available', 'Instalment Options'],
+    costPoints: ['Pocket Laser Included', 'Bone Grafting Available', 'Instalment Options'],
     costDisclaimer: '*Costs depend on the number of quadrants requiring flap surgical access.',
     comparisonTitle: 'SURGERY vs LATE STAGE LOSS',
     comparisonHeader: ['FLAP SURGERY', 'SCALING ONLY', 'NO TREATMENT'],
@@ -1069,7 +1069,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Xerostomia Therapy', desc: 'Treats dry mouth to restore natural saliva wash.' }
     ],
     startingCost: '₹2,000*',
-    costPoints: ['Includes Antibacterial Rinse', 'Tongue Scraper Free', 'Follow-up Consultation'],
+    costPoints: ['Includes Antibacterial Rinse', 'Tongue Scraper Included', 'Follow-up Consultation'],
     costDisclaimer: '*Additional costs apply if gum flap surgery or decay fillings are required.',
     comparisonTitle: 'THERAPY vs COSMETIC SPRAYS',
     comparisonHeader: ['CLINIC THERAPY', 'MOUTH SPRAYS', 'MINTS'],
@@ -1185,7 +1185,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Labial Frenectomy', desc: 'Releases lip-tie to close midline front gaps.' }
     ],
     startingCost: '₹5,000*',
-    costPoints: ['Laser Precision', 'No Sutures Needed', 'Free Post-op Stretching Check'],
+    costPoints: ['Laser Precision', 'No Sutures Needed', 'Post-op Stretching Check Included'],
     costDisclaimer: '*Procedure price includes specialist surgeon and laser fees.',
     comparisonTitle: 'LASER vs SCALPEL FRENECTOMY',
     comparisonHeader: ['LASER METHOD', 'SCALPEL METHOD', 'NO SURGERY'],
@@ -1695,6 +1695,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                 fill
                 className="object-cover"
                 priority
+                sizes="(max-width: 1024px) 100vw, 33vw"
               />
               {/* Left edge seamless gradient blend for desktop */}
               <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
@@ -2123,6 +2124,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                     alt="X-ray Before"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 50vw, 15vw"
                   />
                   <span className="absolute bottom-3 left-3 bg-black/60 text-white font-bold text-[10px] uppercase px-2 py-0.5 rounded">Before</span>
                 </div>
@@ -2133,6 +2135,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                     alt="X-ray After"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 50vw, 15vw"
                   />
                   <span className="absolute bottom-3 right-3 bg-[#0056D2] text-white font-bold text-[10px] uppercase px-2 py-0.5 rounded">After</span>
                 </div>
@@ -2152,6 +2155,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                     alt="Smile Before"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 30vw"
                   />
                   <span className="absolute bottom-2 left-2 bg-black/60 text-white font-bold text-[9px] uppercase px-1.5 py-0.5 rounded">Before</span>
                 </div>
@@ -2161,6 +2165,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                     alt="Smile After"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 30vw"
                   />
                   <span className="absolute bottom-2 left-2 bg-[#0056D2] text-white font-bold text-[9px] uppercase px-1.5 py-0.5 rounded">After</span>
                 </div>

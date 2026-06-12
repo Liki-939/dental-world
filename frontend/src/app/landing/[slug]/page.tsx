@@ -15,6 +15,7 @@ import {
   Check, X, ArrowRight, MessageSquare, Phone, ChevronRight, Play
 } from 'lucide-react';
 import { treatmentsData } from '@/data/treatments';
+import { LOCATIONS } from '@/lib/site';
 
 // Helper to normalize the dynamic URL slug to treatmentsData key
 const mapSlugToTreatmentKey = (slug: string): string => {
@@ -296,7 +297,7 @@ const landingConfigs: Record<string, LandingConfig> = {
       card: {
         title: "Dental Implants",
         desc: "Can permanently restore your biting force, preserve your bone structure, and give you back a natural-looking smile!",
-        btnText: "Get Free Implant Consultation"
+        btnText: "Get Expert Implant Consultation"
       }
     },
     process: {
@@ -769,6 +770,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
   } else if (slug.includes("bachupally")) {
     locationName = "Bachupally";
   }
+  const branch = LOCATIONS.find(l => l.slug === (locationName === "Pragathi Nagar" ? "pragathi-nagar" : "bachupally")) || LOCATIONS[0];
 
   const iconBullets = key === 'dental-implants' ? [
     { icon: Shield, line1: "10,000+ Implant Cases", line2: "", line3: "" },
@@ -899,6 +901,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                 fill
                 className="object-cover opacity-20 lg:opacity-100"
                 priority
+                sizes="(max-width: 1024px) 100vw, 60vw"
               />
 
               {/* Left edge seamless gradient blend for desktop */}
@@ -990,6 +993,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                         alt={item.label}
                         fill
                         className="object-cover"
+                        sizes="96px"
                       />
                     </div>
                     <h4 className="font-black text-slate-800 text-xs md:text-sm leading-tight tracking-tight mt-auto">{item.label}</h4>
@@ -1189,7 +1193,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                 <div>
                   <span className="text-[9px] font-black uppercase tracking-wider text-emerald-100 block mb-1">Instant Booking</span>
                   <h3 className="text-lg md:text-xl font-black text-white uppercase tracking-tight">
-                    BOOK YOUR FREE CONSULTATION TODAY
+                    BOOK YOUR CONSULTATION TODAY
                   </h3>
                 </div>
 
@@ -1203,7 +1207,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
 
               <div className="mt-8 space-y-4">
                 <a
-                  href="tel:+918247478663"
+                  href={`tel:${branch.phone.tel}`}
                   className="w-full bg-white hover:bg-slate-100 text-[#002D72] font-black py-4 px-6 rounded-xl text-center text-xs tracking-wider uppercase transition shadow-md flex items-center justify-center gap-2 h-[52px]"
                 >
                   <Phone className="w-4 h-4 fill-[#002D72] text-[#002D72]" />
@@ -1269,6 +1273,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                         alt={item.title}
                         fill
                         className="object-cover"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 15vw"
                       />
                       <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
                         <div className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-[#003B8F] shadow-md">
@@ -1339,6 +1344,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                     alt={config.specialist.name}
                     fill
                     className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 20vw"
                   />
                 </div>
 
@@ -1465,7 +1471,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                     Take the First Step Towards a New You!
                   </h3>
                   <p className="text-xs text-slate-350 font-semibold leading-relaxed">
-                    Book your appointment today and secure a free professional implantologist consultation.
+                    Book your appointment today and secure a professional implantologist consultation.
                   </p>
                 </div>
                 <div className="mt-8">
@@ -1476,7 +1482,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                     BOOK NOW →
                   </a>
                   <span className="text-[9px] text-blue-200 mt-2 block text-center uppercase tracking-widest font-bold">
-                    Get Free Implant Consultation
+                    Get Expert Implant Consultation
                   </span>
                 </div>
               </div>
@@ -1528,6 +1534,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                         alt={vid.title}
                         fill
                         className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 15vw"
                       />
                       <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
                         <div className="w-10 h-10 rounded-full bg-white/95 flex items-center justify-center text-blue-700 shadow-md">
@@ -1581,8 +1588,8 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
               <div className="space-y-4">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">DENTAL WORLD - BACHUPALLY</h4>
-                    <p className="text-[10px] text-slate-550 font-semibold mt-1">Opp. Pragathi Nagar Main Road, Bachupally, Hyderabad - 500090</p>
+                    <h4 className="font-extrabold text-slate-900 text-sm">DENTAL WORLD - {branch.name.toUpperCase()}</h4>
+                    <p className="text-[10px] text-slate-550 font-semibold mt-1">{branch.address}</p>
                   </div>
                   <div className="flex items-center space-x-1 shrink-0 text-amber-500 font-black text-xs bg-amber-50 border border-amber-100 px-2 py-0.5 rounded">
                     <span>★</span>
@@ -1592,13 +1599,13 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
 
                 <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-slate-100">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.109861611096!2d78.3845013148779!3d17.525549087995872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8e137b018ecf%3A0x7d6a524a87e07661!2sBachupally%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1680000000001!5m2!1sen!2sin"
+                    src={branch.mapsEmbed}
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen={false}
                     loading="lazy"
-                    title="Dental World Bachupally Location Map"
+                    title={`Dental World ${branch.name} Location Map`}
                   ></iframe>
                 </div>
               </div>
@@ -1612,16 +1619,16 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
       {/* Fixed Bottom Sticky CTA Bar (Desktop & Mobile) */}
       <div className="fixed bottom-0 left-0 right-0 bg-[#002D72] text-white py-3.5 px-4 md:px-8 border-t border-slate-800 shadow-2xl z-50 flex items-center justify-between">
         <div className="hidden sm:block text-left">
-          <span className="text-[10px] text-blue-300 block font-black uppercase tracking-wider">Free Consultation</span>
+          <span className="text-[10px] text-blue-300 block font-black uppercase tracking-wider">Expert Consultation</span>
           <span className="text-xs md:text-sm font-extrabold leading-tight mt-0.5 block">🏥 Dental World {locationName}</span>
         </div>
         <div className="flex gap-2.5 w-full sm:w-auto justify-between sm:justify-end">
           <a
-            href="tel:+918247478663"
+            href={`tel:${branch.phone.tel}`}
             className="flex-1 sm:flex-initial bg-[#003B8F] hover:bg-blue-800 text-white font-black px-2 md:px-6 py-3 rounded-xl text-[10px] md:text-sm transition flex items-center justify-center gap-1.5 md:gap-2 uppercase tracking-wide h-[52px]"
           >
             <Phone className="w-3.5 h-3.5 md:w-4 md:h-4 fill-white text-white shrink-0" />
-            <span className="hidden md:inline">Call: +91 82474 78663</span>
+            <span className="hidden md:inline">Call: {branch.phone.display}</span>
             <span className="md:hidden">Call Us</span>
           </a>
           <a

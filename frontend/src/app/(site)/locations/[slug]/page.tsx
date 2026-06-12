@@ -40,7 +40,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
     "telephone": branch.phone.tel,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": slug === 'pragathi-nagar' ? "#7-1-398, Srinivasa Colony" : "Plot No. 2, Main Road",
+      "streetAddress": branch.address,
       "addressLocality": locationName,
       "addressRegion": "Hyderabad",
       "postalCode": "500090",

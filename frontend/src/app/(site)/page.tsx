@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import BeforeAfterShowcase from "@/components/BeforeAfterShowcase";
-import { SITE } from "@/lib/site";
+import { SITE, LOCATIONS } from "@/lib/site";
 import HomeTreatmentsGrid from "@/components/HomeTreatmentsGrid";
 import {
   Star,
@@ -151,6 +151,7 @@ export default function Home() {
                   fill
                   className="object-cover"
                   priority
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                 />
                 {/* Left edge seamless gradient blend for desktop */}
                 <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
@@ -467,7 +468,7 @@ export default function Home() {
                       Pragathi Nagar
                     </h3>
                     <p className="text-[13.5px] text-slate-500 font-medium leading-relaxed">
-                      #7-1-398, Srinivasa Colony, Pragathi Nagar, Hyderabad - 500090
+                      {LOCATIONS[0].address}
                     </p>
                   </div>
                   <Link href="/locations/pragathi-nagar" className="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-750 transition mt-2">
@@ -497,7 +498,7 @@ export default function Home() {
                       Bachupally
                     </h3>
                     <p className="text-[13.5px] text-slate-500 font-medium leading-relaxed">
-                      Plot No. 2, Main Road, Bachupally, Hyderabad - 500090
+                      {LOCATIONS[1].address}
                     </p>
                   </div>
                   <Link href="/locations/bachupally" className="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-750 transition mt-2">

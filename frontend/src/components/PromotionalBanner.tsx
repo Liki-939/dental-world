@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Droplets, Heart, ShieldCheck, Activity, Users, MapPin, Phone, ChevronRight, ChevronLeft, Award, Stethoscope, Sparkles, Smile, Clock } from 'lucide-react';
+import { LOCATIONS } from '@/lib/site';
 
 const GumTreatmentSlide = () => (
   <div className="w-full h-full flex-1 bg-white flex flex-col font-sans relative">
@@ -111,13 +112,15 @@ const GumTreatmentSlide = () => (
           alt="Dentist treating patient" 
           fill 
           className="object-cover object-center z-0"
+          priority
+          sizes="(max-width: 1024px) 100vw, 40vw"
         />
 
         {/* Before & After Overlapping Circles */}
         <div className="absolute bottom-8 right-8 z-20 flex items-center drop-shadow-2xl">
           {/* Before Circle */}
           <div className="relative w-32 h-32 md:w-40 md:h-40 aspect-square rounded-full border-[6px] border-white shadow-inner overflow-hidden z-10">
-            <Image src="/images/gums_before.png" alt="Before treatment" fill className="object-cover" />
+            <Image src="/images/gums_before.png" alt="Before treatment" fill className="object-cover" sizes="(max-width: 768px) 160px, 160px" />
             <div className="absolute top-2 w-full text-center">
               <span className="bg-[#d32f2f] text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">BEFORE</span>
             </div>
@@ -130,7 +133,7 @@ const GumTreatmentSlide = () => (
 
           {/* After Circle */}
           <div className="relative w-32 h-32 md:w-40 md:h-40 aspect-square rounded-full border-[6px] border-white shadow-inner overflow-hidden z-20">
-            <Image src="/images/gums_after.png" alt="After treatment" fill className="object-cover" />
+            <Image src="/images/gums_after.png" alt="After treatment" fill className="object-cover" sizes="(max-width: 768px) 160px, 160px" />
             <div className="absolute top-2 w-full text-center">
               <span className="bg-[#0b1c3c] text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">AFTER</span>
             </div>
@@ -168,24 +171,24 @@ const GumTreatmentSlide = () => (
 
     {/* Bottom Footer Strip (Navy) */}
     <div className="bg-[#0f172a] py-4 px-4 sm:px-8 flex flex-col sm:flex-row justify-center items-center sm:gap-16 border-t-[6px] border-slate-800">
-      <a href="tel:8247478663" className="flex items-center gap-3 group hover:opacity-80 transition cursor-pointer mb-2 sm:mb-0">
+      <a href={`tel:${LOCATIONS[0].phone.tel}`} className="flex items-center gap-3 group hover:opacity-80 transition cursor-pointer mb-2 sm:mb-0">
         <MapPin className="w-5 h-5 text-[#d32f2f]" />
         <div>
           <div className="text-white font-bold tracking-widest text-sm">PRAGATHI NAGAR</div>
           <div className="flex items-center text-white/90 text-xs mt-0.5 font-semibold">
-            <Phone className="w-3 h-3 mr-1" /> 8247478663
+            <Phone className="w-3 h-3 mr-1" /> {LOCATIONS[0].phone.display}
           </div>
         </div>
       </a>
       
       <div className="hidden sm:block h-8 w-[1px] bg-white/20"></div>
       
-      <a href="tel:9100061610" className="flex items-center gap-3 group hover:opacity-80 transition cursor-pointer">
+      <a href={`tel:${LOCATIONS[1].phone.tel}`} className="flex items-center gap-3 group hover:opacity-80 transition cursor-pointer">
         <MapPin className="w-5 h-5 text-[#d32f2f]" />
         <div>
           <div className="text-white font-bold tracking-widest text-sm">BACHUPALLY</div>
           <div className="flex items-center text-white/90 text-xs mt-0.5 font-semibold">
-            <Phone className="w-3 h-3 mr-1" /> 9100061610
+            <Phone className="w-3 h-3 mr-1" /> {LOCATIONS[1].phone.display}
           </div>
         </div>
       </a>
@@ -280,12 +283,13 @@ const InvisalignSlide = () => (
           alt="Invisalign treatment patient" 
           fill 
           className="object-cover object-center z-0"
+          sizes="(max-width: 1024px) 100vw, 40vw"
         />
 
         {/* Before & After Overlapping Circles */}
         <div className="absolute bottom-16 right-8 z-20 flex items-center drop-shadow-2xl">
           <div className="relative w-28 h-28 md:w-36 md:h-36 aspect-square rounded-full border-[6px] border-white shadow-inner overflow-hidden z-10">
-            <Image src="/images/cases/invisalign_before.png" alt="Before invisalign" fill className="object-cover" />
+            <Image src="/images/cases/invisalign_before.png" alt="Before invisalign" fill className="object-cover" sizes="(max-width: 768px) 160px, 160px" />
             <div className="absolute top-2 w-full text-center">
               <span className="bg-slate-800 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">BEFORE</span>
             </div>
@@ -296,7 +300,7 @@ const InvisalignSlide = () => (
           </div>
 
           <div className="relative w-28 h-28 md:w-36 md:h-36 aspect-square rounded-full border-[6px] border-white shadow-inner overflow-hidden z-20">
-            <Image src="/images/cases/invisalign_after.png" alt="After invisalign" fill className="object-cover" />
+            <Image src="/images/cases/invisalign_after.png" alt="After invisalign" fill className="object-cover" sizes="(max-width: 768px) 160px, 160px" />
             <div className="absolute top-2 w-full text-center">
               <span className="bg-[#00609C] text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">AFTER</span>
             </div>

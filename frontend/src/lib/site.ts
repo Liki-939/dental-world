@@ -2,7 +2,7 @@ export const SITE = {
   name: 'Dental World',
   tagline: 'Expert Dental Care',
   domain: 'https://www.dentalworldhyd.com',
-  email: 'info@dentalworldhyd.com',
+  email: 'dentalworldmail@gmail.com',
   /** Primary clinic line (Pragathi Nagar) */
   phone: {
     display: '+91 82474 78663',
@@ -29,7 +29,7 @@ export const LOCATIONS = [
     slug: 'pragathi-nagar',
     name: 'Pragathi Nagar',
     shortName: 'Pragathi Nagar',
-    address: '#7-1-398, Srinivasa Colony, Pragathi Nagar, Hyderabad – 500090',
+    address: 'Sri Vijaya Lakshmi NILAYAM 2nd floor, near NAN convention centre, Pragathi Nagar Rd, Kakatiya Hills, ALEAP Industrial Area, Pragathi Nagar, Hyderabad',
     phone: { display: '+91 82474 78663', tel: '+918247478663' },
     mapsEmbed:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.305435987179!2d78.39414271487779!3d17.516801987986065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8e0ab85800a7%3A0x6fb2478491c34a2e!2sPragathi%20Nagar%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin',
@@ -39,7 +39,7 @@ export const LOCATIONS = [
     slug: 'bachupally',
     name: 'Bachupally',
     shortName: 'Bachupally',
-    address: 'Plot No. 2, Main Road, Bachupally, Hyderabad – 500090',
+    address: 'Ground Floor, Beside Paramitha Clinic Multispeciality clinic SV LANDMARK, Bollaram Rd, Bachupally, Hyderabad, Telangana 500090',
     phone: { display: '+91 91000 61610', tel: '+919100061610' },
     mapsEmbed:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.109861611096!2d78.3845013148779!3d17.525549087995872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8e137b018ecf%3A0x7d6a524a87e07661!2sBachupally%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1680000000001!5m2!1sen!2sin',
