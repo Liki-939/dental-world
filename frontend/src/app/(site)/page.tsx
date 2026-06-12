@@ -17,7 +17,7 @@ import {
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Best Dental Clinic in Hyderabad",
+  title: "Best Dental Clinic in Hyderabad | Dental World",
   description: "Dental World is Hyderabad's most trusted MDS dental clinic located in Pragathi Nagar & Bachupally. Expert treatment for Dental Implants, Invisalign Clear Aligners, Root Canal, Braces, and Laser Dentistry.",
   keywords: [
     "dental clinic Hyderabad",

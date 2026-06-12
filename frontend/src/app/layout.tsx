@@ -37,11 +37,20 @@ export const metadata: Metadata = {
     siteName: "Dental World",
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "https://www.dentalworldhyd.com/dental_cover.png",
+        width: 1200,
+        height: 630,
+        alt: "Dental World Advanced Dental Care Hyderabad",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Dental World | Advanced Dental Care in Hyderabad",
     description: "High-quality, affordable dental care in Hyderabad. Book an appointment today for dental implants, root canals, invisalign, and smile makeovers.",
+    images: ["https://www.dentalworldhyd.com/dental_cover.png"],
   },
   alternates: {
     canonical: "https://www.dentalworldhyd.com",

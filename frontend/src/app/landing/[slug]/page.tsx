@@ -691,9 +691,41 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const key = mapSlugToTreatmentKey(slug);
   const config = landingConfigs[key];
+
+  let locationName = "Hyderabad";
+  if (slug.includes("pragathi-nagar")) {
+    locationName = "Pragathi Nagar";
+  } else if (slug.includes("bachupally")) {
+    locationName = "Bachupally";
+  }
+
+  const serviceTitle = config.title;
+  let title = `Best ${serviceTitle} in ${locationName} | Dental World`;
+  let description = `Top-rated ${serviceTitle.toLowerCase()} clinic in ${locationName}. ${config.hero.desc}`;
+
+  if (slug === 'dental-implant-cost-hyderabad') {
+    title = `Best Dental Implant Cost & Clinic in Hyderabad | Dental World`;
+    description = `Affordable dental implants cost in Hyderabad. ${config.hero.desc}`;
+  } else if (slug === 'braces-and-aligners') {
+    title = `Best Braces & Clear Aligners in Hyderabad | Dental World`;
+  }
+
+  const keywords = [
+    `${serviceTitle} ${locationName}`,
+    `best ${serviceTitle.toLowerCase()} in ${locationName}`,
+    `${serviceTitle.toLowerCase()} cost in ${locationName}`,
+    `dental clinic ${locationName}`,
+    `dentist in ${locationName}`,
+    "Dental World"
+  ];
+
   return {
-    title: `${config.hero.headline} | Dental World`,
-    description: config.hero.desc,
+    title,
+    description: description.substring(0, 160),
+    keywords,
+    alternates: {
+      canonical: `https://www.dentalworldhyd.com/landing/${slug}`,
+    },
   };
 }
 
