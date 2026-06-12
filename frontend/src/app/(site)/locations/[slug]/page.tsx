@@ -35,8 +35,8 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
     "image": slug === 'pragathi-nagar'
       ? "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80"
       : "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80",
-    "@id": `https://www.dentalworld.in/locations/${slug}`,
-    "url": `https://www.dentalworld.in/locations/${slug}`,
+    "@id": `https://www.dentalworldhyd.in/locations/${slug}`,
+    "url": `https://www.dentalworldhyd.in/locations/${slug}`,
     "telephone": branch.phone.tel,
     "address": {
       "@type": "PostalAddress",

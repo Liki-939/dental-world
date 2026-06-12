@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "braces cost Hyderabad"
   ],
   alternates: {
-    canonical: "https://www.dentalworld.in",
+    canonical: "https://www.dentalworldhyd.in",
   },
 };
 

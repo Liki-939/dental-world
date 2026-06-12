@@ -724,7 +724,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: description.substring(0, 160),
     keywords,
     alternates: {
-      canonical: `https://www.dentalworld.in/landing/${slug}`,
+      canonical: `https://www.dentalworldhyd.in/landing/${slug}`,
     },
   };
 }

@@ -1,7 +1,7 @@
 export const SITE = {
   name: 'Dental World',
   tagline: 'Expert Dental Care',
-  domain: 'https://www.dentalworld.in',
+  domain: 'https://www.dentalworldhyd.in',
   email: 'dentalworldmail@gmail.com',
   /** Primary clinic line (Pragathi Nagar) */
   phone: {

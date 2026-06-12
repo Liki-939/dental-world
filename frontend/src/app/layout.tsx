@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.dentalworld.in"),
+  metadataBase: new URL("https://www.dentalworldhyd.in"),
   icons: {
     icon: "/dentalworld-favicon.svg",
     apple: "/dentalworld-favicon.svg",
@@ -33,13 +33,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Dental World | Advanced Dental Care in Hyderabad",
     description: "High-quality, affordable dental care in Hyderabad. Book an appointment today for dental implants, root canals, invisalign, and smile makeovers.",
-    url: "https://www.dentalworld.in",
+    url: "https://www.dentalworldhyd.in",
     siteName: "Dental World",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "https://www.dentalworld.in/dental_cover.png",
+        url: "https://www.dentalworldhyd.in/dental_cover.png",
         width: 1200,
         height: 630,
         alt: "Dental World Advanced Dental Care Hyderabad",
@@ -50,10 +50,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dental World | Advanced Dental Care in Hyderabad",
     description: "High-quality, affordable dental care in Hyderabad. Book an appointment today for dental implants, root canals, invisalign, and smile makeovers.",
-    images: ["https://www.dentalworld.in/dental_cover.png"],
+    images: ["https://www.dentalworldhyd.in/dental_cover.png"],
   },
   alternates: {
-    canonical: "https://www.dentalworld.in",
+    canonical: "https://www.dentalworldhyd.in",
   },
 };
 
