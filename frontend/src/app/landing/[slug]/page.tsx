@@ -1502,7 +1502,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
                   <h3 className="text-xl font-black uppercase tracking-wide text-white">
                     Take the First Step Towards a New You!
                   </h3>
-                  <p className="text-xs text-slate-350 font-semibold leading-relaxed">
+                  <p className="text-xs text-slate-300 font-semibold leading-relaxed">
                     Book your appointment today and secure a professional implantologist consultation.
                   </p>
                 </div>

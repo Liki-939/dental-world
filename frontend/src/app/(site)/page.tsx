@@ -92,7 +92,7 @@ export default function Home() {
                   <span className="text-blue-600">For Life.</span>
                 </h1>
 
-                <p className="text-base md:text-lg text-slate-650 max-w-xl font-medium leading-relaxed">
+                <p className="text-base md:text-lg text-slate-600 max-w-xl font-medium leading-relaxed">
                   Expert dentists. Advanced technology. Personalized care for you and your family.
                 </p>
 
@@ -147,7 +147,7 @@ export default function Home() {
               <div className="lg:col-span-5 relative min-h-[350px] md:min-h-[480px] lg:min-h-full overflow-hidden w-full flex flex-col justify-end z-10">
                 <Image
                   src="/doc_pat.png"
-                  alt="Patient smiling in dental clinic"
+                  alt="Patient smiling during dental consultation at Dental World"
                   fill
                   className="object-cover"
                   priority
@@ -191,7 +191,7 @@ export default function Home() {
               <div className="flex flex-col items-center text-center border-slate-800 md:border-r last:border-0 px-4">
                 <Users className="w-8 h-8 text-blue-400 mb-2" />
                 <span className="text-3xl font-extrabold font-heading">15+</span>
-                <span className="text-xs text-slate-400 font-bold uppercase mt-1 tracking-wider">Years of Experience</span>
+                <span className="text-xs text-slate-300 font-bold uppercase mt-1 tracking-wider">Years of Experience</span>
               </div>
 
               {/* Stat 2 */}
@@ -201,21 +201,21 @@ export default function Home() {
                   <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" strokeWidth="2.5" stroke="currentColor" />
                 </svg>
                 <span className="text-3xl font-extrabold font-heading">5000+</span>
-                <span className="text-xs text-slate-400 font-bold uppercase mt-1 tracking-wider">Happy Patients</span>
+                <span className="text-xs text-slate-300 font-bold uppercase mt-1 tracking-wider">Happy Patients</span>
               </div>
 
               {/* Stat 3 */}
               <div className="flex flex-col items-center text-center border-slate-800 md:border-r last:border-0 px-4">
                 <Layers className="w-8 h-8 text-blue-400 mb-2" />
                 <span className="text-3xl font-extrabold font-heading">3D</span>
-                <span className="text-xs text-slate-400 font-bold uppercase mt-1 tracking-wider">Advanced Technology</span>
+                <span className="text-xs text-slate-300 font-bold uppercase mt-1 tracking-wider">Advanced Technology</span>
               </div>
 
               {/* Stat 4 */}
               <div className="flex flex-col items-center text-center border-slate-800 last:border-0 px-4">
                 <MapPin className="w-8 h-8 text-blue-400 mb-2" />
                 <span className="text-3xl font-extrabold font-heading">2</span>
-                <span className="text-xs text-slate-400 font-bold uppercase mt-1 tracking-wider">Clinic Locations</span>
+                <span className="text-xs text-slate-300 font-bold uppercase mt-1 tracking-wider">Clinic Locations</span>
               </div>
 
             </div>
@@ -236,11 +236,11 @@ export default function Home() {
                   Care That Makes<br />
                   <span className="text-blue-600">The Difference</span>
                 </h2>
-                <p className="text-slate-655 font-medium leading-relaxed max-w-lg">
+                <p className="text-slate-600 font-medium leading-relaxed max-w-lg">
                   We combine advanced technology with gentle care to deliver the best dental experience.
                 </p>
                 <div className="pt-2">
-                  <Link href="/about" className="inline-flex items-center whitespace-nowrap w-fit border border-slate-350 hover:bg-slate-100 text-slate-700 font-bold px-6 py-3 rounded-[5px] transition text-[15px]">
+                  <Link href="/about" className="inline-flex items-center whitespace-nowrap w-fit border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold px-6 py-3 rounded-[5px] transition text-[15px]">
                     Know More About Us
                     <svg className="w-5 h-5 ml-2 text-slate-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path d="M5 12h14M12 5l7 7-7 7" />
@@ -262,7 +262,7 @@ export default function Home() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Expert Dentists</h4>
+                    <h3 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Expert Dentists</h3>
                     <p className="text-xs text-slate-500 font-medium leading-relaxed">Highly skilled & experienced dental specialists</p>
                   </div>
                 </div>
@@ -276,7 +276,7 @@ export default function Home() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Painless & Comfortable</h4>
+                    <h3 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Painless & Comfortable</h3>
                     <p className="text-xs text-slate-500 font-medium leading-relaxed">Advanced techniques for a pain-free experience</p>
                   </div>
                 </div>
@@ -291,7 +291,7 @@ export default function Home() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Advanced Technology</h4>
+                    <h3 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Advanced Technology</h3>
                     <p className="text-xs text-slate-500 font-medium leading-relaxed">3D imaging, digital smile design & modern equipment</p>
                   </div>
                 </div>
@@ -304,7 +304,7 @@ export default function Home() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Patient First Approach</h4>
+                    <h3 className="font-extrabold text-[#0a1d37] mb-1.5 text-base">Patient First Approach</h3>
                     <p className="text-xs text-slate-500 font-medium leading-relaxed">Personalized care with your comfort as our priority</p>
                   </div>
                 </div>
@@ -368,7 +368,7 @@ export default function Home() {
                       <Star className="w-[18px] h-[18px] fill-current" />
                     </div>
                   </div>
-                  <p className="text-slate-655 font-medium leading-relaxed text-[14.5px]">
+                  <p className="text-slate-600 font-medium leading-relaxed text-[14.5px]">
                     "I got my dental implants done at Dental World. The experience was excellent and totally painless. Highly recommended!"
                   </p>
                 </div>
@@ -394,7 +394,7 @@ export default function Home() {
                       <Star className="w-[18px] h-[18px] fill-current" />
                     </div>
                   </div>
-                  <p className="text-slate-655 font-medium leading-relaxed text-[14.5px]">
+                  <p className="text-slate-600 font-medium leading-relaxed text-[14.5px]">
                     "Very professional team and advanced technology. My smile makeover has given me so much confidence!"
                   </p>
                 </div>
@@ -420,7 +420,7 @@ export default function Home() {
                       <Star className="w-[18px] h-[18px] fill-current" />
                     </div>
                   </div>
-                  <p className="text-slate-655 font-medium leading-relaxed text-[14.5px]">
+                  <p className="text-slate-600 font-medium leading-relaxed text-[14.5px]">
                     "Best dental clinic in Hyderabad! Friendly staff, clean clinic and amazing results."
                   </p>
                 </div>
@@ -455,7 +455,7 @@ export default function Home() {
                 <div className="w-full sm:w-[45%] relative aspect-[4/3] rounded-2xl overflow-hidden shrink-0 bg-slate-200">
                   <Image
                     src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80"
-                    alt="Pragathi Nagar Clinic Front"
+                    alt="Dental World Pragathi Nagar clinic reception"
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, 300px"
@@ -485,7 +485,7 @@ export default function Home() {
                 <div className="w-full sm:w-[45%] relative aspect-[4/3] rounded-2xl overflow-hidden shrink-0 bg-slate-200">
                   <Image
                     src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80"
-                    alt="Bachupally Clinic Front"
+                    alt="Dental World Bachupally clinic reception"
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, 300px"
@@ -579,10 +579,10 @@ export default function Home() {
                   <span className="inline-block bg-blue-500/10 text-blue-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1 rounded-full border border-blue-500/20">
                     Get in Touch
                   </span>
-                  <h3 className="text-3xl md:text-4xl font-extrabold font-heading leading-tight !text-white" style={{ color: '#ffffff' }}>
+                  <h2 className="text-3xl md:text-4xl font-extrabold font-heading leading-tight !text-white" style={{ color: '#ffffff' }}>
                     Ready for Your Best Smile?
-                  </h3>
-                  <p className="text-sm font-medium leading-relaxed max-w-md !text-slate-300" style={{ color: '#cbd5e1' }}>
+                  </h2>
+                  <p className="text-sm font-medium leading-relaxed max-w-md !text-slate-350" style={{ color: '#cbd5e1' }}>
                     Let our experts help you take the first step towards a healthier, confident smile. Book an appointment today for a consultation.
                   </p>
                 </div>

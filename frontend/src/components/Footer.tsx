@@ -7,13 +7,13 @@ export default function Footer() {
   const quickLinks = NAV_LINKS.filter((l) => l.href !== '/');
 
   return (
-    <footer className="bg-nav text-slate-400 py-14 text-sm border-t border-nav-border">
+    <footer className="bg-nav text-slate-300 py-14 text-sm border-t border-nav-border">
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="space-y-5">
             <div className="flex items-center gap-2.5">
               <div className="w-10 h-10 relative rounded-full overflow-hidden border border-slate-600 shrink-0">
-                <Image src="/logo.jpeg" alt="" width={40} height={40} className="object-contain" />
+                <Image src="/logo.jpeg" alt="Dental World logo" width={40} height={40} className="object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-extrabold text-white leading-none font-heading">
@@ -24,7 +24,7 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-            <p className="leading-relaxed text-slate-400">
+            <p className="leading-relaxed text-slate-300">
               Advanced dental care with compassion and excellence. Your smile is our passion.
             </p>
             <div className="flex gap-3">
@@ -40,7 +40,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-9 h-9 rounded-full border border-slate-600 hover:border-brand hover:text-white transition flex items-center justify-center"
+                  className="w-12 h-12 rounded-full border border-slate-600 hover:border-brand hover:text-white transition flex items-center justify-center"
                 >
                   <span className="text-xs font-bold">{s.label[0]}</span>
                 </a>
@@ -101,7 +101,7 @@ export default function Footer() {
                     <Link href={`/locations/${loc.slug}`} className="text-white font-semibold hover:text-brand-light">
                       {loc.name}
                     </Link>
-                    <p className="text-slate-400 mt-0.5 leading-snug">{loc.address}</p>
+                    <p className="text-slate-300 mt-0.5 leading-snug">{loc.address}</p>
                     <a href={`tel:${loc.phone.tel}`} className="text-brand-light hover:text-white text-xs mt-1 inline-block">
                       {loc.phone.display}
                     </a>
@@ -112,7 +112,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500">
+        <div className="mt-12 pt-8 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400">
           <p>&copy; {new Date().getFullYear()} {SITE.name} Hyderabad. All rights reserved.</p>
           <p className="text-xs">
             {SITE.hours.weekdays} · {SITE.hours.sunday}

@@ -1622,7 +1622,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                 {info.subtitle}
               </p>
 
-              <p className="text-sm text-slate-650 leading-relaxed font-medium max-w-lg">
+              <p className="text-sm text-slate-600 leading-relaxed font-medium max-w-lg">
                 Advanced {displayTitle.toLowerCase()} using digital imaging, precision tools and pain-free anesthesia.
               </p>
 
@@ -1715,7 +1715,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                     <CheckCircle2 className="w-9 h-9" />
                   </div>
                   <h3 className="text-xl font-extrabold text-slate-900">Thank You!</h3>
-                  <p className="text-sm text-slate-650 max-w-sm">
+                  <p className="text-sm text-slate-600 max-w-sm">
                     Your consultation request for <strong>{formData.treatment}</strong> has been received successfully. Our coordinator will contact you at <strong>{formData.mobile}</strong> within 15 minutes.
                   </p>
                   <button
@@ -1864,11 +1864,11 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                   {info.whatIsTitle}
                 </h2>
 
-                <p className="text-sm md:text-base text-slate-650 font-medium leading-relaxed">
+                <p className="text-sm md:text-base text-slate-600 font-medium leading-relaxed">
                   {info.whatIsText1}
                 </p>
 
-                <p className="text-sm md:text-base text-slate-650 font-medium leading-relaxed">
+                <p className="text-sm md:text-base text-slate-600 font-medium leading-relaxed">
                   {info.whatIsText2}
                 </p>
               </div>
@@ -1933,7 +1933,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
           <div className="relative flex flex-col md:flex-row items-center justify-between gap-10 md:gap-4 max-w-5xl mx-auto">
             {/* Horizontal Line background (Desktop only) */}
-            <div className="absolute top-[28px] left-[5%] right-[5%] h-[2px] bg-slate-200 border-t border-dashed border-slate-350 pointer-events-none hidden md:block"></div>
+            <div className="absolute top-[28px] left-[5%] right-[5%] h-[2px] bg-slate-200 border-t border-dashed border-slate-300 pointer-events-none hidden md:block"></div>
 
             {info.processSteps.map((step, idx) => {
               const stepIcons = ["stethoscope", "syringe", "tooth", "clean", "shield", "crown"];

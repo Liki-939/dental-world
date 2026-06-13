@@ -42,18 +42,18 @@ export default function BeforeAfterShowcase({ customCases }: { customCases?: { b
       {/* Mobile Navigation Arrows (Visible only on mobile) */}
       <button 
         onClick={handlePrev}
-        className="md:hidden absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm shadow-md border border-slate-100 flex items-center justify-center text-slate-650 hover:text-blue-600 active:scale-95 transition"
+        className="md:hidden absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-md border border-slate-100 flex items-center justify-center text-slate-600 hover:text-blue-600 active:scale-95 transition"
         aria-label="Previous transformation"
       >
-        <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
+        <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
       </button>
       
       <button 
         onClick={handleNext}
-        className="md:hidden absolute -right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm shadow-md border border-slate-100 flex items-center justify-center text-slate-650 hover:text-blue-600 active:scale-95 transition"
+        className="md:hidden absolute -right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-md border border-slate-100 flex items-center justify-center text-slate-600 hover:text-blue-600 active:scale-95 transition"
         aria-label="Next transformation"
       >
-        <ChevronRight className="w-5 h-5 stroke-[2.5]" />
+        <ChevronRight className="w-6 h-6 stroke-[2.5]" />
       </button>
       
       {/* Grid for desktop / Single item view on mobile */}
