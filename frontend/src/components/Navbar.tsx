@@ -61,7 +61,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center shrink-0" onClick={closeMobileMenu}>
           <div className="flex items-center gap-2.5">
             <div className="w-11 h-11 relative rounded-full overflow-hidden bg-white shrink-0 shadow-sm border border-slate-100">
-              <Image src="/logo.jpeg" alt="" width={44} height={44} className="object-contain p-0.5" />
+              <Image src="/logo.jpeg" alt="Dental World logo" width={44} height={44} className="object-contain p-0.5" />
             </div>
             <div className="flex flex-col">
               <span className="text-lg md:text-xl font-extrabold tracking-tight text-ink leading-none font-heading">
@@ -123,7 +123,7 @@ export default function Navbar() {
           </Link>
           <button
             type="button"
-            className="lg:hidden p-2 text-slate-700 hover:text-brand transition-colors"
+            className="lg:hidden w-12 h-12 flex items-center justify-center text-slate-700 hover:text-brand transition-colors"
             onClick={() => setIsMobileMenuOpen((o) => !o)}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"

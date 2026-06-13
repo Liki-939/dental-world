@@ -132,7 +132,7 @@ export default function HomeTreatmentsGrid() {
           <div className="w-full aspect-square rounded-2xl overflow-hidden border border-slate-100 shadow-sm group-hover:shadow-premium group-hover:border-blue-200 group-hover:-translate-y-1.5 transition-all duration-300 bg-slate-50 relative">
             <Image
               src={treatment.image}
-              alt={treatment.title}
+              alt=""
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
               className="object-cover group-hover:scale-105 transition-transform duration-500"
