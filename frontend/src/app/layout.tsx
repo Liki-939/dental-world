@@ -10,8 +10,8 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.dentalworldhyd.in"),
   icons: {
-    icon: "/dentalworld-favicon.svg",
-    apple: "/dentalworld-favicon.svg",
+    icon: "/images/logo.jpeg",
+    apple: "/images/logo.jpeg",
   },
   title: {
     default: "Dental World | Advanced Dental Care in Hyderabad",
