@@ -61,7 +61,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center shrink-0" onClick={closeMobileMenu}>
           <div className="flex items-center gap-2.5">
             <div className="w-11 h-11 relative rounded-full overflow-hidden bg-white shrink-0 shadow-sm border border-slate-100">
-              <Image src="/logo.jpeg" alt="Dental World logo" width={44} height={44} className="object-contain p-0.5" />
+              <Image src="/images/logo.jpeg" alt="Dental World logo" width={44} height={44} className="object-contain p-0.5" />
             </div>
             <div className="flex flex-col">
               <span className="text-lg md:text-xl font-extrabold tracking-tight text-ink leading-none font-heading">

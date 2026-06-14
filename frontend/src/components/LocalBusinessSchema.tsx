@@ -6,7 +6,7 @@ export default function LocalBusinessSchema() {
     '@context': 'https://schema.org',
     '@type': 'Dentist',
     name: `${SITE.name} Hyderabad`,
-    image: `${SITE.domain}/logo.jpeg`,
+    image: `${SITE.domain}/images/logo.jpeg`,
     '@id': SITE.domain,
     url: SITE.domain,
     telephone: SITE.phone.tel,

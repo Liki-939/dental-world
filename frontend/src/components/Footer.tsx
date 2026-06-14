@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="space-y-5">
             <div className="flex items-center gap-2.5">
               <div className="w-10 h-10 relative rounded-full overflow-hidden border border-slate-600 shrink-0">
-                <Image src="/logo.jpeg" alt="Dental World logo" width={40} height={40} className="object-contain" />
+                <Image src="/images/logo.jpeg" alt="Dental World logo" width={40} height={40} className="object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-extrabold text-white leading-none font-heading">

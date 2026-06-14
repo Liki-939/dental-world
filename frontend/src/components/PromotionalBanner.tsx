@@ -16,10 +16,8 @@ const GumTreatmentSlide = () => (
         
         {/* Logo & Tagline */}
         <div className="flex items-center gap-4 mb-8">
-          <div className="w-12 h-12 bg-[#d32f2f] rounded-full flex items-center justify-center text-white shrink-0 shadow-md">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-              <path d="M12 2C8 2 6 5 6 9c0 1.5.5 3 1.5 4 .5.5 1 1 1 2v1c0 2 1.5 4 3.5 4s3.5-2 3.5-4v-1c0-1 .5-1.5 1-2 1-1 1.5-2.5 1.5-4 0-4-2-7-6-7z"/>
-            </svg>
+          <div className="w-12 h-12 relative rounded-full overflow-hidden bg-white shrink-0 shadow-md border border-slate-100">
+            <Image src="/images/logo.jpeg" alt="Dental World logo" width={48} height={48} className="object-contain p-0.5" />
           </div>
           <div>
             <h2 className="text-3xl font-black text-slate-900 tracking-tight leading-none">DENTAL WORLD</h2>
@@ -207,10 +205,8 @@ const InvisalignSlide = () => (
         
         {/* Logo & Tagline */}
         <div className="flex items-center gap-4 mb-6">
-          <div className="w-12 h-12 bg-[#d32f2f] rounded-full flex items-center justify-center text-white shrink-0 shadow-md">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-              <path d="M12 2C8 2 6 5 6 9c0 1.5.5 3 1.5 4 .5.5 1 1 1 2v1c0 2 1.5 4 3.5 4s3.5-2 3.5-4v-1c0-1 .5-1.5 1-2 1-1 1.5-2.5 1.5-4 0-4-2-7-6-7z"/>
-            </svg>
+          <div className="w-12 h-12 relative rounded-full overflow-hidden bg-white shrink-0 shadow-md border border-slate-100">
+            <Image src="/images/logo.jpeg" alt="Dental World logo" width={48} height={48} className="object-contain p-0.5" />
           </div>
           <div>
             <h2 className="text-2xl font-black text-slate-900 tracking-tight leading-none">DENTAL WORLD</h2>
