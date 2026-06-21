@@ -56,9 +56,6 @@ export const metadata: Metadata = {
     description: "High-quality, affordable dental care in Hyderabad. Book an appointment today for dental implants, root canals, invisalign, and smile makeovers.",
     images: ["https://www.dentalworldhyd.in/dental_cover.png"],
   },
-  alternates: {
-    canonical: "https://www.dentalworldhyd.in",
-  },
 };
 
 export default function RootLayout({
