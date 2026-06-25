@@ -23,6 +23,8 @@ export interface TreatmentData {
     keyDetails: { title: string; text: string; icon: string }[];
     aftercare: { text: string; icon: string }[];
   };
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 export const treatmentsData: Record<string, TreatmentData> = {
@@ -30,6 +32,8 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: 'Root Canal Treatment',
     hero_headline: 'Advanced Root Canal Treatment in Hyderabad',
     hero_subheadline: 'Restore your smile and confidence with our world-class treatments.',
+    seoTitle: 'Root Canal Treatment in Bachupally | Painless RCT Near Nizampet & Miyapur',
+    seoDescription: 'Looking for painless root canal treatment in Bachupally? Dental World Clinic offers advanced RCT, single sitting root canal treatment, and affordable tooth-saving procedures near Nizampet, Pragathi Nagar, and Miyapur.',
     aboutText: 'Root Canal Treatment is a sophisticated procedure designed to save a tooth with a damaged or infected pulp. The pulp, containing nerves and blood vessels, is carefully removed, and the interior of the tooth is cleaned and sealed. This meticulous process not only relieves pain but also prevents the spread of infection, allowing you to maintain a healthy and functional smile.',
     whenRequired: 'Root Canal Treatment becomes necessary when the pulp inside a tooth becomes inflamed or infected due to deep decay, repeated dental procedures, or trauma. If you experience persistent toothache, sensitivity to hot or cold, or swelling, it’s crucial to seek professional evaluation for potential root canal therapy.',
     benefits: [

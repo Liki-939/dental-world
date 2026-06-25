@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SITE } from "@/lib/site";
+import { treatmentsData } from "@/data/treatments";
 import {
   Star,
   Clock,
@@ -182,17 +183,21 @@ const treatmentsInfo: Record<string, {
   comparisonHeader: string[];
   comparisonRows: { feature: string; main: string; opt1: string; opt2: string }[];
   whyChooseCards: { title: string; desc: string }[];
-  beforeXray: { before: string; after: string };
-  beforeSmile: { before: string; after: string };
+  beforeAfterImage?: string;
   testimonialText: string;
   testimonialAuthor: string;
   faqs: { question: string; answer: string }[];
+  bannerBelowHero?: string;
+  footerImageBackground?: string;
+  visualProcedures?: { title: string; image: string; desc: string; category?: string }[];
+  detailedGallery?: { title: string; image: string; desc: string }[];
+  costImage?: string;
 }> = {
   'root-canal-treatment': {
     tagline: 'PAIN RELIEF. TOOTH SAVING CARE.',
     subtitle: 'Painless. Precise. Permanent.',
     techStat: 'Advanced Rotary RCT',
-    heroImage: '/root_canal_banner.png',
+    heroImage: '/images/new images/Treatments Theme Images/Root Canal Treatment.png',
     features: [
       { title: 'Pain Relief', desc: 'Painless treatment with anesthesia' },
       { title: 'Save Natural Tooth', desc: 'Keep your original tooth for life' },
@@ -247,8 +252,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Experienced Endodontists', desc: 'Specialist care' },
       { title: 'High Success Rate', desc: '98%+ success rate' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/root_canal_before.png', after: '/images/cases/root_canal_after.png' },
+    beforeAfterImage: '/images/new images/Root Canal Before & after.jpeg',
     testimonialText: 'I had severe tooth pain and was afraid of RCT. But the treatment at Dental World was completely painless. Excellent care!',
     testimonialAuthor: 'Ramesh, Pragathi Nagar',
     faqs: [
@@ -264,7 +268,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'PERMANENT TOOTH REPLACEMENT. NATURAL FEEL.',
     subtitle: 'Strong. Natural. Lifelong.',
     techStat: '3D Guided Implants',
-    heroImage: '/dental_implant_banner.png',
+    heroImage: '/images/new images/Treatments Theme Images/Dental Implants.png',
     features: [
       { title: '100% Biocompatible', desc: 'Medical-grade titanium fuses with bone' },
       { title: 'Restore Biting Force', desc: 'Chew your favorite foods easily' },
@@ -319,8 +323,8 @@ const treatmentsInfo: Record<string, {
       { title: 'Experienced Implantologist', desc: 'Specialist care' },
       { title: 'High Success Rate', desc: '98%+ success rate' }
     ],
-    beforeXray: { before: '/images/cases/implants_before.png', after: '/images/cases/implants_after.png' },
-    beforeSmile: { before: '/images/cases/implants_smile_before.png', after: '/images/cases/implants_smile_after.png' },
+    beforeAfterImage: '/images/before and after/dental_implant_before_after.png',
+    costImage: '/images/new images/Treatments Theme Images/Dental Implants.png',
     testimonialText: 'I replaced my missing front tooth with an implant at Dental World. The new tooth looks and feels exactly like my natural teeth!',
     testimonialAuthor: 'Sunitha Rao, Bachupally',
     faqs: [
@@ -333,9 +337,9 @@ const treatmentsInfo: Record<string, {
     tagline: 'SMILE ALIGNMENT. PERFECT BITE.',
     subtitle: 'Aligned. Healthy. Confident.',
     techStat: 'Orthodontic Specialist Care',
-    heroImage: '/braces_banner.png',
+    heroImage: '/images/braces/braces_treatment_hero.png',
     features: [
-      { title: 'Perfect Alignment', desc: 'Corrects crooked or crowded teeth' },
+      { title: 'Perfect Alignment', desc: 'Crooked / crowded teeth correction' },
       { title: 'Bite Correction', desc: 'Resolves overbites, underbites, & crossbites' },
       { title: 'Improve Oral Hygiene', desc: 'Straight teeth are easier to clean' },
       { title: 'Clear Options Available', desc: 'Ceramic brackets are virtually invisible' },
@@ -388,21 +392,49 @@ const treatmentsInfo: Record<string, {
       { title: 'Comfort-First Materials', desc: 'Minimal tissue irritation' },
       { title: 'Complete Retainer Guidance', desc: 'Locks in your perfect smile' }
     ],
-    beforeXray: { before: '/images/cases/braces_before.png', after: '/images/cases/braces_after.png' },
-    beforeSmile: { before: '/images/cases/braces_smile_before.png', after: '/images/cases/braces_smile_after.png' },
+    beforeAfterImage: '/images/before and after/Dental Braces before and after.jpeg',
+    costImage: '/images/braces/icons (3).png',
     testimonialText: 'My teeth are perfectly aligned now! The team made the braces journey so easy and comfortable.',
     testimonialAuthor: 'Rahul M., Pragathi Nagar',
     faqs: [
       { question: 'Do braces hurt?', answer: 'You may feel some soreness or pressure for a few days after brackets are first placed or adjusted, which is temporary and easily managed.' },
       { question: 'How long do I need to wear braces?', answer: 'On average, braces are worn for 12 to 24 months, depending on how much alignment is needed.' },
       { question: 'Can adults get orthodontic braces?', answer: 'Yes! Orthodontic treatment is highly effective at any age. We offer clear ceramic braces that are perfect for adults.' }
+    ],
+    footerImageBackground: '/images/braces/Footer braces.jpeg',
+    detailedGallery: [
+      {
+        title: 'Modern Ceramic Brackets',
+        image: '/images/braces/Close-up_smiling_mouth_showing_modern_202606212033.jpeg',
+        desc: 'Tooth-colored, ultra-aesthetic brackets that are highly discreet and resistant to staining.'
+      },
+      {
+        title: 'Traditional Metal Braces',
+        image: '/images/braces/Hyper-realistic_close-up_of_human_teeth_202606212034.jpeg',
+        desc: 'High-grade stainless steel brackets offering maximum durability, control, and reliable alignment.'
+      },
+      {
+        title: 'Invisalign Clear Aligners',
+        image: '/images/braces/Premium_dental_aligner_case_opened_202606212033.jpeg',
+        desc: 'Custom-made removable clear trays designed for comfortable, near-invisible alignment.'
+      },
+      {
+        title: 'Orthodontic Attachment Systems',
+        image: '/images/braces/Set_of_six_premium_orthodontic_202606212033.jpeg',
+        desc: 'Advanced self-ligating clips and custom attachments designed for accelerated tooth movement.'
+      },
+      {
+        title: 'Smart Alignment Technology',
+        image: '/images/braces/icons (3).png',
+        desc: 'Interactive mechanical mapping used to design precise force vectors and custom alignment steps.'
+      }
     ]
   },
   'invisalign-treatment': {
     tagline: 'DISCREET ALIGNMENT. INVISIBLE BRACES.',
     subtitle: 'Clear. Removable. Comfortable.',
     techStat: 'Invisalign Certified Provider',
-    heroImage: '/invisalign_banner.png',
+    heroImage: '/images/new images/Treatments Theme Images/Clear Aligners.png',
     features: [
       { title: 'Virtually Invisible', desc: 'Clear plastic aligners are unnoticeable' },
       { title: '100% Removable', desc: 'Take them out to eat, brush, and floss' },
@@ -457,8 +489,8 @@ const treatmentsInfo: Record<string, {
       { title: 'Fewer Dental Office Visits', desc: 'Fits your busy schedule' },
       { title: 'Predictable Outcomes', desc: 'See your final smile first' }
     ],
-    beforeXray: { before: '/images/cases/invisalign_before.png', after: '/images/cases/invisalign_after.png' },
-    beforeSmile: { before: '/images/cases/invisalign_smile_before.png', after: '/images/cases/invisalign_smile_after.png' },
+    beforeAfterImage: '/images/before and after/Invisalign Before-After.png',
+    costImage: '/images/new images/Treatments Theme Images/Clear Aligners.png',
     testimonialText: 'Clear aligners were so comfortable and virtually invisible. Nobody even knew I was undergoing orthodontic treatment!',
     testimonialAuthor: 'Meghana P., Pragathi Nagar',
     faqs: [
@@ -471,7 +503,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'SMILE TRANSFORMATIONS. BRAND NEW CONFIDENCE.',
     subtitle: 'Custom. Radiant. Beautiful.',
     techStat: 'Digital Smile Design',
-    heroImage: '/smile_banner.png',
+    heroImage: '/images/new images/Treatments Theme Images/Smile Designing.png',
     features: [
       { title: 'Personalized Makeover', desc: 'Designed to fit your unique facial features' },
       { title: 'Correct Multi-Flaws', desc: 'Fixes gaps, chips, stains, and crooked teeth' },
@@ -526,8 +558,8 @@ const treatmentsInfo: Record<string, {
       { title: 'Minimal Tooth Preparation', desc: 'Preserves natural enamel' },
       { title: 'High Success Rate', desc: '100% patient satisfaction' }
     ],
-    beforeXray: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_smile_before.png', after: '/images/cases/smile_design_smile_after.png' },
+    beforeAfterImage: '/images/before and after/Smile Designing before and after.jpeg',
+    costImage: '/images/new images/Treatments Theme Images/Smile Designing.png',
     testimonialText: 'I can\'t stop smiling! The veneers look incredibly natural and have given me so much confidence.',
     testimonialAuthor: 'Karan D., Bachupally',
     faqs: [
@@ -540,7 +572,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'GENTLE CARE. HAPPY KIDS.',
     subtitle: 'Fun. Painless. Safe.',
     techStat: 'Pediatric Dental Specialist',
-    heroImage: '/pediatric_banner.png',
+    heroImage: '/images/pediatric/Pediatric Treatment Hero.png',
     features: [
       { title: 'Child-Friendly Clinic', desc: 'A fun, welcoming environment' },
       { title: 'Painless Treatments', desc: 'Specialized techniques for child comfort' },
@@ -595,21 +627,144 @@ const treatmentsInfo: Record<string, {
       { title: 'Gentle Painless Numbing', desc: 'Totally comfortable care' },
       { title: 'Early Orthodontic Checks', desc: 'Monitors jaw alignment' }
     ],
-    beforeXray: { before: '/images/cases/pediatric_before.png', after: '/images/cases/pediatric_after.png' },
-    beforeSmile: { before: '/images/cases/pediatric_smile_before.png', after: '/images/cases/pediatric_smile_after.png' },
+    beforeAfterImage: '/images/before and after/pediatric_before_after.png',
+    costImage: '/images/pediatric/cHILD EMERGENCY ICON.jpeg',
     testimonialText: 'The pediatric dentist was so patient and gentle. My son actually looks forward to going to the dentist now!',
     testimonialAuthor: 'Priya V. (Mother of Aarav), Pragathi Nagar',
     faqs: [
       { question: 'When should my child first visit the dentist?', answer: 'The first dental visit should happen when their first tooth erupts, or by their first birthday.' },
       { question: 'Why are primary (baby) teeth so important?', answer: 'Baby teeth are crucial for proper chewing, learning to speak clearly, and saving space for permanent adult teeth.' },
       { question: 'How can I prevent cavities in my child?', answer: 'Maintain twice-daily brushing, limit sugary snacks, and bring them for regular 6-month checks for sealants and fluoride.' }
+    ],
+    bannerBelowHero: '/images/pediatric/Pediatric Treatment Below hero.png',
+    visualProcedures: [
+      {
+        title: 'Emergency Dental Care',
+        image: '/images/pediatric/cHILD EMERGENCY ICON.jpeg',
+        desc: 'Immediate clinical response for toothache, accidents, or knocked-out baby teeth.',
+        category: 'Advanced Care & Screenings'
+      },
+      {
+        title: 'Swollen Gums Evaluation',
+        image: '/images/pediatric/Swollen Gums.jpeg',
+        desc: 'Careful assessment of gum inflammation, teething discomfort, and pediatric gingivitis.',
+        category: 'Advanced Care & Screenings'
+      },
+      {
+        title: 'Friendly Checkups',
+        image: '/images/pediatric/ChatGPT Image Jun 22, 2026, 02_44_24 AM.png',
+        desc: 'Building comfortable and happy clinic associations for your little ones early.',
+        category: 'Clinic Experience & Rewards'
+      },
+      {
+        title: 'First Dental Visit',
+        image: '/images/pediatric/ChatGPT Image Jun 22, 2026, 02_44_31 AM.png',
+        desc: 'Gently introducing kids to the dental chair, instruments, and team members.',
+        category: 'Clinic Experience & Rewards'
+      },
+      {
+        title: 'Healthy Happy Kids\' Smiles',
+        image: '/images/pediatric/ChatGPT Image Jun 22, 2026, 02_50_26 AM.png',
+        desc: 'Proactive oral health routines that preserve healthy smiles into adulthood.',
+        category: 'Clinic Experience & Rewards'
+      },
+      {
+        title: 'Gentle Teeth Cleaning',
+        image: '/images/pediatric/ChatGPT Image Jun 22, 2026, 02_50_34 AM.png',
+        desc: 'Plaque and stain removal using gentle, child-sized polishing cups.',
+        category: 'Clinic Experience & Rewards'
+      },
+      {
+        title: 'Fun Brushing Education',
+        image: '/images/pediatric/ChatGPT Image Jun 22, 2026, 03_03_39 AM.png',
+        desc: 'Teaching correct brushing and flossing routines through interactive visual play.',
+        category: 'Clinic Experience & Rewards'
+      },
+      {
+        title: 'Sticker & Gift Rewards',
+        image: '/images/pediatric/Individual_dental_icon_for_children__202606220313 (3).jpeg',
+        desc: 'Positive reinforcement rewards after every successful session to make kids happy.',
+        category: 'Clinic Experience & Rewards'
+      },
+      {
+        title: 'Brushing Guidance',
+        image: '/images/pediatric/High-resolution_individual_dental_infographic_icon_202606220242.jpeg',
+        desc: 'Twice daily brushing technique instructions tailored for growing children.',
+        category: 'Preventive Enamel Shield'
+      },
+      {
+        title: 'Professional Fluoride Shield',
+        image: '/images/pediatric/High-resolution_individual_dental_infographic_icon_202606220242 (1).jpeg',
+        desc: 'Enamel-strengthening mineral varnish application to resist decay.',
+        category: 'Preventive Enamel Shield'
+      },
+      {
+        title: 'Healthy Nutrition Habits',
+        image: '/images/pediatric/High-resolution_individual_dental_infographic_icon_202606220242 (2).jpeg',
+        desc: 'Guidance on choosing tooth-friendly snacks and reducing sticky sugar exposure.',
+        category: 'Preventive Enamel Shield'
+      },
+      {
+        title: 'Pit & Fissure Sealants',
+        image: '/images/pediatric/High-resolution_individual_dental_infographic_icon_202606220242 (3).jpeg',
+        desc: 'Sealing deep grooves on back molars to prevent food packing and bacteria build-up.',
+        category: 'Preventive Enamel Shield'
+      },
+      {
+        title: 'Growth & Eruption Monitoring',
+        image: '/images/pediatric/High-resolution_individual_dental_infographic_icon_202606220243.jpeg',
+        desc: 'Tracking dental development, baby tooth shedding, and adult tooth eruption cycles.',
+        category: 'Preventive Enamel Shield'
+      },
+      {
+        title: 'Early Flossing Routines',
+        image: '/images/pediatric/High-resolution_individual_dental_infographic_icon_202606220256.jpeg',
+        desc: 'Cleaning tight spaces between teeth to stop interdental cavities from forming.',
+        category: 'Preventive Enamel Shield'
+      },
+      {
+        title: 'Early Cavity Detection',
+        image: '/images/pediatric/High-resolution_individual_dental_infographic_icon_202606220256 (1).jpeg',
+        desc: 'High magnification screening of decay spots to allow micro-dentistry interventions.',
+        category: 'Advanced Care & Screenings'
+      },
+      {
+        title: 'Early Orthodontic Screenings',
+        image: '/images/pediatric/High-resolution_individual_dental_infographic_icon_202606220256 (2).jpeg',
+        desc: 'Early jaw alignment screening to identify needs for interceptive growth appliances.',
+        category: 'Advanced Care & Screenings'
+      },
+      {
+        title: 'Fear-Free Dental Environment',
+        image: '/images/pediatric/High-resolution_individual_dental_infographic_icon_202606220256 (3).jpeg',
+        desc: 'Playful consultation spaces designed to reduce dental anxiety and phobias.',
+        category: 'Advanced Care & Screenings'
+      },
+      {
+        title: 'Primary Tooth Protection',
+        image: '/images/pediatric/High-resolution_individual_dental_infographic_icon_202606220257.jpeg',
+        desc: 'Preserving primary baby teeth as guide paths for underlying adult teeth.',
+        category: 'Advanced Care & Screenings'
+      },
+      {
+        title: 'Routine Screenings',
+        image: '/images/pediatric/High-resolution_individual_dental_infographic_icon__202606220257.jpeg',
+        desc: 'Preventive checkups every 6 months to ensure complete dental wellness.',
+        category: 'Advanced Care & Screenings'
+      },
+      {
+        title: 'Tell-Show-Do Method',
+        image: '/images/pediatric/Individual_dental_icon_for_children__202606220313 (1).jpeg',
+        desc: 'Playfully explaining and demonstrating tools before performing any procedure.',
+        category: 'Advanced Care & Screenings'
+      }
     ]
   },
   'full-mouth-rehabilitation': {
     tagline: 'COMPLETE RESTORATION. LIFE CHANGING CARE.',
     subtitle: 'Functional. Aesthetic. Complete.',
     techStat: 'Full-Arch Rehabilitation Specialist',
-    heroImage: '/full_banner.png',
+    heroImage: '/images/new images/Treatments Theme Images/Hybrid-Full Mouth Denture.png',
     features: [
       { title: 'Complete Smile Restoration', desc: 'Rebuilds all upper and lower teeth' },
       { title: 'Correct Bite Alignment', desc: 'Relieves chronic jaw and TMJ strain' },
@@ -664,8 +819,8 @@ const treatmentsInfo: Record<string, {
       { title: 'Phased Gentle Treatment', desc: 'Allows complete comfort & healing' },
       { title: 'Lifetime Smile Support', desc: 'Peace of mind warranty' }
     ],
-    beforeXray: { before: '/images/cases/fmr_before.png', after: '/images/cases/fmr_after.png' },
-    beforeSmile: { before: '/images/cases/fmr_smile_before.png', after: '/images/cases/fmr_smile_after.png' },
+    beforeAfterImage: '/images/before and after/Dentures before and after.jpeg',
+    costImage: '/images/new images/Treatments Theme Images/Hybrid-Full Mouth Denture.png',
     testimonialText: 'After years of suffering, I can finally eat normally and smile with confidence again. The team changed my life.',
     testimonialAuthor: 'Rajendra Reddy, Bachupally',
     faqs: [
@@ -678,7 +833,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'INSTANT SMILE BRIGHTENING. SHINE BRIGHT.',
     subtitle: 'Bright. Fast. Painless.',
     techStat: 'Advanced Laser Whitening',
-    heroImage: '/images/treatments/whitening_hero.png',
+    heroImage: '/images/new images/Treatments Theme Images/Teeth Whitening.png',
     features: [
       { title: 'Up to 8 Shades Brighter', desc: 'Instant results in just one sitting' },
       { title: 'Safe for Enamel', desc: 'Does not damage tooth structure' },
@@ -733,8 +888,8 @@ const treatmentsInfo: Record<string, {
       { title: 'Certified Cosmetic Dentists', desc: 'Expert supervision' },
       { title: 'Sensitivity Relief Gel', desc: 'Painless post-treatment care' }
     ],
-    beforeXray: { before: '/images/cases/whitening_xray_before.png', after: '/images/cases/whitening_xray_after.png' },
-    beforeSmile: { before: '/images/cases/whitening_smile_before.png', after: '/images/cases/whitening_smile_after.png' },
+    beforeAfterImage: '/images/before and after/Teeth Whitening before after.jpeg',
+    costImage: '/images/new images/Treatments Theme Images/Teeth Whitening.png',
     testimonialText: 'My teeth are so much brighter now! The Zoom whitening session took less than an hour and was completely painless.',
     testimonialAuthor: 'Karthik, Pragathi Nagar',
     faqs: [
@@ -747,7 +902,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'CLEAN TEETH. HEALTHY GUMS.',
     subtitle: 'Fresh. Bright. Disease-Free.',
     techStat: 'Ultrasonic Scalers & Polishing',
-    heroImage: '/images/new images/Teeth Scaling_Cleaning.jpeg',
+    heroImage: '/images/new images/Treatments Theme Images/Teeth Scaling-cleaning.png',
     features: [
       { title: 'Plaque Removal', desc: 'Removes soft bacterial plaque' },
       { title: 'Calculus Cleansing', desc: 'Scales off hard tartar deposits' },
@@ -793,8 +948,8 @@ const treatmentsInfo: Record<string, {
       { title: 'Expert Periodontists', desc: 'Specialized gum evaluation' },
       { title: 'Comfortable Setting', desc: 'Minimal discomfort or sensitivity' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeAfterImage: '/images/before and after/Teeth Scaling_Cleaning before after.jpeg',
+    costImage: '/images/new images/Treatments Theme Images/Teeth Scaling-cleaning.png',
     testimonialText: 'My teeth feel incredibly clean and my bleeding gum issue resolved completely in a single sitting.',
     testimonialAuthor: 'Suresh P., Pragathi Nagar',
     faqs: [
@@ -806,7 +961,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'PAINLESS EXTRACTION. JAW RELIEF.',
     subtitle: 'Gentle. Fast. Safe.',
     techStat: 'Oral Surgery Specialist',
-    heroImage: '/images/new images/Wisdom tooth 1.jpeg',
+    heroImage: '/images/new images/Treatments Theme Images/Wisdom tooth Extraction.png',
     features: [
       { title: 'Painless Procedure', desc: 'Effective local anesthesia' },
       { title: 'Prevent Crowding', desc: 'Stops teeth from shifting' },
@@ -850,8 +1005,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Advanced Anaesthetic Solutions', desc: 'Completely painless' },
       { title: 'Sterile Operating Environment', desc: 'Zero infection risk' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    costImage: '/images/new images/Treatments Theme Images/Wisdom tooth Extraction.png',
     testimonialText: 'The extraction of my impacted tooth took only 20 minutes and I had very minimal post-op swelling.',
     testimonialAuthor: 'Naveen K., Pragathi Nagar',
     faqs: [
@@ -863,10 +1017,10 @@ const treatmentsInfo: Record<string, {
     tagline: 'STOP GUM BLEEDING. SAVE YOUR BONES.',
     subtitle: 'Laser Flap. Safe Root Planing.',
     techStat: 'Laser Periodontal Care',
-    heroImage: '/images/new images/Flap Surgery.jpeg',
+    heroImage: '/images/gum diseases/Gum disease hero 1.png',
     features: [
       { title: 'Bleeding Cessation', desc: 'Stops bleeding gums immediately' },
-      { title: 'Pocket Reduction', desc: 'Tops deep bacterial pockets' },
+      { title: 'Pocket Reduction', desc: 'Treats deep bacterial pockets' },
       { title: 'Secure Loose Teeth', desc: 'Supports bone reattachment' },
       { title: 'Laser Disinfection', desc: 'Sterilizes deep root areas' }
     ],
@@ -908,20 +1062,58 @@ const treatmentsInfo: Record<string, {
       { title: 'Biolase Dental Laser', desc: 'Highly sterile treatment' },
       { title: 'High-magnification loupes', desc: 'Precise surgical execution' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeAfterImage: '/images/before and after/Bleeding Gums-Flap Surgery Laser before and after.jpeg',
     testimonialText: 'My gums stopped bleeding completely and my teeth feel solid now after my flap surgery.',
     testimonialAuthor: 'Venkatesh M., Pragathi Nagar',
     faqs: [
       { question: 'Is flap surgery painful?', answer: 'No. Local anesthesia is used. You will have mild soreness for 3-5 days after the surgery, easily controlled by medication.' },
       { question: 'Do gums grow back after recession?', answer: 'Gums do not grow back naturally, but gum graft surgeries or laser stimulation can help cover exposed roots.' }
+    ],
+    bannerBelowHero: '/images/gum diseases/Gum disease hero 2.png',
+    costImage: '/images/gum diseases/Dental_icon_maintenance_aftercare_202606211648.jpeg',
+    visualProcedures: [
+      {
+        title: 'Gum Disease Diagnosis Infographic',
+        image: '/images/gum diseases/Gum_disease_diagnosis_infographic_202606211648.jpeg',
+        desc: 'Infographic showing the progressive stages of gum disease from healthy tissue to gingivitis and advanced periodontitis.'
+      },
+      {
+        title: 'Ultrasonic Scaling Process',
+        image: '/images/gum diseases/Dental_scaler_removing_tartar_fr…_202606211648.jpeg',
+        desc: 'Gently dislodging hard tartar deposits and plaque build-up from above and below the gumline.'
+      },
+      {
+        title: 'Scaling & Root Planing',
+        image: '/images/braces/Scaling & Root Planning.png',
+        desc: 'Deep clinical cleaning to smooth out infected tooth root surfaces so gums can reattach.'
+      },
+      {
+        title: 'Laser Gum Sterilization',
+        image: '/images/gum diseases/Laser_gum_treatment_infographic_202606211648.jpeg',
+        desc: 'FDA-approved dental lasers are used to sterilize infected gum pockets and eliminate bacteria.'
+      },
+      {
+        title: 'Gum Flap Surgery Illustration',
+        image: '/images/gum diseases/Tooth_with_gums_flap_surgery_202606211648.jpeg',
+        desc: 'Accessing deep tooth root surfaces to scale off stubborn tartar deposits and repair bone structures.'
+      },
+      {
+        title: 'Gum Grafting & Regeneration',
+        image: '/images/gum diseases/Gum_grafting_and_regeneration_icon_202606211648.jpeg',
+        desc: 'Reconstructing receded gum margins and promoting soft-tissue regeneration.'
+      },
+      {
+        title: 'Periodontal Maintenance Care',
+        image: '/images/gum diseases/Dental_icon_maintenance_aftercare_202606211648.jpeg',
+        desc: 'Regular clinical cleanings and gum assessments to maintain results after active treatment.'
+      }
     ]
   },
   'tooth-decay-fillings': {
     tagline: 'PREVENT CAVITIES. RESTORE STRENGTH.',
     subtitle: 'Tooth-Colored. Mercury-Free. Invisible.',
     techStat: 'Composite Restorations',
-    heroImage: '/images/new images/Tooth Filling.png',
+    heroImage: '/images/new images/Treatments Theme Images/Tooth Decay and Fillings.png',
     features: [
       { title: 'Natural Shade Match', desc: 'Blends with natural teeth' },
       { title: 'Mercury-Free Safety', desc: 'Safe composite resins' },
@@ -967,8 +1159,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Japanese Dental Composites', desc: 'Highest wear-resistance' },
       { title: 'Painless Quick Prep', desc: 'Done in under 20 minutes' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    costImage: '/images/new images/Treatments Theme Images/Tooth Decay and Fillings.png',
     testimonialText: 'The filling is completely invisible. I cannot even tell which tooth had the cavity!',
     testimonialAuthor: 'Swathi T., Pragathi Nagar',
     faqs: [
@@ -980,7 +1171,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'RESTORE FULL CHEWING. NO SLIPPING.',
     subtitle: 'Fixed Implant Dentures. BPS Acrylic.',
     techStat: 'All-on-4 Implant Prosthetics',
-    heroImage: '/images/new images/Dentures 1.jpeg',
+    heroImage: '/images/new images/Treatments Theme Images/Hybrid-Full Mouth Denture.png',
     features: [
       { title: 'Secure Implant Fit', desc: 'Zero slipping or falling out' },
       { title: 'Youthful Smile Restored', desc: 'Fills facial hollows' },
@@ -1026,8 +1217,8 @@ const treatmentsInfo: Record<string, {
       { title: 'Implantologist Team', desc: 'Expert surgical placement' },
       { title: 'Custom Facial Contouring', desc: 'Restores youthfulness' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeAfterImage: '/images/before and after/Dentures before and after.jpeg',
+    costImage: '/images/new images/Treatments Theme Images/Hybrid-Full Mouth Denture.png',
     testimonialText: 'I can eat nuts and apples again without worrying about my teeth moving. Truly life changing!',
     testimonialAuthor: 'Ramarao Y., Pragathi Nagar',
     faqs: [
@@ -1039,7 +1230,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'FRESH BREATH. MORE CONFIDENCE.',
     subtitle: 'Bacteria elimination. Salivary Care.',
     techStat: 'Oral Microbiome Cleanse',
-    heroImage: '/images/new images/Bad Breath 1.jpeg',
+    heroImage: '/images/new images/Treatments Theme Images/Bad Breath.png',
     features: [
       { title: 'Deep Gum Sanitization', desc: 'Removes deep bacteria pockets' },
       { title: 'Salivary Flow Check', desc: 'Addresses dry mouth issues' },
@@ -1083,8 +1274,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Periodontist Evaluation', desc: 'Check for hidden gum pockets' },
       { title: 'Custom Home-care Regimen', desc: 'Keeps breath fresh daily' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    costImage: '/images/new images/Treatments Theme Images/Bad Breath.png',
     testimonialText: 'The treatment solved my chronic bad breath issue. Brushing and mouthwash never did the trick.',
     testimonialAuthor: 'Prasad G., Pragathi Nagar',
     faqs: [
@@ -1096,7 +1286,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'REBUILD SHAPE. FILL THE GAPS.',
     subtitle: 'High Strength Zirconia. Premium E-max.',
     techStat: 'CAD/CAM Digital Milling',
-    heroImage: '/images/new images/Dental Bridges.jpeg',
+    heroImage: '/images/new images/Treatments Theme Images/Dental Crown & Bridge.png',
     features: [
       { title: 'Tooth Protection', desc: 'Strengthens weak or cracked teeth' },
       { title: 'Restore Chew Function', desc: 'Replaces missing teeth' },
@@ -1142,8 +1332,8 @@ const treatmentsInfo: Record<string, {
       { title: 'High Aesthetics Ceramics', desc: 'Perfect color blending' },
       { title: 'Long-term Warranties', desc: 'Up to 15 years on Zirconia' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeAfterImage: '/images/before and after/Dental Crown  before and after.jpeg',
+    costImage: '/images/new images/Treatments Theme Images/Dental Crown & Bridge.png',
     testimonialText: 'The crown matches my adjacent teeth so perfectly that no one can tell it is artificial.',
     testimonialAuthor: 'Madhavi L., Pragathi Nagar',
     faqs: [
@@ -1155,7 +1345,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'LASER REVISION. PAINLESS RELEASE.',
     subtitle: 'Suture-free. Bloodless. Safe.',
     techStat: 'WaterLase Soft-Tissue Laser',
-    heroImage: '/images/new images/Freenectomy.jpeg',
+    heroImage: '/images/new images/Treatments Theme Images/Frenectomy.png',
     features: [
       { title: 'Painless Laser Cut', desc: 'No surgical scalpels used' },
       { title: 'Suture-free Healing', desc: 'No stitches to remove' },
@@ -1199,8 +1389,8 @@ const treatmentsInfo: Record<string, {
       { title: 'Pediatric Dental Experts', desc: 'Gentle handling of kids' },
       { title: 'Instant Mobilty', desc: 'Immediate movement results' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeAfterImage: '/images/before and after/Freenectomy before and after.jpeg',
+    costImage: '/images/new images/Treatments Theme Images/Frenectomy.png',
     testimonialText: 'My son had tongue-tie and couldn\'t speak clearly. The laser treatment took 5 minutes and his speech improved immediately!',
     testimonialAuthor: 'Sujatha (Mother of Hemanth), Pragathi Nagar',
     faqs: [
@@ -1212,7 +1402,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'BEAUTIFY YOUR SMILE. PERFECT SHAPES.',
     subtitle: 'Composite Veneers. Gum Depigmentation. Contouring.',
     techStat: 'Aesthetic Dental Artistry',
-    heroImage: '/images/new images/Smile Designing 2.jpeg',
+    heroImage: '/images/new images/Treatments Theme Images/Cosmetic Dentistry.png',
     features: [
       { title: 'Close Front Gaps', desc: 'Painless diastema closure' },
       { title: 'Reshape Uneven Teeth', desc: 'Cosmetic contouring & bonding' },
@@ -1257,8 +1447,8 @@ const treatmentsInfo: Record<string, {
       { title: 'Advanced Gum Lasers', desc: 'Quick pink gum whitening' },
       { title: 'Cosmetic Dental Masters', desc: 'Artistic smile modifications' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeAfterImage: '/images/before and after/Smile Designing before and after.jpeg',
+    costImage: '/images/new images/Treatments Theme Images/Cosmetic Dentistry.png',
     testimonialText: 'The gap between my front teeth is gone! The composite bonding is absolutely invisible.',
     testimonialAuthor: 'Ria S., Pragathi Nagar',
     faqs: [
@@ -1270,7 +1460,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'NO DRILL. NO SCALPEL. PAINLESS CLINIC.',
     subtitle: 'Minimally Invasive. Bloodless Healing.',
     techStat: 'FDA-Approved Hard & Soft Tissue Lasers',
-    heroImage: '/images/new images/Bleeding Gum - Laser Surgery.png',
+    heroImage: '/images/new images/Treatments Theme Images/Laser Dentistry.png',
     features: [
       { title: 'No Drilling Vibration', desc: 'More comfortable cavity prep' },
       { title: 'Reduced Needle Needs', desc: 'Lesser local anesthesia needed' },
@@ -1314,8 +1504,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Certified Laser Specialists', desc: 'Precision wave safety' },
       { title: 'Ultra-Comfortable Rooms', desc: 'Relaxing environment' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    costImage: '/images/new images/Treatments Theme Images/Laser Dentistry.png',
     testimonialText: 'I felt no vibration and heard no drill sound! Laser fillings are a game changer.',
     testimonialAuthor: 'Abhinav D., Pragathi Nagar',
     faqs: [
@@ -1327,7 +1516,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'CORRECT SKELETAL BITE. FACIAL BALANCE.',
     subtitle: 'Orthognathic Surgery. 3D Surgical Guide.',
     techStat: 'Maxillofacial Skeletal Alignment',
-    heroImage: '/images/new images/Genioplasty.jpeg',
+    heroImage: '/images/new images/Treatments Theme Images/Jaw Surgery.png',
     features: [
       { title: 'Align Jaw Asymmetry', desc: 'Creates balanced facial lines' },
       { title: 'Resolve Severe Bite Issues', desc: 'Corrects underbites and overbites' },
@@ -1372,8 +1561,8 @@ const treatmentsInfo: Record<string, {
       { title: '3D Virtual Surgical Planning', desc: 'Simulate results before surgery' },
       { title: 'Integrated Ortho-Surgical Care', desc: 'Seamless coordination' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeAfterImage: '/images/before and after/Genioplasty before and after.jpeg',
+    costImage: '/images/new images/Treatments Theme Images/Jaw Surgery.png',
     testimonialText: 'The surgery completely aligned my jaw profile and cured my chronic TMJ joint headaches.',
     testimonialAuthor: 'Deepak R., Pragathi Nagar',
     faqs: [
@@ -1385,7 +1574,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'REFINE CHIN PROFILE. RESTORE SYMMETRY.',
     subtitle: 'Surgical Chin Correction. No External Scars.',
     techStat: 'Precision Chin Osteotomy',
-    heroImage: '/images/new images/Genioplasty.jpeg',
+    heroImage: '/images/new images/Treatments Theme Images/Genoplasty.png',
     features: [
       { title: 'Correct Weak Chin', desc: 'Advancement to define jawline' },
       { title: 'Reduce Protruding Chin', desc: 'Recession to soften profile' },
@@ -1429,8 +1618,8 @@ const treatmentsInfo: Record<string, {
       { title: 'Maxillofacial Elite Specialists', desc: 'Expert bone carvers' },
       { title: 'Complete Post-op Comfort Care', desc: 'Smooth recovery guides' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeAfterImage: '/images/before and after/Genioplasty before and after.jpeg',
+    costImage: '/images/new images/Treatments Theme Images/Genoplasty.png',
     testimonialText: 'My profile looks incredibly balanced now. The weak chin was corrected permanently.',
     testimonialAuthor: 'Sanjana P., Pragathi Nagar',
     faqs: [
@@ -1442,7 +1631,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'INSTANT ULCER PAIN RELIEF.',
     subtitle: 'Laser Photobiomodulation. Fast Sore Healing.',
     techStat: 'Low-Level Laser Cauterization',
-    heroImage: '/images/new images/Mouth Ulcer.jpeg',
+    heroImage: '/images/new images/Treatments Theme Images/Mouth Ulcers.png',
     features: [
       { title: 'Instant Pain Block', desc: 'Numbs ulcer nerves in 60 seconds' },
       { title: 'Cuts Healing Time', desc: 'Accelerates sore tissue closure' },
@@ -1486,8 +1675,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Instant Comfort Check', desc: 'Walk out pain-free' },
       { title: 'Ulcer Preventive Evaluation', desc: 'Addresses systemic vitamins' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    costImage: '/images/new images/Treatments Theme Images/Mouth Ulcers.png',
     testimonialText: 'I couldn\'t speak due to a huge ulcer. The laser took 1 minute and the pain vanished completely!',
     testimonialAuthor: 'Divya K., Pragathi Nagar',
     faqs: [
@@ -1499,7 +1687,7 @@ const treatmentsInfo: Record<string, {
     tagline: 'SHIELD YOUR ENAMEL. BLOCK CAVITIES.',
     subtitle: 'Pit & Fissure Sealants. Fluoride Varnish.',
     techStat: 'Proactive Enamel Protection',
-    heroImage: '/images/new images/Teeth Scaling_Cleaning.jpeg',
+    heroImage: '/images/new images/Treatments Theme Images/Preventive Dentistry.png',
     features: [
       { title: 'Fluoride Enamel Shield', desc: 'Re-mineralizes weak enamel spots' },
       { title: 'Pit & Fissure Sealants', desc: 'Coats deep molar grooves' },
@@ -1544,8 +1732,8 @@ const treatmentsInfo: Record<string, {
       { title: 'FDA Fluoride Varnishes', desc: 'Deep enamel re-mineralization' },
       { title: 'Custom Nightguards Milling', desc: 'Ideal jaw joint fits' }
     ],
-    beforeXray: { before: '/images/cases/rct_xray_before.png', after: '/images/cases/rct_xray_after.png' },
-    beforeSmile: { before: '/images/cases/smile_design_before.png', after: '/images/cases/smile_design_after.png' },
+    beforeAfterImage: '/images/before and after/Teeth Scaling_Cleaning before after.jpeg',
+    costImage: '/images/new images/Treatments Theme Images/Preventive Dentistry.png',
     testimonialText: 'My daughter got sealants done for her back teeth. It has kept them cavity-free for years!',
     testimonialAuthor: 'Arjun S. (Father of Ria), Pragathi Nagar',
     faqs: [
@@ -1555,9 +1743,121 @@ const treatmentsInfo: Record<string, {
   }
 };
 
+const doctorDetails: Record<string, {
+  name: string;
+  title: string;
+  experience: string;
+  qualifications: string[];
+  certifications: string[];
+  expertise: string[];
+  description: string;
+  image: string;
+}> = {
+  'root-canal-treatment': {
+    name: 'Dr. Abdul Wahed',
+    title: 'MDS Endodontics',
+    experience: '12+ Years Experience (15,050+ Painless Root Canals)',
+    qualifications: ['BDS', 'MDS Endodontics'],
+    certifications: [
+      'Rotary Endodontics Certification',
+      'Smile Design Certification',
+      'Advanced Microscopic Dentistry Training'
+    ],
+    expertise: ['Single sitting RCT', 'Re-RCT', 'Painless root canal treatment', 'Dental crown restorations'],
+    description: 'Dr. Abdul Wahed is a premier Endodontist with 12+ years of expertise in painless root canal treatment, rotary endodontics, and microscopic dentistry. Specializing in advanced, single-visit root canals, retreatment, and microscopic surgery, he has successfully completed over 15,050+ painless root canals.',
+    image: '/dr.abdul.jpg'
+  },
+  'dental-implants': {
+    name: 'Dr. Anurag',
+    title: 'MDS Prosthodontics & Implantology',
+    experience: '15+ Years Experience',
+    qualifications: ['BDS', 'MDS Prosthodontics & Implantology'],
+    certifications: [
+      'Fellow of International Congress of Oral Implantologists (ICOI)',
+      'Advanced Implant Prosthetics Training',
+      'Professor at Balaji Dental College'
+    ],
+    expertise: ['Single/Multiple Implants', 'All-on-4 / All-on-6 fixed dentures', 'Zirconia & E-max restorations', 'Bone grafting'],
+    description: 'Dr. Anurag is a chief smile designer and professor at Balaji Dental College. With over 15+ years of clinical excellence in complex dental implants, fixed prosthetics, and full-mouth rehabilitations.',
+    image: '/anurag.jpg'
+  },
+  'braces': {
+    name: 'Dr. Nithin Bharat',
+    title: 'MDS Dentofacial Orthodontics',
+    experience: '14+ Years Experience',
+    qualifications: ['BDS', 'MDS Orthodontics & Dentofacial Orthodontics'],
+    certifications: [
+      'Invisalign Gold Certified Provider',
+      'Advanced Self-Ligating Braces Training',
+      'Clear Aligners Specialist'
+    ],
+    expertise: ['Pediatric orthodontics', 'Adult braces', 'Self-ligating braces systems', 'Invisalign & clear aligners'],
+    description: 'Dr. Nithin Bharat is a premier orthodontist and certified Invisalign consultant specializing in correcting complex misalignments, bite corrections, and aesthetic braces for patients of all ages.',
+    image: '/nithin.jpg'
+  },
+  'invisalign-treatment': {
+    name: 'Dr. Nithin Bharat',
+    title: 'MDS Dentofacial Orthodontics',
+    experience: '14+ Years Experience',
+    qualifications: ['BDS', 'MDS Orthodontics & Dentofacial Orthodontics'],
+    certifications: [
+      'Invisalign Gold Certified Provider',
+      'Advanced Self-Ligating Braces Training',
+      'Clear Aligners Specialist'
+    ],
+    expertise: ['Pediatric orthodontics', 'Adult braces', 'Self-ligating braces systems', 'Invisalign & clear aligners'],
+    description: 'Dr. Nithin Bharat is a premier orthodontist and certified Invisalign consultant specializing in correcting complex misalignments, bite corrections, and aesthetic braces for patients of all ages.',
+    image: '/nithin.jpg'
+  }
+};
+
+const defaultDoctorDetails = {
+  name: 'Dr. Sneha',
+  title: 'Founder & Chief Dentist',
+  experience: '15+ Years Experience',
+  qualifications: ['BDS', 'Fellow in Aesthetic Dentistry'],
+  certifications: [
+    'Cosmetic Dentistry Certification',
+    'Advanced General Practice Training'
+  ],
+  expertise: ['Aesthetic Smile Designing', 'General Dentistry', 'Preventive care', 'Crowns & Veneers'],
+  description: 'Dr. Sneha is the founder of Dental World Clinic and has a wealth of experience in providing comprehensive dental care, focusing on patient comfort and advanced treatment modalities.',
+  image: '/sneha.jpg'
+};
+
+const internalLinksMapping: Record<string, { text: string; href: string }[]> = {
+  'root-canal-treatment': [
+    { text: 'Dental crowns treatment', href: '/treatments/dental-crown-bridges' },
+    { text: 'Tooth pain treatment', href: '/treatments/tooth-decay-fillings' },
+    { text: 'Wisdom tooth extraction', href: '/treatments/wisdom-tooth-extraction' },
+    { text: 'Dental fillings', href: '/treatments/tooth-decay-fillings' },
+    { text: 'Cosmetic dentistry', href: '/treatments/cosmetic-dentistry' },
+    { text: 'Smile makeover', href: '/treatments/smile-designing' },
+    { text: 'Emergency dental care', href: '/book-appointment' },
+    { text: 'Painless dentistry', href: '/treatments/laser-dentistry' }
+  ],
+  'dental-implants': [
+    { text: 'Root canal treatment', href: '/treatments/root-canal-treatment' },
+    { text: 'Smile designing', href: '/treatments/smile-designing' },
+    { text: 'Full mouth rehabilitation', href: '/treatments/full-mouth-rehabilitation' },
+    { text: 'Dental crown & bridges', href: '/treatments/dental-crown-bridges' }
+  ]
+};
+
+const defaultInternalLinks = [
+  { text: 'Root canal treatment', href: '/treatments/root-canal-treatment' },
+  { text: 'Dental implants', href: '/treatments/dental-implants' },
+  { text: 'Dental braces', href: '/treatments/braces' },
+  { text: 'Smile designing', href: '/treatments/smile-designing' },
+  { text: 'Cosmetic dentistry', href: '/treatments/cosmetic-dentistry' }
+];
+
 export default function TreatmentPageClient({ slug, displayTitle }: { slug: string, displayTitle: string }) {
   // Grab info. Fallback to Root Canal if it's missing or unmapped
   const info = treatmentsInfo[slug] || treatmentsInfo['root-canal-treatment'];
+  const data = treatmentsData[slug] || treatmentsData['root-canal-treatment'];
+  const doctor = doctorDetails[slug] || defaultDoctorDetails;
+  const internalLinks = internalLinksMapping[slug] || defaultInternalLinks;
 
   // Form State
   const [formData, setFormData] = useState({
@@ -1569,6 +1869,8 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
+  const [activeCategory, setActiveCategory] = useState("All Guides");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -1623,7 +1925,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
               </p>
 
               <p className="text-sm text-slate-600 leading-relaxed font-medium max-w-lg">
-                Advanced {displayTitle.toLowerCase()} using digital imaging, precision tools and pain-free anesthesia.
+                {displayTitle.toLowerCase().startsWith('advanced') ? displayTitle : `Advanced ${displayTitle.toLowerCase()}`} using digital imaging, precision tools and pain-free anesthesia.
               </p>
 
               <div className="flex flex-wrap items-center gap-2.5 pt-1">
@@ -1832,6 +2134,23 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
         </div>
       </section>
 
+      {/* SECONDARY WELCOME BANNER */}
+      {info.bannerBelowHero && (
+        <section className="py-8 bg-white">
+          <div className="container mx-auto px-4 lg:px-8 max-w-[1600px]">
+            <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200 bg-slate-50 max-w-5xl mx-auto aspect-[16/9] md:aspect-[21/6]">
+              <Image
+                src={info.bannerBelowHero}
+                alt={`${displayTitle} Special Care`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 80vw"
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* SYMPTOMS SECTION */}
       <section className="py-12 bg-slate-50/50">
         <div className="container mx-auto px-4 lg:px-8 max-w-[1600px] text-center">
@@ -1924,6 +2243,122 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
         </div>
       </section>
 
+      {/* VISUAL PROCEDURES / CLINICAL GUIDE SECTION */}
+      {info.visualProcedures && (
+        <section className="py-16 bg-slate-50/50 border-t border-slate-200/40">
+          <div className="container mx-auto px-4 lg:px-8 max-w-[1600px] text-center">
+            <span className="inline-block text-[#0056D2] text-xs md:text-sm font-black tracking-widest uppercase mb-3">
+              CLINICAL GUIDE
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a1d37] font-heading mb-4">
+              Visual Guide & Clinical Procedures
+            </h2>
+            <p className="text-sm text-slate-500 max-w-2xl mx-auto mb-10 font-medium">
+              {slug === 'pediatric-dentistry'
+                ? 'Explore step-by-step illustrations of our dental care protocols and child-friendly clinic experience.'
+                : 'Explore step-by-step illustrations of our dental care protocols and clinical procedures.'
+              }
+            </p>
+
+            {/* Render Category Tabs if categories exist in visualProcedures (like in pediatric) */}
+            {info.visualProcedures.some(proc => proc.category) && (
+              <div className="flex flex-wrap justify-center gap-2 mb-8 max-w-4xl mx-auto">
+                {["All Guides", "Clinic Experience & Rewards", "Preventive Enamel Shield", "Advanced Care & Screenings"].map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-5 py-2.5 rounded-full text-xs font-black tracking-tight border transition-all duration-300 ${
+                      activeCategory === cat
+                        ? "bg-[#0056D2] text-white border-[#0056D2] shadow-md scale-105"
+                        : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Grid of Procedures */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-[1400px] mx-auto">
+              {info.visualProcedures
+                .filter(proc => activeCategory === "All Guides" || proc.category === activeCategory)
+                .map((proc, idx) => (
+                  <div key={idx} className="bg-white rounded-2xl border border-slate-200/50 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group text-left">
+                    <div className="relative aspect-[4/3] w-full bg-slate-100 overflow-hidden shrink-0">
+                      <Image
+                        src={proc.image}
+                        alt={proc.title}
+                        fill
+                        className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 25vw"
+                      />
+                      {proc.category && (
+                        <span className="absolute top-3 left-3 bg-[#0056D2]/90 text-white font-extrabold text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-md backdrop-blur-sm shadow-sm">
+                          {proc.category}
+                        </span>
+                      )}
+                    </div>
+                    <div className="p-5 flex-grow flex flex-col justify-between">
+                      <div>
+                        <h4 className="font-extrabold text-[#0a1d37] text-sm md:text-base mb-1.5 leading-snug group-hover:text-blue-600 transition-colors">
+                          {proc.title}
+                        </h4>
+                        <p className="text-xs text-slate-500 font-semibold leading-relaxed">
+                          {proc.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* DETAILED MATERIAL/TECH GALLERY SECTION */}
+      {info.detailedGallery && (
+        <section className="py-16 bg-white border-t border-slate-200/40">
+          <div className="container mx-auto px-4 lg:px-8 max-w-[1600px] text-center">
+            <span className="inline-block text-[#0056D2] text-xs md:text-sm font-black tracking-widest uppercase mb-3">
+              TECHNOLOGY & OPTIONS
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a1d37] font-heading mb-4">
+              Orthodontic Treatment Options & Material Tech
+            </h2>
+            <p className="text-sm text-slate-500 max-w-2xl mx-auto mb-10 font-medium">
+              We offer advanced orthodontic choices tailored to your aesthetic preferences and bite correction needs.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {info.detailedGallery.map((item, idx) => (
+                <div key={idx} className="bg-white rounded-2xl border border-slate-200/60 overflow-hidden shadow-sm hover:shadow-xl hover:border-blue-500/20 transition-all duration-300 flex flex-col group text-left">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100 shrink-0">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 30vw"
+                    />
+                  </div>
+                  <div className="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                      <h4 className="font-extrabold text-[#0a1d37] text-base mb-2 group-hover:text-blue-600 transition-colors">
+                        {item.title}
+                      </h4>
+                      <p className="text-xs text-slate-500 font-semibold leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* STEP-BY-STEP PROCESS TIMELINE (Horizontal circles connected by dotted lines) */}
       <section className="py-20 bg-slate-50/60 border-y border-slate-200/50">
         <div className="container mx-auto px-4 lg:px-8 max-w-[1600px] text-center">
@@ -2002,7 +2437,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                 {/* Tooth Cost badge */}
                 <div className="relative w-full aspect-square max-w-[145px] mx-auto my-1 flex items-center justify-center">
                   <Image
-                    src="/images/cases/tooth_cross_section.png"
+                    src={info.costImage || "/images/cases/tooth_cross_section.png"}
                     alt="Tooth cross section diagram"
                     width={140}
                     height={140}
@@ -2108,72 +2543,31 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
       {/* TRANSFORMATIONS AND TESTIMONIAL ROW (Before/After + Testimonial) */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-8 max-w-[1600px]">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          <div className={`grid grid-cols-1 ${
+            info.beforeAfterImage ? 'lg:grid-cols-3' : 'max-w-2xl mx-auto'
+          } gap-8 items-stretch`}>
 
-            {/* Box 1: Before/After Case 1 (X-Ray / Close-up) */}
-            <div className="bg-[#f8faff] rounded-3xl p-6 border border-slate-200/60 flex flex-col justify-between">
-              <h3 className="text-sm font-extrabold text-[#0056D2] uppercase tracking-wider mb-4">
-                X-Ray Before & After
-              </h3>
+            {/* Box 1: Before/After Case Showcase */}
+            {info.beforeAfterImage && (
+              <div className="bg-[#f8faff] rounded-3xl p-6 border border-slate-200/60 flex flex-col justify-between lg:col-span-2">
+                <h3 className="text-sm font-extrabold text-[#0056D2] uppercase tracking-wider mb-4">
+                  Clinical Results (Before & After)
+                </h3>
 
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 flex w-full">
-                {/* Before */}
-                <div className="w-1/2 relative h-full">
-                  <Image
-                    src={info.beforeXray.before}
-                    alt="X-ray Before"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 50vw, 15vw"
+                <div className="relative w-full rounded-2xl overflow-hidden bg-slate-100/50 flex items-center justify-center py-4 border border-slate-200/40 h-full min-h-[300px]">
+                  <img
+                    src={info.beforeAfterImage}
+                    alt="Clinical Results Before and After Showcase"
+                    className="max-h-[400px] object-contain rounded-xl w-full h-auto"
                   />
-                  <span className="absolute bottom-3 left-3 bg-black/60 text-white font-bold text-[10px] uppercase px-2 py-0.5 rounded">Before</span>
-                </div>
-                {/* After */}
-                <div className="w-1/2 relative h-full border-l-2 border-white">
-                  <Image
-                    src={info.beforeXray.after}
-                    alt="X-ray After"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 50vw, 15vw"
-                  />
-                  <span className="absolute bottom-3 right-3 bg-[#0056D2] text-white font-bold text-[10px] uppercase px-2 py-0.5 rounded">After</span>
                 </div>
               </div>
-            </div>
+            )}
 
-            {/* Box 2: Before/After Case 2 (Smile Transformations) */}
-            <div className="bg-[#f8faff] rounded-3xl p-6 border border-slate-200/60 flex flex-col justify-between">
-              <h3 className="text-sm font-extrabold text-[#0056D2] uppercase tracking-wider mb-4">
-                Smile Transformations
-              </h3>
-
-              <div className="flex flex-col gap-2 h-full justify-center">
-                <div className="relative h-20 rounded-xl overflow-hidden bg-slate-250">
-                  <Image
-                    src={info.beforeSmile.before}
-                    alt="Smile Before"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 30vw"
-                  />
-                  <span className="absolute bottom-2 left-2 bg-black/60 text-white font-bold text-[9px] uppercase px-1.5 py-0.5 rounded">Before</span>
-                </div>
-                <div className="relative h-20 rounded-xl overflow-hidden bg-slate-250">
-                  <Image
-                    src={info.beforeSmile.after}
-                    alt="Smile After"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 30vw"
-                  />
-                  <span className="absolute bottom-2 left-2 bg-[#0056D2] text-white font-bold text-[9px] uppercase px-1.5 py-0.5 rounded">After</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Box 3: Testimonial Box */}
-            <div className="bg-[#f8faff] rounded-3xl p-6 border border-slate-200/60 flex flex-col justify-between text-left">
+            {/* Box 2: Testimonial Box */}
+            <div className={`bg-[#f8faff] rounded-3xl p-6 border border-slate-200/60 flex flex-col justify-between text-left ${
+              info.beforeAfterImage ? 'lg:col-span-1' : 'w-full'
+            }`}>
               <div>
                 <h3 className="text-sm font-extrabold text-[#0056D2] uppercase tracking-wider mb-4">
                   What Our Patients Say
@@ -2200,6 +2594,452 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
               <span className="text-xs font-black text-[#0a1d37] block mt-4">— {info.testimonialAuthor}</span>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* CLINICAL SEO & SPECIALIST GUIDE SECTION */}
+      <section className="py-20 bg-white border-t border-slate-200/50">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1200px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {/* Left Column: Extensive Content (8 cols) */}
+            <div className="lg:col-span-8 space-y-10 text-left">
+              {/* Main heading */}
+              <div>
+                <h2 className="text-3xl font-extrabold text-[#0a1d37] font-heading mb-4">
+                  {slug === 'root-canal-treatment' 
+                    ? 'Root Canal Treatment in Hyderabad'
+                    : `${displayTitle} in Hyderabad`}
+                </h2>
+                <div className="text-sm text-slate-650 leading-relaxed font-semibold space-y-4">
+                  {slug === 'root-canal-treatment' ? (
+                    <>
+                      <p>
+                        If you are experiencing severe tooth pain, sensitivity, swelling, or infection, root canal treatment can save your natural tooth and eliminate pain effectively. At Dental World Clinic, we provide painless and advanced root canal treatment in Bachupally using modern rotary endodontics and digital diagnostics.
+                      </p>
+                      <p>
+                        Whether you searched: <strong>what is root canal treatment</strong>, <strong>does root canal treatment hurt</strong>, <strong>how long does root canal treatment take</strong>, or <strong>how much root canal treatment cost</strong>, this complete guide answers everything patients need to know before getting treatment.
+                      </p>
+                    </>
+                  ) : (
+                    <p>
+                      If you are considering {displayTitle.toLowerCase()} in Hyderabad, Dental World Clinic provides advanced, painless, and professional care using modern digital dentistry and sterile protocols near Bachupally, Nizampet, and Pragathi Nagar.
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Section 1: What is it */}
+              <div className="border-l-4 border-[#0056D2] pl-4 space-y-3">
+                <h3 className="text-xl font-extrabold text-[#0a1d37]">
+                  {slug === 'root-canal-treatment' 
+                    ? 'What is Root Canal Treatment?'
+                    : `What is ${displayTitle}?`}
+                </h3>
+                <div className="text-sm text-slate-600 leading-relaxed space-y-3">
+                  {slug === 'root-canal-treatment' ? (
+                    <>
+                      <p>
+                        Root canal treatment is a dental procedure used to remove infected or damaged pulp from inside a tooth. The inner canals are cleaned, disinfected, and sealed to save the natural tooth and prevent extraction.
+                      </p>
+                      <p>
+                        Patients often search: <em>what is root canal treatment</em>, <em>what is root canal treatment of teeth</em>, or <em>what is done in root canal treatment</em>. Root canal treatment helps preserve the tooth structure while eliminating infection and pain.
+                      </p>
+                    </>
+                  ) : (
+                    <p>{info.whatIsText1}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Section 2: What happens (Procedure steps) */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-extrabold text-[#0a1d37]">
+                  {slug === 'root-canal-treatment' 
+                    ? 'What Happens in Root Canal Treatment?'
+                    : `What Happens in ${displayTitle}?`}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {slug === 'root-canal-treatment' ? (
+                    "Many patients ask: what happens in root canal treatment, how is root canal treatment done, or how to do root canal treatment. The procedure generally includes:"
+                  ) : (
+                    `Here is a step-by-step overview of how the ${displayTitle.toLowerCase()} procedure is typically performed:`
+                  )}
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {slug === 'root-canal-treatment' ? (
+                    <>
+                      <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-1">Step 1</span>
+                        <h4 className="font-extrabold text-[#0a1d37] text-sm mb-1">Diagnosis & X-Ray</h4>
+                        <p className="text-xs text-slate-550 leading-relaxed">The dentist evaluates the infected tooth using digital X-rays.</p>
+                      </div>
+                      <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-1">Step 2</span>
+                        <h4 className="font-extrabold text-[#0a1d37] text-sm mb-1">Local Anesthesia</h4>
+                        <p className="text-xs text-slate-550 leading-relaxed">The area is numbed to ensure painless treatment.</p>
+                      </div>
+                      <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-1">Step 3</span>
+                        <h4 className="font-extrabold text-[#0a1d37] text-sm mb-1">Removing Infected Pulp</h4>
+                        <p className="text-xs text-slate-550 leading-relaxed">The infected nerve tissue and bacteria are removed from inside the tooth.</p>
+                      </div>
+                      <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-1">Step 4</span>
+                        <h4 className="font-extrabold text-[#0a1d37] text-sm mb-1">Cleaning & Shaping</h4>
+                        <p className="text-xs text-slate-550 leading-relaxed">The canals are disinfected and shaped using rotary instruments.</p>
+                      </div>
+                      <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-1">Step 5</span>
+                        <h4 className="font-extrabold text-[#0a1d37] text-sm mb-1">Filling the Root Canal</h4>
+                        <p className="text-xs text-slate-550 leading-relaxed">The canals are sealed with a special biocompatible material.</p>
+                      </div>
+                      <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-1">Step 6</span>
+                        <h4 className="font-extrabold text-[#0a1d37] text-sm mb-1">Dental Crown Placement</h4>
+                        <p className="text-xs text-slate-550 leading-relaxed">A crown may be recommended to strengthen and protect the treated tooth.</p>
+                      </div>
+                    </>
+                  ) : (
+                    info.processSteps.map((step, idx) => (
+                      <div key={idx} className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-1">Step {step.step}</span>
+                        <h4 className="font-extrabold text-[#0a1d37] text-sm mb-1">{step.title}</h4>
+                        <p className="text-xs text-slate-550 leading-relaxed">{step.desc || `Important stage in your ${displayTitle.toLowerCase()} process.`}</p>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+
+              {/* Section 3: Does it hurt */}
+              <div className="space-y-3">
+                <h3 className="text-xl font-extrabold text-[#0a1d37]">
+                  {slug === 'root-canal-treatment' 
+                    ? 'Does Root Canal Treatment Hurt?'
+                    : `Does ${displayTitle} Hurt?`}
+                </h3>
+                <div className="text-sm text-slate-600 leading-relaxed">
+                  {slug === 'root-canal-treatment' ? (
+                    <>
+                      <p>
+                        One of the most common questions is: <strong>does root canal treatment hurt</strong>. Modern root canal treatment is generally painless because:
+                      </p>
+                      <ul className="list-disc list-inside space-y-1.5 mt-2.5 pl-2 font-semibold">
+                        <li>Local anesthesia numbs the area completely before we begin</li>
+                        <li>Rotary instruments reduce discomfort and treatment time</li>
+                        <li>Advanced digital diagnostics ensure millimeter precision</li>
+                        <li>Infection-related pain reduces almost immediately post-treatment</li>
+                      </ul>
+                      <p className="mt-2.5">
+                        Most patients compare the procedure to getting a regular dental filling.
+                      </p>
+                    </>
+                  ) : (
+                    <p>
+                      Modern {displayTitle.toLowerCase()} is mostly painless due to advanced local anesthesia and minimally invasive techniques.
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Section 4: Duration / Sittings */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-extrabold text-[#0a1d37]">
+                  {slug === 'root-canal-treatment' 
+                    ? 'How Long Does Root Canal Treatment Take?'
+                    : `How Long Does ${displayTitle} Take?`}
+                </h3>
+                <div className="text-sm text-slate-600 leading-relaxed">
+                  {slug === 'root-canal-treatment' ? (
+                    <>
+                      <p>
+                        Patients frequently ask: <em>how long does root canal treatment take</em> or <em>how many days root canal treatment takes</em>. The duration depends on:
+                      </p>
+                      <ul className="list-disc list-inside space-y-1 mt-2 pl-2 font-semibold">
+                        <li>Severity of pulp infection</li>
+                        <li>Number of canals (molars have more canals than front teeth)</li>
+                        <li>Presence of swelling or abscess needing healing time</li>
+                      </ul>
+                      <p className="mt-3">
+                        <strong>Typical Timeline:</strong>
+                      </p>
+                      <ul className="list-disc list-inside space-y-1 pl-2 font-semibold">
+                        <li>Single sitting RCT: 45–90 minutes</li>
+                        <li>Multiple sitting RCT: 2–3 visits over several days</li>
+                      </ul>
+                    </>
+                  ) : (
+                    <p>{data.duration}</p>
+                  )}
+                </div>
+
+                {slug === 'root-canal-treatment' && (
+                  <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl space-y-3">
+                    <h4 className="font-extrabold text-[#0056D2] text-[15px]">
+                      How Many Sittings Required for Root Canal Treatment?
+                    </h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <h5 className="font-extrabold text-slate-900 text-xs uppercase mb-1">Single Sitting Root Canal</h5>
+                        <p className="text-xs text-slate-550 leading-relaxed">Suitable for mild infections, front teeth, and cases with minimal decay.</p>
+                      </div>
+                      <div>
+                        <h5 className="font-extrabold text-slate-900 text-xs uppercase mb-1">Multiple Sitting Root Canal</h5>
+                        <p className="text-xs text-slate-550 leading-relaxed">Needed for severe infections, swelling or pus, and complex molar teeth. Your dentist decides the safest approach after examination.</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Section 5: What happens after */}
+              <div className="space-y-3">
+                <h3 className="text-xl font-extrabold text-[#0a1d37]">
+                  {slug === 'root-canal-treatment' 
+                    ? 'What Happens After Root Canal Treatment?'
+                    : `What Happens After ${displayTitle}?`}
+                </h3>
+                <div className="text-sm text-slate-600 leading-relaxed">
+                  {slug === 'root-canal-treatment' ? (
+                    <>
+                      <p>
+                        Patients often wonder: <em>what happens after root canal treatment</em>. After treatment:
+                      </p>
+                      <ul className="list-disc list-inside space-y-1.5 mt-2.5 pl-2 font-semibold">
+                        <li>Mild soreness for 1–3 days is normal and manageable with medication.</li>
+                        <li>Avoid chewing hard foods temporarily on the treated side until the crown is fitted.</li>
+                        <li>Maintain strict oral hygiene (regular brushing and flossing).</li>
+                        <li>Crown placement is strongly recommended to protect and seal the tooth.</li>
+                        <li>Follow-up visits ensure proper healing and long-term health.</li>
+                      </ul>
+                    </>
+                  ) : (
+                    <p>
+                      After receiving {displayTitle.toLowerCase()}, maintaining good oral hygiene, avoiding hard foods for a few days, and attending recommended follow-ups will ensure optimal recovery.
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Section 6: Cost */}
+              <div className="space-y-3">
+                <h3 className="text-xl font-extrabold text-[#0a1d37]">
+                  {slug === 'root-canal-treatment' 
+                    ? 'How Much Root Canal Treatment Cost in Hyderabad?'
+                    : `How Much ${displayTitle} Cost in Hyderabad?`}
+                </h3>
+                <div className="text-sm text-slate-600 leading-relaxed">
+                  {slug === 'root-canal-treatment' ? (
+                    <>
+                      <p>
+                        A highly searched query is: <strong>how much root canal treatment cost</strong>. Root canal treatment cost depends on:
+                      </p>
+                      <ul className="list-disc list-inside space-y-1.5 mt-2.5 pl-2 font-semibold">
+                        <li>Tooth type (front tooth, premolar, molar)</li>
+                        <li>Number of canals to be filled</li>
+                        <li>Infection severity or retreatment necessity</li>
+                        <li>Crown material (PFM, Zirconia, E-max)</li>
+                        <li>Single vs multiple sitting treatment</li>
+                      </ul>
+                      <p className="mt-2.5">
+                        Dental World Clinic provides affordable and transparent treatment pricing with flexible payment options and 0% interest EMI options.
+                      </p>
+                    </>
+                  ) : (
+                    <p>
+                      The cost of {displayTitle.toLowerCase()} depends on the complexity of the case, the materials used, and whether additional procedures are needed. We offer transparent pricing and 0% EMI options.
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Section 7: Signs / Symptoms */}
+              <div className="space-y-3">
+                <h3 className="text-xl font-extrabold text-[#0a1d37]">
+                  {slug === 'root-canal-treatment' 
+                    ? 'Signs You May Need Root Canal Treatment'
+                    : `Signs You May Need ${displayTitle}`}
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {(slug === 'root-canal-treatment' 
+                    ? ['Severe tooth pain', 'Sensitivity to hot & cold', 'Swollen gums', 'Tooth discoloration', 'Pain while chewing', 'Dental abscess or pus']
+                    : info.symptoms
+                  ).map((symptom, idx) => (
+                    <div key={idx} className="flex items-center space-x-2 bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                      <Check className="w-4 h-4 text-blue-600 shrink-0" />
+                      <span className="text-xs text-slate-700 font-semibold">{symptom}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Section 8: Benefits */}
+              <div className="space-y-3">
+                <h3 className="text-xl font-extrabold text-[#0a1d37]">
+                  {slug === 'root-canal-treatment' 
+                    ? 'Benefits of Root Canal Treatment'
+                    : `Benefits of ${displayTitle}`}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                  {(slug === 'root-canal-treatment'
+                    ? ['Saves natural tooth', 'Eliminates infection', 'Stops severe pain', 'Prevents tooth extraction', 'Restores chewing function', 'Maintains smile aesthetics']
+                    : data.benefits
+                  ).map((benefit, idx) => (
+                    <div key={idx} className="flex items-start space-x-2 bg-blue-50/20 p-3 rounded-xl border border-blue-100/50">
+                      <Sparkles className="w-4.5 h-4.5 text-blue-600 shrink-0 mt-0.5" />
+                      <span className="text-xs text-slate-700 font-bold leading-relaxed">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Section 9: Why Choose Dental World */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-extrabold text-[#0a1d37]">
+                  {slug === 'root-canal-treatment'
+                    ? 'Why Choose Dental World Clinic for Root Canal Treatment in Bachupally?'
+                    : `Why Choose Dental World Clinic for ${displayTitle} in Bachupally?`}
+                </h3>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {(slug === 'root-canal-treatment' ? [
+                    'Experienced endodontists (Dr. Abdul Wahed, MDS)',
+                    'Painless root canal treatment protocols',
+                    'Advanced rotary endodontic technology',
+                    'Digital X-rays & apex locators',
+                    '100% sterile treatment protocols',
+                    'Affordable treatment plans & 0% EMI',
+                    'Convenient location near Nizampet, Pragathi Nagar & Miyapur'
+                  ] : info.whyChooseCards.map(c => c.title)).map((item, idx) => (
+                    <li key={idx} className="flex items-center space-x-2 text-xs text-slate-600 font-bold">
+                      <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Section 9.5: Advanced Technology & Quality (EEAT Clinical Standards) */}
+              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/50 space-y-4 text-left">
+                <h4 className="font-extrabold text-[#0a1d37] text-sm uppercase tracking-wider">
+                  Advanced Technology & Quality
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-100">
+                    <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                    <div>
+                      <h5 className="text-xs font-bold text-[#0a1d37]">Rotary Endodontics</h5>
+                      <p className="text-[11px] text-slate-500 leading-relaxed font-semibold">Flexible nickel-titanium tools for precise and fast cleaning.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-100">
+                    <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                    <div>
+                      <h5 className="text-xs font-bold text-[#0a1d37]">Digital RVG X-rays</h5>
+                      <p className="text-[11px] text-slate-500 leading-relaxed font-semibold">Low-radiation high-resolution sensors for accurate diagnosis.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-100">
+                    <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                    <div>
+                      <h5 className="text-xs font-bold text-[#0a1d37]">Apex Locators</h5>
+                      <p className="text-[11px] text-slate-500 leading-relaxed font-semibold">Electronic length determination to ensure full root disinfection.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-100">
+                    <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                    <div>
+                      <h5 className="text-xs font-bold text-[#0a1d37]">100% Sterile Protocol</h5>
+                      <p className="text-[11px] text-slate-500 leading-relaxed font-semibold">Class B autoclaves and vacuum pouches for zero infection risk.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Section 10: Areas We Serve */}
+              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/50 space-y-3">
+                <h4 className="font-extrabold text-[#0a1d37] text-[15px]">Areas We Serve</h4>
+                <p className="text-xs text-slate-550 leading-relaxed">
+                  We serve patients across Hyderabad seeking dental treatments near Bachupally, including:
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['Bachupally', 'Nizampet', 'Pragathi Nagar', 'Miyapur', 'Kukatpally', 'Hafeezpet', 'Bowrampet'].map((area, idx) => (
+                    <span key={idx} className="bg-white border border-slate-200 px-3 py-1.5 rounded-full text-xs font-bold text-slate-700">
+                      {area}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-[11px] text-slate-450 italic mt-2">
+                  Conveniently located near major landmarks including SLG Hospital, BVRIT College, and Miyapur Metro Station.
+                </p>
+              </div>
+
+              {/* Section 11: Related / Internal Links */}
+              <div className="pt-4 border-t border-slate-200/50 space-y-3">
+                <h4 className="font-extrabold text-[#0a1d37] text-sm uppercase tracking-wider">Related Dental Treatments</h4>
+                <div className="flex flex-wrap gap-2">
+                  {internalLinks.map((link, idx) => (
+                    <Link key={idx} href={link.href} className="bg-blue-50/50 hover:bg-blue-100 border border-blue-100 text-[#0056D2] font-bold text-xs px-3.5 py-2 rounded-lg transition-colors">
+                      {link.text}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: EEAT Specialist (4 cols) */}
+            <div className="lg:col-span-4">
+              {/* Doctor Card */}
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden text-center lg:sticky lg:top-24">
+                <div className="relative h-56 w-full bg-slate-100">
+                  <Image 
+                    src={doctor.image} 
+                    alt={doctor.name} 
+                    fill 
+                    className="object-cover object-top" 
+                    sizes="(max-width: 1024px) 100vw, 25vw"
+                  />
+                </div>
+                <div className="p-5 space-y-4">
+                  <div>
+                    <span className="text-[10px] bg-blue-100 text-[#0056D2] px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
+                      Lead Specialist
+                    </span>
+                    <h3 className="text-lg font-extrabold text-[#0a1d37] mt-2">{doctor.name}</h3>
+                    <p className="text-xs text-[#0056D2] font-black">{doctor.title}</p>
+                  </div>
+
+                  <p className="text-xs text-slate-550 leading-relaxed font-semibold">
+                    {doctor.description}
+                  </p>
+
+                  <div className="text-left bg-slate-50 p-3.5 rounded-xl space-y-1.5 border border-slate-100">
+                    <span className="text-[10px] text-slate-450 font-bold uppercase tracking-wider block mb-1">
+                      Credentials & Expertise
+                    </span>
+                    <ul className="text-xs text-slate-650 font-bold space-y-1.5">
+                      {doctor.qualifications.map((q, idx) => (
+                        <li key={idx} className="flex items-center space-x-1.5">
+                          <Check className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                          <span>{q}</span>
+                        </li>
+                      ))}
+                      {doctor.certifications.map((c, idx) => (
+                        <li key={idx} className="flex items-center space-x-1.5">
+                          <Check className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                          <span>{c}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Link href="/book-appointment" className="w-full bg-[#0056D2] hover:bg-blue-750 text-white font-bold py-3 rounded-[5px] transition text-sm shadow-sm flex items-center justify-center gap-1.5">
+                    <Calendar className="w-4 h-4" />
+                    Book Consultation
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -2236,6 +3076,18 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
       {/* BOTTOM BANNER (Tooth Illustration + Action Button) */}
       <section className="bg-[#0b1c3c] text-white py-14 relative overflow-hidden">
+        {info.footerImageBackground && (
+          <>
+            <Image
+              src={info.footerImageBackground}
+              alt="Bottom banner background"
+              fill
+              className="object-cover opacity-20 pointer-events-none"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1c3c]/95 via-[#0b1c3c]/80 to-[#0b1c3c]/70 pointer-events-none z-0"></div>
+          </>
+        )}
         <div className="container mx-auto px-4 max-w-5xl relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
 
           <div>
