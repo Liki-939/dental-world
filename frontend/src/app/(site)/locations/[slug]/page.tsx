@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PageHero from '@/components/layout/PageHero';
-import { MapPin, Phone, Clock, Calendar } from 'lucide-react';
+import { MapPin, Phone, Clock, Calendar, BookOpen, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Script from 'next/script';
-import { LOCATIONS, SITE } from '@/lib/site';
+import { LOCATIONS, SITE, LANDING_GUIDE_LINKS } from '@/lib/site';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -139,6 +139,39 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                   className="absolute inset-0"
                 ></iframe>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-slate-50 border-t border-slate-200">
+          <div className="section-container max-w-6xl">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-xl bg-brand text-white flex items-center justify-center shadow-sm">
+                <BookOpen className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-slate-900">
+                  Specialized Treatment & Patient Guides — {locationName}
+                </h3>
+                <p className="text-slate-500 text-sm font-medium">
+                  Explore localized clinical guides, procedure information, and cost estimates for patients near {locationName}.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {LANDING_GUIDE_LINKS.map((guide, idx) => (
+                <Link
+                  key={idx}
+                  href={guide.href}
+                  className="bg-white hover:bg-brand hover:text-white text-slate-800 rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition duration-300 flex items-center justify-between group"
+                >
+                  <span className="font-bold text-sm">
+                    {guide.label}
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-brand group-hover:text-white group-hover:translate-x-1 transition-transform shrink-0 ml-2" />
+                </Link>
+              ))}
             </div>
           </div>
         </section>

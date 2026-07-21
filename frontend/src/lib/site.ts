@@ -84,3 +84,16 @@ export const TREATMENT_NAV_LINKS = [
 ] as const;
 
 export const FOOTER_TREATMENT_LINKS = TREATMENT_NAV_LINKS;
+
+export const LANDING_GUIDE_LINKS = [
+  { href: '/landing/dental-implant-cost-hyderabad', label: 'Dental Implant Cost Guide (Hyderabad)' },
+  { href: '/landing/invisalign-pragathi-nagar', label: 'Invisalign Pragathi Nagar Guide' },
+  { href: '/landing/bleeding-gums', label: 'Bleeding Gums & Laser Care' },
+  { href: '/landing/root-canal-treatment', label: 'Painless Root Canal Guide' },
+  { href: '/landing/braces-and-aligners', label: 'Braces & Clear Aligners' },
+  { href: '/landing/pediatric-dentistry', label: 'Kids Pediatric Dental Care' },
+  { href: '/landing/wisdom-tooth-extraction', label: 'Wisdom Tooth Removal Guide' },
+  { href: '/landing/smile-designing', label: 'Digital Smile Designing' },
+  { href: '/landing/dentures', label: 'Custom Dentures & Rehabilitation' },
+  { href: '/landing/teeth-whitening', label: 'Laser Teeth Whitening Guide' },
+] as const;

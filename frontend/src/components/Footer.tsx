@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { SVGProps } from 'react';
-import { Mail, MapPin, Phone } from 'lucide-react';
-import { FOOTER_TREATMENT_LINKS, LOCATIONS, NAV_LINKS, SITE } from '@/lib/site';
+import { Mail, MapPin, Phone, BookOpen } from 'lucide-react';
+import { FOOTER_TREATMENT_LINKS, LANDING_GUIDE_LINKS, LOCATIONS, NAV_LINKS, SITE } from '@/lib/site';
 
 function FacebookIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -152,7 +152,26 @@ export default function Footer({ mediaMap }: { mediaMap?: Record<string, string>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400">
+        {/* Specialized Clinical Guides & Landing Pages Row */}
+        <div className="mt-12 pt-8 border-t border-slate-700">
+          <div className="flex items-center gap-2 mb-4">
+            <BookOpen className="w-4 h-4 text-brand-light" />
+            <h4 className="text-white font-bold text-xs uppercase tracking-wider">Specialized Patient Guides & Clinical Landing Pages</h4>
+          </div>
+          <div className="flex flex-wrap gap-2.5">
+            {LANDING_GUIDE_LINKS.map((guide) => (
+              <Link 
+                key={guide.href} 
+                href={guide.href} 
+                className="bg-slate-800/80 hover:bg-brand text-slate-300 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-medium border border-slate-700 transition"
+              >
+                {guide.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400">
           <p>&copy; {new Date().getFullYear()} {SITE.name} Hyderabad. All rights reserved.</p>
           <p className="text-xs">
             {SITE.hours.weekdays} · {SITE.hours.sunday}

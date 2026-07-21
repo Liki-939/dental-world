@@ -1852,6 +1852,43 @@ const defaultInternalLinks = [
   { text: 'Cosmetic dentistry', href: '/treatments/cosmetic-dentistry' }
 ];
 
+const landingGuidesMapping: Record<string, { text: string; href: string }[]> = {
+  'dental-implants': [
+    { text: 'Dental Implant Cost Guide (Hyderabad)', href: '/landing/dental-implant-cost-hyderabad' },
+    { text: 'Dental Implants Specialist Guide', href: '/landing/dental-implants' },
+  ],
+  'root-canal-treatment': [
+    { text: 'Painless Root Canal Guide', href: '/landing/root-canal-treatment' },
+  ],
+  'invisalign-treatment': [
+    { text: 'Invisalign Treatment Guide', href: '/landing/invisalign-treatment' },
+    { text: 'Invisalign Pragathi Nagar Guide', href: '/landing/invisalign-pragathi-nagar' },
+  ],
+  'braces': [
+    { text: 'Dental Braces & Aligners Guide', href: '/landing/braces-and-aligners' },
+    { text: 'Orthodontics & Braces Page', href: '/landing/braces' },
+  ],
+  'advanced-gum-treatment': [
+    { text: 'Bleeding Gums & Laser Therapy Guide', href: '/landing/bleeding-gums' },
+    { text: 'Gum Disease Specialist Page', href: '/landing/gum-disease' },
+  ],
+  'hybrid-dentures': [
+    { text: 'Complete Dentures & Rehabilitation Guide', href: '/landing/dentures' },
+  ],
+  'pediatric-dentistry': [
+    { text: 'Kids & Pediatric Dentistry Guide', href: '/landing/pediatric-dentistry' },
+  ],
+  'teeth-whitening': [
+    { text: 'Laser Teeth Whitening Guide', href: '/landing/teeth-whitening' },
+  ],
+  'wisdom-tooth-extraction': [
+    { text: 'Wisdom Tooth Removal & Surgery Guide', href: '/landing/wisdom-tooth-extraction' },
+  ],
+  'smile-designing': [
+    { text: 'Digital Smile Designing Guide', href: '/landing/smile-designing' },
+  ],
+};
+
 const mediaKeyMap: Record<string, string> = {
   'root-canal-treatment': 'hero_root_canal',
   'dental-implants': 'hero_implants',
@@ -2999,6 +3036,25 @@ export default function TreatmentPageClient({ slug, displayTitle, mediaMap }: { 
                   {internalLinks.map((link, idx) => (
                     <Link key={idx} href={link.href} className="bg-blue-50/50 hover:bg-blue-100 border border-blue-100 text-[#0056D2] font-bold text-xs px-3.5 py-2 rounded-lg transition-colors">
                       {link.text}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Section 12: Specialized Clinical & Cost Landing Guides */}
+              <div className="pt-4 border-t border-slate-200/50 space-y-3">
+                <h4 className="font-extrabold text-[#0056D2] text-sm uppercase tracking-wider flex items-center">
+                  <Sparkles className="w-4 h-4 mr-1.5 text-amber-500" />
+                  Specialized Patient & Cost Guides
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {(landingGuidesMapping[slug] || [
+                    { text: 'Dental Implant Cost Guide', href: '/landing/dental-implant-cost-hyderabad' },
+                    { text: 'Invisalign Pragathi Nagar', href: '/landing/invisalign-pragathi-nagar' },
+                    { text: 'Bleeding Gums Care', href: '/landing/bleeding-gums' },
+                  ]).map((guide, idx) => (
+                    <Link key={idx} href={guide.href} className="bg-amber-50 hover:bg-amber-100 border border-amber-200/80 text-amber-900 font-extrabold text-xs px-3.5 py-2 rounded-lg transition-colors flex items-center">
+                      {guide.text} →
                     </Link>
                   ))}
                 </div>

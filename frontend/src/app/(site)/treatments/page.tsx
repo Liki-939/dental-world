@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { 
   Smile, ShieldPlus, Layers, Activity, Star, Heart, 
   Sparkles, Baby, ArrowRight, CheckCircle2, Shield,
-  Scissors, Zap, Crown, Wind, Flame
+  Scissors, Zap, Crown, Wind, Flame, BookOpen
 } from 'lucide-react';
+import { LANDING_GUIDE_LINKS } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Dental Treatments',
@@ -198,6 +199,42 @@ export default function TreatmentsPage() {
                   </Link>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Specialized Patient & Cost Guides Section */}
+        <section className="py-16 bg-gradient-to-b from-blue-50/50 to-white border-y border-slate-200/60">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-xl bg-brand text-white flex items-center justify-center shadow-md">
+                <BookOpen className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-slate-900">
+                  Specialized Patient & Cost Guides
+                </h2>
+                <p className="text-slate-500 text-sm font-medium">
+                  Detailed clinical landing guides, cost breakdowns, and treatment overviews for Hyderabad patients.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              {LANDING_GUIDE_LINKS.map((guide, idx) => (
+                <Link
+                  key={idx}
+                  href={guide.href}
+                  className="bg-white hover:bg-brand hover:text-white text-slate-800 rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between group"
+                >
+                  <span className="font-bold text-sm leading-snug mb-3">
+                    {guide.label}
+                  </span>
+                  <span className="text-xs font-extrabold text-brand group-hover:text-white flex items-center mt-auto">
+                    Read Guide <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
