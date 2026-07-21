@@ -1852,12 +1852,24 @@ const defaultInternalLinks = [
   { text: 'Cosmetic dentistry', href: '/treatments/cosmetic-dentistry' }
 ];
 
-export default function TreatmentPageClient({ slug, displayTitle }: { slug: string, displayTitle: string }) {
+const mediaKeyMap: Record<string, string> = {
+  'root-canal-treatment': 'hero_root_canal',
+  'dental-implants': 'hero_implants',
+  'braces': 'hero_braces',
+  'invisalign-treatment': 'hero_invisalign',
+  'smile-designing': 'hero_smile_design',
+  'pediatric-dentistry': 'hero_pediatric',
+};
+
+export default function TreatmentPageClient({ slug, displayTitle, mediaMap }: { slug: string; displayTitle: string; mediaMap?: Record<string, string> }) {
   // Grab info. Fallback to Root Canal if it's missing or unmapped
   const info = treatmentsInfo[slug] || treatmentsInfo['root-canal-treatment'];
   const data = treatmentsData[slug] || treatmentsData['root-canal-treatment'];
   const doctor = doctorDetails[slug] || defaultDoctorDetails;
   const internalLinks = internalLinksMapping[slug] || defaultInternalLinks;
+
+  const mediaKey = mediaKeyMap[slug];
+  const effectiveHeroImage = (mediaMap && mediaKey && mediaMap[mediaKey]) ? mediaMap[mediaKey] : info.heroImage;
 
   // Form State
   const [formData, setFormData] = useState({
@@ -1991,13 +2003,10 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
 
             {/* Middle - Doctor Image */}
             <div className="lg:col-span-4 relative min-h-[350px] md:min-h-[480px] lg:min-h-full overflow-hidden w-full z-10 bg-slate-200">
-              <Image
-                src={info.heroImage}
-                alt="Doctor treating patient smiling"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 100vw, 33vw"
+              <img
+                src={effectiveHeroImage}
+                alt="Treatment Hero"
+                className="w-full h-full object-cover"
               />
               {/* Left edge seamless gradient blend for desktop */}
               <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>

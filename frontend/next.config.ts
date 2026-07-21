@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb',
+    },
+  },
   images: {
     // Next.js image optimization is enabled (removed unoptimized:true)
     formats: ["image/avif", "image/webp"],

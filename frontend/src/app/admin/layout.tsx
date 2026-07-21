@@ -1,6 +1,6 @@
 import { isAuthenticatedAdmin, logoutAdmin } from './auth';
 import Link from 'next/link';
-import { Calendar, FileText, ExternalLink, LogOut, ShieldCheck } from 'lucide-react';
+import { Calendar, FileText, ExternalLink, LogOut, ShieldCheck, Sparkles, Image as ImageIcon } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,8 +16,6 @@ export default async function AdminLayout({
 }) {
   const isAuth = await isAuthenticatedAdmin();
 
-  // If on login page (which resides under /admin/login), let children render directly
-  // Note: if user is not authenticated, they will be redirected to /admin/login when accessing protected pages.
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col">
       {isAuth ? (
@@ -36,42 +34,57 @@ export default async function AdminLayout({
               </div>
 
               {/* Navigation Links */}
-              <div className="flex items-center space-x-2 sm:space-x-4">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-3">
                 <Link
                   href="/admin"
-                  className="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-slate-800 transition flex items-center"
+                  className="px-3 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-slate-800 transition flex items-center"
                 >
-                  <Calendar className="w-4 h-4 mr-2 text-teal-400" />
+                  <Calendar className="w-4 h-4 mr-1.5 text-teal-400" />
                   Appointments
                 </Link>
                 <Link
                   href="/admin/blogs"
-                  className="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-slate-800 transition flex items-center"
+                  className="px-3 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-slate-800 transition flex items-center"
                 >
-                  <FileText className="w-4 h-4 mr-2 text-cyan-400" />
+                  <FileText className="w-4 h-4 mr-1.5 text-cyan-400" />
                   Blog Posts
+                </Link>
+                <Link
+                  href="/admin/cases"
+                  className="px-3 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-slate-800 transition flex items-center"
+                >
+                  <Sparkles className="w-4 h-4 mr-1.5 text-amber-400" />
+                  Before / After
+                </Link>
+                <Link
+                  href="/admin/media"
+                  className="px-3 py-1.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-slate-800 transition flex items-center"
+                >
+                  <ImageIcon className="w-4 h-4 mr-1.5 text-indigo-400" />
+                  Cover Photos
                 </Link>
                 <Link
                   href="/"
                   target="_blank"
-                  className="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition flex items-center"
+                  className="px-2.5 py-1.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition flex items-center"
                 >
-                  <ExternalLink className="w-4 h-4 mr-1.5" />
+                  <ExternalLink className="w-4 h-4 mr-1" />
                   View Site
                 </Link>
 
                 <form action={logoutAdmin}>
                   <button
                     type="submit"
-                    className="px-3 py-2 rounded-lg text-xs font-semibold bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500 hover:text-white transition flex items-center"
+                    className="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500 hover:text-white transition flex items-center ml-1"
                   >
-                    <LogOut className="w-3.5 h-3.5 mr-1.5" />
+                    <LogOut className="w-3.5 h-3.5 mr-1" />
                     Logout
                   </button>
                 </form>
               </div>
             </div>
           </header>
+
 
           <main className="container mx-auto p-4 md:p-8 flex-grow">
             {children}

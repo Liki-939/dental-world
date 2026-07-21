@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { treatmentsData } from '@/data/treatments';
 import TreatmentPageClient from './TreatmentPageClient';
 import Script from 'next/script';
+import { getSiteMediaMap } from '@/lib/media-service';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -94,6 +95,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
     notFound();
   }
 
+  const mediaMap = await getSiteMediaMap();
   const doctor = doctorMappings[slug] || defaultDoctor;
 
   const procedureSchema = {
@@ -196,7 +198,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
           dangerouslySetInnerHTML={{ __html: JSON.stringify(rev) }}
         />
       ))}
-      <TreatmentPageClient slug={slug} displayTitle={data.title} />
+      <TreatmentPageClient slug={slug} displayTitle={data.title} mediaMap={mediaMap} />
     </>
   );
 }

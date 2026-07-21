@@ -179,7 +179,15 @@ export function LandingHero({
 
           <div className="lg:col-span-6 relative">
             <div className="relative w-full aspect-[4/3.1] rounded-[2rem] overflow-hidden bg-white shadow-xl">
-              <Image src={image} alt={imageAlt} fill className={imageFit === 'contain' ? 'object-contain' : 'object-cover'} priority sizes="(max-width: 1024px) 100vw, 50vw" />
+              <Image
+                src={image}
+                alt={imageAlt}
+                fill
+                unoptimized={typeof image === 'string' && image.startsWith('data:')}
+                className={imageFit === 'contain' ? 'object-contain' : 'object-cover'}
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
 
             {badgeTop && (
@@ -465,7 +473,14 @@ export function DoctorProfileCard({
     <div className="bg-[#F7F9FC] border border-slate-150 rounded-3xl p-6 md:p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
       <div className="relative w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shrink-0 bg-gradient-to-br from-blue-800 to-blue-950 flex items-center justify-center border-4 border-white shadow-md">
         {image ? (
-          <Image src={image} alt={name} fill className="object-cover object-top" sizes="144px" />
+          <Image
+            src={image}
+            alt={name}
+            fill
+            unoptimized={typeof image === 'string' && image.startsWith('data:')}
+            className="object-cover object-top"
+            sizes="144px"
+          />
         ) : (
           <span className="text-3xl font-black text-white/90">{initials}</span>
         )}

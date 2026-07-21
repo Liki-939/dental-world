@@ -8,10 +8,11 @@ import {
   StickyBottomBar, BookingFormSection, NAVY,
 } from '@/components/landing/LandingKit';
 
-export default function RootCanalPage({ branch, locations, whatsappUrl }: {
+export default function RootCanalPage({ branch, locations, whatsappUrl, mediaMap }: {
   branch: LocationData;
   locations: LocationData[];
   whatsappUrl: string;
+  mediaMap?: Record<string, string>;
 }) {
   const data = treatmentsData['root-canal-treatment'];
 
@@ -26,7 +27,7 @@ export default function RootCanalPage({ branch, locations, whatsappUrl }: {
         subtitle="Painless. Precise. Permanent."
         desc="Save your infected natural tooth with painless laser-assisted root canal therapy from expert MDS Endodontists."
         bullets={['100% Painless Procedures', 'Treated by MDS Endodontists Only', 'Save Your Natural Tooth', 'Microscopic Rotary Endodontics', 'Single-Visit RCT Options', '0% EMI Payment Options']}
-        image="/root_canal_banner.png"
+        image={mediaMap?.hero_root_canal || '/root_canal_banner.png'}
         imageAlt="Root canal treatment consultation"
         bookLabel="Request Pain-Free RCT"
         phoneDisplay={branch.phone.display}

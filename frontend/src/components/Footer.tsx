@@ -35,8 +35,9 @@ function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export default function Footer() {
+export default function Footer({ mediaMap }: { mediaMap?: Record<string, string> }) {
   const quickLinks = NAV_LINKS.filter((l) => l.href !== '/');
+  const logoUrl = mediaMap?.footer_logo || mediaMap?.site_logo || '/images/logo.jpeg';
 
   return (
     <footer className="bg-nav text-slate-300 py-14 text-sm border-t border-nav-border">
@@ -45,7 +46,14 @@ export default function Footer() {
           <div className="space-y-5">
             <div className="flex items-center gap-2.5">
               <div className="w-10 h-10 relative rounded-full overflow-hidden border border-slate-600 shrink-0">
-                <Image src="/images/logo.jpeg" alt="Dental World logo" width={40} height={40} className="object-contain" />
+                <Image
+                  src={logoUrl}
+                  alt="Dental World logo"
+                  width={40}
+                  height={40}
+                  unoptimized={typeof logoUrl === 'string' && logoUrl.startsWith('data:')}
+                  className="object-contain"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-extrabold text-white leading-none font-heading">

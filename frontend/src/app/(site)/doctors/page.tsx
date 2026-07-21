@@ -3,6 +3,7 @@ import Image from 'next/image';
 import PageHero from '@/components/layout/PageHero';
 import Link from 'next/link';
 import { Star } from 'lucide-react';
+import { getSiteMediaMap } from '@/lib/media-service';
 
 export const metadata: Metadata = {
   title: 'Our Doctors',
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 
 const doctors = [
   {
+    key: 'doctor_sneha',
     name: 'Dr. Sneha',
     title: 'Founder & Chief Dentist',
     specialties: ['General Dentistry', 'Cosmetic Dentistry'],
@@ -18,6 +20,7 @@ const doctors = [
     description: 'Our founder and chief dentist, Dr. Sneha brings a wealth of experience in providing comprehensive dental care, focusing on patient comfort and advanced treatment modalities.',
   },
   {
+    key: 'doctor_abdul',
     name: 'Dr. Abdul Wahed',
     title: 'MDS Endodontics',
     specialties: ['Microscopic Endodontics', 'Root Canal Specialists'],
@@ -25,6 +28,7 @@ const doctors = [
     description: 'MFM Masters Fellowship in Microscopic Endodontics. Specializes in advanced root canal treatments ensuring painless and precise procedures.',
   },
   {
+    key: 'doctor_anurag',
     name: 'Dr. Anurag',
     title: 'MDS Prosthodontics & Implantology',
     specialties: ['Implantology', 'Smile Designing'],
@@ -32,6 +36,7 @@ const doctors = [
     description: 'Completed placing 5000+ successful implants across all age groups of patients, with expertise in full mouth rehabilitation. Professor at Balaji Dental College and Chief Smile Designer, dedicated to restoring smiles with state-of-the-art implants and prosthetics.',
   },
   {
+    key: 'doctor_nithin',
     name: 'Dr. Nithin Bharat',
     title: 'MDS Dentofacial Orthodontics',
     specialties: ['Orthodontics', 'Invisalign'],
@@ -39,13 +44,15 @@ const doctors = [
     description: 'Platinum Invisalign Provider specializing in correcting dental misalignments and providing aesthetic orthodontic solutions for all ages.',
   },
   {
+    key: 'doctor_sravan',
     name: 'Dr. Ch Sravan Kumar',
     title: 'MDS Periodontics',
     specialties: ['Periodontics', 'Laser Gum Treatment'],
-    image: null,
+    image: '/dr.ch.sravan.jpg',
     description: '15+ years of experience in laser gum treatment and periodontal care. Expert in advanced gum disease therapy and minimally invasive procedures, specializing in complex cases with a patient-focused approach for long-lasting results.',
   },
   {
+    key: 'doctor_supraja',
     name: 'Dr. AN Supraja',
     title: 'MDS Pedodontist',
     specialties: ['Pediatric Dentistry', 'Painless Treatment'],
@@ -53,6 +60,7 @@ const doctors = [
     description: '15+ years of experience in pediatric dental care. Specializes in gentle, fear-free treatment for children, with a child-friendly approach committed to building healthy smiles from an early age.',
   },
   {
+    key: 'doctor_yousuf',
     name: 'Dr. Yousuf Qureshi',
     title: 'MDS Oral & Maxillofacial Surgery',
     specialties: ['Oral Surgery', 'Wisdom Tooth Extraction'],
@@ -61,7 +69,9 @@ const doctors = [
   },
 ];
 
-export default function DoctorsPage() {
+export default async function DoctorsPage() {
+  const mediaMap = await getSiteMediaMap();
+
   return (
     <main className="flex-grow">
       <PageHero
@@ -73,56 +83,60 @@ export default function DoctorsPage() {
       <section className="py-24 bg-slate-50">
         <div className="section-container">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {doctors.map((doctor, index) => (
-                <div 
-                  key={index} 
-                  className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-100 flex flex-col"
-                >
-                  <div className="relative h-72 w-full bg-slate-200">
-                    {doctor.image ? (
-                      <Image
-                        src={doctor.image}
-                        alt={doctor.name}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand to-brand-dark">
-                        <span className="text-5xl font-black text-white/90">
-                          {doctor.name.replace('Dr. ', '').split(' ').map(w => w[0]).slice(0, 2).join('')}
-                        </span>
+              {doctors.map((doctor, index) => {
+                const docImage = mediaMap[doctor.key] || doctor.image;
+                return (
+                  <div 
+                    key={index} 
+                    className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-100 flex flex-col"
+                  >
+                    <div className="relative h-72 w-full bg-slate-200">
+                      {docImage ? (
+                        <Image
+                          src={docImage}
+                          alt={doctor.name}
+                          fill
+                          unoptimized={typeof docImage === 'string' && docImage.startsWith('data:')}
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand to-brand-dark">
+                          <span className="text-5xl font-black text-white/90">
+                            {doctor.name.replace('Dr. ', '').split(' ').map(w => w[0]).slice(0, 2).join('')}
+                          </span>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-2xl font-bold text-white mb-1">{doctor.name}</h3>
+                        <p className="text-brand-light font-medium text-sm">{doctor.title}</p>
                       </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-2xl font-bold text-white mb-1">{doctor.name}</h3>
-                      <p className="text-brand-light font-medium text-sm">{doctor.title}</p>
+                    </div>
+                    <div className="p-6 flex-grow flex flex-col">
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {doctor.specialties.map((specialty, idx) => (
+                          <span key={idx} className="bg-brand/10 text-brand text-xs font-semibold px-3 py-1 rounded-full">
+                            {specialty}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+                        {doctor.description}
+                      </p>
+                      <div className="border-t border-slate-100 pt-4 flex items-center justify-between mt-auto">
+                        <div className="flex text-amber-400">
+                          <Star className="w-4 h-4 fill-current" />
+                          <Star className="w-4 h-4 fill-current" />
+                          <Star className="w-4 h-4 fill-current" />
+                          <Star className="w-4 h-4 fill-current" />
+                          <Star className="w-4 h-4 fill-current" />
+                        </div>
+                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Specialist</span>
+                      </div>
                     </div>
                   </div>
-                  <div className="p-6 flex-grow flex flex-col">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {doctor.specialties.map((specialty, idx) => (
-                        <span key={idx} className="bg-brand/10 text-brand text-xs font-semibold px-3 py-1 rounded-full">
-                          {specialty}
-                        </span>
-                      ))}
-                    </div>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
-                      {doctor.description}
-                    </p>
-                    <div className="border-t border-slate-100 pt-4 flex items-center justify-between mt-auto">
-                      <div className="flex text-amber-400">
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                      </div>
-                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Specialist</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
         </div>
       </section>

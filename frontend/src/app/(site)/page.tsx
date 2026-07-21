@@ -4,6 +4,8 @@ import BeforeAfterShowcase from "@/components/BeforeAfterShowcase";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { SITE, LOCATIONS } from "@/lib/site";
 import HomeTreatmentsGrid from "@/components/HomeTreatmentsGrid";
+import { getFeaturedBeforeAfterCases } from "@/lib/cases-service";
+import { getSiteMediaMap } from "@/lib/media-service";
 import {
   Clock,
   Shield,
@@ -35,7 +37,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const [featuredCases, mediaMap] = await Promise.all([
+    getFeaturedBeforeAfterCases(),
+    getSiteMediaMap(),
+  ]);
+
+  const showcaseCases = featuredCases.map((c) => ({
+    title: c.title,
+    before: c.beforeImage,
+    after: c.afterImage,
+    category: c.category,
+  }));
+
   return (
     <div className="flex flex-col flex-grow bg-slate-50/50 font-sans relative">
       {/* Floating Action Bar (Desktop only, right side) */}
@@ -145,13 +159,10 @@ export default function Home() {
 
               {/* Right Column (Blended image) */}
               <div className="lg:col-span-5 relative min-h-[350px] md:min-h-[480px] lg:min-h-full overflow-hidden w-full flex flex-col justify-end z-10">
-                <Image
-                  src="/doc_pat.png"
+                <img
+                  src={mediaMap['hero_home'] || '/doc_pat.png'}
                   alt="Patient smiling during dental consultation at Dental World"
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="w-full h-full object-cover"
                 />
                 {/* Left edge seamless gradient blend for desktop */}
                 <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
@@ -168,7 +179,7 @@ export default function Home() {
           <div className="container mx-auto px-4 max-w-7xl text-center">
 
             {/* 24 Treatment Cards Grid */}
-            <HomeTreatmentsGrid />
+            <HomeTreatmentsGrid mediaMap={mediaMap} />
 
             <div className="mt-10">
               <Link href="/treatments" className="inline-flex items-center font-bold text-blue-600 hover:text-blue-750 transition text-base">
@@ -333,7 +344,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <BeforeAfterShowcase />
+            <BeforeAfterShowcase customCases={showcaseCases} />
 
           </div>
         </section>
@@ -371,9 +382,10 @@ export default function Home() {
               <div className="bg-[#f8faff] rounded-3xl p-6 border border-slate-100 flex flex-col sm:flex-row gap-6 text-left shadow-sm hover:shadow-md transition">
                 <div className="w-full sm:w-[45%] relative aspect-[4/3] rounded-2xl overflow-hidden shrink-0 bg-slate-200">
                   <Image
-                    src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80"
+                    src={mediaMap.clinic_outer_pragathi || "/images/clinic_outer.png"}
                     alt="Dental World Pragathi Nagar clinic reception"
                     fill
+                    unoptimized={typeof mediaMap.clinic_outer_pragathi === 'string' && mediaMap.clinic_outer_pragathi.startsWith('data:')}
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, 300px"
                   />
@@ -401,9 +413,10 @@ export default function Home() {
               <div className="bg-[#f8faff] rounded-3xl p-6 border border-slate-100 flex flex-col sm:flex-row gap-6 text-left shadow-sm hover:shadow-md transition">
                 <div className="w-full sm:w-[45%] relative aspect-[4/3] rounded-2xl overflow-hidden shrink-0 bg-slate-200">
                   <Image
-                    src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80"
+                    src={mediaMap.clinic_outer_bachupally || "/images/clinic_outer_bachupally.png"}
                     alt="Dental World Bachupally clinic reception"
                     fill
+                    unoptimized={typeof mediaMap.clinic_outer_bachupally === 'string' && mediaMap.clinic_outer_bachupally.startsWith('data:')}
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, 300px"
                   />
@@ -507,9 +520,10 @@ export default function Home() {
                 {/* Dental implant graphic bleeding off the right edge */}
                 <div className="absolute right-0 top-0 bottom-0 w-[52%] sm:w-[48%] pointer-events-none select-none">
                   <Image
-                    src="/images/dental-implant-glow.png"
+                    src={mediaMap.banner_home_cta || "/images/dental-implant-glow.png"}
                     alt=""
                     fill
+                    unoptimized={typeof mediaMap.banner_home_cta === 'string' && mediaMap.banner_home_cta.startsWith('data:')}
                     className="object-cover object-left"
                     sizes="(max-width: 1024px) 50vw, 300px"
                   />

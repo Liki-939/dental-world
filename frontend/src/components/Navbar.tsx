@@ -7,10 +7,11 @@ import { usePathname } from 'next/navigation';
 import { Phone, ChevronDown, Menu, X, MapPin, Calendar } from 'lucide-react';
 import { LOCATIONS, NAV_LINKS, SITE, TREATMENT_NAV_LINKS } from '@/lib/site';
 
-export default function Navbar() {
+export default function Navbar({ mediaMap }: { mediaMap?: Record<string, string> }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const logoUrl = mediaMap?.site_logo || '/images/logo.jpeg';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -61,7 +62,14 @@ export default function Navbar() {
         <Link href="/" className="flex items-center shrink-0" onClick={closeMobileMenu}>
           <div className="flex items-center gap-2.5">
             <div className="w-11 h-11 relative rounded-full overflow-hidden bg-white shrink-0 shadow-sm border border-slate-100">
-              <Image src="/images/logo.jpeg" alt="Dental World logo" width={44} height={44} className="object-contain p-0.5" />
+              <Image
+                src={logoUrl}
+                alt="Dental World logo"
+                width={44}
+                height={44}
+                unoptimized={typeof logoUrl === 'string' && logoUrl.startsWith('data:')}
+                className="object-contain p-0.5"
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-lg md:text-xl font-extrabold tracking-tight text-ink leading-none font-heading">

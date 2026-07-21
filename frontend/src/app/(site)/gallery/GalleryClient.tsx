@@ -1,85 +1,51 @@
 "use client";
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { BeforeAfterCaseItem } from '@/lib/cases-service';
 
-const galleryCases = [
+const defaultGalleryCases = [
   {
-    id: 1,
-    title: 'Dental Implants',
-    category: 'Implants',
-    description: 'Complete restoration of missing teeth using advanced titanium implants.',
-    beforeImg: '/images/cases/implants_before.png',
-    afterImg: '/images/cases/implants_after.png'
+    id: '1',
+    title: 'Dental Implants Restoration',
+    category: 'Dental Implants',
+    beforeImage: '/images/cases/implants_before.png',
+    afterImage: '/images/cases/implants_after.png'
   },
   {
-    id: 2,
-    title: 'Smile Designing',
-    category: 'Cosmetic',
-    description: 'A complete smile makeover for a flawless aesthetic.',
-    beforeImg: '/images/cases/smile_design_before.png',
-    afterImg: '/images/cases/smile_design_after.png'
+    id: '2',
+    title: 'Digital Smile Makeover',
+    category: 'Smile Makeover',
+    beforeImage: '/images/cases/smile_design_before.png',
+    afterImage: '/images/cases/smile_design_after.png'
   },
   {
-    id: 3,
-    title: 'Invisalign Treatment',
-    category: 'Orthodontics',
-    description: 'Perfect alignment achieved using clear, invisible aligners.',
-    beforeImg: '/images/cases/invisalign_before.png',
-    afterImg: '/images/cases/invisalign_after.png'
+    id: '3',
+    title: 'Invisalign Teeth Realignment',
+    category: 'Invisalign',
+    beforeImage: '/images/cases/invisalign_before.png',
+    afterImage: '/images/cases/invisalign_after.png'
   },
   {
-    id: 4,
-    title: 'Full Mouth Rehabilitation',
-    category: 'Restorative',
-    description: 'Comprehensive reconstruction of all teeth in both jaws.',
-    beforeImg: '/images/cases/fmr_before.png',
-    afterImg: '/images/cases/fmr_after.png'
-  },
-  {
-    id: 5,
-    title: 'Traditional Braces',
-    category: 'Orthodontics',
-    description: 'Correction of severe crowding and bite misalignment.',
-    beforeImg: '/images/cases/braces_before.png',
-    afterImg: '/images/cases/braces_after.png'
-  },
-  {
-    id: 6,
-    title: 'Root Canal Treatment',
-    category: 'Restorative',
-    description: 'Pain relief and tooth salvation through expert endodontic care.',
-    beforeImg: '/images/cases/root_canal_before.png',
-    afterImg: '/images/cases/root_canal_after.png'
-  },
-  {
-    id: 7,
-    title: 'Pediatric Dentistry',
-    category: 'Pediatric',
-    description: 'Gentle, effective treatment restoring health to primary teeth.',
-    beforeImg: '/images/cases/pediatric_before.png',
-    afterImg: '/images/cases/pediatric_after.png'
-  },
-  {
-    id: 8,
-    title: 'Gum Treatment',
-    category: 'Periodontics',
-    description: 'Restoration of healthy gum tissue and treatment of periodontitis.',
-    beforeImg: '/images/gums_before.png',
-    afterImg: '/images/gums_after.png'
+    id: '4',
+    title: 'Laser Gum Disease Treatment',
+    category: 'Gum Treatment',
+    beforeImage: '/images/gums_before.png',
+    afterImage: '/images/gums_after.png'
   }
 ];
 
-const categories = ['All', 'Implants', 'Cosmetic', 'Orthodontics', 'Restorative', 'Pediatric', 'Periodontics'];
-
-export default function GalleryClient() {
+export default function GalleryClient({ initialCases }: { initialCases?: BeforeAfterCaseItem[] }) {
   const [activeCategory, setActiveCategory] = useState('All');
 
+  const casesToDisplay = (initialCases && initialCases.length > 0) ? initialCases : defaultGalleryCases;
+
+  const categories = ['All', ...Array.from(new Set(casesToDisplay.map(c => c.category)))];
+
   const filteredCases = activeCategory === 'All' 
-    ? galleryCases 
-    : galleryCases.filter(c => c.category === activeCategory);
+    ? casesToDisplay 
+    : casesToDisplay.filter(c => c.category === activeCategory);
 
   return (
     <main className="flex-grow bg-surface-muted">
@@ -130,27 +96,25 @@ export default function GalleryClient() {
                   <div className="flex w-full h-[250px] sm:h-[350px] relative bg-slate-50">
                     
                     {/* Before Image */}
-                    <div className="w-1/2 relative h-full border-r-2 border-white">
-                      <Image 
-                        src={caseItem.beforeImg} 
+                    <div className="w-1/2 relative h-full border-r-2 border-white overflow-hidden">
+                      <img 
+                        src={caseItem.beforeImage} 
                         alt={`${caseItem.title} Before`} 
-                        fill
-                        className="object-cover object-center"
+                        className="w-full h-full object-cover object-center"
                       />
-                      <div className="absolute top-4 left-4 bg-slate-800/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                      <div className="absolute top-4 left-4 bg-red-600/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
                         Before
                       </div>
                     </div>
                     
                     {/* After Image */}
-                    <div className="w-1/2 relative h-full">
-                      <Image 
-                        src={caseItem.afterImg} 
+                    <div className="w-1/2 relative h-full overflow-hidden">
+                      <img 
+                        src={caseItem.afterImage} 
                         alt={`${caseItem.title} After`} 
-                        fill
-                        className="object-cover object-center"
+                        className="w-full h-full object-cover object-center"
                       />
-                      <div className="absolute top-4 right-4 bg-brand/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                      <div className="absolute top-4 right-4 bg-green-600/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
                         After
                       </div>
                     </div>
@@ -166,9 +130,6 @@ export default function GalleryClient() {
                       <span className="text-brand font-bold text-sm uppercase tracking-wider">{caseItem.category}</span>
                     </div>
                     <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand transition-colors">{caseItem.title}</h3>
-                    <p className="text-slate-600 font-medium leading-relaxed">
-                      {caseItem.description}
-                    </p>
                   </div>
                 </div>
               ))}

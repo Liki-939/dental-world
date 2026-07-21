@@ -7,10 +7,11 @@ import {
   NAVY_LIGHT,
 } from '@/components/landing/LandingKit';
 
-export default function GumDiseasePage({ branch, locations, whatsappUrl }: {
+export default function GumDiseasePage({ branch, locations, whatsappUrl, mediaMap }: {
   branch: LocationData;
   locations: LocationData[];
   whatsappUrl: string;
+  mediaMap?: Record<string, string>;
 }) {
   return (
     <div className="pb-20 md:pb-24">
@@ -22,7 +23,7 @@ export default function GumDiseasePage({ branch, locations, whatsappUrl }: {
         subtitle="Healthy Gums. Stronger Smile. Better You."
         desc="Dental World offers expert gum disease treatment, advanced periodontal care, and personalized solutions to protect your oral health."
         bullets={['Expert Periodontists', 'Minimally Invasive Care', 'Painless Laser Treatment', 'Long Lasting Results', 'Advanced Technology', 'Affordable & Safe']}
-        image="/images/gum diseases/Gum disease hero 1.png"
+        image={mediaMap?.hero_gum_care || '/images/gum diseases/Gum disease hero 1.png'}
         imageAlt="Woman pointing to her healthy smile"
         bookLabel="Book Your Appointment"
         phoneDisplay={branch.phone.display}

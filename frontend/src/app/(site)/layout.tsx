@@ -2,12 +2,15 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import MobileActionBar from '@/components/layout/MobileActionBar';
 import WhatsAppFab from '@/components/layout/WhatsAppFab';
+import { getSiteMediaMap } from '@/lib/media-service';
 
-export default function SiteLayout({
+export default async function SiteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const mediaMap = await getSiteMediaMap();
+
   return (
     <div className="flex flex-col min-h-screen bg-surface">
       <a
@@ -16,11 +19,11 @@ export default function SiteLayout({
       >
         Skip to main content
       </a>
-      <Navbar />
+      <Navbar mediaMap={mediaMap} />
       <div id="main-content" className="flex flex-col flex-grow pb-16 lg:pb-0">
         {children}
       </div>
-      <Footer />
+      <Footer mediaMap={mediaMap} />
       <MobileActionBar />
       <WhatsAppFab />
     </div>

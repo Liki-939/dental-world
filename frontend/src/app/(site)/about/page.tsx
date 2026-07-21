@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import PageHero from '@/components/layout/PageHero';
 import { Award, Heart } from 'lucide-react';
+import { getSiteMediaMap } from '@/lib/media-service';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
     "Learn about Dental World, Hyderabad's leading MDS dental clinic. Meet our experienced dental surgeons and see why 85,000+ patients trust us in Pragathi Nagar & Bachupally.",
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const mediaMap = await getSiteMediaMap();
+  const teamPhoto = mediaMap.about_team_photo || 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80';
+
   return (
     <main className="flex-grow">
       <PageHero
@@ -48,9 +52,10 @@ export default function AboutPage() {
             </div>
             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
               <Image
-                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
+                src={teamPhoto}
                 alt="Dental World clinical team"
                 fill
+                unoptimized={typeof teamPhoto === 'string' && teamPhoto.startsWith('data:')}
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />

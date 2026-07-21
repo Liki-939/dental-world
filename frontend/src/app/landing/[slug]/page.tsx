@@ -6,6 +6,7 @@ import Script from 'next/script';
 import { LOCATIONS, SITE } from '@/lib/site';
 import { treatmentsData } from '@/data/treatments';
 import type { LocationData } from './shared';
+import { getSiteMediaMap } from '@/lib/media-service';
 
 import GumDiseasePage from './pages/GumDiseasePage';
 import BracesPage from './pages/BracesPage';
@@ -22,7 +23,7 @@ interface PageEntry {
   dataKey: keyof typeof treatmentsData;
   title: string;
   description: string;
-  Component: (props: { branch: LocationData; locations: LocationData[]; whatsappUrl: string }) => ReactElement;
+  Component: (props: { branch: LocationData; locations: LocationData[]; whatsappUrl: string; mediaMap?: Record<string, string> }) => ReactElement;
 }
 
 const PAGES: Record<string, PageEntry> = {
@@ -133,6 +134,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const entry = PAGES[slug] || PAGES['gum-disease'];
   const data = treatmentsData[entry.dataKey];
+  const mediaMap = await getSiteMediaMap();
 
   const branch: LocationData = (LOCATIONS.find((l) => slug.includes(l.slug)) || LOCATIONS[0]) as LocationData;
   const locations = LOCATIONS as unknown as LocationData[];
@@ -173,7 +175,7 @@ export default async function LandingPage({ params }: { params: Promise<{ slug: 
       )}
 
       <Navbar />
-      <Component branch={branch} locations={locations} whatsappUrl={SITE.whatsapp.url} />
+      <Component branch={branch} locations={locations} whatsappUrl={SITE.whatsapp.url} mediaMap={mediaMap} />
       <Footer />
     </div>
   );
