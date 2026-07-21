@@ -145,7 +145,7 @@ const GumTreatmentSlide = () => (
       <div className="flex items-center gap-3">
         <Users className="w-8 h-8 text-blue-200 opacity-80" />
         <div>
-          <div className="font-bold text-xl text-white leading-none">1000+</div>
+          <div className="font-bold text-xl text-white leading-none">85,000+</div>
           <div className="text-[10px] text-blue-200 uppercase tracking-widest font-semibold mt-1">Happy Patients</div>
         </div>
       </div>

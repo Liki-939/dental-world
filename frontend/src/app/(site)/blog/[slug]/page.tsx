@@ -1,39 +1,56 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 import Script from 'next/script';
+import { getBlogPostBySlug, getAllBlogPosts } from '@/lib/blog-service';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const title = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const blog = await getBlogPostBySlug(slug);
+  if (!blog) {
+    return { title: 'Article Not Found | Dental World' };
+  }
+
   return {
-    title: title,
-    description: `Read our comprehensive guide on ${title}.`,
+    title: `${blog.title} | Dental World Clinic`,
+    description: blog.excerpt,
+    openGraph: {
+      title: blog.title,
+      description: blog.excerpt,
+      images: [{ url: blog.image }],
+    },
   };
 }
 
 export async function generateStaticParams() {
-  return [
-    { slug: 'how-to-prevent-cavities' },
-    { slug: 'benefits-of-invisalign' },
-    { slug: 'dental-implant-myths' }
-  ];
+  const blogs = await getAllBlogPosts();
+  return blogs.map((blog) => ({
+    slug: blog.slug,
+  }));
 }
+
+export const revalidate = 60; // revalidate every minute
 
 export default async function SingleBlogPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const title = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const blog = await getBlogPostBySlug(slug);
+
+  if (!blog) {
+    notFound();
+  }
 
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": title,
-    "image": "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80",
-    "datePublished": "2024-10-24T09:00:00+05:30",
+    "headline": blog.title,
+    "image": blog.image,
+    "datePublished": new Date(blog.createdAt).toISOString(),
+    "dateModified": new Date(blog.updatedAt).toISOString(),
     "author": {
       "@type": "Person",
-      "name": "Dr. Ramesh Kumar"
+      "name": blog.author,
     },
     "publisher": {
       "@type": "Organization",
@@ -43,8 +60,11 @@ export default async function SingleBlogPage({ params }: { params: Promise<{ slu
         "url": "https://www.dentalworldhyd.in/images/logo.jpeg"
       }
     },
-    "description": `Read our comprehensive guide on ${title}.`
+    "description": blog.excerpt,
   };
+
+  // Render paragraphs, headings, quotes cleanly
+  const paragraphs = blog.content.split('\n\n');
   
   return (
     <>
@@ -54,17 +74,17 @@ export default async function SingleBlogPage({ params }: { params: Promise<{ slu
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
       />
       
-      <main className="flex-grow py-12">
+      <main className="flex-grow py-12 bg-surface-muted/50">
         <div className="container mx-auto px-4 max-w-4xl">
-          <Link href="/blog" className="inline-flex items-center text-brand font-medium hover:underline mb-8">
+          <Link href="/blog" className="inline-flex items-center text-brand font-semibold hover:underline mb-8">
             <ArrowLeft className="w-4 h-4 mr-2" /> Back to all articles
           </Link>
           
           <article className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100">
-            <div className="relative h-[300px] md:h-[400px] w-full">
+            <div className="relative h-[300px] md:h-[450px] w-full">
               <Image 
-                src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80" 
-                alt={title} 
+                src={blog.image} 
+                alt={blog.title} 
                 fill 
                 className="object-cover" 
                 priority
@@ -72,35 +92,64 @@ export default async function SingleBlogPage({ params }: { params: Promise<{ slu
             </div>
             
             <div className="p-8 md:p-12">
-              <div className="flex items-center text-slate-500 text-sm font-medium mb-6 space-x-6">
-                <span className="flex items-center"><Calendar className="w-5 h-5 mr-2" /> Oct 24, 2024</span>
-                <span className="flex items-center"><User className="w-5 h-5 mr-2" /> Dr. Ramesh Kumar</span>
+              <div className="flex flex-wrap items-center text-slate-500 text-sm font-medium mb-6 gap-6">
+                <span className="flex items-center">
+                  <Calendar className="w-5 h-5 mr-2 text-brand shrink-0" />
+                  {new Date(blog.createdAt).toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric',
+                  })}
+                </span>
+                <span className="flex items-center">
+                  <User className="w-5 h-5 mr-2 text-brand shrink-0" />
+                  {blog.author}
+                </span>
               </div>
               
               <h1 className="text-3xl md:text-5xl font-heading font-extrabold text-slate-900 mb-8 leading-tight">
-                {title}
+                {blog.title}
               </h1>
+
+              {/* Excerpt Lead */}
+              {blog.excerpt && (
+                <p className="text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-8 pb-8 border-b border-slate-100 italic">
+                  "{blog.excerpt}"
+                </p>
+              )}
               
-              <div className="prose prose-lg prose-slate max-w-none text-slate-700">
-                <p>
-                  Maintaining good oral hygiene is crucial for your overall health. Many people don&apos;t realize that standard brushing isn&apos;t enough to keep cavities at bay. In this article, we&apos;ll dive deep into the daily habits you need to adopt.
-                </p>
-                <h3>1. Flossing is Non-Negotiable</h3>
-                <p>
-                  Your toothbrush can only reach 60% of your tooth surfaces. The remaining 40% between your teeth is a breeding ground for bacteria if left uncleaned. Flossing daily is the only way to remove plaque from these tight spaces.
-                </p>
-                <h3>2. Limit Sugary Snacks</h3>
-                <p>
-                  Sugar fuels the bacteria in your mouth to produce acids that erode tooth enamel. Try to limit sugary snacks and always rinse your mouth with water after eating sweets.
-                </p>
-                <div className="bg-brand-light p-6 rounded-2xl border-l-4 border-brand my-8">
-                  <p className="font-medium text-brand-dark mb-0 italic">
-                    &quot;Prevention is always better, and cheaper, than cure when it comes to dental health.&quot; - Dr. Ramesh Kumar
-                  </p>
-                </div>
-                <p>
-                  By following these simple steps and visiting Dental World for your bi-annual check-ups, you can ensure a lifetime of healthy smiles.
-                </p>
+              <div className="prose prose-lg prose-slate max-w-none text-slate-700 leading-relaxed space-y-6">
+                {paragraphs.map((para, idx) => {
+                  const trimmed = para.trim();
+                  if (trimmed.startsWith('### ')) {
+                    return (
+                      <h3 key={idx} className="text-2xl font-bold text-slate-900 mt-8 mb-4">
+                        {trimmed.replace('### ', '')}
+                      </h3>
+                    );
+                  }
+                  if (trimmed.startsWith('## ')) {
+                    return (
+                      <h2 key={idx} className="text-3xl font-bold text-slate-900 mt-10 mb-4">
+                        {trimmed.replace('## ', '')}
+                      </h2>
+                    );
+                  }
+                  if (trimmed.startsWith('> ')) {
+                    return (
+                      <div key={idx} className="bg-brand-light p-6 rounded-2xl border-l-4 border-brand my-8">
+                        <p className="font-medium text-brand-dark mb-0 italic">
+                          {trimmed.replace('> ', '')}
+                        </p>
+                      </div>
+                    );
+                  }
+                  return (
+                    <p key={idx} className="text-slate-700 leading-relaxed text-lg">
+                      {trimmed}
+                    </p>
+                  );
+                })}
               </div>
             </div>
           </article>

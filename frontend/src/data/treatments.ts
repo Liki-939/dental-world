@@ -259,7 +259,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     duration: 'Treatment time averages 12 to 18 months, but can vary based on individual needs. You will wear each set of aligners for about 1-2 weeks before moving to the next set in the series.',
     procedure: 'We start with a 3D digital scan of your teeth. A custom treatment plan is created mapping out the exact movements. You receive your aligners and wear them for 20-22 hours a day, coming in for check-ups every 6-8 weeks.',
     pricing: [
-      { title: "Basic", price: "1,50,000", features: ["Digital Scan", "Up to 14 Aligners", "Retainers included"] },
+      { title: "Basic", price: "99,999", features: ["Digital Scan", "Up to 14 Aligners", "Retainers included"] },
       { title: "Comprehensive", price: "2,50,000", features: ["Unlimited Aligners", "Complex bite correction", "Refinements included"], isPopular: true }
     ],
     faqs: [

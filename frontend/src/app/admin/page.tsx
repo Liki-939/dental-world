@@ -1,10 +1,17 @@
 import { prisma } from '../../db/prisma';
 import { Calendar, MapPin, Phone, Mail, Clock } from 'lucide-react';
 import BookingStatusActions from '@/components/BookingStatusActions';
+import { isAuthenticatedAdmin } from './auth';
+import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
 export default async function AdminPage() {
+  const isAuth = await isAuthenticatedAdmin();
+  if (!isAuth) {
+    redirect('/admin/login');
+  }
+
   const bookings = await prisma.booking.findMany({
     orderBy: {
       createdAt: 'desc',

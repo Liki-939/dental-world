@@ -155,10 +155,29 @@ export default function BookAppointmentForm({
           <label className="block text-sm font-medium text-slate-700 mb-2">Select Treatment</label>
           <select name="treatment" value={formData.treatment} onChange={handleChange} className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition bg-slate-50 focus:bg-white">
             <option value="General Consultation">General Consultation</option>
-            <option value="Dental Implants">Dental Implants</option>
-            <option value="Invisalign / Braces">Invisalign / Braces</option>
-            <option value="Root Canal">Root Canal</option>
-            <option value="Smile Makeover">Smile Makeover</option>
+            <option value="Second Opinion">Second Opinion</option>
+            <option value="Root Canal Treatment">Root Canal Treatment</option>
+            <option value="Teeth Cleaning/Scaling">Teeth Cleaning/Scaling</option>
+            <option value="Dental Implants">Dental Implants & Full Mouth Implants</option>
+            <option value="Clear Aligners / Invisalign">Clear Aligners & Invisible Aligners</option>
+            <option value="Dental Braces">Dental Braces</option>
+            <option value="Kids & Pediatric Dentistry">Kids & Pediatric Dentistry</option>
+            <option value="Wisdom Tooth Extraction">Wisdom Tooth Extraction</option>
+            <option value="Advanced Gum Treatment">Advanced Gum Treatment & Flap</option>
+            <option value="Tooth Decay & Fillings">Tooth Decay & Fillings</option>
+            <option value="Hybrid & Full Mouth Dentures">Hybrid & Full Mouth Dentures</option>
+            <option value="Smile Designing">Smile Designing</option>
+            <option value="Teeth Whitening">Teeth Whitening</option>
+            <option value="Bad Breath & Halitosis">Bad Breath & Halitosis</option>
+            <option value="Dental Crown & Bridges">Dental Crown & Bridges</option>
+            <option value="Frenectomy">Frenectomy</option>
+            <option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
+            <option value="Laser Dentistry">Laser Dentistry</option>
+            <option value="Jaw Surgery">Jaw Surgery</option>
+            <option value="Genioplasty">Genioplasty</option>
+            <option value="Mouth Ulcers">Mouth Ulcers</option>
+            <option value="Preventive Dentistry">Preventive Dentistry</option>
+            <option value="Full Mouth Rehabilitation">Full Mouth Rehabilitation</option>
             <option value="Other">Other</option>
           </select>
         </div>

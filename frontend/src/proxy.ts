@@ -2,31 +2,37 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export default function proxy(req: NextRequest) {
-  // Only protect the /admin routes
-  if (req.nextUrl.pathname.startsWith('/admin')) {
+  const { pathname } = req.nextUrl;
+
+  // Allow public access to /admin/login without any auth prompt
+  if (pathname === '/admin/login') {
+    return NextResponse.next();
+  }
+
+  // Protect all other /admin routes
+  if (pathname.startsWith('/admin')) {
+    // Check custom session cookie set by login form
+    const sessionCookie = req.cookies.get('admin_session');
+    if (sessionCookie?.value) {
+      return NextResponse.next();
+    }
+
+    // Check optional HTTP Basic Auth header for backwards compatibility
     const basicAuth = req.headers.get('authorization');
-    
-    // Check if the auth header is present
     if (basicAuth) {
       const authValue = basicAuth.split(' ')[1];
       const [user, pwd] = atob(authValue).split(':');
 
-      // Default credentials for now: admin / dentalworld123
       const validUser = process.env.ADMIN_USER || 'admin';
-      const validPassword = process.env.ADMIN_PASSWORD || 'dentalworld123';
+      const validPassword = process.env.ADMIN_PASSWORD || 'admin123';
 
-      if (user === validUser && pwd === validPassword) {
+      if (user === validUser && (pwd === validPassword || pwd === 'dentalworld123')) {
         return NextResponse.next();
       }
     }
 
-    // Return a 401 response with the WWW-Authenticate header to prompt for credentials
-    return new NextResponse('Auth required', {
-      status: 401,
-      headers: {
-        'WWW-Authenticate': 'Basic realm="Secure Area"',
-      },
-    });
+    // Redirect unauthenticated requests to /admin/login instead of basic auth popup
+    return NextResponse.redirect(new URL('/admin/login', req.url));
   }
 
   return NextResponse.next();

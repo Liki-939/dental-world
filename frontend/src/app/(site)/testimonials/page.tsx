@@ -22,7 +22,7 @@ export default function TestimonialsPage() {
       <PageHero
         title="Patient"
         highlight="Reviews"
-        description="Discover why 5,000+ patients trust Dental World for their families."
+        description="Discover why 85,000+ patients trust Dental World for their families."
       />
 
       <section className="py-20 bg-surface-muted">

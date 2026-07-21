@@ -238,7 +238,7 @@ const treatmentsInfo: Record<string, {
     comparisonTitle: 'ROOT CANAL vs OTHER OPTIONS',
     comparisonHeader: ['RCT', 'FILLING', 'EXTRACTION'],
     comparisonRows: [
-      { feature: 'Saves Natural Tooth', main: 'check', opt1: 'cross', opt2: 'cross' },
+      { feature: 'Saves Natural Tooth', main: 'check', opt1: 'check', opt2: 'cross' },
       { feature: 'Pain Relief', main: 'check', opt1: 'check', opt2: 'cross' },
       { feature: 'Long Term Solution', main: 'check', opt1: 'warn', opt2: 'cross' },
       { feature: 'Cost Effective', main: 'check', opt1: 'dash', opt2: 'cross' },
@@ -469,7 +469,7 @@ const treatmentsInfo: Record<string, {
       { title: 'Invisalign Lite', desc: 'For moderate alignment cases using up to 14 sets of clear aligners.' },
       { title: 'Invisalign Comprehensive', desc: 'Full orthodontic treatment with unlimited aligners for complex cases.' }
     ],
-    startingCost: '₹1,50,000*',
+    startingCost: '₹99,999*',
     costPoints: ['Certified Invisalign Specialists', 'iTero 3D Scan Included', 'Custom 3D Simulation', 'Retainers Included'],
     costDisclaimer: '*Pricing depends on the complexity of teeth alignment and number of aligners needed.',
     comparisonTitle: 'INVISALIGN vs METAL BRACES',
@@ -1962,7 +1962,7 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                     <Smile className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="font-extrabold text-sm text-[#0a1d37] leading-none">5000+</div>
+                    <div className="font-extrabold text-sm text-[#0a1d37] leading-none">85,000+</div>
                     <div className="text-[9px] text-slate-500 font-bold uppercase mt-0.5">Happy Patients</div>
                   </div>
                 </div>
@@ -2074,12 +2074,29 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                         onChange={handleInputChange}
                         className="w-full px-3 py-2.5 text-sm bg-white border border-slate-200 rounded focus:ring-1 focus:ring-blue-500 transition outline-none text-slate-900 font-semibold"
                       >
+                        <option value="General Consultation">General Consultation</option>
+                        <option value="Second Opinion">Second Opinion</option>
                         <option value="Root Canal Treatment">Root Canal Treatment</option>
-                        <option value="Dental Implants">Dental Implants</option>
-                        <option value="Invisalign & Braces">Invisalign & Braces</option>
-                        <option value="Smile Makeover">Smile Makeover</option>
+                        <option value="Teeth Cleaning/Scaling">Teeth Cleaning/Scaling</option>
+                        <option value="Dental Implants">Dental Implants & Full Mouth Implants</option>
+                        <option value="Invisalign & Braces">Clear Aligners & Invisible Aligners</option>
+                        <option value="Braces">Dental Braces</option>
+                        <option value="Kids Dentistry">Kids & Pediatric Dentistry</option>
+                        <option value="Wisdom Tooth Extraction">Wisdom Tooth Extraction</option>
+                        <option value="Advanced Gum Treatment">Advanced Gum Treatment & Flap</option>
+                        <option value="Tooth Decay & Fillings">Tooth Decay & Fillings</option>
+                        <option value="Hybrid & Full Mouth Dentures">Hybrid & Full Mouth Dentures</option>
+                        <option value="Smile Makeover">Smile Designing</option>
                         <option value="Teeth Whitening">Teeth Whitening</option>
-                        <option value="Kids Dentistry">Kids Dentistry</option>
+                        <option value="Bad Breath & Halitosis">Bad Breath & Halitosis</option>
+                        <option value="Dental Crown & Bridges">Dental Crown & Bridges</option>
+                        <option value="Frenectomy">Frenectomy</option>
+                        <option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
+                        <option value="Laser Dentistry">Laser Dentistry</option>
+                        <option value="Jaw Surgery">Jaw Surgery</option>
+                        <option value="Genioplasty">Genioplasty</option>
+                        <option value="Mouth Ulcers">Mouth Ulcers</option>
+                        <option value="Preventive Dentistry">Preventive Dentistry</option>
                         <option value="Full Mouth Rehabilitation">Full Mouth Rehabilitation</option>
                       </select>
                     </div>
@@ -2925,34 +2942,26 @@ export default function TreatmentPageClient({ slug, displayTitle }: { slug: stri
                   Advanced Technology & Quality
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-100">
-                    <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                    <div>
-                      <h5 className="text-xs font-bold text-[#0a1d37]">Rotary Endodontics</h5>
-                      <p className="text-[11px] text-slate-500 leading-relaxed font-semibold">Flexible nickel-titanium tools for precise and fast cleaning.</p>
+                  {(slug === 'root-canal-treatment' ? [
+                    { title: 'Rotary Endodontics', desc: 'Flexible nickel-titanium tools for precise and fast cleaning.' },
+                    { title: 'Digital RVG X-rays', desc: 'Low-radiation high-resolution sensors for accurate diagnosis.' },
+                    { title: 'Apex Locators', desc: 'Electronic length determination to ensure full root disinfection.' },
+                    { title: '100% Sterile Protocol', desc: 'Class B autoclaves and vacuum pouches for zero infection risk.' }
+                  ] : data.technology && data.technology.length > 0 ? data.technology.slice(0, 4).map(t => ({
+                    title: t.title,
+                    desc: `Advanced ${t.title.toLowerCase()} used for precise, comfortable ${displayTitle.toLowerCase()}.`
+                  })) : [
+                    ...info.whyChooseCards.slice(0, 3),
+                    { title: '100% Sterile Protocol', desc: 'Class B autoclaves and vacuum pouches for zero infection risk.' }
+                  ]).map((tech, idx) => (
+                    <div key={idx} className="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-100">
+                      <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                      <div>
+                        <h5 className="text-xs font-bold text-[#0a1d37]">{tech.title}</h5>
+                        <p className="text-[11px] text-slate-500 leading-relaxed font-semibold">{tech.desc}</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-100">
-                    <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                    <div>
-                      <h5 className="text-xs font-bold text-[#0a1d37]">Digital RVG X-rays</h5>
-                      <p className="text-[11px] text-slate-500 leading-relaxed font-semibold">Low-radiation high-resolution sensors for accurate diagnosis.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-100">
-                    <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                    <div>
-                      <h5 className="text-xs font-bold text-[#0a1d37]">Apex Locators</h5>
-                      <p className="text-[11px] text-slate-500 leading-relaxed font-semibold">Electronic length determination to ensure full root disinfection.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3 bg-white p-4 rounded-xl border border-slate-100">
-                    <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                    <div>
-                      <h5 className="text-xs font-bold text-[#0a1d37]">100% Sterile Protocol</h5>
-                      <p className="text-[11px] text-slate-500 leading-relaxed font-semibold">Class B autoclaves and vacuum pouches for zero infection risk.</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 

@@ -15,7 +15,7 @@ const doctors = [
     title: 'Founder & Chief Dentist',
     specialties: ['General Dentistry', 'Cosmetic Dentistry'],
     image: '/sneha.jpg',
-    description: 'Dr. Sneha brings a wealth of experience in providing comprehensive dental care, focusing on patient comfort and advanced treatment modalities.',
+    description: 'Our founder and chief dentist, Dr. Sneha brings a wealth of experience in providing comprehensive dental care, focusing on patient comfort and advanced treatment modalities.',
   },
   {
     name: 'Dr. Abdul Wahed',
@@ -29,14 +29,35 @@ const doctors = [
     title: 'MDS Prosthodontics & Implantology',
     specialties: ['Implantology', 'Smile Designing'],
     image: '/anurag.jpg',
-    description: 'Professor at Balaji Dental College. Chief Smile Designer, dedicated to restoring smiles with state-of-the-art implants and prosthetics.',
+    description: 'Completed placing 5000+ successful implants across all age groups of patients, with expertise in full mouth rehabilitation. Professor at Balaji Dental College and Chief Smile Designer, dedicated to restoring smiles with state-of-the-art implants and prosthetics.',
   },
   {
     name: 'Dr. Nithin Bharat',
     title: 'MDS Dentofacial Orthodontics',
     specialties: ['Orthodontics', 'Invisalign'],
     image: '/nithin.jpg',
-    description: 'Invisalign Consultant specializing in correcting dental misalignments and providing aesthetic orthodontic solutions for all ages.',
+    description: 'Platinum Invisalign Provider specializing in correcting dental misalignments and providing aesthetic orthodontic solutions for all ages.',
+  },
+  {
+    name: 'Dr. Ch Sravan Kumar',
+    title: 'MDS Periodontics',
+    specialties: ['Periodontics', 'Laser Gum Treatment'],
+    image: null,
+    description: '15+ years of experience in laser gum treatment and periodontal care. Expert in advanced gum disease therapy and minimally invasive procedures, specializing in complex cases with a patient-focused approach for long-lasting results.',
+  },
+  {
+    name: 'Dr. AN Supraja',
+    title: 'MDS Pedodontist',
+    specialties: ['Pediatric Dentistry', 'Painless Treatment'],
+    image: null,
+    description: '15+ years of experience in pediatric dental care. Specializes in gentle, fear-free treatment for children, with a child-friendly approach committed to building healthy smiles from an early age.',
+  },
+  {
+    name: 'Dr. Yousuf Qureshi',
+    title: 'MDS Oral & Maxillofacial Surgery',
+    specialties: ['Oral Surgery', 'Wisdom Tooth Extraction'],
+    image: null,
+    description: '19+ years of surgical experience specializing in wisdom tooth removal, complex oral & maxillofacial surgeries, and advanced training in implant and facial trauma care.',
   },
 ];
 
@@ -58,12 +79,20 @@ export default function DoctorsPage() {
                   className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-100 flex flex-col"
                 >
                   <div className="relative h-72 w-full bg-slate-200">
-                    <Image 
-                      src={doctor.image} 
-                      alt={doctor.name}
-                      fill
-                      className="object-cover"
-                    />
+                    {doctor.image ? (
+                      <Image
+                        src={doctor.image}
+                        alt={doctor.name}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand to-brand-dark">
+                        <span className="text-5xl font-black text-white/90">
+                          {doctor.name.replace('Dr. ', '').split(' ').map(w => w[0]).slice(0, 2).join('')}
+                        </span>
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4">
                       <h3 className="text-2xl font-bold text-white mb-1">{doctor.name}</h3>

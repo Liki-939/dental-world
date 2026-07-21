@@ -6,7 +6,7 @@ import { Award, Heart } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    "Learn about Dental World, Hyderabad's leading MDS dental clinic. Meet our experienced dental surgeons and see why 5000+ patients trust us in Pragathi Nagar & Bachupally.",
+    "Learn about Dental World, Hyderabad's leading MDS dental clinic. Meet our experienced dental surgeons and see why 85,000+ patients trust us in Pragathi Nagar & Bachupally.",
 };
 
 export default function AboutPage() {
@@ -92,7 +92,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { value: '15+', label: 'Years Experience' },
-              { value: '5000+', label: 'Happy Patients' },
+              { value: '85,000+', label: 'Happy Patients' },
               { value: '10+', label: 'Expert Doctors' },
               { value: '2', label: 'Clinic Locations' },
             ].map((stat) => (

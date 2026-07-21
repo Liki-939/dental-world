@@ -54,7 +54,7 @@ const faqData: FAQItem[] = [
   {
     category: 'general',
     question: 'What are your clinic timings and locations?',
-    answer: 'We are open Monday to Saturday from 10:00 AM to 8:30 PM, and Sunday from 10:00 AM to 1:30 PM. We have two fully equipped state-of-the-art clinics in Hyderabad: Pragathi Nagar and Bachupally.',
+    answer: 'We are open Monday to Saturday from 9:00 AM to 9:00 PM, and Sunday from 10:00 AM to 2:00 PM. We have two fully equipped state-of-the-art clinics in Hyderabad: Pragathi Nagar and Bachupally.',
   },
 
   // Root Canal
