@@ -4,6 +4,7 @@ import { prisma } from '@/db/prisma';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { isAuthenticatedAdmin } from './auth';
+import { deleteFromSupabase } from '@/lib/supabase-cleanup';
 
 function slugify(text: string): string {
   return text
@@ -95,6 +96,17 @@ export async function updateBlogPost(id: string, formData: FormData) {
   }
 
   try {
+    // Fetch the existing blog post first to see if the image changed
+    const existingPost = await prisma.blogPost.findUnique({
+      where: { id },
+      select: { image: true },
+    });
+
+    if (existingPost && existingPost.image !== image) {
+      // Delete old image from Supabase storage
+      await deleteFromSupabase(existingPost.image);
+    }
+
     await prisma.blogPost.update({
       where: { id },
       data: {
@@ -128,6 +140,17 @@ export async function deleteBlogPost(id: string) {
   }
 
   try {
+    // Fetch the blog post to get the image URL first
+    const existingPost = await prisma.blogPost.findUnique({
+      where: { id },
+      select: { image: true },
+    });
+
+    if (existingPost) {
+      // Delete image from Supabase storage
+      await deleteFromSupabase(existingPost.image);
+    }
+
     await prisma.blogPost.delete({
       where: { id },
     });

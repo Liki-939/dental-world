@@ -124,11 +124,27 @@ export default function BlogForm({ initialData, action, isEditing = false }: Blo
       setImageCompressing(true);
       setErrorMsg(null);
       setUploadedFileName(file.name);
-      const dataUrl = await compressAndConvertImage(file);
-      setImage(dataUrl);
-    } catch (err) {
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('folder', 'blogs');
+
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to upload image.');
+      }
+
+      const data = await response.json();
+      setImage(data.url);
+    } catch (err: any) {
       console.error('Error uploading image:', err);
-      setErrorMsg('Failed to process uploaded image file. Please try another image.');
+      setErrorMsg(err.message || 'Failed to process and upload image file. Please try another image.');
+      setUploadedFileName(null);
     } finally {
       setImageCompressing(false);
     }

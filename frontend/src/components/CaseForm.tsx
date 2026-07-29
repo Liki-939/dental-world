@@ -27,10 +27,11 @@ export default function CaseForm({ initialData }: CaseFormProps) {
   const [beforePreview, setBeforePreview] = useState(initialData?.beforeImage || '');
   const [afterPreview, setAfterPreview] = useState(initialData?.afterImage || '');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState('');
 
-  // Helper to compress and convert file to WebP base64 Data URL
-  const handleFileUpload = (file: File, type: 'before' | 'after') => {
+  // Helper to upload file to Supabase Storage
+  const handleFileUpload = async (file: File, type: 'before' | 'after') => {
     if (!file) return;
 
     if (!file.type.startsWith('image/')) {
@@ -38,44 +39,38 @@ export default function CaseForm({ initialData }: CaseFormProps) {
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        let width = img.width;
-        let height = img.height;
+    try {
+      setIsUploading(true);
+      setError('');
 
-        const maxDimension = 1200;
-        if (width > maxDimension || height > maxDimension) {
-          if (width > height) {
-            height = Math.round((height * maxDimension) / width);
-            width = maxDimension;
-          } else {
-            width = Math.round((width * maxDimension) / height);
-            height = maxDimension;
-          }
-        }
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('folder', 'cases');
 
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-          ctx.drawImage(img, 0, 0, width, height);
-          const dataUrl = canvas.toDataURL('image/webp', 0.85);
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
 
-          if (type === 'before') {
-            setBeforeImage(dataUrl);
-            setBeforePreview(dataUrl);
-          } else {
-            setAfterImage(dataUrl);
-            setAfterPreview(dataUrl);
-          }
-        }
-      };
-      img.src = e.target?.result as string;
-    };
-    reader.readAsDataURL(file);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to upload image.');
+      }
+
+      const data = await response.json();
+      if (type === 'before') {
+        setBeforeImage(data.url);
+        setBeforePreview(data.url);
+      } else {
+        setAfterImage(data.url);
+        setAfterPreview(data.url);
+      }
+    } catch (err: any) {
+      console.error('Error uploading case image:', err);
+      setError(err.message || 'Failed to upload image. Please try again.');
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -246,11 +241,13 @@ export default function CaseForm({ initialData }: CaseFormProps) {
       <div className="pt-4 flex justify-end">
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || isUploading}
           className="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition shadow-md flex items-center space-x-2 disabled:opacity-50"
         >
           {isSubmitting ? (
             <span>Saving Case...</span>
+          ) : isUploading ? (
+            <span>Uploading Images...</span>
           ) : (
             <>
               <span>{initialData?.id ? 'Update Case' : 'Create Case'}</span>

@@ -3,6 +3,7 @@
 import { prisma } from '@/db/prisma';
 import { revalidatePath } from 'next/cache';
 import { isAuthenticatedAdmin } from './auth';
+import { deleteFromSupabase } from '@/lib/supabase-cleanup';
 
 export async function updateSiteMedia(key: string, imageUrl: string, label?: string) {
   const isAuth = await isAuthenticatedAdmin();
@@ -12,6 +13,20 @@ export async function updateSiteMedia(key: string, imageUrl: string, label?: str
 
   if (!key || !imageUrl) {
     throw new Error('Key and Image URL are required.');
+  }
+
+  try {
+    // Fetch the existing media to see if the image changed
+    const existingMedia = await prisma.siteMedia.findUnique({
+      where: { key },
+      select: { imageUrl: true },
+    });
+
+    if (existingMedia && existingMedia.imageUrl !== imageUrl) {
+      await deleteFromSupabase(existingMedia.imageUrl);
+    }
+  } catch (error) {
+    console.warn('Error checking existing media for deletion:', error);
   }
 
   const generatedLabel = label || key.replace('hero_', 'Hero ').replace(/_/g, ' ').toUpperCase();
@@ -41,11 +56,20 @@ export async function deleteSiteMedia(key: string) {
   }
 
   try {
+    const existingMedia = await prisma.siteMedia.findUnique({
+      where: { key },
+      select: { imageUrl: true },
+    });
+
+    if (existingMedia) {
+      await deleteFromSupabase(existingMedia.imageUrl);
+    }
+
     await prisma.siteMedia.delete({
       where: { key },
     });
   } catch (error) {
-    // Ignore if missing
+    console.error('Failed to delete media key:', error);
   }
 
   revalidatePath('/');
@@ -65,6 +89,19 @@ export async function createCustomSiteMedia(key: string, label: string, imageUrl
   const cleanKey = key.trim().toLowerCase().replace(/\s+/g, '_');
   if (!cleanKey || !imageUrl) {
     throw new Error('Valid Key and Image URL are required.');
+  }
+
+  try {
+    const existingMedia = await prisma.siteMedia.findUnique({
+      where: { key: cleanKey },
+      select: { imageUrl: true },
+    });
+
+    if (existingMedia && existingMedia.imageUrl !== imageUrl) {
+      await deleteFromSupabase(existingMedia.imageUrl);
+    }
+  } catch (error) {
+    console.warn('Error checking custom media for deletion:', error);
   }
 
   await prisma.siteMedia.upsert({

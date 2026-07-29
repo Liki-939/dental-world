@@ -36,8 +36,8 @@ export default function SiteMediaManager({ initialRecords }: { initialRecords: S
     return matchesCategory && matchesSearch;
   });
 
-  // Client-side WebP Compression & Upload
-  const handleImageFileUpload = (key: string, file: File) => {
+  // Upload to Supabase Storage and Update Site Media
+  const handleImageFileUpload = async (key: string, file: File) => {
     if (!file) return;
 
     if (!file.type.startsWith('image/')) {
@@ -45,52 +45,39 @@ export default function SiteMediaManager({ initialRecords }: { initialRecords: S
       return;
     }
 
-    setUpdatingKey(key);
-    setErrorMsg('');
+    try {
+      setUpdatingKey(key);
+      setErrorMsg('');
 
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-      const img = new Image();
-      img.onload = async () => {
-        const canvas = document.createElement('canvas');
-        let width = img.width;
-        let height = img.height;
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('folder', 'media');
 
-        const maxDimension = 1200;
-        if (width > maxDimension || height > maxDimension) {
-          if (width > height) {
-            height = Math.round((height * maxDimension) / width);
-            width = maxDimension;
-          } else {
-            width = Math.round((width * maxDimension) / height);
-            height = maxDimension;
-          }
-        }
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
 
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-          ctx.drawImage(img, 0, 0, width, height);
-          const dataUrl = canvas.toDataURL('image/webp', 0.80);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to upload image.');
+      }
 
-          try {
-            await updateSiteMedia(key, dataUrl);
-            setRecords((prev) =>
-              prev.map((item) => (item.key === key ? { ...item, imageUrl: dataUrl } : item))
-            );
-            setSuccessKey(key);
-            setTimeout(() => setSuccessKey(null), 3000);
-          } catch (err: any) {
-            setErrorMsg(err.message || 'Failed to update cover photo.');
-          } finally {
-            setUpdatingKey(null);
-          }
-        }
-      };
-      img.src = e.target?.result as string;
-    };
-    reader.readAsDataURL(file);
+      const uploadData = await response.json();
+      const uploadedUrl = uploadData.url;
+
+      await updateSiteMedia(key, uploadedUrl);
+      setRecords((prev) =>
+        prev.map((item) => (item.key === key ? { ...item, imageUrl: uploadedUrl } : item))
+      );
+      setSuccessKey(key);
+      setTimeout(() => setSuccessKey(null), 3000);
+    } catch (err: any) {
+      console.error('Error uploading site media:', err);
+      setErrorMsg(err.message || 'Failed to update cover photo.');
+    } finally {
+      setUpdatingKey(null);
+    }
   };
 
   const handleSaveUrl = async (key: string) => {
